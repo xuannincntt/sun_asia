@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/contact.css">
+{% endblock %}
+{% block title %}
+    Liên hệ
+{% endblock %}
+{% block content %}
+    <section>
+        <h1 class="heading">LIÊN HỆ VỚI SUN ASIA</h1>
+        <div class="contact">
+            <div class="inf">
+                <h3>CÔNG TY CỔ PHẦN SUN ASIA</h3>
+                <p>
+                    <a href="tel:0981358442" title="Gọi ngay">
+                        <i class="fa-solid fa-phone"></i> 0981.358.442
+                    </a>
+                </p>
+                <p>
+                    <a href="mailto:xuannincntt@gmail.com" title="Gửi email">
+                        <i class="fa-solid fa-envelope"></i> xuannincntt@gmail.com
+                    </a>
+                </p>
+                <p>
+                    <a href="#">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        Tầng 6, Chung cư VP6, Linh Đàm, Hà Nội
+                    </a>
+                </p>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3837.204788268202!2d105.8308054108508!3d20.967371489803636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac555927a9bb%3A0xbdfe41608e605ec8!2zQ2h1bmcgY8awIFZQNiBMaW5oIMSQw6Bt!5e1!3m2!1svi!2s!4v1748545048882!5m2!1svi!2s" 
+                    width="650" 
+                    height="380" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <form action="" class="form">
+                <h3>Họ và tên</h3>
+                <div class="name">
+                    <input type="text" placeholder="Họ">
+                    <input type="text" placeholder="Tên">
+                </div>
+                <h3>Email</h3>
+                <input type="emai" placeholder="example@email.com">
+                <h3>Điện thoại</h3>
+                <input type="phone" placeholder="Số điện thoại">
+                <h3>Nội dung</h3>
+                <textarea name="" id="message" cols="30" rows="8" 
+                placeholder="Nội dung" class="item" autocomplete="off"></textarea>
+                <button type="submit">Gửi tin nhắn</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

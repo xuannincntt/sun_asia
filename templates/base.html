@@ -35,11 +35,11 @@
         </div>
         <!-- Navigation -->
         <nav class="nav">
-            <a href="#">{% trans "Trang chủ" %}</a>
+            <a href="/">{% trans "Trang chủ" %}</a>
             <a href="#">{% trans "Cửa hàng" %}</a>
             <a href="#">{% trans "Dự án" %}</a>
             <a href="#">{% trans "Tin tức" %}</a>
-            <a href="#">{% trans "Liên hệ" %}</a>
+            <a href="/contact">{% trans "Liên hệ" %}</a>
         </nav>
         <!-- Actions -->
         <div class="actions">
@@ -100,6 +100,15 @@
             </div>
         </div>
     </header>
+    <!-- Floating Icons -->
+    <div class="floating-icons">
+        <a href="https://zalo.me/0981358442" target="_blank" class="icon zalo" title="Zalo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" />
+        </a>
+        <a href="tel:0981358442" class="icon phone" title="Gọi ngay">
+            <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Phone" />
+        </a>
+    </div>
     {% block content %} {% endblock %}
     <footer>
         <div class="part1">

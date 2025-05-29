@@ -25,6 +25,44 @@ html {
     overflow-x: hidden;
 }
 
+section {
+    padding: 10rem 12% 2rem;
+}
+
+.floating-icons {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999;
+}
+
+.floating-icons .icon {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    transition: .5s ease;
+}
+
+.floating-icons .icon:hover {
+    transform: scale(1.1);
+}
+
+.floating-icons .icon img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
 .header {
     display: flex;
     position: fixed;
@@ -91,7 +129,8 @@ html {
 .actions .download {
     cursor: pointer;
     transition: .5s ease;
-    padding: .8rem 1rem;
+    padding: 1rem;
+    border-radius: 4px;
 }
 
 .download:hover {
@@ -111,6 +150,7 @@ html {
     cursor: pointer;
     transition: .5s ease;
     padding: .5rem 1rem;
+    border-radius: 4px;
 }
 
 .user:hover {
