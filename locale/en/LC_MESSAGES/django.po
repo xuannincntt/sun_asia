@@ -18,17 +18,57 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\sun_asia\settings.py:113
-msgid "Vietnamese"
-msgstr ""
+#: .\templates\base.html:25 .\templates\base.html:82
+msgid "Trang chủ"
+msgstr "Home"
 
-#: .\sun_asia\settings.py:114
-msgid "English"
-msgstr ""
+#: .\templates\base.html:26 .\templates\base.html:83
+msgid "Cửa hàng"
+msgstr "Store"
 
-#: .\sun_asia\settings.py:115
-msgid "Japanese"
-msgstr ""
+#: .\templates\base.html:27 .\templates\base.html:84
+msgid "Dự án"
+msgstr "Projects"
+
+#: .\templates\base.html:28 .\templates\base.html:85
+msgid "Tin tức"
+msgstr "News"
+
+#: .\templates\base.html:29 .\templates\base.html:86
+msgid "Liên hệ"
+msgstr "Contact"
+
+#: .\templates\base.html:33
+msgid "Tải ứng dụng"
+msgstr "Download App"
+
+#: .\templates\base.html:42
+msgid "Thông tin cá nhân"
+msgstr "My Information"
+
+#: .\templates\base.html:43
+msgid "Quản lý giỏ hàng"
+msgstr "Manage Cart"
+
+#: .\templates\base.html:44
+msgid "Danh mục yêu thích"
+msgstr "Favorites List"
+
+#: .\templates\base.html:46
+msgid "Đăng xuất"
+msgstr "Log out"
+
+#: .\templates\base.html:65
+msgid "Việt Nam"
+msgstr "Vietnam"
+
+#: .\templates\base.html:68
+msgid "Anh"
+msgstr "English"
+
+#: .\templates\base.html:71
+msgid "Nhật Bản"
+msgstr "Japan"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"

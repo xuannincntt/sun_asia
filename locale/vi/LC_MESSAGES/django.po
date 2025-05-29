@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-28 13:09+0700\n"
+"POT-Creation-Date: 2025-05-28 22:01+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,17 +18,57 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: .\sun_asia\settings.py:113
-msgid "Vietnamese"
-msgstr ""
+#: .\templates\base.html:25 .\templates\base.html:82
+msgid "Trang chủ"
+msgstr "Trang chủ"
 
-#: .\sun_asia\settings.py:114
-msgid "English"
-msgstr ""
+#: .\templates\base.html:26 .\templates\base.html:83
+msgid "Cửa hàng"
+msgstr "Cửa hàng"
 
-#: .\sun_asia\settings.py:115
-msgid "Japanese"
-msgstr ""
+#: .\templates\base.html:27 .\templates\base.html:84
+msgid "Dự án"
+msgstr "Dự án"
+
+#: .\templates\base.html:28 .\templates\base.html:85
+msgid "Tin tức"
+msgstr "Tin tức"
+
+#: .\templates\base.html:29 .\templates\base.html:86
+msgid "Liên hệ"
+msgstr "Liên hệ"
+
+#: .\templates\base.html:33
+msgid "Tải ứng dụng"
+msgstr "Tải ứng dụng"
+
+#: .\templates\base.html:42
+msgid "Thông tin cá nhân"
+msgstr "Thông tin cá nhân"
+
+#: .\templates\base.html:43
+msgid "Quản lý giỏ hàng"
+msgstr "Quản lý giỏ hàng"
+
+#: .\templates\base.html:44
+msgid "Danh mục yêu thích"
+msgstr "Danh mục yêu thích"
+
+#: .\templates\base.html:46
+msgid "Đăng xuất"
+msgstr "Đăng xuất"
+
+#: .\templates\base.html:65
+msgid "Việt Nam"
+msgstr "Việt Nam"
+
+#: .\templates\base.html:68
+msgid "Anh"
+msgstr "Anh"
+
+#: .\templates\base.html:71
+msgid "Nhật Bản"
+msgstr "Nhật Bản"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"
