@@ -12,6 +12,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     desc_file = models.FileField(upload_to='descs/', null=True, blank=True)
     description = models.TextField()
+    sold = models.IntegerField()
     stock = models.IntegerField()
     sale_price = models.FloatField()
     org_price = models.FloatField()

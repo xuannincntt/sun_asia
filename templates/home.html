@@ -1,11 +1,201 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>Home Page</p>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/home.css">
+{% endblock %}
+
+{% block title %}
+    Sun Asia
+{% endblock %}
+
+{% block content %}
+    <!-- Home section design -->
+    <section id="home" class="home">
+        <div class="home-img">
+            <img src="/static/img/bg.jpg" alt="">
+        </div>
+        <div class="home-content">
+            <h3>SUN ASIA</h3>
+            <h1>GIẢI PHÁP NHÀ KÍNH VƯƠN TẦM QUỐC TẾ</h1>
+            <p>Nhà kính thông minh của Asia hỗ trợ FAQ ứng phó biến đổi khí hậu,
+                xuất khẩu sang Mỹ, khẳng định vị thế trên thị trường toàn cầu
+            </p>
+            <button>
+                <a href="tel:0981358442" title="Gọi ngay">
+                TƯ VẤN MIỄN PHÍ NGAY <i class="fa-solid fa-phone"></i>
+                </a>
+            </button>
+        </div>
+    </section>
+    <section id="about" class="about">
+        <div class="about-content">
+            <h1>CÔNG TY CỔ PHẦN CÔNG NGHỆ CAO SUN ASIA</h1>
+            <p>Công ty Hachi được thành lập từ đề án Vietnam Silicon Valley thuộc Bộ Khoa Học Công Nghệ từ năm 2016. Hachi là tập hợp bạn trẻ yêu nông nghiệp, từng nhận giải thưởng Nhân Tài Đất Việt, nhận tài trợ của World Bank và Liên Hợp Quốc.</p>
+            <p>250+ Dự án nhà kính đã được Hachi thi công trên khắp cả Việt Nam. Hachi đã xuất khẩu nhà màng đi Úc, Thái Lan, Lào và gần nhất là Mỹ.Chúng tôi xây dựng giải pháp nông nghiệp thông minh, bền vững, thích ứng với biến đổi khí hậu.</p>
+            <h1>Dịch vụ hỗ trợ</h1>
+            <div class="about-service">
+                <button>
+                    <a href="#">
+                        <p><i class="fa-solid fa-wrench"></i></p>
+                         Thi công lắp đặt
+                    </a>
+                </button>
+                <button>
+                    <a href="#">
+                        <p><i class="fa-solid fa-truck-fast"></i></p>
+                         Bán hạt giống
+                    </a>
+                </button>
+                <button>
+                    <a href="tel:0981358442" title="Gọi ngay">
+                        <p><i class="fa-solid fa-phone"></i></p>
+                         Tư vấn hỗ trợ
+                    </a>
+                </button>
+                <button>
+                    <a href="tel:0981358442" title="Gọi ngay">
+                        <p><i class="fa-solid fa-handshake"></i></p>
+                         Hợp tác đầu tư
+                    </a>
+                </button>
+            </div>
+        </div>
+        <div class="about-img">
+            <img src="/static/img/sunasia.jpg" alt="Sun Asia">
+        </div>
+    </section>
+    <!-- Product for you -->
+    <section id="product" class="product">
+        <div class="product-content">
+            <h3>Sản phẩm dành cho bạn</h3>
+            <p>Sản phẩm mới nhất | Sản phẩm bán chạy</p>
+        </div>
+        <div class="product-show">
+            <div class="product-item">
+                <img src="/static/img/hoaanhdao.jpg" alt="hoa anh dao">
+                <h3>Hạt giống hoa anh đào</h3>
+                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
+                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
+                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
+                <div class="product-item-end">
+                    <button>Mua ngay</button>
+                    <p><i class="fa-regular fa-heart"></i></p>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="/static/img/cam.jpg" alt="cam">
+                <h3>Hạt giống cam</h3>
+                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
+                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
+                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
+                <div class="product-item-end">
+                    <button>Mua ngay</button>
+                    <p><i class="fa-regular fa-heart"></i></p>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="/static/img/dautay.jpg" alt="dau tay">
+                <h3>Hạt giống dâu tây</h3>
+                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
+                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
+                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
+                <div class="product-item-end">
+                    <button>Mua ngay</button>
+                    <p><i class="fa-regular fa-heart"></i></p>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="/static/img/duahau.jpg" alt="dua hau">
+                <h3>Hạt giống dưa hấu</h3>
+                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
+                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
+                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
+                <div class="product-item-end">
+                    <button>Mua ngay</button>
+                    <p><i class="fa-regular fa-heart"></i></p>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="/static/img/duavang.jpg" alt="dua vang">
+                <h3>Hạt giống dưa vàng</h3>
+                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
+                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
+                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
+                <div class="product-item-end">
+                    <button>Mua ngay</button>
+                    <p><i class="fa-regular fa-heart"></i></p>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="/static/img/hoahong.jpg" alt="hoa hong">
+                <h3>Hạt giống hoa hồng</h3>
+                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
+                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
+                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
+                <div class="product-item-end">
+                    <button>Mua ngay</button>
+                    <p><i class="fa-regular fa-heart"></i></p>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="/static/img/hoalan.jpg" alt="hoa lan">
+                <h3>Hạt giống hoa lan</h3>
+                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
+                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
+                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
+                <div class="product-item-end">
+                    <button>Mua ngay</button>
+                    <p><i class="fa-regular fa-heart"></i></p>
+                </div>
+            </div>
+            <div class="product-item">
+                <img src="/static/img/tao.jpg" alt="tao">
+                <h3>Hạt giống táo</h3>
+                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
+                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
+                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
+                <div class="product-item-end">
+                    <button>Mua ngay</button>
+                    <p><i class="fa-regular fa-heart"></i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- design project -->
+    <section id="project" class="project">
+        <div class="project-content">
+            <h3>Dự án nổi bật</h3>
+            <p>Xem thêm <i class="fa-solid fa-arrow-right"></i></p>
+        </div>
+        <div class="project-show">
+            <div class="project-item">
+                <img src="/static/img/house1.jpg" alt="">
+                <h3>Nhà màng trồng cà chua trái vụ</h3>
+                <!-- <p>Sun Asia đã thực hiện thành công dự án nhà màng trồng cà chua trái vụ Tân Lập Mộc Châu</p> -->
+                <p class="area">1500 m² - 15 ha</p>
+                <p class="address">Mộc Châu, Sơn La</p>
+            </div>
+            <div class="project-item">
+                <img src="/static/img/house2.jpg" alt="">
+                <h3>Nhà màng trồng nhân sâm hữu cơ</h3>
+                <!-- <p>Sun Asia đã thực hiện thành công dự án nhà màng trồng cà chua trái vụ Tân Lập Mộc Châu</p> -->
+                <p class="area">1500 m² - 15 ha</p>
+                <p class="address">Tây Hồ, Hà Nội</p>
+            </div>
+            <div class="project-item">
+                <img src="/static/img/house3.jpg" alt="">
+                <h3>Nhà màng trồng rau thủy canh</h3>
+                <!-- <p>Sun Asia đã thực hiện thành công dự án nhà màng trồng cà chua trái vụ Tân Lập Mộc Châu</p> -->
+                <p class="area">1500 m² - 15 ha</p>
+                <p class="address">Thủy Nguyên, Hải Phòng</p>
+            </div>
+            <div class="project-item">
+                <img src="/static/img/house4.jpg" alt="">
+                <h3>Nhà màng mái vòm trồng rau ăn lá</h3>
+                <!-- <p>Sun Asia đã thực hiện thành công dự án nhà màng trồng cà chua trái vụ Tân Lập Mộc Châu</p> -->
+                <p class="area">1500 m² - 15 ha</p>
+                <p class="address">Quận 9, Hồ Chí Minh</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

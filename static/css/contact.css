@@ -1,0 +1,77 @@
+section {
+    padding: 10rem 8% 2rem;
+    min-height: 100vh;
+}
+
+.heading {
+    font-size: 3.5rem;
+    font-weight: 550;
+    padding: 0rem 0 3rem;
+    text-align: center;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5rem;
+}
+
+.contact .inf,
+.contact .form {
+    width: 50%;
+}
+
+.contact .inf h3 {
+    font-size: 2.5rem;
+    padding: 1rem 0;
+}
+
+.contact .inf p {
+    font-size: 1.5rem;
+    padding: 0rem 0rem 1rem;
+}
+
+.contact .inf p i {
+    padding-right: 2rem;
+}
+
+.contact .form {
+    font-size: 1.5rem;
+}
+
+.contact .form h3 {
+    padding: 1rem 0;
+}
+
+.contact .form .name {
+    display: flex;
+    column-gap: 4%;
+}
+
+.contact .form input, 
+.contact .form textarea {
+    border: 1px solid #333;
+    width: 100%;
+    padding: 1rem;
+    border-radius: .5rem;
+    resize: none;
+}
+
+.contact .form .name input {
+    width: 48%;
+}
+
+.contact .form button {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: .5s ease;
+    border: .1rem solid #ccc;
+    border-radius: .5rem;
+}
+
+.contact .form button:hover {
+    background: var(--main-color);
+    color: var(--second-bg-color);
+    box-shadow: 0 0 1rem var(--main-color);
+}
