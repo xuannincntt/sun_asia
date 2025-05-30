@@ -36,7 +36,7 @@
         <!-- Navigation -->
         <nav class="nav">
             <a href="/">{% trans "Trang chủ" %}</a>
-            <a href="#">{% trans "Cửa hàng" %}</a>
+            <a href="/products">{% trans "Cửa hàng" %}</a>
             <a href="#">{% trans "Dự án" %}</a>
             <a href="#">{% trans "Tin tức" %}</a>
             <a href="/contact">{% trans "Liên hệ" %}</a>
@@ -46,18 +46,26 @@
             <a href="#" class="download"><i class="fa-solid fa-download"></i> {% trans "Tải ứng dụng" %}</a>
             <span class="icon"><i class="fa-regular fa-heart"></i></span>
             <span class="icon"><i class="fa-solid fa-bell"></i></span>
-            <div class="user">
-                <div class="avatar">V</div>
-                <span class="username">Xuân Nin Vũ</span>
-                <span class="dropdown"><i class="fa-solid fa-caret-down" id="dropdown-icon"></i></span>
-            </div>
-            <div class="dropdown-user">
-                <a href="/{{ username }}"><p><i class="fa-regular fa-user"></i> {% trans "Thông tin cá nhân" %}</p></a>
-                <a href="/admin"><p><i class="fa-solid fa-cart-shopping"></i> {% trans "Quản lý giỏ hàng" %}</p></a>
-                <a href="#"><p><i class="fa-regular fa-heart"></i> {% trans "Danh mục yêu thích" %}</p></a>
-                <hr>
-                <a href="/logout" onclick="logout()"><p><i class="fa-solid fa-arrow-right-from-bracket"></i> {% trans "Đăng xuất" %}</p></a>
-            </div>
+                {% if user %}
+                    <div class="user">
+                        <div class="avatar">{{ user.username|first|upper }}</div>
+                        <span class="username">{{ user.username }}</span>
+                        <span class="dropdown"><i class="fa-solid fa-caret-down" id="dropdown-icon"></i></span>
+                    </div>
+                    <div class="dropdown-user">
+                        <a href="/{{ username }}"><p><i class="fa-regular fa-user"></i> {% trans "Thông tin cá nhân" %}</p></a>
+                        <a href="/admin"><p><i class="fa-solid fa-cart-shopping"></i> {% trans "Quản lý giỏ hàng" %}</p></a>
+                        <a href="#"><p><i class="fa-regular fa-heart"></i> {% trans "Danh mục yêu thích" %}</p></a>
+                        <hr>
+                        <a href="/logout" onclick="logout()"><p><i class="fa-solid fa-arrow-right-from-bracket"></i> {% trans "Đăng xuất" %}</p></a>
+                    </div>
+                {% else %}
+                    <div class="login-register">
+                        <a href="/accounts/">Đăng nhập</a>
+                        <span>|</span>
+                        <a href="/accounts/">Đăng ký</a>
+                    </div>
+                {% endif %}
             <div class="language-selector">
                 <button class="btn-post lang-toggle">
                     {% get_current_language as LANGUAGE_CODE %}
@@ -173,70 +181,58 @@
             <h3>Copyright © 2025 - by Vu Xuan Nin</h3>
         </div>
     </footer>
+    {% block script %} {% endblock %}
     <script>
-        const menuBtn = document.querySelector('.menu');
-        const menuNav = document.querySelector('.menu-nav');
-        const menuIcon = document.getElementById('menu-icon');
         const dropdownBtn = document.querySelector('.user');
         const dropdownUser = document.querySelector('.dropdown-user');
         const dropdownIcon = document.getElementById('dropdown-icon');
-        // Toggle menu-nav + icon
-        menuBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            menuNav.classList.toggle('show');
-            if (menuNav.classList.contains('show')) {
-            menuIcon.classList.remove('fa-bars');
-            menuIcon.classList.add('fa-xmark');
-            } else {
-            menuIcon.classList.remove('fa-xmark');
-            menuIcon.classList.add('fa-bars');
-            }
-        });
-        // Toggle dropdown-user + icon
-        dropdownBtn.addEventListener('click', function () {
-            dropdownUser.classList.toggle('show');
-            if (dropdownUser.classList.contains('show')) {
-            dropdownIcon.classList.remove('fa-caret-down');
-            dropdownIcon.classList.add('fa-caret-up');
-            } else {
-            dropdownIcon.classList.remove('fa-caret-up');
-            dropdownIcon.classList.add('fa-caret-down');
-            }
-        });
-        // Click ra ngoài thì đóng
-        document.addEventListener('click', function (e) {
-            if (!menuBtn.contains(e.target) && !menuNav.contains(e.target)) {
-            menuNav.classList.remove('show');
-            menuIcon.classList.remove('fa-xmark');
-            menuIcon.classList.add('fa-bars');
-            }
-            if (!dropdownBtn.contains(e.target) && !dropdownUser.contains(e.target)) {
-            dropdownUser.classList.remove('show');
-            dropdownIcon.classList.remove('fa-caret-up');
-            dropdownIcon.classList.add('fa-caret-down');
-            }
-        });
+
+        // Kiểm tra tồn tại trước khi thao tác
+        if (dropdownBtn && dropdownUser && dropdownIcon) {
+            // Toggle dropdown-user + icon
+            dropdownBtn.addEventListener('click', function () {
+                dropdownUser.classList.toggle('show');
+                if (dropdownUser.classList.contains('show')) {
+                    dropdownIcon.classList.remove('fa-caret-down');
+                    dropdownIcon.classList.add('fa-caret-up');
+                } else {
+                    dropdownIcon.classList.remove('fa-caret-up');
+                    dropdownIcon.classList.add('fa-caret-down');
+                }
+            });
+
+            // Click ra ngoài thì đóng dropdown-user
+            document.addEventListener('click', function (e) {
+                if (!dropdownBtn.contains(e.target) && !dropdownUser.contains(e.target)) {
+                    dropdownUser.classList.remove('show');
+                    dropdownIcon.classList.remove('fa-caret-up');
+                    dropdownIcon.classList.add('fa-caret-down');
+                }
+            });
+        }
         document.addEventListener("DOMContentLoaded", function () {
             const toggleBtn = document.querySelector(".lang-toggle");
             const selector = document.querySelector(".language-selector");
 
-            toggleBtn.addEventListener("click", function (e) {
-                e.stopPropagation();
-                selector.classList.toggle("show");
-            });
-
-            document.querySelectorAll('.lang-option').forEach(option => {
-                option.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute('data-lang');
-                    document.getElementById('language-input').value = lang;
-                    document.getElementById('language-form').submit();
+            if (toggleBtn && selector) {
+                toggleBtn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    selector.classList.toggle("show");
                 });
-            });
 
-            document.addEventListener("click", function () {
-                selector.classList.remove("show");
-            });
+                document.querySelectorAll('.lang-option').forEach(option => {
+                    option.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const lang = this.getAttribute('data-lang');
+                        document.getElementById('language-input').value = lang;
+                        document.getElementById('language-form').submit();
+                    });
+                });
+
+                document.addEventListener("click", function () {
+                    selector.classList.remove("show");
+                });
+            }
         });
     </script>
     <script src="https://cdn.tailwindcss.com"></script>

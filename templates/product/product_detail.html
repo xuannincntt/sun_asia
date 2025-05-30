@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}?v={{ timestamp }}">
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6839dc6784860b001ace80c6&product=inline-share-buttons&source=platform" async="async"></script>
+{% endblock %}
+{% block title %}Đèn LED chuyên dụng đơn sắc HC-BR25{% endblock %}
+{% block content %}
+<main id="product-detail-page">
+    <div class="detail-title">
+        <img class="page-image" src="{% static 'images/products_intro.jpg' %}"/>
+        <h2 class="page-title">Đèn LED chuyên dụng đơn sắc HC-BR25</h2>
+    </div>
+    <div class="detail-content">
+        <div class="detail-basic">
+            <div class="detail-images">
+                <div class="detail-images-slider">
+                    <div class="detail-images-slides">
+                        <img src="{% static 'images/product_placeholder.png' %}" class="carousel-image" />
+                        <img src="{% static 'images/product_placeholder_2.png' %}" class="carousel-image" />
+                        <img src="{% static 'images/product_placeholder.png' %}" class="carousel-image" />
+                        <img src="{% static 'images/product_placeholder.png' %}" class="carousel-image" />
+                    </div>
+
+                    <button class="carousel-btn prev-btn">&#10094;</button>
+                    <button class="carousel-btn next-btn">&#10095;</button>
+                </div>
+                <div class="detail-images-sub">
+                    <img class="detail-image-sub" src="{% static 'images/product_placeholder.png' %}" alt="">
+                    <img class="detail-image-sub" src="{% static 'images/product_placeholder_2.png' %}" alt="">
+                    <img class="detail-image-sub" src="{% static 'images/product_placeholder.png' %}" alt="">
+                    <img class="detail-image-sub" src="{% static 'images/product_placeholder.png' %}" alt="">
+                </div>
+            </div>
+            <div class="detail-info">
+                <div class="detail-product-name">Đèn LED chuyên dụng đơn sắc HC-BR25</div>
+                <div class="detail-product-rate align-left">
+                    <i class='bx bxs-star rate-icon'></i> 
+                    <i class='bx bxs-star rate-icon'></i> 
+                    <i class='bx bxs-star rate-icon'></i> 
+                    <i class='bx bxs-star rate-icon'></i> 
+                    <i class='bx bxs-star rate-icon'></i> 
+                </div>
+                <div class="detail-product-price align-left">
+                    <div class="detail-product-orgPrice">500,000đ</div>
+                    <div class="detail-product-salePrice">430,000đ</div>
+                </div>
+                <div class="detail-product-sold align-left">
+                    <span class="detail-product-field">Đã bán</span>
+                    <span class="detail-product-value">1,250</span>
+                </div>
+                <div class="detail-product-stock align-left">
+                    <span class="detail-product-field">Còn lại</span>
+                    <span class="detail-product-value">425</span>
+                </div>
+                <div class="detail-product-quantity align-left">
+                    <span class="detail-product-label">Số lượng: </span>
+                    <div class="detail-product-input align-center">
+                        <i class='bx bx-plus plus-btn'></i> 
+                        <input 
+                            type="number"
+                            name="quantity-input"
+                            id="quantity-input"
+                            placeholder="0"
+                            value="1"
+                        />
+                        <i class='bx bx-minus minus-btn'></i> 
+                    </div>
+                    
+                </div>
+                <div class="detail-product-action">
+                    <button type="button" class="action-btn cart-btn">Thêm vào giỏ hàng</button>
+                    <button type="button" class="action-btn buy-btn">Mua ngay</button>
+                    <button type="button" class="action-btn call-btn align-center">
+                        <i class='bx bx-message-circle call-icon'></i> 
+                        <span class="action-btn-text">Tư vấn trực tuyến</span>
+                    </button>
+                    <button type="button" class="action-btn zalo-btn align-center">
+                        <img class="zalo-icon" src="{% static 'images/zalo_icon.webp' %}"/>
+                        <span class="action-btn-text">Tư vấn qua Zalo</span>
+                    </button>
+                </div>
+                <div class="detail-product-share">
+                    <span class="detail-product-label">Chia sẻ sản phẩm trên các nền tảng! </span>
+                    <div class="sharethis-inline-share-buttons"></div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="detail-additional">
+            <div class="detail-additional-tabs align-center">
+                <div class="detail-tab tab-desc tab-active" data-tab="description">Mô tả</div>
+                <div class="detail-tab tab-policy" data-tab="policy">Chính sách đổi trả</div>
+                <div class="detail-tab tab-deliver" data-tab="deliver">Chính sách vận chuyển</div>
+            </div>
+            <div id="description" class="tab-content tab-content-active">
+                <p>Đây là sản phẩm chất lượng cao, được làm từ nguyên liệu tự nhiên...</p>
+            </div>
+            <div id="policy" class="tab-content">
+                <p>Bạn có thể đổi trả sản phẩm trong vòng 7 ngày nếu có lỗi từ nhà sản xuất...</p>
+            </div>
+
+            <div id="deliver" class="tab-content">
+                <p>Chúng tôi hỗ trợ giao hàng toàn quốc, bao gồm tất cả các tỉnh thành tại Việt Nam. Một số khu vực vùng sâu vùng xa có thể cần thêm thời gian giao hàng.</p>
+            </div>
+        </div>
+    </div>
+    <div class="detail-recommend">
+        <div class="recommend-title align-left">Sản phẩm tương tự</div>
+        <hr style="width: 100%;"/>
+        <div class="recommend-container">
+            <div class="slider">
+                <div class="slides">
+                    <div class="recommend-card">
+                        <div class="recommend-card-thumbnail">
+                            <img class="recommend-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
+                            <div class="recommend-card-promo align-center">
+                                <p>Mới!</p>
+                            </div>
+                        </div>
+                        <div class="recommend-card-info">
+                            <div class="recommend-card-name align-left">
+                                Đèn LED chuyên dụng đơn sắc HC-BR25W
+                            </div>
+                            <div class="recommend-card-more">
+                                <div class="recommend-card-rate">
+                                    <i class='bx bxs-star rate-icon'></i> 
+                                    <span class="rate-score">5.0</span>
+                                </div>
+                                <div class="recommend-card-price align-right">
+                                    <div class="recommend-card-orgPrice align-right">
+                                        500,000đ
+                                    </div>
+                                    <div class="recommend-card-salePrice align-right">
+                                        420,000
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recommend-card-action">
+                                <button 
+                                    type="button"
+                                    class="action-btn cart-btn"
+                                >
+                                    Thêm vào giỏ
+                                </button>
+                                <button 
+                                    type="button"
+                                    class="action-btn buy-btn"
+                                >
+                                    Mua ngay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommend-card">
+                        <div class="recommend-card-thumbnail">
+                            <img class="recommend-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
+                            <div class="recommend-card-promo align-center">
+                                <p>Mới!</p>
+                            </div>
+                        </div>
+                        <div class="recommend-card-info">
+                            <div class="recommend-card-name align-left">
+                                Đèn LED chuyên dụng đơn sắc HC-BR25W
+                            </div>
+                            <div class="recommend-card-more">
+                                <div class="recommend-card-rate">
+                                    <i class='bx bxs-star rate-icon'></i> 
+                                    <span class="rate-score">5.0</span>
+                                </div>
+                                <div class="recommend-card-price align-right">
+                                    <div class="recommend-card-orgPrice align-right">
+                                        500,000đ
+                                    </div>
+                                    <div class="recommend-card-salePrice align-right">
+                                        420,000
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recommend-card-action">
+                                <button 
+                                    type="button"
+                                    class="action-btn cart-btn"
+                                >
+                                    Thêm vào giỏ
+                                </button>
+                                <button 
+                                    type="button"
+                                    class="action-btn buy-btn"
+                                >
+                                    Mua ngay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommend-card">
+                        <div class="recommend-card-thumbnail">
+                            <img class="recommend-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
+                            <div class="recommend-card-promo align-center">
+                                <p>Mới!</p>
+                            </div>
+                        </div>
+                        <div class="recommend-card-info">
+                            <div class="recommend-card-name align-left">
+                                Đèn LED chuyên dụng đơn sắc HC-BR25W
+                            </div>
+                            <div class="recommend-card-more">
+                                <div class="recommend-card-rate">
+                                    <i class='bx bxs-star rate-icon'></i> 
+                                    <span class="rate-score">5.0</span>
+                                </div>
+                                <div class="recommend-card-price align-right">
+                                    <div class="recommend-card-orgPrice align-right">
+                                        500,000đ
+                                    </div>
+                                    <div class="recommend-card-salePrice align-right">
+                                        420,000
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recommend-card-action">
+                                <button 
+                                    type="button"
+                                    class="action-btn cart-btn"
+                                >
+                                    Thêm vào giỏ
+                                </button>
+                                <button 
+                                    type="button"
+                                    class="action-btn buy-btn"
+                                >
+                                    Mua ngay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommend-card">
+                        <div class="recommend-card-thumbnail">
+                            <img class="recommend-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
+                            <div class="recommend-card-promo align-center">
+                                <p>Mới!</p>
+                            </div>
+                        </div>
+                        <div class="recommend-card-info">
+                            <div class="recommend-card-name align-left">
+                                Đèn LED chuyên dụng đơn sắc HC-BR25W
+                            </div>
+                            <div class="recommend-card-more">
+                                <div class="recommend-card-rate">
+                                    <i class='bx bxs-star rate-icon'></i> 
+                                    <span class="rate-score">5.0</span>
+                                </div>
+                                <div class="recommend-card-price align-right">
+                                    <div class="recommend-card-orgPrice align-right">
+                                        500,000đ
+                                    </div>
+                                    <div class="recommend-card-salePrice align-right">
+                                        420,000
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recommend-card-action">
+                                <button 
+                                    type="button"
+                                    class="action-btn cart-btn"
+                                >
+                                    Thêm vào giỏ
+                                </button>
+                                <button 
+                                    type="button"
+                                    class="action-btn buy-btn"
+                                >
+                                    Mua ngay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommend-card">
+                        <div class="recommend-card-thumbnail">
+                            <img class="recommend-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
+                            <div class="recommend-card-promo align-center">
+                                <p>Mới!</p>
+                            </div>
+                        </div>
+                        <div class="recommend-card-info">
+                            <div class="recommend-card-name align-left">
+                                Đèn LED chuyên dụng đơn sắc HC-BR25W
+                            </div>
+                            <div class="recommend-card-more">
+                                <div class="recommend-card-rate">
+                                    <i class='bx bxs-star rate-icon'></i> 
+                                    <span class="rate-score">5.0</span>
+                                </div>
+                                <div class="recommend-card-price align-right">
+                                    <div class="recommend-card-orgPrice align-right">
+                                        500,000đ
+                                    </div>
+                                    <div class="recommend-card-salePrice align-right">
+                                        420,000
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recommend-card-action">
+                                <button 
+                                    type="button"
+                                    class="action-btn cart-btn"
+                                >
+                                    Thêm vào giỏ
+                                </button>
+                                <button 
+                                    type="button"
+                                    class="action-btn buy-btn"
+                                >
+                                    Mua ngay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommend-card">
+                        <div class="recommend-card-thumbnail">
+                            <img class="recommend-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
+                            <div class="recommend-card-promo align-center">
+                                <p>Mới!</p>
+                            </div>
+                        </div>
+                        <div class="recommend-card-info">
+                            <div class="recommend-card-name align-left">
+                                Đèn LED chuyên dụng đơn sắc HC-BR25W
+                            </div>
+                            <div class="recommend-card-more">
+                                <div class="recommend-card-rate">
+                                    <i class='bx bxs-star rate-icon'></i> 
+                                    <span class="rate-score">5.0</span>
+                                </div>
+                                <div class="recommend-card-price align-right">
+                                    <div class="recommend-card-orgPrice align-right">
+                                        500,000đ
+                                    </div>
+                                    <div class="recommend-card-salePrice align-right">
+                                        420,000
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recommend-card-action">
+                                <button 
+                                    type="button"
+                                    class="action-btn cart-btn"
+                                >
+                                    Thêm vào giỏ
+                                </button>
+                                <button 
+                                    type="button"
+                                    class="action-btn buy-btn"
+                                >
+                                    Mua ngay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommend-card">
+                        <div class="recommend-card-thumbnail">
+                            <img class="recommend-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
+                            <div class="recommend-card-promo align-center">
+                                <p>Mới!</p>
+                            </div>
+                        </div>
+                        <div class="recommend-card-info">
+                            <div class="recommend-card-name align-left">
+                                Đèn LED chuyên dụng đơn sắc HC-BR25W
+                            </div>
+                            <div class="recommend-card-more">
+                                <div class="recommend-card-rate">
+                                    <i class='bx bxs-star rate-icon'></i> 
+                                    <span class="rate-score">5.0</span>
+                                </div>
+                                <div class="recommend-card-price align-right">
+                                    <div class="recommend-card-orgPrice align-right">
+                                        500,000đ
+                                    </div>
+                                    <div class="recommend-card-salePrice align-right">
+                                        420,000
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recommend-card-action">
+                                <button 
+                                    type="button"
+                                    class="action-btn cart-btn"
+                                >
+                                    Thêm vào giỏ
+                                </button>
+                                <button 
+                                    type="button"
+                                    class="action-btn buy-btn"
+                                >
+                                    Mua ngay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button id="prev">&#10094;</button>
+                    <button id="next">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/product_detail.js' %}?v={{ timestamp }}" type="module"></script>
+{% endblock js %}
