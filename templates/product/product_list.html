@@ -1,0 +1,231 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+        <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <link rel="stylesheet" href="{% static 'css/product_list.css' %}?v={{ timestamp }}">
+    </head>
+    <body>
+        <header></header>
+        <main id="product-page">
+            <div class="section-title align-left">
+                <h2 class="page-title">SẢN PHẨM</h2>
+            </div>
+            
+    
+            <div class="section-content">
+                <div class="section-options">
+                    <div class="section-categories">
+                        <div class="categories-title align-center">DANH MỤC</div>
+                        <ul class="categories-container">
+                            <li 
+                                class="category-main"
+                            >
+                                <div class="category-main-name align-left category-card-active">
+                                    <div class="category-name align-left">
+                                        <i class='bx bx-shopping-bag category-icon'></i> 
+                                        <span class="category-card-name align-center">Tất Cả Sản Phẩm</span>
+                                    </div>
+                                    <i class='bx bx-chevron-down category-icon subcat-icon'></i> 
+                                </div>
+                                <ul class="category-main-subcat">
+                                    <li class="subcat-item">
+                                        <a class="subcat-link">Đèn LED trồng cây</a>
+                                    </li>
+                                    <li class="subcat-item">
+                                        <a class="subcat-link">Hạt giống rau củ quả</a>
+                                    </li>
+                                    <li class="subcat-item">
+                                        <a class="subcat-link">Phân bón dinh dưỡng thủy canh</a>
+                                    </li>
+                                    <li class="subcat-item">
+                                        <a class="subcat-link">Hệ thống trồng công nghệ cao</a>
+                                    </li>
+                                    <li class="subcat-item">
+                                        <a class="subcat-link">Sản phẩm khác</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li 
+                                class="category-card align-left"
+                            >
+                                <i class='bx bx-seal category-icon'></i> 
+                                <span class="category-card-name align-center">Hàng Mới Về</span>
+                            </li>
+                            <li 
+                                class="category-card align-left"
+                            >
+                                <i class='bx bx-star category-icon'></i> 
+                                <span class="category-card-name align-center">Bán Chạy</span>
+                            </li>
+                            <li 
+                                class="category-card align-left"
+                            >
+                                <i class='bx bx-discount category-icon'></i> 
+                                <span class="category-card-name align-center">Khuyến Mãi</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="section-filter"></div>
+                </div>
+                <div class="section-products">
+                    <div class="section-search">
+                        <div class="category-label align-left">
+                            <h4>Tất Cả Sản Phẩm</h4>
+                        </div>
+                        <div class="search-bar align-right">
+                            <label for="searchTerm" class="search-label align-left">
+                                <input 
+                                    type="text"
+                                    id="search-input"
+                                    placeholder="Nhập tên sản phẩm"
+                                    name="search-input"
+                                />
+                                <i class='bx bx-search search-icon align-center'></i> 
+                            </label>
+                        </div>
+                        
+                        
+                    </div>
+                    <hr />
+                    <div class="products-container">
+                        <div class="product-card">
+                            <div class="product-card-thumbnail">
+                                <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
+                                <div class="product-card-promo align-center">
+                                    <p>Mới!</p>
+                                </div>
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-name">
+                                    Đèn LED chuyên dụng đơn sắc HC-BR25W
+                                </div>
+                                <div class="product-card-more">
+                                    <div class="product-card-rate align-left">
+                                        <i class='bx bxs-star rate-icon'></i> 
+                                        <span class="rate-score">5.0</span>
+                                    </div>
+                                    <div class="product-card-price align-right">
+                                        <div class="product-card-orgPrice align-right">
+                                            500,000đ
+                                        </div>
+                                        <div class="product-card-salePrice align-right">
+                                            420,000
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="product-card-action">
+                                    <button 
+                                        type="button"
+                                        class="action-btn cart-btn"
+                                    >
+                                        Thêm vào giỏ
+                                    </button>
+                                    <button 
+                                        type="button"
+                                        class="action-btn buy-btn"
+                                    >
+                                        Mua ngay
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-thumbnail">
+                                <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
+                                <div class="product-card-promo align-center">
+                                    <p>Mới!</p>
+                                </div>
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-name">
+                                    Đèn LED chuyên dụng đơn sắc HC-BR25W
+                                </div>
+                                <div class="product-card-more">
+                                    <div class="product-card-rate">
+                                        <i class='bx bxs-star rate-icon'></i> 
+                                        <span class="rate-score">5.0</span>
+                                    </div>
+                                    <div class="product-card-price align-right">
+                                        <div class="product-card-orgPrice align-right">
+                                            500,000đ
+                                        </div>
+                                        <div class="product-card-salePrice align-right">
+                                            420,000
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-card-action">
+                                    <button 
+                                        type="button"
+                                        class="action-btn cart-btn"
+                                    >
+                                        Thêm vào giỏ
+                                    </button>
+                                    <button 
+                                        type="button"
+                                        class="action-btn buy-btn"
+                                    >
+                                        Mua ngay
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-thumbnail">
+                                <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
+                                <div class="product-card-promo align-center">
+                                    <p>Mới!</p>
+                                </div>
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-card-name align-left">
+                                    Đèn LED chuyên dụng đơn sắc HC-BR25W
+                                </div>
+                                <div class="product-card-more">
+                                    <div class="product-card-rate">
+                                        <i class='bx bxs-star rate-icon'></i> 
+                                        <span class="rate-score">5.0</span>
+                                    </div>
+                                    <div class="product-card-price align-right">
+                                        <div class="product-card-orgPrice align-right">
+                                            500,000đ
+                                        </div>
+                                        <div class="product-card-salePrice align-right">
+                                            420,000
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-card-action">
+                                    <button 
+                                        type="button"
+                                        class="action-btn cart-btn"
+                                    >
+                                        Thêm vào giỏ
+                                    </button>
+                                    <button 
+                                        type="button"
+                                        class="action-btn buy-btn"
+                                    >
+                                        Mua ngay
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <script src="" async defer></script>
+    </body>
+</html>
