@@ -123,6 +123,17 @@ form {
     margin: 0 8px;
 }
 
+.messages {
+    list-style: none;
+    padding: 10px;
+}
+.messages li.success {
+    color: green;
+}
+.messages li.error {
+    color: red;
+}
+
 .toggle-box {
     position: absolute;
     width: 100%;

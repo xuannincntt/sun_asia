@@ -11,7 +11,7 @@
     <title>{% block title %}Django App{% endblock %}</title>
 </head>
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -21,7 +21,7 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
-</script>
+</script> -->
 <!--End of Tawk.to Script-->
 <body>
     <header class="header">
@@ -48,16 +48,17 @@
             <span class="icon"><i class="fa-solid fa-bell"></i></span>
                 {% if user %}
                     <div class="user">
-                        <div class="avatar">{{ user.username|first|upper }}</div>
+                        {% load user_filters %}
+                        <div class="avatar">{{ user.username|last_name_initial }}</div>
                         <span class="username">{{ user.username }}</span>
                         <span class="dropdown"><i class="fa-solid fa-caret-down" id="dropdown-icon"></i></span>
                     </div>
                     <div class="dropdown-user">
-                        <a href="/{{ username }}"><p><i class="fa-regular fa-user"></i> {% trans "Thông tin cá nhân" %}</p></a>
+                        <a href="{% url 'user-profile' slug=user.slug %}"><p><i class="fa-regular fa-user"></i> {% trans "Thông tin cá nhân" %}</p></a>
                         <a href="/admin"><p><i class="fa-solid fa-cart-shopping"></i> {% trans "Quản lý giỏ hàng" %}</p></a>
                         <a href="#"><p><i class="fa-regular fa-heart"></i> {% trans "Danh mục yêu thích" %}</p></a>
                         <hr>
-                        <a href="/logout" onclick="logout()"><p><i class="fa-solid fa-arrow-right-from-bracket"></i> {% trans "Đăng xuất" %}</p></a>
+                        <a href="/logout"><p><i class="fa-solid fa-arrow-right-from-bracket"></i> {% trans "Đăng xuất" %}</p></a>
                     </div>
                 {% else %}
                     <div class="login-register">

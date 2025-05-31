@@ -24,6 +24,13 @@
                         <a href="#">Forgot password?</a>
                     </div>
                     <button type="submit" class="btn" name="login">Login</button>
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li class="{{ message.tags }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                     <p>or login with social platforms</p>
                     <div class="social-icons">
                         <a href="#"><i class="fa-brands fa-google"></i></a>
@@ -51,6 +58,13 @@
                         <i class="fa-solid fa-lock"></i>
                     </div>
                     <button type="submit" class="btn" name="register">Register</button>
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li class="{{ message.tags }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                     <p>or register with social platforms</p>
                     <div class="social-icons">
                         <a href="#"><i class="fa-brands fa-google"></i></a>

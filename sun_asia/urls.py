@@ -26,6 +26,8 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('projects/', include('projects.urls')),
     path('contact/', include('contact.urls')),
+    path('cart/', views.cart, name='cart'),
     path('', views.home, name='home'),
+    path('logout', views.logout_view, name='logout'),
     path('set_language/', set_language, name='set_language'),
 ]

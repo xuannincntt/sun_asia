@@ -109,10 +109,3 @@ const setTabsOnClick = () => {
         });
     });
 };
-
-
-
-
-
-
-
