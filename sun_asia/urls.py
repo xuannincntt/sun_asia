@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 from django.views.i18n import set_language
+from django.views.i18n import set_language
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('products/', include('products.urls')),
+    path('cart/', views.cart, name='cart'),
     path('news/', include('news.urls')),
     path('projects/', include('projects.urls')),
     path('contact/', include('contact.urls')),

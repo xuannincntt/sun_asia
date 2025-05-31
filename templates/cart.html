@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/cart.css' %}?v={{ timestamp }}">
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6839dc6784860b001ace80c6&product=inline-share-buttons&source=platform" async="async"></script>
+{% endblock %}
+
+{% block title %}Giỏ hàng của tôi{% endblock %}
+
+{% block content %} 
+
+
+<main id="cart-page">
+    <div class="section-header">
+        <div class="section-header-return align-left">
+            <a class="return-link align-left" href="/products/">
+                <i class='bx bx-arrow-left-stroke return-icon'></i> 
+                <span class="return-label">Về trang Cửa hàng</span>
+            </a>
+        </div>
+        <div class="section-header-title align-center">
+            <h2 class="page-title">Giỏ hàng của tôi</h2>
+        </div>
+    </div>
+    <div class="section-content">
+        <div class="section-content-cart">
+            <table class="cart-table">
+                <thead>
+                    <tr class="cart-table-head">
+                        <th></th>
+                        <th class="align-left table-head-product" >Sản phẩm</th>
+                        <th class="align-right">Đơn giá</th>
+                        <th class="align-center">Số lượng</th>
+                        <th class="align-right">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cart-table-data">
+                        <td class="align-center">
+                            <i class='bx bx-x remove-icon'></i> 
+                        </td>
+                        <td class="align-center">
+                            <img class="cart-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
+                        </td>
+                        <td class="cart-item-name">Đèn LED chuyên dụng đơn sắc HC-BR25W</td>
+                        <td class="cart-item-price align-right">430,000đ</td>
+                        <td class="cart-item-quantity align-center">
+                            <div class="item-quantity-controller">
+                                <div class="item-minus-btn align-center">
+                                    <i class='bx bx-minus minus-icon'></i> 
+                                </div>
+                                <div class="item-quantity-input align-center">
+                                    <input
+                                        type="number"
+                                        id="cartItemQtn_1"
+                                        name="cartItemQtn_1"
+                                        placeholder="0"
+                                        value="3"
+                                        class="quantity-input"
+                                    />
+                                </div>
+                                <div class="item-add-btn align-center">
+                                    <i class='bx bx-plus plus-icon'></i> 
+                                </div>
+                            </div>
+                            
+                        </td>
+                        <td class="cart-item-subtotal align-right">1,290,000đ</td>
+                    </tr>
+                    <tr class="cart-table-data">
+                        <td class="align-center">
+                            <i class='bx bx-x remove-icon'></i> 
+                        </td>
+                        <td class="align-center">
+                            <img class="cart-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
+                        </td>
+                        <td class="cart-item-name">Đèn LED chuyên dụng đơn sắc HC-BR25W</td>
+                        <td class="cart-item-price align-right">430,000đ</td>
+                        <td class="cart-item-quantity align-center">
+                            <div class="item-quantity-controller">
+                                <div class="item-minus-btn align-center">
+                                    <i class='bx bx-minus minus-icon'></i> 
+                                </div>
+                                <div class="item-quantity-input align-center">
+                                    <input
+                                        type="number"
+                                        id="cartItemQtn_1"
+                                        name="cartItemQtn_1"
+                                        placeholder="0"
+                                        value="3"
+                                        class="quantity-input"
+                                    />
+                                </div>
+                                <div class="item-add-btn align-center">
+                                    <i class='bx bx-plus plus-icon'></i> 
+                                </div>
+                            </div>
+                            
+                        </td>
+                        <td class="cart-item-subtotal align-right">1,290,000đ</td>
+                    </tr>
+                    <tr class="cart-table-data">
+                        <td class="align-center">
+                            <i class='bx bx-x remove-icon'></i> 
+                        </td>
+                        <td class="align-center">
+                            <img class="cart-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
+                        </td>
+                        <td class="cart-item-name">Đèn LED chuyên dụng đơn sắc HC-BR25W</td>
+                        <td class="cart-item-price align-right">430,000đ</td>
+                        <td class="cart-item-quantity align-center">
+                            <div class="item-quantity-controller">
+                                <div class="item-minus-btn align-center">
+                                    <i class='bx bx-minus minus-icon'></i> 
+                                </div>
+                                <div class="item-quantity-input align-center">
+                                    <input
+                                        type="number"
+                                        id="cartItemQtn_1"
+                                        name="cartItemQtn_1"
+                                        placeholder="0"
+                                        value="3"
+                                        class="quantity-input"
+                                    />
+                                </div>
+                                <div class="item-add-btn align-center">
+                                    <i class='bx bx-plus plus-icon'></i> 
+                                </div>
+                            </div>
+                            
+                        </td>
+                        <td class="cart-item-subtotal align-right">1,290,000đ</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="section-content-total">
+            <div class="section-total-title align-center">
+                Tóm tắt đơn hàng
+            </div>
+            <div class="section-total-process">
+                <div class="total-row">
+                    <div class="total-row-label align-left">Số lượng</div>
+                    <div class="total-row-value align-right">9</div>
+                </div>
+                <div class="total-row">
+                    <div class="total-row-label align-left">Tổng cộng</div>
+                    <div class="total-row-value align-right">3,870,000đ</div>
+                </div>
+                <div class="total-row">
+                    <div class="total-row-label align-left">VAT</div>
+                    <div class="total-row-value align-right">0đ</div>
+                </div>
+                <div class="total-row">
+                    <div class="total-row-label align-left">Giảm giá</div>
+                    <div class="total-row-value align-right">0đ</div>
+                </div>
+            </div>
+            <div class="section-total-coupon">
+                <form id="coupon-form" method="POST">
+                    <label class="coupon-label align-left">
+                        <input 
+                            type="text"
+                            id="coupon-input"
+                            name="coupon-input"
+                            placeholder="Mã giảm giá"
+                        />
+                        <button
+                            type="submit"
+                            class="coupon-submit"
+                        >   
+                            Áp dụng mã
+                        </button>
+                    </label>
+                </form>
+                
+            </div>
+            <div class="section-total-final">
+                <div class="total-row">
+                    <div class="total-row-label align-left">Tổng tiền</div>
+                    <div class="total-row-value align-right">3,870,000đ</div>
+                </div>
+            </div>
+        </div>
+        <div class="section-content-clear align-right">
+            <button 
+                type="button"
+                class="clear-btn"
+            >
+                Xóa giỏ hàng
+            </button>
+        </div>
+        <div class="section-content-checkout align-right">
+            <a class="forward-link align-right" href="/checkout/">
+                <span class="forward-label">Tiếp tục thanh toán</span>
+                <i class='bx bx-arrow-right-stroke forward-icon'></i> 
+            </a>
+        </div>
+    </div>
+    
+</main>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/cart.js' %}?v={{ timestamp }}" type="module"></script>
+{% endblock js %}
+
