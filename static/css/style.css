@@ -403,12 +403,12 @@ footer {
     padding-right: 1rem;
 }
 
-.part1 .part1-item .inf {
+.part1 .part1-item .footer-inf {
     display: flex;
     flex-direction: column;
 }
 
-.part1-item .inf h3 {
+.part1-item .footer-inf h3 {
     font-weight: 600;
 }
 

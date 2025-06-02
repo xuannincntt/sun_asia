@@ -1,11 +1,207 @@
 {% extends "base.html" %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/accounts.css">
+    <link rel="stylesheet" href="/static/css/information.css">
 {% endblock %}
 {% block title %}
-    Đăng nhập | Đăng ký
+    Thông tin cá nhân
 {% endblock %}
 {% block content %}
+    <!-- information section design -->
+    <section class="inf">
+        <h1>Thông tin cá nhân</h1>
+        <p class="title">Thông tin về bạn và các lựa chọn ưu tiên của bạn trên các dịch vụ của Sun Asia</p>
+        <div class="inf-basic">
+            <h5>Thông tin cơ bản</h5>
+            <p class="textHeader">Những người khác sử dụng các dịch vụ của Sun Asia có thể nhìn thấy một số thông tin.</p>
+            <div class="img-contain" id="openImgPopup">
+                <div class="img-box">
+                    <p class="text-box">Ảnh hồ sơ</p>
+                </div>
+                <div class="img-box">
+                    <p class="text-box">Ảnh hồ sơ sẽ giúp bạn tạo nét riêng</p>
+                </div>
+                <div class="img-box end">
+                    <div class="img">
+                        {% if user.avatar_url %}
+                            <img src="{{ user.avatar_url }}" alt="">
+                        {% else %}
+                            {% load user_filters %}
+                            <div class="avatar">{{ user.username|last_name_initial }}</div>
+                        {% endif %}
+                        <div class="edit-img"><i class='bx bxs-camera' ></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="img-popup" id="img-popup">
+                <div class="img-popup-content">
+                    <span id="closeImgPopup"><i class="fa-solid fa-x"></i></span>
+                    <h1>Ảnh đại diện</h1>
+                    <p>Ảnh hồ sơ sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn</p>
+                    <div class="avatar">
+                        {% if user.avatar_url %}
+                            <img src="{{ avatar }}" alt="">
+                        {% else %}
+                            {% load user_filters %}
+                            <div id="avatar">{{ user.username|last_name_initial }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="upload" id="uploadDiv">
+                        <p><i class='bx bx-upload'></i> Tải ảnh mới lên</p>
+                        <input type="file" accept=".jpg,.jpeg,.png" name="avatar" id="avatar" style="display: none;">
+                    </div>
+                </div>
+            </div>
+            <div class="name-contain" id="openNamePopup">
+                <div class="name-box">
+                    <p class="text-box">Tên</p>
+                </div>
+                <div class="name-box">
+                    <p class="text-inf">{{ user.username }}</p>
+                </div>
+                <div class="name-box end">
+                    <p><i class='bx bx-chevron-right'></i></p>
+                </div>
+            </div>
+            <div class="name-popup" id="name-popup">
+                <div class="name-popup-content">
+                    <span id="closeNamePopup"><i class="fa-solid fa-x"></i></span>
+                    <h1>Cập nhập tên của bạn</h1>
+                    <p>Tên sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn</p>
+                    <label for="name">Họ và tên</label><br>
+                    <input type="text" name="name" id="name" placeholder="Nhập họ và tên của bạn">
+                    <p id="update_name"></p>
+                    <a href="/update_name" class="saveName">Xác nhận</a>
+                </div>
+            </div>
+        </div>
+        <div class="inf-login">
+            <h5>Thông tin đăng nhập</h5>
+            <div class="email-contain" id="openEmailPopup">
+                <div class="email-box">
+                    <p class="text-box">Email</p>
+                </div>
+                <div class="email-box">
+                    <p class="text-inf" id="account">{{ user.email }}</p>
+                </div>
+                <div class="email-box end">
+                    <p><i class='bx bx-chevron-right'></i></p>
+                </div>
+            </div>
+            <div class="email-popup" id="email-popup">
+                <div class="email-popup-content">
+                    <span id="closeEmailPopup"><i class="fa-solid fa-x"></i></span>
+                    <h1>Cập nhập email của bạn</h1>
+                    <p>Email sẽ được sử dụng để đăng nhập vào tài khoản của bạn</p>
+                    <label for="inf-email">Email</label><br>
+                    <input type="email" name="email" id="inf-email" placeholder="Nhập email của bạn">
+                    <p id="update_email"></p>
+                    <a href="/update_email" class="saveEmail">Xác nhận</a>
+                </div>
+            </div>
+            <div class="pass-contain" id="openPassPopup">
+                <div class="pass-box">
+                    <p class="text-box">Mật khẩu</p>
+                </div>
+                <div class="pass-box">
+                    <p class="text-inf">••••••••</p>
+                </div>
+                <div class="pass-box end">
+                    <p><i class='bx bx-chevron-right'></i></p>
+                </div>
+            </div>
+            <div class="popup-overlay-pass" id="popupOverlayPass" onclick="closePassPopup()">
+                <div class="wrapperPass" id="wrapperPass" onclick="event.stopPropagation()">
+                    <div class="pass-popup" id="pass-popup">
+                        <div class="pass-popup-content">
+                            <span id="closePassPopup"><i class="fa-solid fa-x"></i></span>
+                            <h1>Xác nhận mật khẩu</h1>
+                            <p>Để xác định rằng bạn là chủ sở hữu tài khoản, vui lòng nhập mật khẩu hiện tại của bạn</p>
+                            <label for="inf-pass">Mật khẩu hiện tại</label><br>
+                            <input type="password" name="password" id="inf-pass" placeholder="Nhập mật khẩu của bạn">
+                            <p id="update_pass"></p>
+                            <a href="#" class="savePass">Xác nhận</a>
+                        </div>
+                    </div>
+                    <div class="newpass-popup" id="newpass-popup">
+                        <div class="newpass-popup-content">
+                            <span id="backToPassPopup"><i class='bx bx-left-arrow-alt'></i></span>
+                            <span id="closeNewPassPopup"><i class="fa-solid fa-x"></i></span>
+                            <h1>Đổi mật khẩu</h1>
+                            <p>Mật khẩu sẽ được sử dụng để đăng nhập vào tài khoản của bạn</p>
+                            <label for="inf-newpass">Mật khẩu mới</label><br>
+                            <input type="password" name="newpassword" id="inf-newpass" placeholder="Nhập mật khẩu mới của bạn"><br>
+                            <p id="update_newpass"></p>
+                            <label for="re-inf-newpass">Nhập lại mật khẩu mới</label><br>
+                            <input type="password" name="re-newpassword" id="re-inf-newpass" placeholder="Nhập lại mật khẩu mới"><br>
+                            <p id="update_re_newpass"></p>
+                            <a href="#" class="saveNewPass">Xác nhận</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inf-contact">
+            <h5>Thông tin liên hệ</h5>
+            <div class="phone-contain" id="openPhonePopup">
+                <div class="phone-box">
+                    <p class="text-box">Điện thoại</p>
+                </div>
+                <div class="phone-box">
+                    <p class="text-inf" id="account">
+                        {% if user.tel %}
+                            {{ user.tel }}
+                        {% else %}
+                            Chưa cập nhật
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="phone-box end">
+                    <p><i class='bx bx-chevron-right'></i></p>
+                </div>
+            </div>
+            <div class="phone-popup" id="phone-popup">
+                <div class="phone-popup-content">
+                    <span id="closePhonePopup"><i class="fa-solid fa-x"></i></span>
+                    <h1>Cập nhập số điện thoại của bạn</h1>
+                    <p>Số điện thoại sẽ được sử dụng để liên hệ đặt hàng</p>
+                    <label for="inf-phone">Số điện thoại</label><br>
+                    <input type="phone" name="phone" id="inf-phone" placeholder="Nhập số điện thoại của bạn">
+                    <p id="update_phone"></p>
+                    <a href="/update_phone" class="savePhone">Xác nhận</a>
+                </div>
+            </div>
+            <div class="address-contain" id="openAddressPopup">
+                <div class="address-box">
+                    <p class="text-box">Địa chỉ của tôi</p>
+                </div>
+                <div class="address-box end">
+                    <p><i class="fa-solid fa-plus"></i> Thêm địa chỉ mới</p>
+                </div>
+            </div>
+            <div class="address-popup" id="address-popup">
+                <div class="address-popup-content">
+                    <h1>Địa chỉ</h1>
+                    <div class="form-group-full">
+                        <select name="region">
+                            <option value="">Tỉnh/ Thành phố, Quận/Huyện, Phường/Xã</option>
+                            <!-- Thêm option động ở đây -->
+                        </select>
+                    </div>
+                    <div class="form-group-full">
+                        <input type="text" placeholder="Địa chỉ cụ thể" name="detail_address">
+                    </div>
+                    <div class="map-box">
+                        + Thêm vị trí
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-back" type="button">Thoát</button>
+                        <button class="btn-submit" type="submit">Hoàn thành</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 {% block script %}
+    <script src="/static/js/information.js"></script>
 {% endblock %}

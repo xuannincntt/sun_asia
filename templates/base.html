@@ -8,10 +8,13 @@
     {% block css %}
     {% endblock %}
     <link rel="icon" href="/static/img/icon.png">
+    
+    <!-- box icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>{% block title %}Django App{% endblock %}</title>
 </head>
 <!--Start of Tawk.to Script-->
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -21,7 +24,7 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
-</script> -->
+</script>
 <!--End of Tawk.to Script-->
 <body>
     <header class="header">
@@ -37,8 +40,8 @@
         <nav class="nav">
             <a href="/">{% trans "Trang chủ" %}</a>
             <a href="/products">{% trans "Cửa hàng" %}</a>
-            <a href="#">{% trans "Dự án" %}</a>
-            <a href="#">{% trans "Tin tức" %}</a>
+            <a href="/projects">{% trans "Dự án" %}</a>
+            <a href="/news">{% trans "Tin tức" %}</a>
             <a href="/contact">{% trans "Liên hệ" %}</a>
         </nav>
         <!-- Actions -->
@@ -55,7 +58,7 @@
                     </div>
                     <div class="dropdown-user">
                         <a href="{% url 'user-profile' slug=user.slug %}"><p><i class="fa-regular fa-user"></i> {% trans "Thông tin cá nhân" %}</p></a>
-                        <a href="/admin"><p><i class="fa-solid fa-cart-shopping"></i> {% trans "Quản lý giỏ hàng" %}</p></a>
+                        <a href="/cart"><p><i class="fa-solid fa-cart-shopping"></i> {% trans "Quản lý giỏ hàng" %}</p></a>
                         <a href="#"><p><i class="fa-regular fa-heart"></i> {% trans "Danh mục yêu thích" %}</p></a>
                         <hr>
                         <a href="/logout"><p><i class="fa-solid fa-arrow-right-from-bracket"></i> {% trans "Đăng xuất" %}</p></a>
@@ -101,11 +104,11 @@
             </div>  
             <p class="menu"><a href="#"><i class="fa-solid fa-bars" id="menu-icon"></i></a></p>
             <div class="menu-nav">
-                <a href="#"><i class="fa-solid fa-house"></i> {% trans "Trang chủ" %}</a>
-                <a href="#"><i class="fa-solid fa-shop"></i> {% trans "Cửa hàng" %}</a>
-                <a href="#"><i class="fa-solid fa-city"></i> {% trans "Dự án" %}</a>
-                <a href="#"><i class="fa-solid fa-newspaper"></i> {% trans "Tin tức" %}</a>
-                <a href="#"><i class="fa-solid fa-paper-plane"></i> {% trans "Liên hệ" %}</a>
+                <a href="/"><i class="fa-solid fa-house"></i> {% trans "Trang chủ" %}</a>
+                <a href="/products"><i class="fa-solid fa-shop"></i> {% trans "Cửa hàng" %}</a>
+                <a href="/projects"><i class="fa-solid fa-city"></i> {% trans "Dự án" %}</a>
+                <a href="/news"><i class="fa-solid fa-newspaper"></i> {% trans "Tin tức" %}</a>
+                <a href="/contact"><i class="fa-solid fa-paper-plane"></i> {% trans "Liên hệ" %}</a>
             </div>
         </div>
     </header>
@@ -130,14 +133,14 @@
             </div>
             <div class="part1-item">
                 <i class="fa-solid fa-phone"></i>
-                <div class="inf">
+                <div class="footer-inf">
                     <p>Số điện thoại</p>
                     <h3>0981.358.442</h3>
                 </div>
             </div>
             <div class="part1-item">
                 <i class="fa-solid fa-envelope-open-text"></i>
-                <div class="inf">
+                <div class="footer-inf">
                     <p>Hỗ trợ khách hàng</p>
                     <h3>xuannincntt@gmail.com</h3>
                 </div>

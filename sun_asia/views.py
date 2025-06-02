@@ -14,6 +14,7 @@ def logout_view(request):
     return redirect('/')
 
 def cart(request):
-    user_id = request.COOKIES.get('user_id', 0)
     cart = request.COOKIES.get('cart', [])
-    return render(request, 'cart.html', {'timestamp': now().timestamp()})
+    user_id = request.session.get('user_id')
+    user = User.objects.get(id=user_id) if user_id else None
+    return render(request, 'cart.html', {'timestamp': now().timestamp(), 'user': user})

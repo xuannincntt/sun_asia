@@ -1,0 +1,560 @@
+section {
+    min-height: 100vh;
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, #e2e2e2, #c9d6ff);
+}
+
+.inf {
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    font-size: 1.7rem;
+    color: #444746;
+    background-color: #f5f5f5;
+    background: #f3f8fd;
+}
+
+.inf h1 {
+    color:#1f1f1f;
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.inf .title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.inf-basic {
+    font-size: 1.7rem;
+    width: 55%;
+    margin: 0 auto 1rem;
+    border: .5px solid #e1e3e1;
+    border-bottom: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.inf-basic h5 {
+    padding: 3rem 3rem 1.5rem;
+    color: #1f1f1f;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.inf-basic .textHeader {
+    padding: 0 3rem 1rem;
+}
+
+.inf-login, .inf-contact {
+    background-color: #ffffff;
+}
+
+.inf-basic .img-contain,
+.name-contain,
+.date-contain,
+.sex-contain,
+.inf-contact .phone-contain,
+.inf-login .email-contain,
+.inf-login .pass-contain {
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+    grid-template-rows: 1fr;
+    align-items: center;
+    border-bottom: .5px solid #e1e3e1;
+    justify-content: center;
+    padding: 2.3rem 3rem;
+    cursor: pointer;
+}
+
+.img-popup,
+.name-popup,
+.email-popup,
+.phone-popup,
+.address-popup
+/* .pass-popup,
+.newpass-popup */{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.img-popup-content,
+.name-popup-content,
+.email-popup-content,
+.pass-popup-content,
+.newpass-popup-content,
+.phone-popup-content,
+.address-popup-content {
+    background: white;
+    padding: 4rem 3.5rem;
+    border-radius: 1rem;
+    width: 23%;
+    position: relative;
+}
+
+.img-popup-content h1,
+.name-popup-content h1,
+.email-popup-content h1,
+.pass-popup-content h1,
+.newpass-popup-content h1,
+.phone-popup-content h1,
+.address-popup-content h1 {
+    text-align: left;
+    color: var(--text-up-color);
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.img-popup-content p,
+.name-popup-content p,
+.email-popup-content p,
+.pass-popup-content p,
+.newpass-popup-content p,
+.phone-popup-content p {
+    padding-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.img-popup-content label,
+.name-popup-content label,
+.email-popup-content label,
+.pass-popup-content label,
+.newpass-popup-content label,
+.phone-popup-content label {
+    color: var(--text-up-color);
+    font-weight: 600;
+}
+
+.img-popup-content input,
+.name-popup-content input,
+.email-popup-content input,
+.pass-popup-content input,
+.newpass-popup-content input,
+.phone-popup-content input {
+    border-radius: 1rem;
+    border: .5px solid #3d3d3d;
+    width: 100%;
+    padding: 1.2rem 2rem;
+    margin-top: 1.5rem;
+    font-size: 1.7rem;
+}
+
+.name-popup-content .saveName,
+.email-popup-content .saveEmail,
+.pass-popup-content .savePass,
+.newpass-popup-content .saveNewPass,
+.phone-popup-content .savePhone {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1.3rem;
+    color: #f4f7fd;
+    font-weight: 600;
+    background-color: #3d3d3d;
+    border-radius: 1rem;
+    margin-bottom: .5rem;
+    transition: .5s ease;
+}
+
+.name-popup-content .saveName:hover,
+.email-popup-content .saveEmail:hover,
+.pass-popup-content .savePass:hover,
+.newpass-popup-content .saveNewPass:hover,
+.phone-popup-content .savePhone:hover {
+    background-color: #000000;
+}
+
+.img-popup-content #closeImgPopup,
+.name-popup-content #closeNamePopup,
+.email-popup-content #closeEmailPopup,
+.pass-popup-content #closePassPopup,
+.newpass-popup-content #closeNewPassPopup,
+.phone-popup-content #closePhonePopup {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: .5s ease;
+}
+
+.img-popup-content #closeImgPopup:hover,
+.name-popup-content #closeNamePopup:hover,
+.email-popup-content #closeEmailPopup:hover,
+.pass-popup-content #closePassPopup:hover,
+.newpass-popup-content #closeNewPassPopup:hover,
+.phone-popup-content #closePhonePopup:hover {
+    background: #f6f6f6;
+}
+
+.img-popup .img-popup-content .avatar {
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+.img-popup-content img {
+    width: 15rem;
+    border-radius: 50%;
+    box-shadow: 0 .1rem .5rem var(--shadow-color);
+}
+
+.img-popup .img-popup-content .avatar #avatar {
+    background-color: #fdecec;
+    color: #d0021b;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 5.5rem;
+}
+
+.img-popup-content .upload {
+    border: .5px solid var(--main-color);
+    position: relative;
+    width: 100%;
+    padding: 1.2rem 2rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+.img-popup-content .upload:hover {
+    background: #f6f6f6;
+}
+
+.img-popup-content .upload p {
+    padding: 0;
+}
+
+.popup-overlay-pass {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.wrapperPass {
+    padding: 0rem 1rem;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    width: 400px;
+    margin: auto;
+    height: 430px;
+    background: red;
+    background-color: white;
+    border-radius: 2rem;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease, opacity 0.5s ease, height .2s ease;
+
+}
+
+.wrapperPass.active-popup {
+    display: flex;
+    opacity: 1;
+}
+
+.wrapperPass.active {
+    height: 490px;
+}
+
+.wrapperPass .pass-popup {
+    transition: transform .2s ease;
+    transform: translateX(0);
+}
+
+.wrapperPass.active .pass-popup {
+    transition: none;
+    transform: translateX(-500px);
+}
+
+.wrapperPass .newpass-popup {
+    position: absolute;
+    transition: none;
+    transform: translateX(500px);
+}
+
+.wrapperPass.active .newpass-popup {
+    transition: transform .2s ease;
+    transform: translateX(0);
+}
+
+.wrapper .pass-popup,
+.wrapper .newpass-popup {
+    width: 100%;
+    display: flex;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.pass-popup-content,
+.newpass-popup-content {
+    padding: 3rem;
+    border-radius: 2rem;
+    width: 100%;
+}
+
+.pass-popup-content #closePassPopup {
+    right: 2rem;
+}
+
+.newpass-popup-content #backToPassPopup {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    font-size: 2.8rem;
+    cursor: pointer;
+}
+
+.newpass-popup-content #backToPassPopup:hover {
+    background: #f6f6f6;
+    padding: 0 .5rem;
+    left: 2.5rem;
+    border-radius: 50%;
+}
+
+.inf-basic .img-contain:hover,
+.name-contain:hover,
+.date-contain:hover,
+.sex-contain:hover,
+.inf-contact .phone-contain:hover,
+.inf-login .email-contain:hover,
+.inf-login .pass-contain:hover {
+    background: #f6f6f6;
+}
+
+.inf-basic .img-contain .img-box,
+.name-contain .name-box,
+.date-contain .date-box,
+.sex-contain .sex-box,
+.inf-contact .phone-contain .phone-box,
+.inf-login .email-contain .email-box,
+.inf-login .pass-contain .pass-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.inf-basic .img-contain .img-box.end,
+.name-contain .name-box.end,
+.date-contain .date-box.end,
+.sex-contain .sex-box.end,
+.inf-contact .phone-contain .phone-box.end,
+.inf-login .email-contain .email-box.end,
+.inf-login .pass-contain .pass-box.end {
+    justify-content: end;
+}
+
+.name-contain .name-box.end i,
+.date-contain .date-box.end i,
+.sex-contain .sex-box.end i,
+.inf-contact .phone-contain .phone-box i,
+.inf-login .email-contain .email-box i,
+.inf-login .pass-contain .pass-box i {
+    font-size: 3.5rem;
+    font-weight: 500;
+    color:#1f1f1f;
+}
+
+.inf-basic .img-contain .text-box,
+.inf-basic .name-contain .text-box,
+.inf-basic .date-contain .text-box,
+.inf-basic .sex-contain .text-box,
+.inf-contact .phone-contain .text-box,
+.inf-login .email-contain .text-box,
+.inf-login .pass-contain .text-box {
+    text-align: left;
+}
+
+.text-inf {
+    color:#1f1f1f;
+}
+
+.inf-basic .img-contain .img-box img {
+    width: 3vw;
+    border-radius: 50%;
+    border: .5px solid #e1e3e1;
+    text-align: right;
+}
+
+.img {
+    position: relative;
+    width: 3vw;
+    height: 3vw;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.img .avatar {
+    background-color: #fdecec;
+    color: #d0021b;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.edit-img {
+    right: 0vw;
+    position: absolute;
+    top: 1.6vw;
+    color: #e6e6e6;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 3.1vw;
+    font-size: 2rem;
+    text-align: center;
+    height: 2.8vw;
+}
+
+.inf-contact {
+    font-size: 1.7rem;
+    width: 60%;
+    margin: 0 auto;
+    border: .5px solid #e1e3e1;
+    border-bottom: none;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.inf-contact h5 {
+    padding: 2rem 3rem 1rem;
+    color: #1f1f1f;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.inf-login, .inf-contact {
+    font-size: 1.7rem;
+    width: 55%;
+    margin: 0 auto 1rem;
+    border: .5px solid #e1e3e1;
+    border-bottom: none;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.inf-login h5,
+.inf-contact h5 {
+    padding: 2rem 3rem 1rem;
+    color: #1f1f1f;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.address-contain {
+    padding: 23px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.address-contain .address-box.end p {
+    padding: 1rem;
+    background-color: #fdecec;
+    transition: .5s ease;
+    cursor: pointer;
+    border-radius: .5rem;
+}
+
+.address-contain .address-box.end p:hover {
+    background-color: #ffe6e1;
+}
+
+.address-popup-content {
+    background: white;
+    padding: 3rem 3.5rem;
+    border-radius: 1rem;
+    width: 28%;
+    position: relative;
+}
+
+.address-popup-content h1 {
+    padding-top: 0rem;
+    margin-top: 0rem;
+}
+
+.form-group-full {
+    margin-bottom: 15px;
+}
+
+.form-group-full select,
+.form-group-full input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.map-box {
+    background: #f7f7f7;
+    height: 100px;
+    border-radius: 4px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    border: 1px dashed #ccc;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    column-gap: 1.5rem;
+}
+
+.btn-back,
+.btn-submit {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-back {
+    background: transparent;
+    color: #555;
+    border: 1px solid #ccc;
+}
+
+.btn-back:hover {
+    background-color: #f5f5f5;
+}
+
+.btn-submit {
+    background: #f44336;
+    color: white;
+}
