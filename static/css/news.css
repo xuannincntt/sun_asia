@@ -1,3 +1,218 @@
+.news-img {
+    position: relative;
+    height: 51.5vh;
+    overflow: hidden;
+}
+
+.news-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.news-img h1 {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 2;
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4); 
+    width: 100%;
+}
+
 section {
     min-height: 100vh;
+    padding-top: 3rem;
+}
+
+.news-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
+    height: 50vh;
+    padding-bottom: 3rem;
+}
+
+.news-header-item {
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.news-header-item:hover {
+    transform: scale(1.02);
+}
+
+.news-header-item h3 {
+    position: absolute;
+    left: 1.5rem;
+    padding: .5rem 1rem;
+    top: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.news-header-item p {
+    position: absolute;
+    left: 1.5rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.news-header-item .news-header-date {
+    top: 71%;
+}
+
+.news-header-item .news-header-content {
+    top: 76%;
+    font-size: 2.5rem;
+}
+
+.news-header-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.news-content {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2%;
+    padding-top: 3rem;
+    border-top: 5px solid #ffaaaa;
+    align-items: flex-start;
+}
+
+.news-content-left {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.news-content-left .news-content-item {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0rem 0rem .5rem 1px var(--shadow-color);
+    width: 100%;
+    overflow: hidden;
+    border-radius: .5rem;
+    position: relative;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.news-content-left .news-content-item:hover {
+    transform: scale(1.02);
+}
+
+.news-content-left .news-content-item img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    display: block;
+}
+
+.news-content-left .news-content-item h1 {
+    padding: 1.5rem 1.5rem 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.news-content-left .news-content-item p {
+    font-size: 1.5rem;
+    padding: 0 1.5rem 1rem;
+}
+
+.news-content-left .news-content-item h3 {
+    position: absolute;
+    top: 2rem;
+    left: 0rem;
+    padding: .5rem 1rem .5rem 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+    border-radius: 0rem .5rem .5rem 0rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.news-content-left .news-content-item .news-content-date {
+    padding-bottom: 2rem;
+}
+
+.news-content-right {
+    width: 28%;
+}
+
+.news-content-right1,
+.news-content-right2 {
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+    border: 1px solid #ccc;
+    padding: 1rem 1.5rem 0rem;
+}
+
+.news-content-right h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    padding: .5rem 0rem 1.5rem;
+}
+
+.news-content-right1 .news-content-best {
+    display: flex;
+    flex-direction: row;
+    height: 13vh;
+    gap: 1rem;
+    border-top: 1px solid #ccc;
+    padding: 1rem 0 0;
+    margin-bottom: 2rem; 
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.news-content-right1 .news-content-best img {
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: .5rem;
+    display: block;
+}
+
+.news-content-best .news-content-bests {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
+.news-content-best .news-content-bests h3 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.news-content-right2 {
+    margin-top: 3rem;
+    font-size: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.news-content-right2 label {
+    display: block;
+    padding-bottom: 1.5rem;
 }
