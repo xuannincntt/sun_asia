@@ -170,6 +170,13 @@ section {
     flex-direction: column;
     border-radius: 1rem;
     box-shadow: 0 .1rem .5rem var(--shadow-color);
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.product .product-item:hover,
+.project .project-item:hover {
+    transform: scale(1.02);
 }
 
 .product .product-item img,

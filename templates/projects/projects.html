@@ -6,8 +6,93 @@
     Dự án
 {% endblock %}
 {% block content %}
+    <div class="project-img">
+        <img src="/static/img/house1.jpg" alt="">
+        <h1>DỰ ÁN</h1>
+    </div>
     <section id="project" class="project">
-        
+        <div class="project-left">
+            <h1>Bộ lọc tìm kiếm</h1>
+            <form method="GET" action=".">
+                <h3>Tỉnh thành</h3>
+                <select name="tinh_thanh">
+                    <option value="">-- Tất cả tỉnh thành --</option>
+                    <!-- {% for tinh in tinh_thanh_choices %}
+                        <option value="{{ tinh }}" {% if tinh == selected_tinh_thanh %}selected{% endif %}>
+                            {{ tinh }}
+                        </option>
+                    {% endfor %} -->
+                </select>
+                <h3>Danh mục</h3>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="project_type" value="thuycanh">
+                    Mô hình thủy canh
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="project_type" value="nhogiot">
+                    Mô hình tưới nhỏ giọt
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="project_type" value="congnghe">
+                    Nhà màng công nghệ cao
+                </label>
+                <h3>Diện tích</h3>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="project_type" value="500-">
+                    Dưới 500 m²
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="project_type" value="1000-">
+                    500 m² - 1000 m²
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="project_type" value="1500-">
+                    1000 m² - 1500 m²
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="project_type" value="1500+">
+                    1500 m² trở lên
+                </label>
+            </form>
+        </div>
+        <div class="project-right">
+            <div class="project-right-item">
+                <img src="/static/img/house3.jpg" alt="">
+                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
+                <p>1500 m² - 15 ha</p>
+                <p>Mộc Châu - Sơn La</p>
+            </div>
+            <div class="project-right-item">
+                <img src="/static/img/house4.jpg" alt="">
+                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
+                <p>1500 m² - 15 ha</p>
+                <p>Mộc Châu - Sơn La</p>
+            </div>
+            <div class="project-right-item">
+                <img src="/static/img/house4.jpg" alt="">
+                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
+                <p>1500 m² - 15 ha</p>
+                <p>Mộc Châu - Sơn La</p>
+            </div>
+            <div class="project-right-item">
+                <img src="/static/img/house4.jpg" alt="">
+                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
+                <p>1500 m² - 15 ha</p>
+                <p>Mộc Châu - Sơn La</p>
+            </div>
+            <div class="project-right-item">
+                <img src="/static/img/house4.jpg" alt="">
+                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
+                <p>1500 m² - 15 ha</p>
+                <p>Mộc Châu - Sơn La</p>
+            </div>
+            <div class="project-right-item">
+                <img src="/static/img/house4.jpg" alt="">
+                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
+                <p>1500 m² - 15 ha</p>
+                <p>Mộc Châu - Sơn La</p>
+            </div>
+        </div>
     </section>
 {% endblock %}
 {% block script %}
