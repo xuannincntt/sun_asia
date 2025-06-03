@@ -69,8 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const updateSlide = (index) => {
-    if (index < 0) index = 0;
-    if (index >= images.length) index = images.length - 1;
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    console.log(index)
 
     currentIndex = index;
     slide.style.transform = `translateX(-${currentIndex * 100}%)`;

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import User
+from order.models import Address
 from django.contrib import messages
 from django.utils.text import slugify
 import uuid
@@ -46,6 +47,14 @@ def accounts(request):
                 new_user.save()
                 # Lưu ID vào session
                 request.session['user_id'] = new_user.id
+
+                # Tạo địa chỉ nhận hàng đầu tiên ngay khi đăng kí
+                new_address = Address(
+                    creator=new_user.id,
+                    email=email
+                )
+                new_address.save()
+                
                 return redirect('/')
     return render(request, 'accounts/accounts.html', {'user': user})
 

@@ -5,7 +5,7 @@
 <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
-<link rel="stylesheet" href="{% static 'css/product_list.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/product/product_list.css' %}?v={{ timestamp }}">
 {% endblock %}
 {% block title %}Sản Phẩm{% endblock %}
 {% block content %} 
@@ -559,6 +559,6 @@
     </div>
 </main>
 {% endblock %}
-{% block js %}
-<script src="{% static 'js/product_list.js' %}?v={{ timestamp }}" type="module"></script>
-{% endblock js %}
+{% block script %}
+<script src="{% static 'js/product/product_list.js' %}?v={{ timestamp }}" type="module"></script>
+{% endblock script %}

@@ -5,7 +5,7 @@
 <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
-<link rel="stylesheet" href="{% static 'css/product_detail.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/product/product_detail.css' %}?v={{ timestamp }}">
 <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6839dc6784860b001ace80c6&product=inline-share-buttons&source=platform" async="async"></script>
 {% endblock %}
 {% block title %}Đèn LED chuyên dụng đơn sắc HC-BR25{% endblock %}
@@ -412,6 +412,6 @@
     </div>
 </main>
 {% endblock %}
-{% block js %}
-<script src="{% static 'js/product_detail.js' %}?v={{ timestamp }}" type="module"></script>
-{% endblock js %}
+{% block script %}
+<script src="{% static 'js/product/product_detail.js' %}?v={{ timestamp }}" type="module"></script>
+{% endblock script %}
