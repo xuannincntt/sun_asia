@@ -50,7 +50,7 @@ def accounts(request):
 
                 # Tạo địa chỉ nhận hàng đầu tiên ngay khi đăng kí
                 new_address = Address(
-                    creator=new_user.id,
+                    creator=new_user,
                     email=email
                 )
                 new_address.save()
