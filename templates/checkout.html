@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}?v={{ timestamp }}">
+{% endblock %}
+
+{% block title %}Đặt hàng{% endblock %}
+{% block content %} 
+<div id="order-page">
+    <div class="order-page-header">
+        <div class="page-return">
+            <a class="return-link align-left" href="/cart">
+                <i class='bx bx-arrow-left-stroke return-icon'></i> 
+                <span class="return-title">Về trang Giỏ hàng</span>
+            </a>
+        </div>
+        <div class="page-title">
+            <span class="title-text">ĐẶT HÀNG</span>
+        </div>
+    </div>
+    <div class="order-page-content">
+        <form action="/order/new" method="POST" id="section-order-form">
+            <div class="section-order-input">
+            
+                <div class="section-order-address">
+                    <div class="address-title align-left">Thông tin nhận hàng</div>
+                    <div class="address-selection">
+
+                        <div class="address-card card-active" >
+                           <label for="addressDefault" class="address-selection-label" id="address-default">
+                                <span class="address-selection-name">Địa chỉ mặc định</span>
+                                <input 
+                                    type="radio"
+                                    name="addressMode"
+                                    class="address-selection-input"
+                                    id="addressDefault"
+                                    value="DEFAULT"
+                                    checked
+                                />
+                           </label> 
+                        </div>
+                        <div class="address-card" >
+                            <label for="addressNew" class="address-selection-label" id="address-new">
+                                <span class="address-selection-name">Địa chỉ tùy chọn</span>
+                                <input 
+                                    type="radio"
+                                    name="addressMode"
+                                    class="address-selection-input"
+                                    id="addressNew"
+                                    value="NEW"
+                                />
+                           </label> 
+                        </div>
+                        
+                    </div>
+                    <div class="address-input">
+                        <div class="form-field fullName-field">
+                            <label for="fullName" class="form-label">
+                                <span class="form-name">Tên người nhận hàng</span>
+                                <input 
+                                    type="text"
+                                    id="fullName"
+                                    name="fullName"
+                                    placeholder="Nhập họ và tên của bạn"
+                                    class="form-input"
+                                />
+                            </label>
+                        </div>
+                        <div class="form-field">
+                            <label for="email" class="form-label">
+                                <span class="form-name">Email</span>
+                                <input 
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Nhập email đặt hàng"
+                                    class="form-input"
+                                    value=""
+                                />
+                            </label>
+                        </div>
+                        <div class="form-field">
+                            <label for="tel" class="form-label">
+                                <span class="form-name">Số điện thoại</span>
+                                <input 
+                                    type="tel"
+                                    id="tel"
+                                    name="tel"
+                                    placeholder="Nhập số điện thoại nhận hàng"
+                                    class="form-input"
+                                />
+                            </label>
+                        </div>
+                        <div class="form-field address-field">
+                            <label for="address" class="form-label">
+                                <span class="form-name">Địa chỉ nhận hàng</span>
+                                <input 
+                                    type="text"
+                                    id="address"
+                                    name="address"
+                                    placeholder="Nhập địa chỉ nhận hàng"
+                                    class="form-input"
+                                    value="{{default_address.address}}"
+                                />
+                            </label>
+                        </div>
+                        <div class="form-field">
+                            <label for="city" class="form-label">
+                                <span class="form-name">Thành phố</span>
+                                <input 
+                                    type="text"
+                                    id="city"
+                                    name="city"
+                                    placeholder="Nhập địa chỉ thành phố"
+                                    class="form-input"
+                                />
+                            </label>
+                        </div>
+                        <div class="form-field">
+                            <label for="district" class="form-label">
+                                <span class="form-name">Quận/Huyện</span>
+                                <input 
+                                    type="text"
+                                    id="district"
+                                    name="district"
+                                    placeholder="Nhập địa chỉ quận/huyện"
+                                    class="form-input"
+                                />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-order-payment">
+                    <div class="payment-title">Thông tin thanh toán</div>
+                    <div class="payment-selection">
+
+                        <div class="payment-card card-active">
+                            <label for="paymentCOD" class="payment-selection-label align-left" id="payment-cod">
+                                
+                                <input 
+                                    type="radio"
+                                    name="paymentMode"
+                                    class="payment-selection-input"
+                                    id="paymentCOD"
+                                    value="COD"
+                                    checked
+                                />
+                                <img class="payment-selection-img" src="{% static 'images/cod_icon.png' %}" alt=""/>
+                                <span class="payment-selection-name">Thanh toán khi nhận hàng</span>
+                           </label> 
+                        </div>
+                        <div class="payment-card">
+                            <label for="paymentBank" class="payment-selection-label align-left" id="payment-bank">
+                                
+                                <input 
+                                    type="radio"
+                                    name="paymentMode"
+                                    class="payment-selection-input"
+                                    id="paymentBank"
+                                    value="BANK"
+                                />
+                                <img class="payment-selection-img" src="{% static 'images/transfer_icon.png' %}"  alt=""/>
+                                <span class="payment-selection-name">Chuyển khoản ngân hàng</span>
+                           </label> 
+                        </div>
+                    </div>
+                    <!-- <div class="payment-input card-input">
+                        <div class="form-field cardName-field">
+                            <label for="cardName" class="form-label">
+                                <span class="form-name"></span>
+                                <input 
+                                    type="text"
+                                    id="cardName"
+                                    name="cardName"
+                                    placeholder="Nhập tên người sở hữu trên thẻ"
+                                    class="form-input"
+                                />
+                            </label>
+                        </div>
+                        <div class="form-field cardNumber-field">
+                            <label for="cardNumber" class="form-label">
+                                <span class="form-name"></span>
+                                <input 
+                                    type="text"
+                                    id="cardNumber"
+                                    name="cardNumber"
+                                    placeholder="Nhập số thẻ"
+                                    class="form-input"
+                                />
+                            </label>
+                        </div>
+                        <div class="form-field">
+                            <label for="cardExpiryDate" class="form-label">
+                                <span class="form-name"></span>
+                                <input 
+                                    type="text"
+                                    id="cardExpiryDate"
+                                    name="cardExpiryDate"
+                                    placeholder="MM/YY"
+                                    class="form-input"
+                                />
+                            </label>
+                        </div>
+                        <div class="form-field">
+                            <label for="cardCvc" class="form-label">
+                                <span class="form-name"></span>
+                                <input 
+                                    type="text"
+                                    id="cardCvc"
+                                    name="cardCvc"
+                                    placeholder=""
+                                    class="form-input"
+                                />
+                            </label>
+                        </div>
+                    </div> -->
+                    <div class="payment-input hide" id="bank-input">
+                        <div class="bank-account">
+                            <p class="bank-account-name align-left">Thông tin tài khoản: Ngân hàng BIDV - 1400205513145 - Cao Thị Vân Anh</p>
+                            <img class="bank-account-image" src="{% static 'images/bank_qr_placeholder.png' %}" alt="">
+                        </div>
+                        <div class="bank-proof">
+                            <label for="bankingProof" class="bank-proof-label">
+                                <span class="bank-proof-name">Minh chứng thanh toán</span>
+                                <input
+                                    type="file"
+                                    accept=".jpg,.jpeg,.png"
+                                    id="bankingProof"
+                                    name="bankingProof"
+                                    class="bank-proof-input"
+                                />
+                            </label>
+                            <div class="bank-proof-preview">
+                                <img id="bank-proof-previewImg" src="" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+            <div class="section-order-total">
+                <div class="total-title align-lelft">Tóm tắt đơn hàng</div>
+                <div class="total-info">
+                    <div class="total-info-products">
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img
+                                    src="{% static 'images/product_placeholder.png' %}"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="product-card-info">
+                                <div class="card-info-row1">
+                                    <div class="product-card-name align-left">Đèn LED chuyên dụng đơn sắc HC-BR25W</div>
+                                    <div class="product-card-price align-right">430,000đ</div>
+                                </div>
+                                <div class="card-info-row2">
+                                    <div class="product-card-quantity align-left">x3</div>
+                                    <div class="product-card-subtotal align-right">1,290,000đ</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img
+                                    src="{% static 'images/product_placeholder.png' %}"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="product-card-info">
+                                <div class="card-info-row1">
+                                    <div class="product-card-name align-left">Đèn LED chuyên dụng đơn sắc HC-BR25W</div>
+                                    <div class="product-card-price align-right">430,000đ</div>
+                                </div>
+                                <div class="card-info-row2">
+                                    <div class="product-card-quantity align-left">x3</div>
+                                    <div class="product-card-subtotal align-right">1,290,000đ</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img
+                                    src="{% static 'images/product_placeholder.png' %}"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="product-card-info">
+                                <div class="card-info-row1">
+                                    <div class="product-card-name align-left">Đèn LED chuyên dụng đơn sắc HC-BR25W</div>
+                                    <div class="product-card-price align-right">430,000đ</div>
+                                </div>
+                                <div class="card-info-row2">
+                                    <div class="product-card-quantity align-left">x3</div>
+                                    <div class="product-card-subtotal align-right">1,290,000đ</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total-info-process">
+                        <div class="total-row">
+                            <div class="total-row-label align-left">Tổng cộng</div>
+                            <div class="total-row-value align-right">3,870,000đ</div>
+                        </div>
+                        <div class="total-row">
+                            <div class="total-row-label align-left">VAT</div>
+                            <div class="total-row-value align-right">0đ</div>
+                        </div>
+                        <div class="total-row">
+                            <div class="total-row-label align-left">Giảm giá</div>
+                            <div class="total-row-value align-right">-20,000đ</div>
+                        </div>
+                    </div>
+                    <div class="total-info-final">
+                        <div class="total-row">
+                            <div class="total-row-label align-left">Tổng tiền</div>
+                            <div class="total-row-value align-right">3,850,000đ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="total-submit">
+                    <button type="submit" class="submit-btn">Xác nhận đặt hàng</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/checkout.js' %}?v={{ timestamp }}" type="module"></script>
+{% endblock script %}
