@@ -1,5 +1,4 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -136,12 +135,27 @@ section {
 
 .download:hover {
     background-color: #f5f5f5;
-    border: 1px solid #ccc;
 }
 
 .icon {
     font-size: 2rem;
     cursor: pointer;
+}
+
+.actions .login-register {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.actions .login-register a {
+    padding: 1rem;
+    transition: .5s ease;
+}
+
+.actions .login-register a:hover {
+    background-color: #f5f5f5;
 }
 
 .user {
@@ -156,7 +170,6 @@ section {
 
 .user:hover {
     background-color: #f5f5f5;
-    border: 1px solid #ccc;
 }
 
 .actions .dropdown-user {
@@ -390,12 +403,12 @@ footer {
     padding-right: 1rem;
 }
 
-.part1 .part1-item .inf {
+.part1 .part1-item .footer-inf {
     display: flex;
     flex-direction: column;
 }
 
-.part1-item .inf h3 {
+.part1-item .footer-inf h3 {
     font-weight: 600;
 }
 

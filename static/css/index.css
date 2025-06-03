@@ -32,5 +32,9 @@ body{
     align-items: center;
 }
 
+.hide{
+    display: none !important;
+}
+
 
 

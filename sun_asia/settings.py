@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'projects',
     'sun_asia',
     'contact',
+    'order',
 ]
 
 MIDDLEWARE = [
