@@ -16,14 +16,26 @@
 
 <main id="cart-page">
     <div class="section-header">
-        <div class="section-header-return align-left">
-            <a class="return-link align-left" href="/products/">
-                <i class='bx bx-arrow-left-stroke return-icon'></i> 
-                <span class="return-label">Về trang Cửa hàng</span>
-            </a>
-        </div>
         <div class="section-header-title align-center">
-            <h2 class="page-title">Giỏ hàng của tôi</h2>
+            <img class="page-image" src="{% static 'images/products_intro.jpg' %}?v={{ timestamp }}"/>
+            <h2 class="page-title">GIỎ HÀNG CỦA TÔI</h2>
+        </div>
+        <div class="section-header-control align-left">
+            <div class="section-header-return align-left">
+                <a class="return-link align-left" href="/products/">
+                    <i class='bx bx-arrow-left-stroke return-icon'></i> 
+                    <span class="return-label">Tiếp tục mua sắm</span>
+                </a>
+            </div>
+            
+            <div class="section-header-clear align-right">
+                <button 
+                    type="button"
+                    class="clear-btn"
+                >
+                    Xóa giỏ hàng
+                </button>
+            </div>
         </div>
     </div>
     <div class="section-content">
@@ -40,7 +52,7 @@
                 </thead>
                 <tbody>
                     <tr class="cart-table-data">
-                        <td class="align-center">
+                        <td class="remove-item-container align-center">
                             <i class='bx bx-x remove-icon'></i> 
                         </td>
                         <td class="align-center">
@@ -69,10 +81,10 @@
                             </div>
                             
                         </td>
-                        <td class="cart-item-subtotal align-right">1,290,000đ</td>
+                        <td class="cart-item-subtotal align-right">1,290,000<span>đ</span></td>
                     </tr>
                     <tr class="cart-table-data">
-                        <td class="align-center">
+                        <td class="remove-item-container align-center">
                             <i class='bx bx-x remove-icon'></i> 
                         </td>
                         <td class="align-center">
@@ -101,10 +113,10 @@
                             </div>
                             
                         </td>
-                        <td class="cart-item-subtotal align-right">1,290,000đ</td>
+                        <td class="cart-item-subtotal align-right">1,290,000<span>đ</span></td>
                     </tr>
                     <tr class="cart-table-data">
-                        <td class="align-center">
+                        <td class="remove-item-container align-center">
                             <i class='bx bx-x remove-icon'></i> 
                         </td>
                         <td class="align-center">
@@ -133,7 +145,7 @@
                             </div>
                             
                         </td>
-                        <td class="cart-item-subtotal align-right">1,290,000đ</td>
+                        <td class="cart-item-subtotal align-right">1,290,000<span>đ</span></td>
                     </tr>
                     
                 </tbody>
@@ -146,19 +158,19 @@
             <div class="section-total-process">
                 <div class="total-row">
                     <div class="total-row-label align-left">Số lượng</div>
-                    <div class="total-row-value align-right">9</div>
+                    <div class="total-row-value align-right" id="total-quantity">9</div>
                 </div>
                 <div class="total-row">
                     <div class="total-row-label align-left">Tổng cộng</div>
-                    <div class="total-row-value align-right">3,870,000đ</div>
+                    <div class="total-row-value align-right" id="total-temp">3,870,000<span>đ</span></div>
                 </div>
                 <div class="total-row">
                     <div class="total-row-label align-left">VAT</div>
-                    <div class="total-row-value align-right">0đ</div>
+                    <div class="total-row-value align-right" id="total-vat">0<span>đ</span></div>
                 </div>
                 <div class="total-row">
                     <div class="total-row-label align-left">Giảm giá</div>
-                    <div class="total-row-value align-right">0đ</div>
+                    <div class="total-row-value align-right" id="total-discount">0<span>đ</span></div>
                 </div>
             </div>
             <div class="section-total-coupon">
@@ -183,18 +195,11 @@
             <div class="section-total-final">
                 <div class="total-row">
                     <div class="total-row-label align-left">Tổng tiền</div>
-                    <div class="total-row-value align-right">3,870,000đ</div>
+                    <div class="total-row-value align-right" id="total-final">3,870,000<span>đ</span></div>
                 </div>
             </div>
         </div>
-        <div class="section-content-clear align-right">
-            <button 
-                type="button"
-                class="clear-btn"
-            >
-                Xóa giỏ hàng
-            </button>
-        </div>
+        <div></div>
         <div class="section-content-checkout align-right">
             <a class="forward-link align-right" href="/checkout/">
                 <span class="forward-label">Tiếp tục thanh toán</span>
@@ -202,7 +207,26 @@
             </a>
         </div>
     </div>
-    
+    <div class="delete-popup">
+        <div class="delete-confirm">
+            <div class="delete-confirm-header align-center">
+                Xác nhận xóa mặt hàng
+            </div>
+            <div class="delete-confirm-content">
+                <div class="delete-confirm-text align-center">
+                    Bạn có chắc chắn muốn xóa mặt hàng này không?
+                </div>
+                <div class="delete-confirm-action">
+                    <button type="button" class="action-btn confirm-btn">
+                        Xác nhận
+                    </button>
+                    <button type="button" class="action-btn cancel-btn">
+                        Hủy bỏ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 {% endblock %}
 {% block script %}

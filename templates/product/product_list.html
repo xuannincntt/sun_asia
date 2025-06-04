@@ -71,7 +71,7 @@
             </div>
             <div class="section-filter">
                 <div class="filter-title align-center">LỌC SẢN PHẨM</div>
-                <div class="filter-container">
+                <form action="/products/filter" method="POST" id="filter-form">
                     <div class="filter-price">
                         <h4 class="filter-field">Khoảng giá</h4>
                         <hr style="width: 100%;"/>
@@ -130,7 +130,13 @@
                             <span class="filter-value">Còn hàng</span>
                         </label>
                     </div>
-                </div>
+                    <div class="filter-submit">
+                        <hr style="width: 100%;" />
+                        <button type="submit" class="filter-submit-btn">
+                            Lọc sản phẩm
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="section-products">
@@ -167,10 +173,6 @@
                                 Đèn LED chuyên dụng đơn sắc HC-BR25W
                             </div>
                             <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
                                 <div class="product-card-price align-right">
                                     <div class="product-card-orgPrice align-right">
                                         500,000đ
@@ -211,10 +213,6 @@
                                 Đèn LED chuyên dụng đơn sắc HC-BR25W
                             </div>
                             <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
                                 <div class="product-card-price align-right">
                                     <div class="product-card-orgPrice align-right">
                                         500,000đ
@@ -256,10 +254,7 @@
                                 Đèn LED chuyên dụng đơn sắc HC-BR25W
                             </div>
                             <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
+                                
                                 <div class="product-card-price align-right">
                                     <div class="product-card-orgPrice align-right">
                                         500,000đ
@@ -300,10 +295,6 @@
                                 Đèn LED chuyên dụng đơn sắc HC-BR25W
                             </div>
                             <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
                                 <div class="product-card-price align-right">
                                     <div class="product-card-orgPrice align-right">
                                         500,000đ
@@ -344,10 +335,7 @@
                                 Đèn LED chuyên dụng đơn sắc HC-BR25W
                             </div>
                             <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
+                            
                                 <div class="product-card-price align-right">
                                     <div class="product-card-orgPrice align-right">
                                         500,000đ
@@ -388,10 +376,7 @@
                                 Đèn LED chuyên dụng đơn sắc HC-BR25W
                             </div>
                             <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
+                                
                                 <div class="product-card-price align-right">
                                     <div class="product-card-orgPrice align-right">
                                         500,000đ
@@ -432,10 +417,7 @@
                                 Đèn LED chuyên dụng đơn sắc HC-BR25W
                             </div>
                             <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
+                                
                                 <div class="product-card-price align-right">
                                     <div class="product-card-orgPrice align-right">
                                         500,000đ
@@ -476,10 +458,7 @@
                                 Đèn LED chuyên dụng đơn sắc HC-BR25W
                             </div>
                             <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
+                                
                                 <div class="product-card-price align-right">
                                     <div class="product-card-orgPrice align-right">
                                         500,000đ
@@ -520,10 +499,7 @@
                                 Đèn LED chuyên dụng đơn sắc HC-BR25W
                             </div>
                             <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
+                                
                                 <div class="product-card-price align-right">
                                     <div class="product-card-orgPrice align-right">
                                         500,000đ
@@ -553,9 +529,6 @@
                 </a>
             </div>
         </div>
-    </div>
-    <div class="section-recommend">
-        
     </div>
 </main>
 {% endblock %}
