@@ -1,19 +1,20 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/contact.css">
+    <link rel="stylesheet" href="/static/css/contact/contact.css">
 {% endblock %}
 {% block title %}
-    Liên hệ
+    {% trans "Liên hệ" %}
 {% endblock %}
 {% block content %}
     <section>
-        <h1 class="heading">LIÊN HỆ VỚI SUN ASIA</h1>
+        <h1 class="heading">{% trans "LIÊN HỆ VỚI SUN ASIA" %}</h1>
         <div class="contact">
             <div class="inf">
-                <h3>CÔNG TY CỔ PHẦN SUN ASIA</h3>
+                <h3>{% trans "CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ PHÁT TRIỂN SUN ASIA" %}</h3>
                 <p>
-                    <a href="tel:0981358442" title="Gọi ngay">
-                        <i class="fa-solid fa-phone"></i> 0981.358.442
+                    <a href="tel:0982473136" title="Gọi ngay">
+                        <i class="fa-solid fa-phone"></i> 0982.473.136
                     </a>
                 </p>
                 <p>
@@ -24,7 +25,7 @@
                 <p>
                     <a href="#">
                         <i class="fa-solid fa-location-dot"></i> 
-                        Tầng 6, Chung cư VP6, Linh Đàm, Hà Nội
+                        Số nhà 24/94 ngõ Hàm Rồng, phố Ngọc Lâm, Quận Long Biên, Hà Nội
                     </a>
                 </p>
                 <iframe 
@@ -38,19 +39,19 @@
                 </iframe>
             </div>
             <form action="" class="form">
-                <h3>Họ và tên</h3>
+                <h3>{% trans "Họ và tên" %}</h3>
                 <div class="name">
-                    <input type="text" placeholder="Họ">
-                    <input type="text" placeholder="Tên">
+                    <input type="text" placeholder="{% trans 'Họ' %}">
+                    <input type="text" placeholder="{% trans 'Tên' %}">
                 </div>
                 <h3>Email</h3>
                 <input type="emai" placeholder="example@email.com">
-                <h3>Điện thoại</h3>
-                <input type="phone" placeholder="Số điện thoại">
-                <h3>Nội dung</h3>
+                <h3>{% trans "Điện thoại" %}</h3>
+                <input type="phone" placeholder="{% trans 'Số điện thoại' %}">
+                <h3>{% trans "Nội dung" %}</h3>
                 <textarea name="" id="message" cols="30" rows="8" 
-                placeholder="Nội dung" class="item" autocomplete="off"></textarea>
-                <button type="submit">Gửi tin nhắn</button>
+                placeholder="{% trans 'Nội dung' %}" class="item" autocomplete="off"></textarea>
+                <button type="submit">{% trans "Gửi tin nhắn" %}</button>
             </form>
         </div>
     </section>

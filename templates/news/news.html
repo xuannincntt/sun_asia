@@ -1,14 +1,15 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/news.css">
+    <link rel="stylesheet" href="/static/css/news/news.css">
 {% endblock %}
 {% block title %}
-    Tin tức
+    {% trans "Tin tức" %}
 {% endblock %}
 {% block content %}
     <div class="news-img">
         <img src="/static/img/house2.jpg" alt="">
-        <h1>TIN TỨC</h1>
+        <h1>{% trans "TIN TỨC" %}</h1>
     </div>
     <section id="news" class="news">
         <div class="news-header">
@@ -68,7 +69,7 @@
             </div>
             <div class="news-content-right">
                 <div class="news-content-right1">
-                    <h1>Bài viết được xem nhiều nhất</h1>
+                    <h1>{% trans "Bài viết được xem nhiều nhất" %}</h1>
                     <div class="news-content-best">
                         <img src="/static/img/house2.jpg" alt="">
                         <div class="news-content-bests">
@@ -99,7 +100,7 @@
                     </div>
                 </div>
                 <div class="news-content-right2">
-                    <h1>Danh mục tin tức</h1>
+                    <h1>{% trans "Danh mục tin tức" %}</h1>
                     <label class="checkbox-item">
                         <input type="checkbox" name="project_type" value="thuycanh">
                         Công nghệ

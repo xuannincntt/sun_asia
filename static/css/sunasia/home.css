@@ -83,6 +83,11 @@ section {
     font-size: 3rem;
 }
 
+.about .about-content h2 {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+}
+
 .about .about-content p {
     text-align: justify;
     font-size: 1.5rem;
@@ -107,13 +112,13 @@ section {
 .about-service {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 3rem;
     margin: 2rem 0;
 }
 
 .about-service button {
     width: 100%;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     font-size: 1.5rem;
     box-shadow: 0 .1rem .5rem var(--shadow-color);
     color: #333;
@@ -133,6 +138,11 @@ section {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+}
+
+.about-service button p i {
+    font-size: 2.5rem;
+    padding-right: .5rem;
 }
 
 .product {
@@ -155,12 +165,20 @@ section {
     text-align: justify;
 }
 
+.product .product-content p a:hover {
+    color: #d0021b;
+}
+
+.product .product-content p a.active {
+    color: #d0021b;
+}
+
 .product .product-show,
 .project .project-show {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
 }
 
 .product .product-item,

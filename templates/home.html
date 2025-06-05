@@ -1,13 +1,11 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/sunasia/home.css">
 {% endblock %}
-
 {% block title %}
     Sun Asia
 {% endblock %}
-
 {% block content %}
     <!-- Home section design -->
     <section id="home" class="home">
@@ -16,46 +14,44 @@
         </div>
         <div class="home-content">
             <h3>SUN ASIA</h3>
-            <h1>GIẢI PHÁP NHÀ KÍNH VƯƠN TẦM QUỐC TẾ</h1>
-            <p>Nhà kính thông minh của Asia hỗ trợ FAQ ứng phó biến đổi khí hậu,
-                xuất khẩu sang Mỹ, khẳng định vị thế trên thị trường toàn cầu
-            </p>
+            <h1>{% trans "GIẢI PHÁP NHÀ KÍNH VƯƠN TẦM QUỐC TẾ" %}</h1>
+            <p>{% trans "Các công trình hạ tầng mà SUN ASIA thực hiện đã góp phần rất quan trọng trong việc kết nối, tạo nền tảng cho phát triển kinh tế – xã hội và góp phần nâng cao chất lượng cuộc sống của người dân." %}</p>
             <button>
                 <a href="tel:0981358442" title="Gọi ngay">
-                TƯ VẤN MIỄN PHÍ NGAY <i class="fa-solid fa-phone"></i>
+                {% trans "TƯ VẤN MIỄN PHÍ NGAY" %} <i class="fa-solid fa-phone"></i>
                 </a>
             </button>
         </div>
     </section>
     <section id="about" class="about">
         <div class="about-content">
-            <h1>CÔNG TY CỔ PHẦN CÔNG NGHỆ CAO SUN ASIA</h1>
-            <p>Công ty Hachi được thành lập từ đề án Vietnam Silicon Valley thuộc Bộ Khoa Học Công Nghệ từ năm 2016. Hachi là tập hợp bạn trẻ yêu nông nghiệp, từng nhận giải thưởng Nhân Tài Đất Việt, nhận tài trợ của World Bank và Liên Hợp Quốc.</p>
-            <p>250+ Dự án nhà kính đã được Hachi thi công trên khắp cả Việt Nam. Hachi đã xuất khẩu nhà màng đi Úc, Thái Lan, Lào và gần nhất là Mỹ.Chúng tôi xây dựng giải pháp nông nghiệp thông minh, bền vững, thích ứng với biến đổi khí hậu.</p>
-            <h1>Dịch vụ hỗ trợ</h1>
+            <h1>{% trans "CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ PHÁT TRIỂN SUN ASIA" %}</h1>
+            <p>{% trans "Công ty SUN ASIA được thành lập từ năm 2020.  Trên cơ sở năng lực hiện tại của Sun Asia, chúng tôi khẳng định có đủ khả năng tham gia và đáp ứng mọi dự án liên quan đến lĩnh vực dịch vụ nông nghiệp công nghệ cao, xây dựng hạ tầng và thi công trọn gói nhà dân.." %}</p>
+            <p>{% trans "Dự án nhà kính đã được SUN ASIA thi công trên khắp cả Việt Nam. SUN ASIA đã xuất khẩu nhà màng đi Mỹ, Thái Lan. Với năng lực nhân lực, cơ sở vật chất, kinh nghiệm và năng lực tài chính, Công ty Cổ phần Đầu tư và Phát triển Sun Asia sẽ nghiêm túc thực hiện mọi cam kết với Quý khách hàng và sẽ luôn hướng tới sự hoàn thiện đảm bảo tiến độ, chất lượng và an toàn trong quá trình hợp tác." %}</p>
+            <h2>{% trans "Dịch vụ hỗ trợ" %}</h2>
             <div class="about-service">
                 <button>
-                    <a href="#">
-                        <p><i class="fa-solid fa-wrench"></i></p>
-                         Thi công lắp đặt
+                    <a href="tel:0981358442" title="Gọi ngay">
+                        <p><i class="fa-solid fa-palette"></i></p>
+                         {% trans "Thiết kế trang trại" %}
                     </a>
                 </button>
                 <button>
-                    <a href="#">
+                    <a href="tel:0981358442" title="Gọi ngay">
+                        <p><i class="fa-solid fa-screwdriver-wrench"></i></p>
+                         {% trans "Thi công trọn gói" %}
+                    </a>
+                </button>
+                <button>
+                    <a href="/products/">
                         <p><i class="fa-solid fa-truck-fast"></i></p>
-                         Bán hạt giống
+                          {% trans "Bán trang thiết bị" %}
                     </a>
                 </button>
                 <button>
                     <a href="tel:0981358442" title="Gọi ngay">
-                        <p><i class="fa-solid fa-phone"></i></p>
-                         Tư vấn hỗ trợ
-                    </a>
-                </button>
-                <button>
-                    <a href="tel:0981358442" title="Gọi ngay">
-                        <p><i class="fa-solid fa-handshake"></i></p>
-                         Hợp tác đầu tư
+                        <p><i class="fa-solid fa-headset"></i></p>
+                         {% trans "Tư vấn thiết kế" %}
                     </a>
                 </button>
             </div>
@@ -67,8 +63,9 @@
     <!-- Product for you -->
     <section id="product" class="product">
         <div class="product-content">
-            <h3>Sản phẩm dành cho bạn</h3>
-            <p>Sản phẩm mới nhất | Sản phẩm bán chạy</p>
+            <h3>{% trans "Sản phẩm dành cho bạn" %}</h3>
+            <p><a href="#" class="active">{% trans "Sản phẩm mới nhất" %}</a> | 
+                <span><a href="#">{% trans "Sản phẩm bán chạy" %}</a></span></p>
         </div>
         <div class="product-show">
             <div class="product-item">
@@ -164,8 +161,8 @@
     <!-- design project -->
     <section id="project" class="project">
         <div class="project-content">
-            <h3>Dự án nổi bật</h3>
-            <p>Xem thêm <i class="fa-solid fa-arrow-right"></i></p>
+            <h3>{% trans "Dự án nổi bật" %}</h3>
+            <p>{% trans "Xem thêm" %} <i class="fa-solid fa-arrow-right"></i></p>
         </div>
         <div class="project-show">
             <div class="project-item">

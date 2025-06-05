@@ -58,8 +58,8 @@ section {
 }
 
 .floating-icons .icon img {
-    width: 60%;
-    height: 60%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -104,6 +104,7 @@ section {
     gap: 2.5rem;
     margin-right: auto;
     font-size: 1.5rem;
+    position: relative;
 }
 
 .nav a {
@@ -112,17 +113,104 @@ section {
     font-size: 1.5rem;
     font-weight: 600;
     transition: .5s ease;
+    position: relative;
+}
+
+.nav a.active {
+    color: #d0021b;
 }
 
 .nav a:hover {
     color: #d0021b;
 }
 
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -.2rem;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #d0021b;
+    transition: width 0.3s ease-out;
+}
+
+.nav a:hover::after {
+    width: 100%;
+    color: #d0021b;
+}
+
+.dropdown-nav-products,
+.dropdown-nav-projects {
+    position: relative;
+}
+
+.dropdown-nav-products::after,
+.dropdown-nav-projects::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 20px; /* khoảng hover thêm */
+}
+
+.dropdown-products,
+.dropdown-projects {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 225px;
+    top: calc(100% + 10px);
+    left: 0;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: .5rem;
+    flex-direction: column;
+}
+
+.dropdown-projects {
+    min-width: 180px;
+}
+
+/* Hiện khi hover vào .dropdown */
+.dropdown-nav-products:hover .dropdown-products,
+.dropdown-nav-projects:hover .dropdown-projects {
+    display: flex;
+}
+
+.dropdown-nav-products:hover .nav-main::after,
+.dropdown-nav-projects:hover .nav-main::after {
+    width: 100%;
+    color: #d0021b;
+}
+
+.dropdown-products a,
+.dropdown-projects a {
+    padding: 1rem 1.5rem;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.dropdown-products a:hover,
+.dropdown-projects a:hover {
+    background-color: #f5f5f5;
+    color: black;
+}
+
+/* Ngăn gạch chân ở dropdown */
+.dropdown-products a::after,
+.dropdown-projects a::after {
+    display: none;
+}
+
 .actions {
     display: flex;
     align-items: center;
-    gap: 2rem;
     font-size: 1.5rem;
+    gap: .5rem;
     position: relative;
 }
 
@@ -140,7 +228,113 @@ section {
 .icon {
     font-size: 2rem;
     cursor: pointer;
+    border-radius: .5rem;
+    padding: .7rem 1.2rem;
 }
+
+.icon:hover {
+    background-color: #f5f5f5;
+}
+
+/*Bell*/
+.icon.bell {
+    position: relative;
+    cursor: pointer;
+}
+/* Hộp thông báo sẽ hiển thị bên dưới hoặc cạnh chuông */
+.notification-box {
+    display: none;
+    position: absolute;
+    top: 5rem; /* khoảng cách phía dưới chuông */
+    right: 34rem;
+    width: 550px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    padding-top: 16px;
+    z-index: 999;
+}
+
+.notification-box.show {
+    display: block;
+}
+
+.tab {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 0rem 1.6rem;
+}
+
+.tab a {
+    background: none;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    color: #333;
+    position: relative;
+    transition: .5s ease;
+}
+
+.tab a.active {
+    border-bottom: 1px solid red;
+    color: red;
+}
+
+.tab a:hover {
+    color: red;
+}
+
+.badge {
+    background: red;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 4px;
+}
+
+.notification-body {
+    background-color: #f2f2f2;
+    height: 40vh;
+    border-radius: 0 0 .8rem .8rem;
+    padding-top: 1.2rem;
+}
+
+.notification-content {
+    display: flex;
+    align-items: flex-start;
+    background-color: white;
+    gap: 12px;
+    position: relative;
+    margin: 0 1.6rem 0;
+    border-radius: .8rem;
+}
+
+.icon {
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+.text {
+    border-radius: 8px;
+    padding: 1rem 0;
+}
+
+.text .title {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.text .description {
+    color: #555;
+}
+
+.text .date {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #999;
+}
+/*end bell*/
 
 .actions .login-register {
     display: flex;
@@ -174,22 +368,26 @@ section {
 
 .actions .dropdown-user {
     position: absolute;
-    top: 5.8rem;
+    top: 5rem;
     right: 14rem;
-    width: 45%;
+    width: 37%;
     padding: .5rem 0;
-    border-radius: 1rem;
+    border-radius: .5rem;
     border: 1px solid #ccc;
     background: white;
 }
 
 .actions .dropdown-user p {
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     transition: .5s ease;
 }
 
 .actions .dropdown-user p:hover {
     background-color: #f5f5f5;
+}
+
+.actions .dropdown-user p i {
+    padding-right: .5rem;
 }
 
 .avatar {
@@ -364,14 +562,15 @@ footer {
 
 .part1, .part2 {
     display: grid;
-    grid-template-columns: 40% 30% 30%;
+    grid-template-columns: 45% 30% 25%;
     grid-template-rows: 1fr;
     gap: 1rem;
     margin: 2rem 0 0rem;
     font-size: 1.5rem;
 }
 
-.part1 .part1-item {
+.part1 .part1-item,
+.part1 .part1-item a {
     display: flex;
     flex-direction: row;
     column-gap: 1rem;
@@ -416,7 +615,23 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+.part1-item a, 
+.part2-item a {
+    transition: .5s ease;
+}
+
+.part1-item a:hover, 
+.part2-item a:hover {
+    color: #d0021b;
+}
+
 .part2 .part2-item h4 {
+    font-weight: 550;
+    font-size: 1.8rem;
+    padding-bottom: 1rem;
+}
+
+.part2 .part2-item h5 {
     font-weight: 550;
     font-size: 1.5rem;
     padding-bottom: 1rem;

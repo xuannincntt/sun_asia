@@ -1,29 +1,30 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/projects.css">
+    <link rel="stylesheet" href="/static/css/project/projects.css">
 {% endblock %}
 {% block title %}
-    Dự án
+    {% trans "Dự án" %}
 {% endblock %}
 {% block content %}
     <div class="project-img">
         <img src="/static/img/house1.jpg" alt="">
-        <h1>DỰ ÁN</h1>
+        <h1>{% trans "DỰ ÁN" %}</h1>
     </div>
     <section id="project" class="project">
         <div class="project-left">
-            <h1>Bộ lọc tìm kiếm</h1>
+            <h1>{% trans "Bộ lọc tìm kiếm" %}</h1>
             <form method="GET" action=".">
-                <h3>Tỉnh thành</h3>
+                <h3>{% trans "Tỉnh thành" %}</h3>
                 <select name="tinh_thanh">
-                    <option value="">-- Tất cả tỉnh thành --</option>
+                    <option value="">-- {% trans "Tất cả tỉnh thành" %} --</option>
                     <!-- {% for tinh in tinh_thanh_choices %}
                         <option value="{{ tinh }}" {% if tinh == selected_tinh_thanh %}selected{% endif %}>
                             {{ tinh }}
                         </option>
                     {% endfor %} -->
                 </select>
-                <h3>Danh mục</h3>
+                <h3>{% trans "Danh mục" %}</h3>
                 <label class="checkbox-item">
                     <input type="checkbox" name="project_type" value="thuycanh">
                     Mô hình thủy canh
@@ -36,7 +37,7 @@
                     <input type="checkbox" name="project_type" value="congnghe">
                     Nhà màng công nghệ cao
                 </label>
-                <h3>Diện tích</h3>
+                <h3>{% trans "Diện tích" %}</h3>
                 <label class="checkbox-item">
                     <input type="checkbox" name="project_type" value="500-">
                     Dưới 500 m²

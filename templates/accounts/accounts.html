@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/accounts.css">
+    <link rel="stylesheet" href="/static/css/account/accounts.css">
 {% endblock %}
 {% block title %}
-    Đăng nhập | Đăng ký
+    {% trans "Đăng nhập" %} | {% trans "Đăng ký" %}
 {% endblock %}
 {% block content %}
     <section class="account">
@@ -11,19 +12,19 @@
             <div class="form-box login">
                 <form method="POST">
                     {% csrf_token %}
-                    <h1>Login</h1>
+                    <h1>{% trans "Đăng nhập" %}</h1>
                     <div class="input-box">
-                        <input type="text" name="login_email" placeholder="Username" required>
+                        <input type="text" name="login_email" placeholder="Email" required>
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <div class="input-box">
-                        <input type="password" name="login_password" placeholder="Password" required>
+                        <input type="password" name="login_password" placeholder="{% trans 'Mật khẩu' %}" required>
                         <i class="fa-solid fa-lock"></i>
                     </div>
                     <div class="forgot-link">
-                        <a href="#">Forgot password?</a>
+                        <a href="#">{% trans "Quên mật khẩu?" %}</a>
                     </div>
-                    <button type="submit" class="btn" name="login">Login</button>
+                    <button type="submit" class="btn" name="login">{% trans "Đăng nhập" %}</button>
                     {% if messages %}
                         <ul class="messages">
                             {% for message in messages %}
@@ -31,7 +32,7 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                    <p>or login with social platforms</p>
+                    <p>{% trans "Hoặc đăng nhập với các nền tảng xã hội" %}</p>
                     <div class="social-icons">
                         <a href="#"><i class="fa-brands fa-google"></i></a>
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -44,9 +45,9 @@
             <div class="form-box register">
                 <form method="POST">
                     {% csrf_token %}
-                    <h1>Registration</h1>
+                    <h1>{% trans "Đăng ký" %}</h1>
                     <div class="input-box">
-                        <input type="text" name="reg_username" placeholder="Username" required>
+                        <input type="text" name="reg_username" placeholder="{% trans 'Tên người dùng' %}" required>
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <div class="input-box">
@@ -54,10 +55,10 @@
                         <i class="fa-solid fa-envelope"></i>
                     </div>
                     <div class="input-box">
-                        <input type="password" name="reg_password" placeholder="Password" required>
+                        <input type="password" name="reg_password" placeholder="{% trans 'Mật khẩu' %}" required>
                         <i class="fa-solid fa-lock"></i>
                     </div>
-                    <button type="submit" class="btn" name="register">Register</button>
+                    <button type="submit" class="btn" name="register">{% trans "Đăng ký" %}</button>
                     {% if messages %}
                         <ul class="messages">
                             {% for message in messages %}
@@ -65,7 +66,7 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                    <p>or register with social platforms</p>
+                    <p>{% trans "Hoặc đăng ký với các nền tảng xã hội" %}</p>
                     <div class="social-icons">
                         <a href="#"><i class="fa-brands fa-google"></i></a>
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -77,14 +78,14 @@
 
             <div class="toggle-box">
                 <div class="toggle-panel toggle-left">
-                    <h1>Hello, Welcome!</h1>
-                    <p>Don't have an account?</p>
-                    <button class="btn register-btn">Register</button>
+                    <h1>{% trans "Sun Asia, xin chào!" %}</h1>
+                    <p>{% trans "Bạn không có tài khoản?" %}</p>
+                    <button class="btn register-btn">{% trans "Đăng ký" %}</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Welcome Back!</h1>
-                    <p>Already have an account?</p>
-                    <button class="btn login-btn">Login</button>
+                    <h1>{% trans "Chào mừng trở lại!" %}</h1>
+                    <p>{% trans "Bạn đã có tài khoản?" %}</p>
+                    <button class="btn login-btn">{% trans "Đăng nhập" %}</button>
                 </div>
             </div>
         </div>
