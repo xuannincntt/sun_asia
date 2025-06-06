@@ -26,6 +26,7 @@ class User(models.Model):
         self.password = make_password(raw_password)
 
     def check_password(self, raw_password):
+        print("checkedPassword:",make_password(raw_password))
         return check_password(raw_password, self.password)
 
     def __str__(self):

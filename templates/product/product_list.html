@@ -71,7 +71,7 @@
             </div>
             <div class="section-filter">
                 <div class="filter-title align-center">LỌC SẢN PHẨM</div>
-                <div class="filter-container">
+                <form action="/products/filter" method="POST" id="filter-form">
                     <div class="filter-price">
                         <h4 class="filter-field">Khoảng giá</h4>
                         <hr style="width: 100%;"/>
@@ -130,7 +130,13 @@
                             <span class="filter-value">Còn hàng</span>
                         </label>
                     </div>
-                </div>
+                    <div class="filter-submit">
+                        <hr style="width: 100%;" />
+                        <button type="submit" class="filter-submit-btn">
+                            Lọc sản phẩm
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="section-products">
@@ -154,23 +160,25 @@
             </div>
             <hr />
             <div class="products-container">
-                <a class="product-link" href="/products/chi-tiet-san-pham">
+                {% if not products%}
+                <div class="align-left">Không tìm thấy sản phẩm nào</div>
+                {% else %}
+                {% for product in products  %}
+                <a class="product-link" href="/products/{{product.slug}}">
                     <div class="product-card">
                         <div class="product-card-thumbnail">
-                            <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
-                            <div class="product-card-promo align-center">
-                                <p>Mới!</p>
-                            </div>
+                            {% if product.image_url != "" %}
+                                <img class="product-card-image" src="{{product.image_url}}" alt="">
+                            {% else %}
+                                <img class="product-card-image" src="{% static 'images/product_placeholder.jpg' %}" alt="">
+                            {% endif %}
+                            
                         </div>
                         <div class="product-card-info">
                             <div class="product-card-name">
-                                Đèn LED chuyên dụng đơn sắc HC-BR25W
+                                {{product.name}}
                             </div>
                             <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
                                 <div class="product-card-price align-right">
                                     <div class="product-card-orgPrice align-right">
                                         500,000đ
@@ -198,364 +206,11 @@
                         </div>
                     </div>
                 </a>
-                <a class="product-link" href="/products/chi-tiet-san-pham">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
-                            <div class="product-card-promo align-center">
-                                <p>Mới!</p>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <div class="product-card-name">
-                                Đèn LED chuyên dụng đơn sắc HC-BR25W
-                            </div>
-                            <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
-                                <div class="product-card-price align-right">
-                                    <div class="product-card-orgPrice align-right">
-                                        500,000đ
-                                    </div>
-                                    <div class="product-card-salePrice align-right">
-                                        420,000
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="product-card-action">
-                                <button 
-                                    type="button"
-                                    class="action-btn cart-btn"
-                                >
-                                    Thêm vào giỏ
-                                </button>
-                                <button 
-                                    type="button"
-                                    class="action-btn buy-btn"
-                                >
-                                    Mua ngay
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                {% endfor %}
                 
-                <a class="product-link" href="/products/chi-tiet-san-pham">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
-                            <div class="product-card-promo align-center">
-                                <p>Mới!</p>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <div class="product-card-name">
-                                Đèn LED chuyên dụng đơn sắc HC-BR25W
-                            </div>
-                            <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
-                                <div class="product-card-price align-right">
-                                    <div class="product-card-orgPrice align-right">
-                                        500,000đ
-                                    </div>
-                                    <div class="product-card-salePrice align-right">
-                                        420,000
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="product-card-action">
-                                <button 
-                                    type="button"
-                                    class="action-btn cart-btn"
-                                >
-                                    Thêm vào giỏ
-                                </button>
-                                <button 
-                                    type="button"
-                                    class="action-btn buy-btn"
-                                >
-                                    Mua ngay
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="product-link" href="/products/chi-tiet-san-pham">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
-                            <div class="product-card-promo align-center">
-                                <p>Mới!</p>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <div class="product-card-name">
-                                Đèn LED chuyên dụng đơn sắc HC-BR25W
-                            </div>
-                            <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
-                                <div class="product-card-price align-right">
-                                    <div class="product-card-orgPrice align-right">
-                                        500,000đ
-                                    </div>
-                                    <div class="product-card-salePrice align-right">
-                                        420,000
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="product-card-action">
-                                <button 
-                                    type="button"
-                                    class="action-btn cart-btn"
-                                >
-                                    Thêm vào giỏ
-                                </button>
-                                <button 
-                                    type="button"
-                                    class="action-btn buy-btn"
-                                >
-                                    Mua ngay
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="product-link" href="/products/chi-tiet-san-pham">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
-                            <div class="product-card-promo align-center">
-                                <p>Mới!</p>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <div class="product-card-name">
-                                Đèn LED chuyên dụng đơn sắc HC-BR25W
-                            </div>
-                            <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
-                                <div class="product-card-price align-right">
-                                    <div class="product-card-orgPrice align-right">
-                                        500,000đ
-                                    </div>
-                                    <div class="product-card-salePrice align-right">
-                                        420,000
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="product-card-action">
-                                <button 
-                                    type="button"
-                                    class="action-btn cart-btn"
-                                >
-                                    Thêm vào giỏ
-                                </button>
-                                <button 
-                                    type="button"
-                                    class="action-btn buy-btn"
-                                >
-                                    Mua ngay
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="product-link" href="/products/chi-tiet-san-pham">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
-                            <div class="product-card-promo align-center">
-                                <p>Mới!</p>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <div class="product-card-name">
-                                Đèn LED chuyên dụng đơn sắc HC-BR25W
-                            </div>
-                            <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
-                                <div class="product-card-price align-right">
-                                    <div class="product-card-orgPrice align-right">
-                                        500,000đ
-                                    </div>
-                                    <div class="product-card-salePrice align-right">
-                                        420,000
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="product-card-action">
-                                <button 
-                                    type="button"
-                                    class="action-btn cart-btn"
-                                >
-                                    Thêm vào giỏ
-                                </button>
-                                <button 
-                                    type="button"
-                                    class="action-btn buy-btn"
-                                >
-                                    Mua ngay
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="product-link" href="/products/chi-tiet-san-pham">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
-                            <div class="product-card-promo align-center">
-                                <p>Mới!</p>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <div class="product-card-name">
-                                Đèn LED chuyên dụng đơn sắc HC-BR25W
-                            </div>
-                            <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
-                                <div class="product-card-price align-right">
-                                    <div class="product-card-orgPrice align-right">
-                                        500,000đ
-                                    </div>
-                                    <div class="product-card-salePrice align-right">
-                                        420,000
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="product-card-action">
-                                <button 
-                                    type="button"
-                                    class="action-btn cart-btn"
-                                >
-                                    Thêm vào giỏ
-                                </button>
-                                <button 
-                                    type="button"
-                                    class="action-btn buy-btn"
-                                >
-                                    Mua ngay
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="product-link" href="/products/chi-tiet-san-pham">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
-                            <div class="product-card-promo align-center">
-                                <p>Mới!</p>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <div class="product-card-name">
-                                Đèn LED chuyên dụng đơn sắc HC-BR25W
-                            </div>
-                            <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
-                                <div class="product-card-price align-right">
-                                    <div class="product-card-orgPrice align-right">
-                                        500,000đ
-                                    </div>
-                                    <div class="product-card-salePrice align-right">
-                                        420,000
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="product-card-action">
-                                <button 
-                                    type="button"
-                                    class="action-btn cart-btn"
-                                >
-                                    Thêm vào giỏ
-                                </button>
-                                <button 
-                                    type="button"
-                                    class="action-btn buy-btn"
-                                >
-                                    Mua ngay
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="product-link" href="/products/chi-tiet-san-pham">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <img class="product-card-image" src="{% static 'images/product_placeholder.png' %}" alt="">
-                            <div class="product-card-promo align-center">
-                                <p>Mới!</p>
-                            </div>
-                        </div>
-                        <div class="product-card-info">
-                            <div class="product-card-name">
-                                Đèn LED chuyên dụng đơn sắc HC-BR25W
-                            </div>
-                            <div class="product-card-more">
-                                <div class="product-card-rate align-left">
-                                    <i class='bx bxs-star rate-icon'></i> 
-                                    <span class="rate-score">5.0</span>
-                                </div>
-                                <div class="product-card-price align-right">
-                                    <div class="product-card-orgPrice align-right">
-                                        500,000đ
-                                    </div>
-                                    <div class="product-card-salePrice align-right">
-                                        420,000
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="product-card-action">
-                                <button 
-                                    type="button"
-                                    class="action-btn cart-btn"
-                                >
-                                    Thêm vào giỏ
-                                </button>
-                                <button 
-                                    type="button"
-                                    class="action-btn buy-btn"
-                                >
-                                    Mua ngay
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                {% endif %}
             </div>
         </div>
-    </div>
-    <div class="section-recommend">
-        
     </div>
 </main>
 {% endblock %}

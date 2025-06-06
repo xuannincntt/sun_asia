@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 import os
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'sun_asia',
     'contact',
     'order',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +91,14 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Configuration       
+cloudinary.config( 
+    cloud_name = "dx73jb4d8", 
+    api_key = "873196195445183", 
+    api_secret = "6SOtgJKWlMoE-tpWimNXeSpWoa4", # Click 'View API Keys' above to copy your API secret
+    secure=True
+)
 
 
 # Password validation

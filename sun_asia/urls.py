@@ -33,4 +33,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('logout', views.logout_view, name='logout'),
     path('set_language/', set_language, name='set_language'),
+    path('tinymce/', include('tinymce.urls')),
 ]

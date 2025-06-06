@@ -3,65 +3,15 @@ const subCatContainer = document.getElementsByClassName('category-main-subcat')[
 const subCatItems = document.getElementsByClassName('subcat-item');
 const catMain = document.getElementsByClassName('category-main-name');
 const subCatBtn = document.getElementsByClassName('subcat-icon')[0];
-const slides = document.querySelector('.slides');
-const cards = document.querySelectorAll('.recommend-card');
-const nextBtn = document.getElementById('next');
-const prevBtn = document.getElementById('prev');
-const menuItems = [...catCards, ...subCatItems, ...catMain];
-let isSubCatOpen = true;
-const cardsToShow = 5;
-const cardWidth = cards[0].offsetWidth + 20; // include gap
-let currentIndex = cardsToShow; // Start after prepended clones
+const cartBtns = document.querySelectorAll('.cart-btn');
+const buyBtns = document.querySelectorAll('.buy-btn');
+const filterForm = document.getElementById("filter-form");
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const firstClones = Array.from(cards).slice(0, cardsToShow).map(card => card.cloneNode(true));
-    const lastClones = Array.from(cards).slice(-cardsToShow).map(card => card.cloneNode(true));
-
-    firstClones.forEach(clone => slides.appendChild(clone));
-    lastClones.forEach(clone => slides.insertBefore(clone, slides.firstChild));
-
-    // Update total cards after cloning
-    const totalCards = slides.querySelectorAll('.recommend-card').length;
-
-    // Set initial position to the "first real slide"
-    slides.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
-
-    // Add transition for smooth slide
-    slides.style.transition = "transform 0.5s ease-in-out";
-
     setSubcatMenu();
     setHoveredCategories();
-    
-    nextBtn.addEventListener('click', () => {
-        currentIndex++;
-        slides.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
-        slides.style.transition = "transform 0.5s ease-in-out";
-
-        // Loop logic
-        if (currentIndex === totalCards - cardsToShow) {
-            setTimeout(() => {
-            slides.style.transition = "none";
-            currentIndex = cardsToShow;
-            slides.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
-            }, 500); // match transition duration
-        }
-    });
-
-    prevBtn.addEventListener('click', () => {
-        currentIndex--;
-        slides.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
-        slides.style.transition = "transform 0.5s ease-in-out";
-
-        // Loop logic
-        if (currentIndex === 0) {
-            setTimeout(() => {
-            slides.style.transition = "none";
-            currentIndex = totalCards - 2 * cardsToShow;
-            slides.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
-            }, 500);
-        }
-    });
+    setCartBtnsOnClick();
 });
 
 const setHoveredCategories = () => {
@@ -96,3 +46,14 @@ const setSubcatMenu = () => {
 
     });
 };
+
+const setCartBtnsOnClick = () => {
+    cartBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            
+        });
+    });
+};
+
+
