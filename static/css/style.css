@@ -10,14 +10,47 @@
 }
 
 :root {
-    --bg-color: #fdfdfd;
+    --sd-bg-color: linear-gradient(90deg, #e2e2e2, #c9d6ff);
+    --border-color: #ccc;
+    --hover-color: #f5f5f5;
+    --white-color: #fff;
+    --bg-color: white;
     --text-color: #333;
-    --second-text-color: #62778f;
-    --third-text-color: #c5d0de;
-    --second-btn-color: #e7eaee;
+    --text-hover: #1f1f1f;
+    --sd-text-color: #ff4081;
     --main-color: #FFF176;
     --second-color: #f4e185;
     --shadow-color: rgba(0, 0, 0, .2);
+}
+
+.darkMode {
+    --sd-bg-color: linear-gradient(90deg, #1a1a1a, #333);
+    --border-color: #444;
+    --hover-color: #555;
+    --white-color: #fff;
+    --bg-color: #222;
+    --text-color: #f0f0f0;
+    --text-hover: #e0e0e0;
+    --sd-text-color: #ff4081;
+    --main-color: #ff9800;
+    --second-color: #ffc107;
+    --shadow-color: rgba(0, 0, 0, .5);
+}
+
+.actions #change-color .bx:first-child {
+    display: block;
+}
+
+.actions #change-color .bx:last-child {
+    display: none;
+}
+
+.darkMode .header .actions #change-color .bx:first-child {
+    display: none;
+}
+
+.darkMode .header .actions #change-color .bx:last-child {
+    display: block;
 }
 
 html {
@@ -42,10 +75,10 @@ section {
 .floating-icons .icon {
     width: 50px;
     height: 50px;
-    background-color: white;
+    background-color: var(--bg-color);
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px var(--shadow-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,8 +104,9 @@ section {
     z-index: 9999;
     align-items: center;
     padding: 12px 20px;
-    border-bottom: 1px solid #ddd;
-    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     flex-wrap: wrap;
     font-size: 1.5rem;
 }
@@ -109,7 +143,7 @@ section {
 
 .nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-size: 1.5rem;
     font-weight: 600;
     transition: .5s ease;
@@ -117,11 +151,11 @@ section {
 }
 
 .nav a.active {
-    color: #d0021b;
+    color: var(--sd-text-color);
 }
 
 .nav a:hover {
-    color: #d0021b;
+    color: var(--sd-text-color);
 }
 
 .nav a::after {
@@ -131,13 +165,13 @@ section {
     left: 0;
     height: 2px;
     width: 0;
-    background-color: #d0021b;
+    background-color: var(--sd-text-color);
     transition: width 0.3s ease-out;
 }
 
 .nav a:hover::after {
     width: 100%;
-    color: #d0021b;
+    color: var(--sd-text-color);
 }
 
 .dropdown-nav-products,
@@ -159,11 +193,11 @@ section {
 .dropdown-projects {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: var(--bg-color);
     min-width: 225px;
     top: calc(100% + 10px);
     left: 0;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px var(--shadow-color);
     z-index: 1000;
     border-radius: .5rem;
     flex-direction: column;
@@ -182,13 +216,13 @@ section {
 .dropdown-nav-products:hover .nav-main::after,
 .dropdown-nav-projects:hover .nav-main::after {
     width: 100%;
-    color: #d0021b;
+    color: var(--sd-text-color);
 }
 
 .dropdown-products a,
 .dropdown-projects a {
     padding: 1rem 1.5rem;
-    color: #333;
+    color: var(--text-color);
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 500;
@@ -196,8 +230,8 @@ section {
 
 .dropdown-products a:hover,
 .dropdown-projects a:hover {
-    background-color: #f5f5f5;
-    color: black;
+    background-color: var(--hover-color);
+    color: var(--text-hover);
 }
 
 /* Ngăn gạch chân ở dropdown */
@@ -222,7 +256,7 @@ section {
 }
 
 .download:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-color);
 }
 
 .icon {
@@ -233,7 +267,7 @@ section {
 }
 
 .icon:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-color);
 }
 
 /*Bell*/
@@ -248,9 +282,9 @@ section {
     top: 5rem; /* khoảng cách phía dưới chuông */
     right: 34rem;
     width: 550px;
-    background: #fff;
+    background: var(--bg-color);
     border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 12px var(--shadow-color);
     padding-top: 16px;
     z-index: 999;
 }
@@ -261,7 +295,7 @@ section {
 
 .tab {
     display: flex;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     padding: 0rem 1.6rem;
 }
 
@@ -270,23 +304,23 @@ section {
     border: none;
     padding: 10px 16px;
     cursor: pointer;
-    color: #333;
+    color: var(--text-color);
     position: relative;
     transition: .5s ease;
 }
 
 .tab a.active {
-    border-bottom: 1px solid red;
-    color: red;
+    border-bottom: 1px solid var(--sd-text-color);
+    color: var(--sd-text-color);
 }
 
 .tab a:hover {
-    color: red;
+    color: var(--sd-text-color);
 }
 
 .badge {
-    background: red;
-    color: white;
+    background: var(--sd-text-color);
+    color: var(--bg-color);
     font-size: 12px;
     padding: 2px 6px;
     border-radius: 10px;
@@ -294,7 +328,7 @@ section {
 }
 
 .notification-body {
-    background-color: #f2f2f2;
+    background-color: var(--hover-color);
     height: 40vh;
     border-radius: 0 0 .8rem .8rem;
     padding-top: 1.2rem;
@@ -303,7 +337,7 @@ section {
 .notification-content {
     display: flex;
     align-items: flex-start;
-    background-color: white;
+    background-color: var(--bg-color);
     gap: 12px;
     position: relative;
     margin: 0 1.6rem 0;
@@ -326,13 +360,13 @@ section {
 }
 
 .text .description {
-    color: #555;
+    color: var(--text-color);
 }
 
 .text .date {
     margin-top: 8px;
     font-size: 12px;
-    color: #999;
+    color: var(--text-color);
 }
 /*end bell*/
 
@@ -349,7 +383,7 @@ section {
 }
 
 .actions .login-register a:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-color);
 }
 
 .user {
@@ -363,7 +397,7 @@ section {
 }
 
 .user:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-color);
 }
 
 .actions .dropdown-user {
@@ -373,8 +407,8 @@ section {
     width: 37%;
     padding: .5rem 0;
     border-radius: .5rem;
-    border: 1px solid #ccc;
-    background: white;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
 }
 
 .actions .dropdown-user p {
@@ -383,7 +417,7 @@ section {
 }
 
 .actions .dropdown-user p:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-color);
 }
 
 .actions .dropdown-user p i {
@@ -392,7 +426,8 @@ section {
 
 .avatar {
     background-color: #fdecec;
-    color: #d0021b;
+    background-color: var(--border-color);
+    color: var(--sd-text-color);
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -405,18 +440,18 @@ section {
 
 .username {
     font-size: 1.5rem;
-    color: #333;
+    color: var(--text-color);
 }
 
 .dropdown {
     font-size: 1.5rem;
-    color: #555;
+    color: var(--text-color);
 }
 
 .btn-post {
     padding: 1rem 1.5rem;
-    border: 1px solid #ccc;
-    background: white;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
     font-size: 1.5rem;
     cursor: pointer;
     border-radius: 4px;
@@ -426,7 +461,7 @@ section {
 }
 
 .btn-post:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-color);
 }
 
 .btn-post img {
@@ -438,7 +473,7 @@ section {
 .btn-post i {
     margin-left: .5rem;
     font-size: 1.5rem;
-    color: #555;
+    color: var(--text-color);
 }
 
 .language-selector {
@@ -449,8 +484,8 @@ section {
 
 .lang-toggle {
     padding: 1rem 1.5rem;
-    border: 1px solid #ccc;
-    background: white;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
     font-size: 1.5rem;
     cursor: pointer;
     border-radius: 4px;
@@ -460,7 +495,7 @@ section {
 }
 
 .lang-toggle:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-color);
 }
 
 .lang-toggle img {
@@ -471,7 +506,7 @@ section {
 .lang-toggle i {
     margin-left: .5rem;
     font-size: 1.5rem;
-    color: #555;
+    color: var(--text-color);
 }
 
 .lang-dropdown {
@@ -479,10 +514,10 @@ section {
     position: absolute;
     top: calc(100% + 0.5rem);
     right: 0;
-    background: white;
-    border: 1px solid #ccc;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px var(--shadow-color);
     z-index: 999;
     min-width: 180px;
 }
@@ -497,7 +532,7 @@ section {
 }
 
 .lang-option:hover {
-    background-color: #f0f0f0;
+    background-color: var(--hover-color);
 }
 
 .lang-option img {
@@ -524,8 +559,8 @@ section {
     width: 30%;
     padding: .5rem 0;
     border-radius: 1rem;
-    border: 1px solid #ccc;
-    background: white;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
 }
 
 .menu-nav a {
@@ -534,7 +569,7 @@ section {
 }
 
 .menu-nav a:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-color);
 }
 
 .menu-nav a i {
@@ -553,8 +588,8 @@ section {
 }
 
 footer {
-    background-color: #f2f2f2;
-    color: #505050;
+    background-color: var(--hover-color);
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     padding: 0rem 12% 2rem;
@@ -622,7 +657,7 @@ footer {
 
 .part1-item a:hover, 
 .part2-item a:hover {
-    color: #d0021b;
+    color: var(--sd-text-color);
 }
 
 .part2 .part2-item h4 {
@@ -656,7 +691,7 @@ footer {
     border: .2rem solid var(--main-color);
     font-size: 2rem;
     transition: .5s ease;
-    border: .1rem solid #ccc;
+    border: .1rem solid var(--border-color);
     border-radius: .5rem;
 }
 
@@ -668,12 +703,12 @@ footer {
 
 .part2 .part2-item .subscribe-form {
     display: flex;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     overflow: hidden;
     width: 80%;
     font-size: 1.5rem;
-    background-color: white;
+    background-color: var(--bg-color);
 }
 
 .part2 .part2-item .subscribe-form input[type="email"] {
@@ -681,17 +716,17 @@ footer {
     padding: 12px 16px;
     border: none;
     font-size: 1.5rem;
-    color: #333;
+    color: var(--text-color);
     outline: none;
 }
 
 .part2 .part2-item .subscribe-form input::placeholder {
-    color: #aaa;
+    color: var(--border-color);
 }
 
 .part2 .part2-item .subscribe-form button {
-    background-color: #e53935; /* đỏ tươi */
-    color: white;
+    background-color: var(--sd-text-color); /* đỏ tươi */
+    color: var(--bg-color);
     border: none;
     padding: 12px 16px;
     cursor: pointer;
@@ -699,7 +734,7 @@ footer {
 }
 
 .part2 .part2-item .subscribe-form button:hover {
-    background-color: #d32f2f;
+    background-color: var(--sd-text-color);
 }
 
 .part2 .part2-item .subscribe-form i {
@@ -707,7 +742,7 @@ footer {
 }
 
 hr {
-    border: .1px solid #ccc;
+    border: .1px solid var(--border-color);
 }
 
 .part3 h3 {

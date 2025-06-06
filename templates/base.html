@@ -25,7 +25,7 @@
     })();
 </script>
 <!--End of Tawk.to Script-->
-<body>
+<body class="darkMode">
     <header class="header">
         <!-- Logo -->
         <div class="logo">
@@ -65,7 +65,7 @@
         <!-- Actions -->
         <div class="actions">
             <a href="#" class="download"><i class="fa-solid fa-download"></i> {% trans "Tải ứng dụng" %}</a>
-            <span class="icon"><i class="bx bx-sun"></i></span>
+            <span class="icon" id="change-color"><i class="bx bx-sun"></i><i class="bx bx-moon"></i></span>
             <span class="icon bell"><i class="fa-regular fa-bell"></i></span>
             <div class="notification-box">
                 <div class="tab">
@@ -280,6 +280,17 @@
         document.addEventListener("DOMContentLoaded", function () {
             const toggleBtn = document.querySelector(".lang-toggle");
             const selector = document.querySelector(".language-selector");
+            let darkMode = localStorage.getItem("darkMode");
+            const changeColorBtn = document.getElementById("change-color");
+
+            changeColorBtn.addEventListener("click", function () {
+                document.body.classList.toggle("darkMode");
+                if (document.body.classList.contains("darkMode")) {
+                    localStorage.setItem("darkMode", "enabled");
+                } else {
+                    localStorage.setItem("darkMode", "disabled");
+                }
+            });
 
             if (toggleBtn && selector) {
                 toggleBtn.addEventListener("click", function (e) {

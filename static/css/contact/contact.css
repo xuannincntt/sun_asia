@@ -1,6 +1,7 @@
 section {
     padding: 10rem 8% 2rem;
     min-height: 100vh;
+    background-color: var(--bg-color);
 }
 
 .heading {
@@ -50,7 +51,7 @@ section {
 
 .contact .form input, 
 .contact .form textarea {
-    border: 1px solid #333;
+    border: 1px solid var(--text-color);
     width: 100%;
     padding: 1rem;
     border-radius: .5rem;
@@ -66,7 +67,7 @@ section {
     padding: 1rem;
     border-radius: 1rem;
     transition: .5s ease;
-    border: .1rem solid #ccc;
+    border: .1rem solid var(--border-color);
     border-radius: .5rem;
 }
 

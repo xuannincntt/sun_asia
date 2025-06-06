@@ -16,7 +16,7 @@
     top: 56%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: var(--white-color);
     z-index: 2;
     font-size: 3.5rem;
     font-weight: 600;
@@ -35,19 +35,22 @@ section {
     column-gap: 2%;
     padding-top: 3rem;
     align-items: flex-start;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 .project-left {
     width: 27%;
-    background-color: white;
+    background-color: var(--bg-color);
     font-size: 1.5rem;
     box-shadow: 0rem 0rem 1rem 1px var(--shadow-color);
     padding: 1.5rem;
     height: auto;
+    color: var(--text-color);
 }
 
 .project-left  h1 {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 1rem;
 }
 
@@ -59,15 +62,15 @@ section {
 .project-left form select {
     width: 100%;
     padding: 0.8rem 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 0.5rem;
-    background-color: #f5f5f5;
+    background-color: var(--hover-color);
     font-size: 1.4rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-left form select:focus {
-    border-color: #000000;
+    border-color: var(--text-hover);
     outline: none;
 }
 
@@ -82,17 +85,19 @@ section {
     grid-template-columns: 50% 50%;
     grid-template-rows: 1fr;
     gap: 2.5rem;
+    background-color: var(--bg-color);
 }
 
 .project-right-item {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--bg-color);
     box-shadow: 0rem 0rem 1rem 1px var(--shadow-color);
     width: 100%;
     overflow: hidden;
     cursor: pointer;
     transition: .5s ease;
+    color: var(--text-color);
 }
 
 .project-right-item:hover {

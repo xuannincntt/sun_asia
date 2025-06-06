@@ -82,11 +82,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const openName = document.getElementById("openNamePopup");
     const openEmail = document.getElementById("openEmailPopup");
     const openPassword = document.getElementById("openPassPopup");
+    const openPhone = document.getElementById("openPhonePopup");
+    const openAddress = document.getElementById("openAddressPopup");
 
     const closeImg = document.getElementById("closeImgPopup");
     const closeName = document.getElementById("closeNamePopup");
     const closeEmail = document.getElementById("closeEmailPopup");
     const closePassword = document.getElementById("closePassPopup");
+    const closePhone = document.getElementById("closePhonePopup");
+    const closeAddress = document.getElementById("closeAddressPopup");
     const closeNewPassword = document.getElementById("closeNewPassPopup");
 
     const imgPopup = document.getElementById("img-popup");
@@ -97,6 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const newpassPopup = document.getElementById("newpass-popup");
     const backpassPopup = document.getElementById("backToPassPopup");
     const wrapperPass = document.getElementById("wrapperPass");
+    const phonePopup = document.getElementById("phone-popup");
+    const addressPopup = document.getElementById("address-popup");
     
     // Mở popup khi click vào name-contain
     openImg.addEventListener("click", () => {
@@ -110,6 +116,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     openPassword.addEventListener("click", () => {
         passwordPopup.style.display = "flex";
+    });
+    openPhone.addEventListener("click", () => {
+        console.log("Open phone popup");        
+        phonePopup.style.display = "flex";
+    });
+    openAddress.addEventListener("click", () => {
+        addressPopup.style.display = "flex";
     });
     // Đóng popup khi click vào nút đóng
     closeImg.addEventListener("click", () => {
@@ -126,6 +139,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     closeNewPassword.addEventListener("click", () => {
         passwordPopup.style.display = "none";
+    });
+    closePhone.addEventListener("click", () => {
+        phonePopup.style.display = "none";
+    });
+    closeAddress.addEventListener("click", () => {
+        addressPopup.style.display = "none";
     });
 
     passPopup.addEventListener("click", () => {
@@ -160,6 +179,12 @@ document.addEventListener("DOMContentLoaded", function () {
             passwordPopup.style.display = "none";
             wrapper.classList.remove("active-popup");
             popupOverlay.classList.remove("active-popup");
+        }
+        if (e.target === phonePopup) {
+            phonePopup.style.display = "none";
+        }
+        if (e.target === addressPopup) {
+            addressPopup.style.display = "none";
         }
     });
     document.getElementById("uploadDiv").addEventListener("click", function () {
