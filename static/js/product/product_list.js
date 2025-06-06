@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setSubcatMenu();
     setHoveredCategories();
     setCartBtnsOnClick();
+    setBuyBtnsOnClick();
 });
 
 const setHoveredCategories = () => {
@@ -49,6 +50,15 @@ const setSubcatMenu = () => {
 
 const setCartBtnsOnClick = () => {
     cartBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            
+        });
+    });
+};
+
+const setBuyBtnsOnClick = () => {
+    buyBtns.forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.stopPropagation();
             

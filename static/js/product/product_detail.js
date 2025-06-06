@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add transition for smooth slide
     slides.style.transition = "transform 0.5s ease-in-out";
 
+    console.log(images);
+
     updateSlide(0);
     console.log(detailImages);
     setCarouselBtns();

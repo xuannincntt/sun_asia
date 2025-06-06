@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import Category, Product, ProductImage
 import cloudinary.uploader
 from django.utils.safestring import mark_safe
+from tinymce.widgets import TinyMCE
+from django.db import models
 import os
 
 # Register your models here.
@@ -22,10 +24,14 @@ class ProductImageInline(admin.TabularInline):
     preview.short_description = "Preview"
 
 class ProductAdmin(admin.ModelAdmin):
-    fields = ['name', 'slug']
+    fields = ['name', 'slug','description']
     inlines = [ProductImageInline]
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
+    }
 
     def save_related(self, request, form, formsets, change):
+        
         super().save_related(request, form, formsets, change)
 
         product = form.instance

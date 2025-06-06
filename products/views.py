@@ -23,7 +23,7 @@ def product_list(request):
     products = Product.objects.all().prefetch_related(image_prefetch)
 
     for product in products:
-        first_image = product.images.all().order_by('id').first()
+        first_image = product.images.all().order_by('created_at').first()
         product.image_url = first_image.image_url if first_image else ""
     
     print(list(products))
@@ -34,11 +34,19 @@ def product_list(request):
         'products': products})
 
 def product_detail(request, slug):
-    # product = get_object_or_404(Product, slug=slug)
     # Lấy thông tin user đang đăng nhập từ session
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
+
+    product = Product.objects.filter(slug=slug).first() if slug else None
+
+    product_images = ProductImage.objects.filter(product=product) if product else None
+
+    # print(dict(product))
+    # print(list(product_images))
     
     return render(request, 'product/product_detail.html', {
         'timestamp': now().timestamp(), 
-        'user': user})
+        'user': user,
+        'product': product,
+        'product_images': product_images})
