@@ -28,6 +28,7 @@
 section {
     min-height: 100vh;
     padding-top: 3rem;
+    background-color: var(--bg-color);
 }
 
 .news-header {
@@ -36,6 +37,7 @@ section {
     gap: 1rem;
     height: 50vh;
     padding-bottom: 3rem;
+    color: var(--white-color);
 }
 
 .news-header-item {
@@ -47,6 +49,7 @@ section {
     position: relative;
     cursor: pointer;
     transition: .5s ease;
+    color: var(--white-color);
 }
 
 .news-header-item:hover {
@@ -96,12 +99,15 @@ section {
     padding-top: 3rem;
     border-top: 5px solid var(--sd-text-color);
     align-items: flex-start;
+    color: var(--text-color);
 }
 
 .news-content-left {
     width: 70%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     gap: 3rem;
 }
 
@@ -109,6 +115,7 @@ section {
     display: flex;
     flex-direction: column;
     background-color: var(--bg-color);
+    color: var(--text-color);
     box-shadow: 0rem 0rem .5rem 1px var(--shadow-color);
     width: 100%;
     overflow: hidden;
@@ -158,6 +165,8 @@ section {
 
 .news-content-right {
     width: 28%;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 .news-content-right1,
@@ -167,6 +176,8 @@ section {
     border-radius: .5rem;
     border: 1px solid var(--border-color);
     padding: 1rem 1.5rem 0rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 .news-content-right h1 {

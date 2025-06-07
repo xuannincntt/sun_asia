@@ -29,7 +29,7 @@ section {
     top: 35%;
     left: 12%;
     width: 35%;
-    color: var(--bg-color); /* Hoặc màu tùy ảnh nền */
+    color: var(--white-color);
     z-index: 2;
     padding: 1rem 2rem;
     background-color: var(--shadow-color);
@@ -37,17 +37,20 @@ section {
 }
 
 .home-content h1 {
+    color: var(--white-color);
     font-size: 3rem;
     margin-bottom: 1rem;
     font-weight: 600;
 }
 
 .home-content h3 {
+    color: var(--white-color);
     font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
 .home-content p {
+    color: var(--white-color);
     font-size: 1.5rem;
     letter-spacing: .1rem;
     line-height: 1.5;
@@ -78,21 +81,25 @@ section {
 
 .about .about-content {
     width: 55%;
+    color: var(--text-color);
 }
 
 .about .about-content h1 {
     font-size: 3rem;
+    color: var(--text-color);
 }
 
 .about .about-content h2 {
     font-size: 2.5rem;
     margin-top: 1rem;
+    color: var(--text-color);
 }
 
 .about .about-content p {
     text-align: justify;
     font-size: 1.5rem;
     letter-spacing: .1rem;
+    color: var(--text-color);
     line-height: 2;
     margin: 1rem 0;
 }
@@ -152,6 +159,7 @@ section {
 
 .product .product-content {
     display: flex;
+    color: var(--text-color);
 }
 
 .product .product-content h3 {

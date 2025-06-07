@@ -2,6 +2,7 @@ section {
     padding: 10rem 8% 2rem;
     min-height: 100vh;
     background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 .heading {
@@ -9,12 +10,14 @@ section {
     font-weight: 550;
     padding: 0rem 0 3rem;
     text-align: center;
+    color: var(--text-color);
 }
 
 .contact {
     display: flex;
     flex-direction: row;
     column-gap: 5rem;
+    color: var(--text-color);
 }
 
 .contact .inf,

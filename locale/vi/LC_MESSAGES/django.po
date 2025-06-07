@@ -341,8 +341,8 @@ msgid "Tất cả tỉnh thành"
 msgstr "Tất cả tỉnh thành"
 
 #: .\templates\projects\projects.html:27
-msgid "Danh mục"
-msgstr "Danh mục"
+msgid "Sản phẩm"
+msgstr "Sản phẩm"
 
 #: .\templates\projects\projects.html:40
 msgid "Diện tích"

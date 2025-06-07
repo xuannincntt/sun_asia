@@ -340,8 +340,8 @@ msgid "Tất cả tỉnh thành"
 msgstr "All Provinces"
 
 #: .\templates\projects\projects.html:27
-msgid "Danh mục"
-msgstr "Category"
+msgid "Sản phẩm"
+msgstr "Product"
 
 #: .\templates\projects\projects.html:40
 msgid "Diện tích"

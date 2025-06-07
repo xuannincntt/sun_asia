@@ -478,14 +478,15 @@ section {
 
 .address-contain .address-box.end p {
     padding: 1rem;
-    background-color: var(--bg-color);
+    background-color: var(--sd-text-color);
+    color: var(--white-color);
     transition: .5s ease;
     cursor: pointer;
     border-radius: .5rem;
 }
 
 .address-contain .address-box.end p:hover {
-    background-color: var(--hover-color);
+    box-shadow: 0 0 1rem var(--sd-text-color);
 }
 
 .address-popup-content {
@@ -555,5 +556,5 @@ section {
 
 .btn-submit {
     background: var(--sd-text-color);
-    color: var(--bg-color);
+    color: var(--white-color);
 }

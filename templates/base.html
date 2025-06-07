@@ -25,7 +25,7 @@
     })();
 </script>
 <!--End of Tawk.to Script-->
-<body class="darkMode">
+<body>
     <header class="header">
         <!-- Logo -->
         <div class="logo">
@@ -275,6 +275,10 @@
                     notificationBox.classList.remove('show');
                 }
             }); 
+        }
+
+        if (localStorage.getItem("darkMode") === "enabled") {
+            document.body.classList.toggle("darkMode");
         }
 
         document.addEventListener("DOMContentLoaded", function () {

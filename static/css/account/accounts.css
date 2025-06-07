@@ -3,16 +3,16 @@ section {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(90deg, #e2e2e2, #c9d6ff);
+    background: var(--sd-bg-color);
 }
 
 .account-container {
     position: relative;
     width: 850px;
     height: 550px;
-    background-color: #fff;
+    background-color: var(--bg-color);
     border-radius: 30px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 30px var(--shadow-color);
     margin: 20px;
     overflow: hidden;
 }
@@ -22,10 +22,10 @@ section {
     right: 0;
     width: 50%;
     height: 100%;
-    background-color: #fff;
+    background-color: var(--bg-color);
     display: flex;
     align-items: center;
-    color: #333;
+    color: var(--text-color);
     text-align: center;
     padding: 40px;
     z-index: 1;
@@ -90,7 +90,7 @@ form {
 
 .forgot-link a {
     font-size: 14.5px;
-    color: #333;
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -103,7 +103,7 @@ form {
     border: none;
     cursor: pointer;
     font-size: 1.5rem;
-    color: #fff;
+    color: var(--white-color);
     font-weight: 600;
 }
 
@@ -115,10 +115,10 @@ form {
 .social-icons a {
     display: inline-flex;
     padding: 10px;
-    border: 2px solid #ccc;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 24px;
-    color: #333;
+    color: var(--text-color);
     text-decoration: none;
     margin: 0 8px;
 }
@@ -160,7 +160,7 @@ form {
     position: absolute;
     width: 50%;
     height: 100%;
-    color: #fff;
+    color: var(--white-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -197,6 +197,6 @@ form {
     width: 160px;
     height: 46px;
     background-color: transparent;
-    border: 2px solid #fff;
+    border: 2px solid var(--white-color);
     box-shadow: none;
 }

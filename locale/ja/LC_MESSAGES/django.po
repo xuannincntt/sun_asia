@@ -336,8 +336,8 @@ msgid "Tất cả tỉnh thành"
 msgstr "すべての都道府県"
 
 #: .\templates\projects\projects.html:27
-msgid "Danh mục"
-msgstr "カテゴリー"
+msgid "Sản phẩm"
+msgstr "製品"
 
 #: .\templates\projects\projects.html:40
 msgid "Diện tích"
