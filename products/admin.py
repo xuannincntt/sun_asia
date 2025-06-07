@@ -55,7 +55,7 @@ class ProductAdmin(admin.ModelAdmin):
                         if image.image_file.path and os.path.exists(image.image_file.path):
                             os.remove(image.image_file.path)
 
-                        # image.image_file = None
+                        image.image_file = None
                         image.save()
                     else:
                         self.message_user(request, "⚠️ Upload thất bại: Không có secure_url.", level='error')

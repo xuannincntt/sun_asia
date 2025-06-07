@@ -1,6 +1,6 @@
 from django.shortcuts import render
 # from .models import Product
-from .models import Product, ProductImage
+from .models import Product, ProductImage, Category
 from accounts.models import User
 from django.shortcuts import get_object_or_404
 from django.utils.timezone import now
@@ -12,6 +12,7 @@ image_prefetch = Prefetch(
     queryset=ProductImage.objects.order_by('created_at'),
     to_attr='prefetched_images'
 )
+    
 
 
 # Create your views here.
@@ -19,6 +20,8 @@ def product_list(request):
     # Lấy thông tin user đang đăng nhập từ session
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
+
+    categories = Category.objects.all()
 
     products = Product.objects.all().prefetch_related(image_prefetch)
 
@@ -31,7 +34,8 @@ def product_list(request):
     return render(request, 'product/product_list.html', {
         'timestamp': now().timestamp(), 
         'user': user,
-        'products': products})
+        'products': products,
+        'categories': categories})
 
 def product_detail(request, slug):
     # Lấy thông tin user đang đăng nhập từ session

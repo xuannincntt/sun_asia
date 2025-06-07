@@ -3,23 +3,137 @@ from django.conf import settings
 from django.utils import translation
 from accounts.models import User
 from order.models import Address, Order, OrderItem
+from products.models import Product, Category, ProductImage
 from django.utils.timezone import now
 from django.views.decorators.cache import never_cache
+from django.db.models import Prefetch
+import json
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+
+image_prefetch = Prefetch(
+    'images',
+    queryset=ProductImage.objects.order_by('created_at'),
+    to_attr='prefetched_images'
+)
 
 def home(request):
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
     return render(request, 'home.html', {'user': user})
 
+def product_by_category(request, cat_slug):
+    user_id = request.session.get('user_id')
+    user = User.objects.get(id=user_id) if user_id else None
+
+    category = Category.objects.filter(slug=cat_slug).first() if cat_slug else None
+    
+    categories = Category.objects.all()
+
+    if category:
+        products = Product.objects.filter(category=category).prefetch_related(image_prefetch)
+
+        for product in products:
+            first_image = product.images.all().order_by('created_at').first()
+            product.image_url = first_image.image_url if first_image else ""
+    else:
+        products = None
+
+    
+    print(list(products))
+
+    return render(request, 'product/product_list.html', {
+        'timestamp': now().timestamp(), 
+        'user': user,
+        'products': products,
+        'selected_category': category if category else {
+            'slug': "tat-ca-san-pham"
+        },
+        'categories': categories})
+
 def logout_view(request):
     del request.session['user_id']
     return redirect('/')
 
+@csrf_exempt
 def cart(request):
-    cart = request.COOKIES.get('cart', [])
+    cart = request.session.get('cart',[])
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
-    return render(request, 'cart.html', {'timestamp': now().timestamp(), 'user': user})
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            product_slug = data.get('productSlug')
+            product_id = data.get('productId')
+
+            # Lấy sản phẩm trong bảng
+            selected_product = Product.objects.filter(slug=product_slug).first() if product_slug else None
+            if not selected_product:
+                selected_product = Product.objects.filter(id=product_id).first()
+
+            if not selected_product:
+                return JsonResponse({'message': 'Không tìm thấy sản phẩm này.'}, status=404)
+            
+            # Kiểm tra sản phẩm có trong cart chưa
+            product_index_in_cart = None
+            for index in range(0,len(cart)):
+                if cart[index]['id'] == selected_product.id or cart[index]['slug'] == selected_product.slug:
+                    product_index_in_cart = index
+                    break
+
+            print(product_index_in_cart)
+            
+            if product_index_in_cart:
+                current_quantity = cart[product_index_in_cart]['quantity']
+                cart[product_index_in_cart]['quantity'] = current_quantity + 1
+                price = cart[product_index_in_cart]['price']
+                cart[product_index_in_cart]['subtotal'] = (current_quantity + 1)*price
+                
+
+            else:
+                first_image = selected_product.images.all().order_by('created_at').first()
+                sale_price = selected_product.sale_price
+                org_price = selected_product.org_price
+                new_item = {
+                    "id": selected_product.id,
+                    "name": selected_product.name,
+                    "slug": selected_product.slug,
+                    "price": sale_price if sale_price >= 0 and sale_price != org_price else org_price,
+                    "image_url": first_image.image_url if first_image else "",
+                    "quantity": 1,
+                    "subtotal": selected_product.sale_price if selected_product.sale_price > 0 and selected_product.sale_price != selected_product.org_price else selected_product.org_price
+                }
+                cart.append(new_item)
+
+            request.session['cart'] = cart
+            return JsonResponse({'message': 'Thêm vào giỏ hàng thành công!'}, status=200)
+
+        except json.JSONDecodeError:
+            return JsonResponse({'message': 'Có lỗi xảy ra. Hãy thử lại sau.'}, status=400)
+    total_quantity = 0
+    total_temp = 0
+    total_vat = 0
+    total_discount = 0
+    print(cart)
+    print(type(cart))  
+    for item in cart:
+        print(item)
+        item_quantity = int(item['quantity'])
+        item_price = int(item['price'])
+        total_quantity += item_quantity if item_quantity > 0 else 0
+        total_temp += item_quantity * item_price
+
+    return render(request, 'cart.html', {
+        'timestamp': now().timestamp(), 
+        'user': user,
+        'cart': {
+            'cart_items': cart,
+            'total_quantity': total_quantity,
+            'total_temp': total_temp,
+            'total_vat': total_vat,
+            'total_discount': total_discount
+        }})
 
 @never_cache
 def checkout(request):

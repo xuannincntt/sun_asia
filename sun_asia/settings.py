@@ -79,6 +79,12 @@ TEMPLATES = [
     },
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
 WSGI_APPLICATION = 'sun_asia.wsgi.application'
 
 
