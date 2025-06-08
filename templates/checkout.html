@@ -29,6 +29,13 @@
                 <div class="section-order-address">
                     <div class="address-title align-left">Thông tin nhận hàng</div>
                     <hr style="width: 100%;" />
+                    <label style="display: none;">
+                        <input
+                            type="text"
+                            value="{{mode}}"
+                            
+                        />
+                    </label>
                     <div class="address-selection">
 
                         <div class="address-card card-active" >
@@ -60,14 +67,20 @@
                     </div>
                     <div class="address-input">
                         <div class="form-field fullName-field">
-                            <label for="fullName" class="form-label">
+                            <label for="name" class="form-label">
                                 <span class="form-name">Tên người nhận hàng</span>
                                 <input 
                                     type="text"
-                                    id="fullName"
-                                    name="fullName"
+                                    id="name"
+                                    name="name"
                                     placeholder="Nhập họ và tên của bạn"
                                     class="form-input"
+                                    {% if default_address %}
+                                    value="{{default_address.name}}"
+                                    {% else %}
+                                    value=""
+                                    {% endif %}
+                                    
                                 />
                             </label>
                         </div>
@@ -80,7 +93,11 @@
                                     name="email"
                                     placeholder="Nhập email đặt hàng"
                                     class="form-input"
+                                    {% if default_address %}
+                                    value="{{default_address.email}}"
+                                    {% else %}
                                     value=""
+                                    {% endif %}
                                 />
                             </label>
                         </div>
@@ -93,6 +110,11 @@
                                     name="tel"
                                     placeholder="Nhập số điện thoại nhận hàng"
                                     class="form-input"
+                                    {% if default_address %}
+                                    value="{{default_address.tel}}"
+                                    {% else %}
+                                    value=""
+                                    {% endif %}
                                 />
                             </label>
                         </div>
@@ -105,7 +127,11 @@
                                     name="address"
                                     placeholder="Nhập địa chỉ nhận hàng"
                                     class="form-input"
-                                    value="{{default_address.address}}"
+                                    {% if default_address %}
+                                    value="{{default_address.detailed_address}}"
+                                    {% else %}
+                                    value=""
+                                    {% endif %}
                                 />
                             </label>
                         </div>
@@ -118,6 +144,11 @@
                                     name="city"
                                     placeholder="Nhập địa chỉ thành phố"
                                     class="form-input"
+                                    {% if default_address %}
+                                    value="{{default_address.city}}"
+                                    {% else %}
+                                    value=""
+                                    {% endif %}
                                 />
                             </label>
                         </div>
@@ -130,6 +161,11 @@
                                     name="district"
                                     placeholder="Nhập địa chỉ quận/huyện"
                                     class="form-input"
+                                    {% if default_address %}
+                                    value="{{default_address.district}}"
+                                    {% else %}
+                                    value=""
+                                    {% endif %}
                                 />
                             </label>
                         </div>

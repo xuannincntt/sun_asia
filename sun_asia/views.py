@@ -138,11 +138,9 @@ def checkout(request):
     user = User.objects.get(id=user_id) if user_id else None
     cart = request.session.get('cart',[])
     try:
-        default_address = Address.objects.get(creator=user_id)
+        default_address = Address.objects.filter(creator=user, is_default=True).first() if user else None
     except:
-        default_address = {
-            'address': user.fixed_address if user.fixed_address else ''
-        }
+        default_address = None
     if request.method == "POST":
         product_id = request.POST.get('productId')
         product_quantity = request.POST.get('productQuantity')
@@ -171,11 +169,14 @@ def checkout(request):
         total_vat = 0
         total_discount = 0
 
+        request.session['buynow'] = order_items
+
         return render(request, 'checkout.html',
             {
             'timestamp': now().timestamp(), 
             'user': user, 
             'default_address': default_address,
+            'mode': 'buynow',
             'order': {
                 'order_items': order_items,
                 'total_quantity': total_quantity,
@@ -188,11 +189,13 @@ def checkout(request):
     total_quantity, total_temp = get_total_from_cart(cart)
     total_vat = 0
     total_discount = 0
+    
 
     return render(request, 'checkout.html', {
         'timestamp': now().timestamp(), 
         'user': user, 
         'default_address': default_address,
+        'mode': 'cart',
         'order': {
             'order_items': cart,
             'total_quantity': total_quantity,
