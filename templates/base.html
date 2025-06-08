@@ -53,10 +53,10 @@
             <div class="dropdown-nav-projects">
                 <a href="/projects" class="nav-main {% if '/projects' in request.path %}active{% endif %}">{% trans "Dự án" %}</a>
                 <div class="dropdown-projects">
-                    <a href="/projects?type=duoi5.000">{% trans "Dưới 5.000 m²" %}</a>
+                    <a href="/projects?type=duoi5.000">{% trans "Dưới" %} 5.000 m²</a>
                     <a href="/projects?type=10.000">5.000 m² - 10.000 m²</a>
                     <a href="/projects?type=20.000">10.000 m² - 20.000 m²</a>
-                    <a href="/projects?type=tren20.000">{% trans "Trên 20.000 m²" %}</a>
+                    <a href="/projects?type=tren20.000">{% trans "Trên" %} 20.000 m²</a>
                 </div>
             </div>
             <a href="/news" class="nav-main {% if '/news' in request.path %}active{% endif %}">{% trans "Tin tức" %}</a>
@@ -66,29 +66,29 @@
         <div class="actions">
             <a href="#" class="download"><i class="fa-solid fa-download"></i> {% trans "Tải ứng dụng" %}</a>
             <span class="icon" id="change-color"><i class="bx bx-sun"></i><i class="bx bx-moon"></i></span>
-            <span class="icon bell"><i class="fa-regular fa-bell"></i></span>
-            <div class="notification-box">
-                <div class="tab">
-                    <a href="#" class="active">{% trans "Tất cả" %}</a>
-                    <a href="#">{% trans "Đơn hàng" %}</a>
-                    <a href="#">{% trans "Khuyến mãi" %} <span class="badge">1</span></a>
-                    <a href="#">{% trans "Tài khoản" %}</a>
-                    <a href="#">{% trans "Khác" %}</a>
-                </div>
-                <div class="notification-body">
-                    <div class="notification-content">
-                        <div class="icon">🎟️</div>
-                        <div class="text">
-                            <div class="title">👋 Quà làm quen, chiêu đãi voucher đăng tin bán 👋</div>
-                            <div class="description">
-                            ✨ Tặng bạn 05 voucher Miễn Phí Tin Thường bán nhà riêng, nhà phố và đất nền dưới 5 tỷ đã có tại “Khuyến mãi” khi đăng tin
+                {% if user %}
+                    <span class="icon bell"><i class="fa-regular fa-bell"></i></span>
+                    <div class="notification-box">
+                        <div class="tab">
+                            <a href="#" class="active">{% trans "Tất cả" %}</a>
+                            <a href="#">{% trans "Đơn hàng" %}</a>
+                            <a href="#">{% trans "Khuyến mãi" %} <span class="badge">1</span></a>
+                            <a href="#">{% trans "Tài khoản" %}</a>
+                            <a href="#">{% trans "Khác" %}</a>
+                        </div>
+                        <div class="notification-body">
+                            <div class="notification-content">
+                                <div class="icon">🎟️</div>
+                                <div class="text">
+                                    <div class="title">👋 Quà làm quen, chiêu đãi voucher đăng tin bán 👋</div>
+                                    <div class="description">
+                                    ✨ Tặng bạn 05 voucher Miễn Phí Tin Thường bán nhà riêng, nhà phố và đất nền dưới 5 tỷ đã có tại “Khuyến mãi” khi đăng tin
+                                    </div>
+                                    <div class="date">30/05/2025</div>
+                                </div>
                             </div>
-                            <div class="date">30/05/2025</div>
                         </div>
                     </div>
-                </div>
-            </div>
-                {% if user %}
                     <div class="user">
                         {% load user_filters %}
                         <div class="avatar">{{ user.username|last_name_initial }}</div>

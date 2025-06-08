@@ -52,12 +52,18 @@ msgid "Dự án"
 msgstr "プロジェクト"
 
 #: .\templates\base.html:56
-msgid "Dưới 5.000 m²"
-msgstr "5,000㎡未満"
+msgid "Dưới"
+msgstr "未満"
 
 #: .\templates\base.html:59
-msgid "Trên 20.000 m²"
-msgstr "20,000㎡以上"
+msgid "Trên"
+msgstr "以上"
+
+msgid "Chủ đầu tư"
+msgstr "投資家"
+
+msgid "Thành phố"
+msgstr "市"
 
 #: .\templates\base.html:62 .\templates\base.html:150
 #: .\templates\news\news.html:7

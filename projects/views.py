@@ -5,6 +5,7 @@ from accounts.models import User
 from .models import Project
 from django.utils.timezone import now
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 def projects(request):
     user_id = request.session.get('user_id')
@@ -61,10 +62,15 @@ def projects(request):
         if p:
             items = [i.strip() for i in p.split(',')]
             product_set.update(items)
+    projects = list(projects)  # đảm bảo là list, không phải QuerySet
+
+    paginator = Paginator(projects, 4)  # 4 project mỗi trang
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'user': user,
-        'projects': projects,
+        'projects': page_obj,
         'provinces': sorted(provinces),
         'selected_tinh_thanh': selected_tinh_thanh,
         'product_list': sorted(product_set),

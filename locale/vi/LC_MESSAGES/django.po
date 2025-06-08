@@ -52,12 +52,12 @@ msgid "Dự án"
 msgstr "Dự án"
 
 #: .\templates\base.html:56
-msgid "Dưới 5.000 m²"
-msgstr "Dưới 5.000 m²"
+msgid "Dưới"
+msgstr "Dưới"
 
 #: .\templates\base.html:59
-msgid "Trên 20.000 m²"
-msgstr "Trên 20.000 m²"
+msgid "Trên"
+msgstr "Trên"
 
 #: .\templates\base.html:62 .\templates\base.html:150
 #: .\templates\news\news.html:7
@@ -348,7 +348,11 @@ msgstr "Sản phẩm"
 msgid "Diện tích"
 msgstr "Diện tích"
 
+msgid "Chủ đầu tư"
+msgstr "Chủ đầu tư"
 
+msgid "Thành phố"
+msgstr "Thành phố"
 
 
 msgid "Mật khẩu"

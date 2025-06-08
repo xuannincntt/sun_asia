@@ -62,6 +62,7 @@ section {
 .project-left form select {
     width: 100%;
     padding: 0.8rem 1rem;
+    margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     background-color: var(--hover-color);
@@ -120,4 +121,54 @@ section {
 .project-right-item p {
     font-size: 1.5rem;
     padding: 0rem 2rem 1rem 2rem;
+}
+
+.pagination {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+    color: var(--text-color);
+    font-size: 1.4rem;
+}
+
+.pagination-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination-list li {
+    margin: 0 3px;
+}
+
+.pagination-list a,
+.pagination-list span {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    text-decoration: none;
+    color: #333;
+    background-color: var(--white-color);
+    font-weight: 500;
+}
+
+.pagination-list a:hover {
+    background-color: var(--hover-color);
+    color: var(--text-hover);
+}
+
+.pagination-list .active {
+    background-color: var(--sd-text-color);
+    color: var(--white-color);
+    border-color: var(--text-hover);
+}
+
+.pagination-list .dots {
+    padding: 8px 10px;
+    color: #888;
+    cursor: default;
+    border: none;
 }

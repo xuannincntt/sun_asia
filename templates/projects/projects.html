@@ -33,12 +33,12 @@
                         {{ product }}
                     </label>
                 {% endfor %}
-                <h3>Diện tích</h3>
+                <h3>{% trans "Diện tích" %}</h3>
                 <label class="checkbox-item">
                     <input type="checkbox" name="project_type" value="5000-" 
                     {% if '5000-' in selected_area_ranges %}checked{% endif %}
                     onchange="document.getElementById('filter-form').submit();">
-                    Dưới 5.000 m²
+                    {% trans "Dưới" %} 5.000 m²
                 </label>
                 <label class="checkbox-item">
                     <input type="checkbox" name="project_type" value="5000-10000" 
@@ -56,7 +56,7 @@
                     <input type="checkbox" name="project_type" value="20000+" 
                     {% if '20000+' in selected_area_ranges %}checked{% endif %}
                     onchange="document.getElementById('filter-form').submit();">
-                    Trên 20.000 m²
+                    {% trans "Trên" %} 20.000 m²
                 </label>
             </form>
         </div>
@@ -66,19 +66,46 @@
                 <img src="{{ project.display_image }}" alt="">
                 <h3>{{ project.name }}</h3>
                 {% if project.area %}
-                <p>Diện tích: {{ project.area }} m²</p>
+                <p>{% trans "Diện tích" %}: {{ project.area }} m²</p>
                 {% endif %}
                 {% if project.investor %}
-                <p>Chủ đầu tư: {{ project.investor }}</p>
+                <p>{% trans "Chủ đầu tư" %}: {{ project.investor }}</p>
                 {% endif %}
                 {% if project.product %}
-                <p>Sản phẩm: {{ project.product }}</p>
+                <p>{% trans "Sản phẩm" %}: {{ project.product }}</p>
                 {% endif %}
                 {% if project.city %}
-                <p>Thành phố: {{ project.city }}</p>
+                <p>{% trans "Thành phố" %}: {{ project.city }}</p>
                 {% endif %}
             </div>
             {% endfor %}
+            <div class="pagination">
+                <ul class="pagination-list">
+                    {% if projects.has_previous %}
+                    <li><a href="?page={{ projects.previous_page_number }}">‹</a></li>
+                    {% endif %}
+                    {% for num in projects.paginator.page_range %}
+                    {% if num == projects.number %}
+                        <li><span class="active">{{ num }}</span></li>
+                    {% elif num >= projects.number|add:'-2' and num <= projects.number|add:'2' %}
+                        <li><a href="?{% if request.GET.tinh_thanh %}tinh_thanh={{ request.GET.tinh_thanh }}&{% endif %}{% for p in request.GET.product %}product={{ p }}&{% endfor %}page={{ num }}">{{ num }}</a></li>
+                    {% elif num == 1 %}
+                        <li><a href="?page=1">1</a></li>
+                        {% if projects.number > 4 %}
+                        <li><span class="dots">...</span></li>
+                        {% endif %}
+                    {% elif num == projects.paginator.num_pages %}
+                        {% if projects.number < projects.paginator.num_pages|add:'-3' %}
+                        <li><span class="dots">...</span></li>
+                        {% endif %}
+                        <li><a href="?{% if request.GET.tinh_thanh %}tinh_thanh={{ request.GET.tinh_thanh }}&{% endif %}{% for p in request.GET.product %}product={{ p }}&{% endfor %}page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if projects.has_next %}
+                    <li><a href="?page={{ projects.next_page_number }}">›</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
     </section>
 {% endblock %}
