@@ -131,6 +131,7 @@ def cart(request):
         }})
 
 @never_cache
+@csrf_exempt
 def checkout(request):
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
