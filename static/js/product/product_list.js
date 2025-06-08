@@ -6,7 +6,9 @@ let buyBtns;
 let filterForm;
 
 const popup = document.getElementsByClassName("section-popup")[0];
+const popupContainer = document.getElementsByClassName("popup-container")[0];
 const popupHeader = document.getElementsByClassName("popup-header")[0];
+const popupContent = document.getElementsByClassName("popup-content")[0];
 const popupText = document.getElementsByClassName("popup-text")[0];
 
 
@@ -71,18 +73,119 @@ const setBuyBtnsOnClick = () => {
             const productInfo = productCard.getAttribute("data-index").split("_");
             const [productSlug, productId] = productInfo;
             // buyProduct(productSlug, productId)
+            const productImageTag = productCard.querySelector(".product-card-image");
+            const productNameTag = productCard.querySelector(".product-card-name");
+            const orgPriceTag = productCard.querySelector(".product-card-orgPrice");
+            const orgPrice = orgPriceTag? orgPriceTag.textContent: "0đ";
+            const salePriceTag = productCard.querySelector(".product-card-salePrice");
+            console.log(salePriceTag.textContent);
+            showBuyNowPopup(productId, productImageTag.src, productNameTag.textContent, orgPrice, salePriceTag.textContent);
         });
     });
 };
 
-const showBuyNowPopup = (productImage, productName, productOrgPrice, productSalePrice) => {
+const showBuyNowPopup = (productId, productImage, productName, productOrgPrice, productSalePrice) => {
+    const buyNowContent = `
+        <div class="popup-close align-right">
+            <i class='bx bx-x close-icon'></i> 
+        </div>
+        <div class="popup-product">
+            <div class="popup-section-image align-center" >
+                <img class="popup-image" src=${productImage} alt="" />
+            </div>
+            <form class="popup-section-form" action="/checkout/" method="POST">
+                <label for="productId" style="display: none;">
+                    <input type="text" id="productId" name="productId" value=${productId} />
+                </label>
+                <div class="popup-name">${productName}</div>
+                <div class="popup-price">
+                    ${productOrgPrice == productSalePrice?
+                        `
+                        <div class="popup-salePrice align-left">${productSalePrice}</div>`:
+                        `
+                        <div class="popup-orgPrice align-left">${productOrgPrice}</div>
+                        <div class="popup-salePrice align-left">${productSalePrice}</div>
+                        `
+                    }
+                <label class="popup-quantity" for="productQuantity">
+                    <span class="popup-quantity-name">Số lượng</span>
+                    <div class="popup-quantity-controller">
+                        <div class="popup-minus-btn align-center">
+                            <i class='bx bx-minus minus-icon'></i> 
+                        </div>
+                        <div class="popup-quantity-input align-center">
+                            <input
+                                type="number"
+                                id="productQuantity"
+                                name="productQuantity"
+                                placeholder="0"
+                                value="1"
+                                class="quantity-input"
+                            />
+                        </div>
+                        <div class="popup-add-btn align-center">
+                            <i class='bx bx-plus plus-icon'></i> 
+                        </div>
+                    </div>
+                </label>
+                <div class="popup-submit">  
+                    <button type="submit" class="action-btn proceed-btn align-center">
+                        Mua hàng
+                    </button>
+                </div>
+                
+            </form>
+        </div>`;
+    popupContainer.innerHTML = buyNowContent;
+    // popupContainer.style.width = "40%";
+    const closeBtn = popupContainer.querySelector(".close-icon");
+    const increaseBtn = popupContainer.querySelector(".plus-icon");
+    const decreaseBtn = popupContainer.querySelector(".minus-icon");
+    const quantityInput = popupContainer.querySelector("#productQuantity");
+    togglePopup();
+    closeBtn.addEventListener("click", () => {
+        togglePopup();
+    });
+    
+    increaseBtn.addEventListener("click", () => {
+        const currentQuantity = parseInt(quantityInput.getAttribute("value")) || 1;
+        quantityInput.setAttribute("value", currentQuantity + 1);
 
+    });
+
+    decreaseBtn.addEventListener("click", () => {
+        const currentQuantity = parseInt(quantityInput.getAttribute("value")) || 1;
+        if (currentQuantity <= 1){
+            return;
+        }
+        quantityInput.setAttribute("value", currentQuantity - 1);
+    });
+    
 };
 
 
 const showAddCartResponse = (message) => {
-    const continueBtn = document.querySelector(".continue-btn");
-    const cartNavBtn = document.querySelector("cartNav-btn");
+    const notifyContent = `
+        <div class="popup-header align-center">
+                Thông báo
+            </div>
+        <div class="popup-content">
+            <div class="popup-text align-center">
+                Thêm vào giỏ hàng thành công
+            </div>
+            <div class="popup-action">
+                <button type="button" class="action-btn continue-btn align-center">
+                    Tiếp tục mua sắm
+                </button>
+                <a href="/cart" class="action-btn cartNav-btn align-center">
+                    Xem giỏ hàng
+                </button>
+            </div>
+        </div>`;
+    popupContainer.innerHTML = notifyContent;
+    // popupContainer.style.width = "35%";
+    const continueBtn = popupContainer.querySelector(".continue-btn");
+    const cartNavBtn = popupContainer.querySelector("cartNav-btn");
     popupText.textContent = message;
     togglePopup();
     continueBtn.addEventListener('click', () => {
@@ -93,7 +196,9 @@ const showAddCartResponse = (message) => {
 
 const togglePopup = () => {
     popup.style.display = (popup.style.display === 'flex') ? 'none' : 'flex';   
-}
+};
+
+
 
 
 

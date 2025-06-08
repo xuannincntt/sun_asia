@@ -11,6 +11,7 @@ class Address(models.Model):
     district = models.TextField(null=True, blank=True) 
     email = models.EmailField(unique=True)
     tel = models.TextField(null=False, blank=True) 
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Address {self.detailed_address} with belongs to email {self.email} and tel {self.tel} created by {self.creator.username}"

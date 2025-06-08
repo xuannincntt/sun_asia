@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="order-page-content">
-        <form action="/order/new" method="POST" id="section-order-form">
+        <form action="/order" method="POST" id="section-order-form">
             <div class="section-order-input">
             
                 <div class="section-order-address">
@@ -247,61 +247,38 @@
                 <hr style="width: 100%;" />
                 <div class="total-info">
                     <div class="total-info-products">
-                        <div class="product-card">
-                            <div class="product-card-image">
-                                <img
-                                    src="{% static 'images/product_placeholder.jpg' %}"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="product-card-info">
-                                <div class="card-info-row1">
-                                    <div class="product-card-name align-left">Đèn LED chuyên dụng đơn sắc HC-BR25W</div>
-                                </div>
-                                <div class="card-info-row2">
-                                    <div class="product-card-price align-left">430,000đ</div>
-                                    <div class="product-card-quantity align-center">x3</div>
-                                    <div class="product-card-subtotal align-right">1,290,000đ</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-card-image">
-                                <img
-                                    src="{% static 'images/product_placeholder.jpg' %}"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="product-card-info">
-                                <div class="card-info-row1">
-                                    <div class="product-card-name align-left">Đèn LED chuyên dụng đơn sắc HC-BR25W</div>
+                        {% if order %}
+                            {% for item in order.order_items %}
+                            <div class="product-card">
+                                <div class="product-card-image">
+                                    {% if item.image_url == "" %}
+                                    <img
+                                        src="https://res.cloudinary.com/dx73jb4d8/image/upload/v1749375292/placeholder-image_sdop83.jpg"
+                                        alt=""
+                                    />
+                                    {% else %}
+                                    <img
+                                        src="{{item.image_url}}"
+                                        alt=""
+                                    />
+                                    {% endif %}
                                     
                                 </div>
-                                <div class="card-info-row2">
-                                    <div class="product-card-price align-left">430,000đ</div>
-                                    <div class="product-card-quantity align-center">x3</div>
-                                    <div class="product-card-subtotal align-right">1,290,000đ</div>
+                                <div class="product-card-info">
+                                    <div class="card-info-row1">
+                                        <div class="product-card-name align-left">{{item.name}}</div>
+                                    </div>
+                                    <div class="card-info-row2">
+                                        <div class="product-card-price align-left">{{item.price}}</div>
+                                        <div class="product-card-quantity align-center">x{{item.quantity}}</div>
+                                        <div class="product-card-subtotal align-right">{{item.subtotal}}đ</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-card-image">
-                                <img
-                                    src="{% static 'images/product_placeholder.jpg' %}"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="product-card-info">
-                                <div class="card-info-row1">
-                                    <div class="product-card-name align-left">Đèn LED chuyên dụng đơn sắc HC-BR25W</div>
-                                </div>
-                                <div class="card-info-row2">
-                                    <div class="product-card-price align-left">430,000đ</div>
-                                    <div class="product-card-quantity align-center">x3</div>
-                                    <div class="product-card-subtotal align-right">1,290,000đ</div>
-                                </div>
-                            </div>
-                        </div>
+                            {% endfor %}
+                        {% else %}
+                        <div class="align-left" style="font-size: 2rem;">Không có sản phẩm nào.</div>
+                        {% endif %}
                     </div>
                     <div class="total-info-process">
                         <div class="total-row">

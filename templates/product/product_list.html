@@ -151,17 +151,18 @@
                             </div>
                             <div class="product-card-more">
                                 <div class="product-card-price align-right">
-                                    <div class="product-card-orgPrice align-right">
-                                        500,000đ
-                                    </div>
-                                    <div class="product-card-salePrice align-right">
-                                        420,000
-                                    </div>
+                                    {% if product.sale_price == product.org_price  %}
+                                    <div class="product-card-salePrice align-right">{{product.sale_price}}đ</div>
+                                    {% else %}
+                                    <div class="product-card-orgPrice align-right">{{product.org_price}}đ</div>
+                                    <div class="product-card-salePrice align-right">{{product.sale_price}}đ</div>
+                                    {% endif %}
+                                    
                                 </div>
                                 
                             </div>
                             <div class="product-card-action">
-                                {% csrf_token %}
+                                
                                 <button 
                                     type="button"
                                     class="action-btn cart-btn"

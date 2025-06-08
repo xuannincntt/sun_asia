@@ -8,8 +8,9 @@ from django.utils.timezone import now
 from django.views.decorators.cache import never_cache
 from django.db.models import Prefetch
 import json
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from .utils import get_total_from_cart
 
 
 image_prefetch = Prefetch(
@@ -23,6 +24,7 @@ def home(request):
     user = User.objects.get(id=user_id) if user_id else None
     return render(request, 'home.html', {'user': user})
 
+@never_cache
 def product_by_category(request, cat_slug):
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
@@ -41,7 +43,7 @@ def product_by_category(request, cat_slug):
         products = None
 
     
-    print(list(products))
+    # print(list(products))
 
     return render(request, 'product/product_list.html', {
         'timestamp': now().timestamp(), 
@@ -56,6 +58,7 @@ def logout_view(request):
     del request.session['user_id']
     return redirect('/')
 
+@never_cache
 @csrf_exempt
 def cart(request):
     cart = request.session.get('cart',[])
@@ -111,18 +114,10 @@ def cart(request):
 
         except json.JSONDecodeError:
             return JsonResponse({'message': 'Có lỗi xảy ra. Hãy thử lại sau.'}, status=400)
-    total_quantity = 0
-    total_temp = 0
+    
+    total_quantity, total_temp = get_total_from_cart(cart)
     total_vat = 0
     total_discount = 0
-    print(cart)
-    print(type(cart))  
-    for item in cart:
-        print(item)
-        item_quantity = int(item['quantity'])
-        item_price = int(item['price'])
-        total_quantity += item_quantity if item_quantity > 0 else 0
-        total_temp += item_quantity * item_price
 
     return render(request, 'cart.html', {
         'timestamp': now().timestamp(), 
@@ -139,6 +134,7 @@ def cart(request):
 def checkout(request):
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
+    cart = request.session.get('cart',[])
     try:
         default_address = Address.objects.get(creator=user_id)
     except:
@@ -146,5 +142,56 @@ def checkout(request):
             'address': user.fixed_address if user.fixed_address else ''
         }
     if request.method == "POST":
-        return render(request, 'order/order_success.html')
-    return render(request, 'checkout.html', {'timestamp': now().timestamp(), 'user': user, 'default_address': default_address })
+        product_id = request.POST.get('productId')
+        product_quantity = request.POST.get('productQuantity')
+
+        selected_product = Product.objects.filter(id=product_id).first() if product_id else None
+        if not selected_product:
+            return HttpResponse({'message': 'Không tìm thấy sản phẩm này.'}, status=404)
+        
+        first_image = selected_product.images.all().order_by('created_at').first()
+        sale_price = selected_product.sale_price
+        org_price = selected_product.org_price
+        selected_price = sale_price if sale_price >= 0 and sale_price != org_price else org_price
+        order_items = [
+            
+            {
+                "slug": selected_product.slug,
+                "price": selected_price,
+                "image_url": first_image.image_url if first_image else "",
+                "quantity": product_quantity,
+                "subtotal": product_quantity*selected_price
+            }
+        ]
+        total_quantity, total_temp = get_total_from_cart(order_items)
+        total_vat = 0
+        total_discount = 0
+
+        return render(request, 'checkout.html',
+            {
+            'timestamp': now().timestamp(), 
+            'user': user, 
+            'default_address': default_address,
+            'order': {
+                'order_items': order_items,
+                'total_quantity': total_quantity,
+                'total_temp': total_temp,
+                'total_vat': total_vat,
+                'total_discount': total_discount
+            }})
+    
+    total_quantity, total_temp = get_total_from_cart(cart)
+    total_vat = 0
+    total_discount = 0
+
+    return render(request, 'checkout.html', {
+        'timestamp': now().timestamp(), 
+        'user': user, 
+        'default_address': default_address,
+        'order': {
+            'order_items': cart,
+            'total_quantity': total_quantity,
+            'total_temp': total_temp,
+            'total_vat': total_vat,
+            'total_discount': total_discount
+        }})

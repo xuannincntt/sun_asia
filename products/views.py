@@ -29,7 +29,7 @@ def product_list(request):
         first_image = product.images.all().order_by('created_at').first()
         product.image_url = first_image.image_url if first_image else ""
     
-    print(list(products))
+    # print(list(products))
 
     return render(request, 'product/product_list.html', {
         'timestamp': now().timestamp(), 
