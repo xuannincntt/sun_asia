@@ -103,19 +103,19 @@
             <div class="section-total-process">
                 <div class="total-row">
                     <div class="total-row-label align-left">Số lượng</div>
-                    <div class="total-row-value align-right" id="total-quantity"></div>
+                    <div class="total-row-value align-right" id="total-quantity">{{cart.total_quantity}}</div>
                 </div>
                 <div class="total-row">
                     <div class="total-row-label align-left">Tổng cộng</div>
-                    <div class="total-row-value align-right" id="total-temp">3,870,000<span>đ</span></div>
+                    <div class="total-row-value align-right" id="total-temp">{{cart.total_temp}}<span>đ</span></div>
                 </div>
                 <div class="total-row">
                     <div class="total-row-label align-left">VAT</div>
-                    <div class="total-row-value align-right" id="total-vat">0<span>đ</span></div>
+                    <div class="total-row-value align-right" id="total-vat">{{cart.total_vat}}<span>đ</span></div>
                 </div>
                 <div class="total-row">
                     <div class="total-row-label align-left">Giảm giá</div>
-                    <div class="total-row-value align-right" id="total-discount">0<span>đ</span></div>
+                    <div class="total-row-value align-right" id="total-discount">{{cart.total_discount}}<span>đ</span></div>
                 </div>
             </div>
             <div class="section-total-coupon">
@@ -140,7 +140,7 @@
             <div class="section-total-final">
                 <div class="total-row">
                     <div class="total-row-label align-left">Tổng tiền</div>
-                    <div class="total-row-value align-right" id="total-final">3,870,000<span>đ</span></div>
+                    <div class="total-row-value align-right" id="total-final">{{cart.total_final}}<span>đ</span></div>
                 </div>
             </div>
         </div>

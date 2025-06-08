@@ -265,7 +265,7 @@
                                     
                                 </div>
                                 <div class="product-card-info">
-                                    <div class="card-info-row1">
+                                    <div class="card-info-row1 align-left">
                                         <div class="product-card-name align-left">{{item.name}}</div>
                                     </div>
                                     <div class="card-info-row2">
@@ -283,21 +283,21 @@
                     <div class="total-info-process">
                         <div class="total-row">
                             <div class="total-row-label align-left">Tổng cộng</div>
-                            <div class="total-row-value align-right">3,870,000đ</div>
+                            <div class="total-row-value align-right">{{order.total_temp}}đ</div>
                         </div>
                         <div class="total-row">
                             <div class="total-row-label align-left">VAT</div>
-                            <div class="total-row-value align-right">0đ</div>
+                            <div class="total-row-value align-right">{{order.total_vat}}đ</div>
                         </div>
                         <div class="total-row">
                             <div class="total-row-label align-left">Giảm giá</div>
-                            <div class="total-row-value align-right">-20,000đ</div>
+                            <div class="total-row-value align-right">{{order.total_discount}}đ</div>
                         </div>
                     </div>
                     <div class="total-info-final">
                         <div class="total-row">
                             <div class="total-row-label align-left">Tổng tiền</div>
-                            <div class="total-row-value align-right">3,850,000đ</div>
+                            <div class="total-row-value align-right">{{order.total_final}}đ</div>
                         </div>
                     </div>
                 </div>

@@ -127,7 +127,8 @@ def cart(request):
             'total_quantity': total_quantity,
             'total_temp': total_temp,
             'total_vat': total_vat,
-            'total_discount': total_discount
+            'total_discount': total_discount,
+            'total_final': total_temp + total_vat - total_discount
         }})
 
 @never_cache
@@ -157,6 +158,8 @@ def checkout(request):
         order_items = [
             
             {
+                "id": selected_product.id,
+                "name": selected_product.name,
                 "slug": selected_product.slug,
                 "price": selected_price,
                 "image_url": first_image.image_url if first_image else "",
@@ -178,7 +181,8 @@ def checkout(request):
                 'total_quantity': total_quantity,
                 'total_temp': total_temp,
                 'total_vat': total_vat,
-                'total_discount': total_discount
+                'total_discount': total_discount,
+                'total_final': total_temp + total_vat - total_discount
             }})
     
     total_quantity, total_temp = get_total_from_cart(cart)
@@ -194,5 +198,6 @@ def checkout(request):
             'total_quantity': total_quantity,
             'total_temp': total_temp,
             'total_vat': total_vat,
-            'total_discount': total_discount
+            'total_discount': total_discount,
+            'total_final': total_temp + total_vat - total_discount
         }})
