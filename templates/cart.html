@@ -50,16 +50,23 @@
                         <th class="align-right">Thành tiền</th>
                     </tr>
                 </thead>
+                {% if cart %}
                 <tbody>
+                    {% for item in cart.cart_items %}
                     <tr class="cart-table-data">
                         <td class="remove-item-container align-center">
                             <i class='bx bx-x remove-icon'></i> 
                         </td>
                         <td class="align-center">
+                            {% if item.image_url == ""%}
                             <img class="cart-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
+                            {% else %}
+                            <img class="cart-item-image" src="{{item.image_url}}" alt=""/>
+                            {% endif %}
+                            
                         </td>
-                        <td class="cart-item-name">Đèn LED chuyên dụng đơn sắc HC-BR25W</td>
-                        <td class="cart-item-price align-right">430,000đ</td>
+                        <td class="cart-item-name">{{item.name}}</td>
+                        <td class="cart-item-price align-right">{{item.price}}đ</td>
                         <td class="cart-item-quantity align-center">
                             <div class="item-quantity-controller">
                                 <div class="item-minus-btn align-center">
@@ -71,7 +78,7 @@
                                         id="cartItemQtn_1"
                                         name="cartItemQtn_1"
                                         placeholder="0"
-                                        value="3"
+                                        value="{{item.quantity}}"
                                         class="quantity-input"
                                     />
                                 </div>
@@ -81,74 +88,12 @@
                             </div>
                             
                         </td>
-                        <td class="cart-item-subtotal align-right">1,290,000<span>đ</span></td>
+                        <td class="cart-item-subtotal align-right">{{item.subtotal}}<span>đ</span></td>
                     </tr>
-                    <tr class="cart-table-data">
-                        <td class="remove-item-container align-center">
-                            <i class='bx bx-x remove-icon'></i> 
-                        </td>
-                        <td class="align-center">
-                            <img class="cart-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
-                        </td>
-                        <td class="cart-item-name">Đèn LED chuyên dụng đơn sắc HC-BR25W</td>
-                        <td class="cart-item-price align-right">430,000đ</td>
-                        <td class="cart-item-quantity align-center">
-                            <div class="item-quantity-controller">
-                                <div class="item-minus-btn align-center">
-                                    <i class='bx bx-minus minus-icon'></i> 
-                                </div>
-                                <div class="item-quantity-input align-center">
-                                    <input
-                                        type="number"
-                                        id="cartItemQtn_1"
-                                        name="cartItemQtn_1"
-                                        placeholder="0"
-                                        value="3"
-                                        class="quantity-input"
-                                    />
-                                </div>
-                                <div class="item-add-btn align-center">
-                                    <i class='bx bx-plus plus-icon'></i> 
-                                </div>
-                            </div>
-                            
-                        </td>
-                        <td class="cart-item-subtotal align-right">1,290,000<span>đ</span></td>
-                    </tr>
-                    <tr class="cart-table-data">
-                        <td class="remove-item-container align-center">
-                            <i class='bx bx-x remove-icon'></i> 
-                        </td>
-                        <td class="align-center">
-                            <img class="cart-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
-                        </td>
-                        <td class="cart-item-name">Đèn LED chuyên dụng đơn sắc HC-BR25W</td>
-                        <td class="cart-item-price align-right">430,000đ</td>
-                        <td class="cart-item-quantity align-center">
-                            <div class="item-quantity-controller">
-                                <div class="item-minus-btn align-center">
-                                    <i class='bx bx-minus minus-icon'></i> 
-                                </div>
-                                <div class="item-quantity-input align-center">
-                                    <input
-                                        type="number"
-                                        id="cartItemQtn_1"
-                                        name="cartItemQtn_1"
-                                        placeholder="0"
-                                        value="3"
-                                        class="quantity-input"
-                                    />
-                                </div>
-                                <div class="item-add-btn align-center">
-                                    <i class='bx bx-plus plus-icon'></i> 
-                                </div>
-                            </div>
-                            
-                        </td>
-                        <td class="cart-item-subtotal align-right">1,290,000<span>đ</span></td>
-                    </tr>
-                    
+                    {% endfor %}
                 </tbody>
+                {% endif %}
+                
             </table>
         </div>
         <div class="section-content-total">
@@ -158,19 +103,19 @@
             <div class="section-total-process">
                 <div class="total-row">
                     <div class="total-row-label align-left">Số lượng</div>
-                    <div class="total-row-value align-right" id="total-quantity">9</div>
+                    <div class="total-row-value align-right" id="total-quantity">{{cart.total_quantity}}</div>
                 </div>
                 <div class="total-row">
                     <div class="total-row-label align-left">Tổng cộng</div>
-                    <div class="total-row-value align-right" id="total-temp">3,870,000<span>đ</span></div>
+                    <div class="total-row-value align-right" id="total-temp">{{cart.total_temp}}<span>đ</span></div>
                 </div>
                 <div class="total-row">
                     <div class="total-row-label align-left">VAT</div>
-                    <div class="total-row-value align-right" id="total-vat">0<span>đ</span></div>
+                    <div class="total-row-value align-right" id="total-vat">{{cart.total_vat}}<span>đ</span></div>
                 </div>
                 <div class="total-row">
                     <div class="total-row-label align-left">Giảm giá</div>
-                    <div class="total-row-value align-right" id="total-discount">0<span>đ</span></div>
+                    <div class="total-row-value align-right" id="total-discount">{{cart.total_discount}}<span>đ</span></div>
                 </div>
             </div>
             <div class="section-total-coupon">
@@ -195,7 +140,7 @@
             <div class="section-total-final">
                 <div class="total-row">
                     <div class="total-row-label align-left">Tổng tiền</div>
-                    <div class="total-row-value align-right" id="total-final">3,870,000<span>đ</span></div>
+                    <div class="total-row-value align-right" id="total-final">{{cart.total_final}}<span>đ</span></div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 
 
@@ -11,6 +12,8 @@ class Address(models.Model):
     district = models.TextField(null=True, blank=True) 
     email = models.EmailField(unique=True)
     tel = models.TextField(null=False, blank=True) 
+    is_default = models.BooleanField(null=True, blank=True, default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Address {self.detailed_address} with belongs to email {self.email} and tel {self.tel} created by {self.creator.username}"
@@ -29,6 +32,7 @@ class Order(models.Model):
         ('BANK', 'Bank Transfer')
     ]
 
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     is_address_custom = models.BooleanField(null=False, default=True)
     order_address = models.ForeignKey('Address', on_delete=models.CASCADE)
     order_date = models.DateTimeField(auto_now_add=True)
@@ -39,6 +43,7 @@ class Order(models.Model):
     shipping = models.FloatField(default=0.0)
     discount = models.FloatField(default=0.0)
     notes = models.TextField(blank=True, null=True)
+    bank_proof = models.TextField(blank=True, null=True, default="")
 
     def __str__(self):
         return f"Order #{self.id} by {self.user.email}"

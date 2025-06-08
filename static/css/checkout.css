@@ -364,7 +364,7 @@
                         .product-card-info{
                             display: flex;
                             flex-direction: column;
-                            padding: 0.8rem;
+                            padding: 0 0.8rem;
 
                             .card-info-row1{
                                 flex: 1;

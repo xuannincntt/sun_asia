@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import Category, Product, ProductImage
 import cloudinary.uploader
 from django.utils.safestring import mark_safe
+from tinymce.widgets import TinyMCE
+from django.db import models
 import os
 
 # Register your models here.
@@ -22,10 +24,14 @@ class ProductImageInline(admin.TabularInline):
     preview.short_description = "Preview"
 
 class ProductAdmin(admin.ModelAdmin):
-    fields = ['name', 'slug']
+    fields = ['name','description', 'sold', 'stock', 'sale_price', 'org_price']
     inlines = [ProductImageInline]
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
+    }
 
     def save_related(self, request, form, formsets, change):
+        
         super().save_related(request, form, formsets, change)
 
         product = form.instance
@@ -49,7 +55,7 @@ class ProductAdmin(admin.ModelAdmin):
                         if image.image_file.path and os.path.exists(image.image_file.path):
                             os.remove(image.image_file.path)
 
-                        # image.image_file = None
+                        image.image_file = None
                         image.save()
                     else:
                         self.message_user(request, "⚠️ Upload thất bại: Không có secure_url.", level='error')

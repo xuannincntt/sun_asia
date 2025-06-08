@@ -8,54 +8,86 @@
 <link rel="stylesheet" href="{% static 'css/product/product_detail.css' %}?v={{ timestamp }}">
 <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6839dc6784860b001ace80c6&product=inline-share-buttons&source=platform" async="async"></script>
 {% endblock %}
-{% block title %}Đèn LED chuyên dụng đơn sắc HC-BR25{% endblock %}
+{% block title %}
+{% if product %}
+{{product.name}}
+{% else %}
+404 Not Found
+{% endif %}
+{% endblock %}
 {% block content %}
 <main id="product-detail-page">
     <div class="detail-title">
         <img class="page-image" src="{% static 'images/products_intro.jpg' %}?v={{ timestamp }}"/>
-        <h2 class="page-title">Đèn LED chuyên dụng đơn sắc HC-BR25</h2>
+        <h2 class="page-title">
+            {% if product %}
+            {{product.name}}
+            {% else %}
+            Không tìm thấy sản phẩm
+            {% endif %}
+        </h2>
     </div>
     <div class="detail-content">
         <div class="detail-basic">
             <div class="detail-images">
                 <div class="detail-images-slider">
                     <div class="detail-images-slides">
+                        {% if product_images %}
+                            {% for image in product_images %}
+                            <img src="{{image.image_url}}" class="carousel-image" />
+                            {% endfor %}
+                        {% else %}
                         <img src="{% static 'images/product_placeholder.jpg' %}" class="carousel-image" />
-                        <img src="{% static 'images/product_placeholder_2.png' %}" class="carousel-image" />
-                        <img src="{% static 'images/product_placeholder.jpg' %}" class="carousel-image" />
-                        <img src="{% static 'images/product_placeholder.jpg' %}" class="carousel-image" />
+                        {% endif %}
                     </div>
 
                     <button class="carousel-btn prev-btn">&#10094;</button>
                     <button class="carousel-btn next-btn">&#10095;</button>
                 </div>
                 <div class="detail-images-sub">
-                    <img class="detail-image-sub" src="{% static 'images/product_placeholder.jpg' %}" alt="">
-                    <img class="detail-image-sub" src="{% static 'images/product_placeholder_2.png' %}" alt="">
-                    <img class="detail-image-sub" src="{% static 'images/product_placeholder.jpg' %}" alt="">
-                    <img class="detail-image-sub" src="{% static 'images/product_placeholder.jpg' %}" alt="">
+                    {% if product_images %}
+                        {% for image in product_images %}
+                        <img src="{{image.image_url}}" class="detail-image-sub" />
+                        {% endfor %}
+                    {% else %}
+                    <img src="{% static 'images/product_placeholder.jpg' %}" class="detail-image-sub" />
+                    {% endif %}
                 </div>
             </div>
             <div class="detail-info">
-                <div class="detail-product-name">Đèn LED chuyên dụng đơn sắc HC-BR25</div>
-                <div class="detail-product-rate align-left">
-                    <i class='bx bxs-star rate-icon'></i> 
-                    <i class='bx bxs-star rate-icon'></i> 
-                    <i class='bx bxs-star rate-icon'></i> 
-                    <i class='bx bxs-star rate-icon'></i> 
-                    <i class='bx bxs-star rate-icon'></i> 
+                <div class="detail-product-name">
+                    {% if product %}
+                    {{product.name}}
+                    {% else %}
+                    Không tìm thấy sản phẩm
+                    {% endif %}
                 </div>
                 <div class="detail-product-price align-left">
-                    <div class="detail-product-orgPrice">500,000đ</div>
-                    <div class="detail-product-salePrice">430,000đ</div>
+                    {% if product.sale_price == 0.0 %}
+                    <div class="detail-product-orgPrice"></div>
+                    <div class="detail-product-salePrice">Liên hệ để báo giá</div>
+                    {% else %}
+                    <div class="detail-product-orgPrice">{{product.org_price}}đ</div>
+                    <div class="detail-product-salePrice">{{product.sale_price}}đ</div>
+                    {% endif %}
                 </div>
                 <div class="detail-product-sold align-left">
                     <span class="detail-product-field">Đã bán</span>
-                    <span class="detail-product-value">1,250</span>
+                    {% if product.sold == 0 %}
+                    <span class="detail-product-value">--</span>
+                    {% else %}
+                    <span class="detail-product-value">product.sold</span>
+                    {% endif %}
+
                 </div>
                 <div class="detail-product-stock align-left">
                     <span class="detail-product-field">Còn lại</span>
-                    <span class="detail-product-value">425</span>
+                    {% if product.stock == 0 %}
+                    <span class="detail-product-value">--</span>
+                    {% else %}
+                    <span class="detail-product-value">{{product.stock}}</span>
+                    {% endif %}
+
                 </div>
                 <div class="detail-product-quantity align-left">
                     <span class="detail-product-label">Số lượng: </span>
@@ -98,7 +130,9 @@
                 <div class="detail-tab tab-deliver" data-tab="deliver">Chính sách vận chuyển</div>
             </div>
             <div id="description" class="tab-content tab-content-active">
-                <p>Đây là sản phẩm chất lượng cao, được làm từ nguyên liệu tự nhiên...</p>
+                {% if product.description %}
+                {{product.description|safe}}
+                {% endif %}
             </div>
             <div id="policy" class="tab-content">
                 <p>Bạn có thể đổi trả sản phẩm trong vòng 7 ngày nếu có lỗi từ nhà sản xuất...</p>

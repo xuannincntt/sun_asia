@@ -51,7 +51,8 @@ def accounts(request):
                 # Tạo địa chỉ nhận hàng đầu tiên ngay khi đăng kí
                 new_address = Address(
                     creator=new_user,
-                    email=email
+                    email=email,
+                    is_default=True
                 )
                 new_address.save()
                 
