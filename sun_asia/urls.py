@@ -22,7 +22,7 @@ from django.views.i18n import set_language
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('products/', include('products.urls')),
     path('checkout/', views.checkout, name='checkout'),
@@ -33,5 +33,5 @@ urlpatterns = [
     path('logout', views.logout_view, name='logout'),
     path('set_language/', set_language, name='set_language'),
     path('tinymce/', include('tinymce.urls')),
-    path('<slug:cat_slug>', views.product_by_category, name='product_by_category'),
+    path('<slug:cat_slug>/', views.product_by_category, name='product_by_category'),
 ]

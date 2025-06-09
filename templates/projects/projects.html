@@ -1,96 +1,110 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/projects.css">
+    <link rel="stylesheet" href="/static/css/project/projects.css">
 {% endblock %}
 {% block title %}
-    Dự án
+    {% trans "Dự án" %}
 {% endblock %}
 {% block content %}
     <div class="project-img">
         <img src="/static/img/house1.jpg" alt="">
-        <h1>DỰ ÁN</h1>
+        <h1>{% trans "DỰ ÁN" %}</h1>
     </div>
     <section id="project" class="project">
         <div class="project-left">
-            <h1>Bộ lọc tìm kiếm</h1>
-            <form method="GET" action=".">
-                <h3>Tỉnh thành</h3>
-                <select name="tinh_thanh">
-                    <option value="">-- Tất cả tỉnh thành --</option>
-                    <!-- {% for tinh in tinh_thanh_choices %}
-                        <option value="{{ tinh }}" {% if tinh == selected_tinh_thanh %}selected{% endif %}>
-                            {{ tinh }}
+            <h1>{% trans "Bộ lọc tìm kiếm" %}</h1>
+            <form method="GET" action="." id="filter-form">
+                <h3>{% trans "Tỉnh thành" %}</h3>
+                <select name="tinh_thanh" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">-- {% trans "Tất cả tỉnh thành" %} --</option>
+                    {% for province in provinces %}
+                        <option value="{{ province }}" {% if province == selected_tinh_thanh %}selected{% endif %}>
+                            {{ province }}
                         </option>
-                    {% endfor %} -->
+                    {% endfor %}
                 </select>
-                <h3>Danh mục</h3>
+                <h3>{% trans "Sản phẩm" %}</h3>
+                {% for product in product_list %}
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="product" value="{{ product }}"
+                            {% if product in selected_products %}checked{% endif %}
+                            onchange="document.getElementById('filter-form').submit();">
+                        {{ product }}
+                    </label>
+                {% endfor %}
+                <h3>{% trans "Diện tích" %}</h3>
                 <label class="checkbox-item">
-                    <input type="checkbox" name="project_type" value="thuycanh">
-                    Mô hình thủy canh
+                    <input type="checkbox" name="project_type" value="5000-" 
+                    {% if '5000-' in selected_area_ranges %}checked{% endif %}
+                    onchange="document.getElementById('filter-form').submit();">
+                    {% trans "Dưới" %} 5.000 m²
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" name="project_type" value="nhogiot">
-                    Mô hình tưới nhỏ giọt
+                    <input type="checkbox" name="project_type" value="5000-10000" 
+                    {% if '5000-10000' in selected_area_ranges %}checked{% endif %}
+                    onchange="document.getElementById('filter-form').submit();">
+                    5.000 - 10.000 m²
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" name="project_type" value="congnghe">
-                    Nhà màng công nghệ cao
-                </label>
-                <h3>Diện tích</h3>
-                <label class="checkbox-item">
-                    <input type="checkbox" name="project_type" value="500-">
-                    Dưới 500 m²
+                    <input type="checkbox" name="project_type" value="10000-20000" 
+                    {% if '10000-20000' in selected_area_ranges %}checked{% endif %}
+                    onchange="document.getElementById('filter-form').submit();">
+                    10.000 - 20.000 m²
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" name="project_type" value="1000-">
-                    500 m² - 1000 m²
-                </label>
-                <label class="checkbox-item">
-                    <input type="checkbox" name="project_type" value="1500-">
-                    1000 m² - 1500 m²
-                </label>
-                <label class="checkbox-item">
-                    <input type="checkbox" name="project_type" value="1500+">
-                    1500 m² trở lên
+                    <input type="checkbox" name="project_type" value="20000+" 
+                    {% if '20000+' in selected_area_ranges %}checked{% endif %}
+                    onchange="document.getElementById('filter-form').submit();">
+                    {% trans "Trên" %} 20.000 m²
                 </label>
             </form>
         </div>
         <div class="project-right">
+            {% for project in projects %}
             <div class="project-right-item">
-                <img src="/static/img/house3.jpg" alt="">
-                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
-                <p>1500 m² - 15 ha</p>
-                <p>Mộc Châu - Sơn La</p>
+                <img src="{{ project.display_image }}" alt="">
+                <h3>{{ project.name }}</h3>
+                {% if project.area %}
+                <p>{% trans "Diện tích" %}: {{ project.area }} m²</p>
+                {% endif %}
+                {% if project.investor %}
+                <p>{% trans "Chủ đầu tư" %}: {{ project.investor }}</p>
+                {% endif %}
+                {% if project.product %}
+                <p>{% trans "Sản phẩm" %}: {{ project.product }}</p>
+                {% endif %}
+                {% if project.city %}
+                <p>{% trans "Thành phố" %}: {{ project.city }}</p>
+                {% endif %}
             </div>
-            <div class="project-right-item">
-                <img src="/static/img/house4.jpg" alt="">
-                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
-                <p>1500 m² - 15 ha</p>
-                <p>Mộc Châu - Sơn La</p>
-            </div>
-            <div class="project-right-item">
-                <img src="/static/img/house4.jpg" alt="">
-                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
-                <p>1500 m² - 15 ha</p>
-                <p>Mộc Châu - Sơn La</p>
-            </div>
-            <div class="project-right-item">
-                <img src="/static/img/house4.jpg" alt="">
-                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
-                <p>1500 m² - 15 ha</p>
-                <p>Mộc Châu - Sơn La</p>
-            </div>
-            <div class="project-right-item">
-                <img src="/static/img/house4.jpg" alt="">
-                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
-                <p>1500 m² - 15 ha</p>
-                <p>Mộc Châu - Sơn La</p>
-            </div>
-            <div class="project-right-item">
-                <img src="/static/img/house4.jpg" alt="">
-                <h3>Dự án giàn trồng rau thủy canh nhà phố</h3>
-                <p>1500 m² - 15 ha</p>
-                <p>Mộc Châu - Sơn La</p>
+            {% endfor %}
+            <div class="pagination">
+                <ul class="pagination-list">
+                    {% if projects.has_previous %}
+                    <li><a href="?page={{ projects.previous_page_number }}">‹</a></li>
+                    {% endif %}
+                    {% for num in projects.paginator.page_range %}
+                    {% if num == projects.number %}
+                        <li><span class="active">{{ num }}</span></li>
+                    {% elif num >= projects.number|add:'-2' and num <= projects.number|add:'2' %}
+                        <li><a href="?{% if request.GET.tinh_thanh %}tinh_thanh={{ request.GET.tinh_thanh }}&{% endif %}{% for p in request.GET.product %}product={{ p }}&{% endfor %}page={{ num }}">{{ num }}</a></li>
+                    {% elif num == 1 %}
+                        <li><a href="?page=1">1</a></li>
+                        {% if projects.number > 4 %}
+                        <li><span class="dots">...</span></li>
+                        {% endif %}
+                    {% elif num == projects.paginator.num_pages %}
+                        {% if projects.number < projects.paginator.num_pages|add:'-3' %}
+                        <li><span class="dots">...</span></li>
+                        {% endif %}
+                        <li><a href="?{% if request.GET.tinh_thanh %}tinh_thanh={{ request.GET.tinh_thanh }}&{% endif %}{% for p in request.GET.product %}product={{ p }}&{% endfor %}page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if projects.has_next %}
+                    <li><a href="?page={{ projects.next_page_number }}">›</a></li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </section>

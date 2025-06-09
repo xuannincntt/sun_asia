@@ -1,10 +1,11 @@
 {% load i18n %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/style.css"> <!-- Mặc định -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v={{ timestamp }}"> <!-- Mặc định -->
     {% block css %}
     {% endblock %}
     <link rel="icon" href="/static/img/icon.png">
@@ -31,24 +32,64 @@
         <div class="logo">
             <img src="/static/img/icon.png" alt="img">
             <div class="slogan">
-                <h3>SUN ASIA</h3>
-                <p>Green House</p>
+                <a href="/">
+                    <h3>SUN ASIA</h3>
+                    <p>Green House</p>
+                </a>
             </div>
         </div>
         <!-- Navigation -->
         <nav class="nav">
-            <a href="/">{% trans "Trang chủ" %}</a>
-            <a href="/products/">{% trans "Cửa hàng" %}</a>
-            <a href="/projects">{% trans "Dự án" %}</a>
-            <a href="/news">{% trans "Tin tức" %}</a>
-            <a href="/contact">{% trans "Liên hệ" %}</a>
+            <a href="/" class="nav-main {% if request.path == '/' %}active{% endif %}">{% trans "Trang chủ" %}</a>
+            <div class="dropdown-nav-products">
+                <a href="/products/" class="nav-main {% if '/products' in request.path %}active{% endif %}">{% trans "Cửa hàng" %}</a>
+                <div class="dropdown-products">
+                    <a href="/nha-mang">{% trans "Nhà màng" %}</a>
+                    <a href="/vat-tu-nong-nghiep">{% trans "Vật tư nông nghiệp" %}</a>
+                    <a href="/he-thong-tuoi-tu-dong">{% trans "Hệ thống tưới tự động" %}</a>
+                    <a href="/he-thong-dieu-khien-vi-khi-hau">{% trans "Hệ thống điều khiển vi khí hậu" %}</a>
+                    <a href="/san-pham-khac">{% trans "Sản phẩm khác" %}</a>
+                </div>
+            </div>
+            <div class="dropdown-nav-projects">
+                <a href="/projects/" class="nav-main {% if '/projects' in request.path %}active{% endif %}">{% trans "Dự án" %}</a>
+                <div class="dropdown-projects">
+                    <a href="/projects?type=duoi5.000">{% trans "Dưới" %} 5.000 m²</a>
+                    <a href="/projects?type=10.000">5.000 m² - 10.000 m²</a>
+                    <a href="/projects?type=20.000">10.000 m² - 20.000 m²</a>
+                    <a href="/projects?type=tren20.000">{% trans "Trên" %} 20.000 m²</a>
+                </div>
+            </div>
+            <a href="/news" class="nav-main {% if '/news' in request.path %}active{% endif %}">{% trans "Tin tức" %}</a>
+            <a href="/contact" class="nav-main {% if '/contact' in request.path %}active{% endif %}">{% trans "Liên hệ" %}</a>
         </nav>
         <!-- Actions -->
         <div class="actions">
             <a href="#" class="download"><i class="fa-solid fa-download"></i> {% trans "Tải ứng dụng" %}</a>
-            <span class="icon"><i class="fa-regular fa-heart"></i></span>
-            <span class="icon"><i class="fa-solid fa-bell"></i></span>
+            <span class="icon" id="change-color"><i class="bx bx-sun"></i><i class="bx bx-moon"></i></span>
                 {% if user %}
+                    <span class="icon bell"><i class="fa-regular fa-bell"></i></span>
+                    <div class="notification-box">
+                        <div class="tab">
+                            <a href="#" class="active">{% trans "Tất cả" %}</a>
+                            <a href="#">{% trans "Đơn hàng" %}</a>
+                            <a href="#">{% trans "Khuyến mãi" %} <span class="badge">1</span></a>
+                            <a href="#">{% trans "Tài khoản" %}</a>
+                            <a href="#">{% trans "Khác" %}</a>
+                        </div>
+                        <div class="notification-body">
+                            <div class="notification-content">
+                                <div class="icon">🎟️</div>
+                                <div class="text">
+                                    <div class="title">👋 Quà làm quen, chiêu đãi voucher đăng tin bán 👋</div>
+                                    <div class="description">
+                                    ✨ Tặng bạn 05 voucher Miễn Phí Tin Thường bán nhà riêng, nhà phố và đất nền dưới 5 tỷ đã có tại “Khuyến mãi” khi đăng tin
+                                    </div>
+                                    <div class="date">30/05/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="user">
                         {% load user_filters %}
                         <div class="avatar">{{ user.username|last_name_initial }}</div>
@@ -57,16 +98,17 @@
                     </div>
                     <div class="dropdown-user">
                         <a href="{% url 'user-profile' slug=user.slug %}"><p><i class="fa-regular fa-user"></i> {% trans "Thông tin cá nhân" %}</p></a>
-                        <a href="{% url 'cart' %}"><p><i class="fa-solid fa-cart-shopping"></i> {% trans "Quản lý giỏ hàng" %}</p></a>
+                        <a href="/cart"><p><i class="fa-solid fa-cart-shopping"></i> {% trans "Quản lý giỏ hàng" %}</p></a>
                         <a href="#"><p><i class="fa-regular fa-heart"></i> {% trans "Danh mục yêu thích" %}</p></a>
+                        <a href="#"><p><i class="fa-regular fa-clock"></i> {% trans "Lịch sử mua hàng" %}</p></a>
                         <hr>
                         <a href="/logout"><p><i class="fa-solid fa-arrow-right-from-bracket"></i> {% trans "Đăng xuất" %}</p></a>
                     </div>
                 {% else %}
                     <div class="login-register">
-                        <a href="/accounts/">Đăng nhập</a>
+                        <a href="/accounts/">{% trans "Đăng nhập" %}</a>
                         <span>|</span>
-                        <a href="/accounts/">Đăng ký</a>
+                        <a href="/accounts/">{% trans "Đăng ký" %}</a>
                     </div>
                 {% endif %}
             <div class="language-selector">
@@ -131,52 +173,60 @@
                 </div>
             </div>
             <div class="part1-item">
-                <i class="fa-solid fa-phone"></i>
-                <div class="footer-inf">
-                    <p>Số điện thoại</p>
-                    <h3>0981.358.442</h3>
-                </div>
+                <a href="tel:0982473136" title="Gọi ngay">
+                    <i class="fa-solid fa-phone"></i>
+                    <div class="footer-inf">
+                        <p>{% trans "Số điện thoại" %}</p>
+                        <h3>0982.473.136</h3>
+                    </div>
+                </a>
             </div>
             <div class="part1-item">
-                <i class="fa-solid fa-envelope-open-text"></i>
-                <div class="footer-inf">
-                    <p>Hỗ trợ khách hàng</p>
-                    <h3>xuannincntt@gmail.com</h3>
-                </div>
+                <a href="mailto:xuannincntt@gmail.com?subject=Yêu cầu hỗ trợ&body=Xin chào, tôi cần giúp đỡ về..." title="email">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <div class="footer-inf">
+                        <p>{% trans "Hỗ trợ khách hàng" %}</p>
+                        <h3>xuannincntt@gmail.com</h3>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="part2">
             <div class="part2-item">
-                <h4>CÔNG TY CỔ PHẦN SUN ASIA</h4>
+                <h4>{% trans "CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ PHÁT TRIỂN SUN ASIA" %}</h4>
                 <div class="social">
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="#"><i class="fa-brands fa-tiktok"></i></a>
                     <a href="#"><i class="fa-brands fa-google"></i></a>
                 </div>
-                <p><i class="fa-solid fa-location-dot"></i> Tầng 6, Chung cư VP6, Linh Đàm, Hà Nội</p>
-                <h4>ĐĂNG KÝ NHẬN TIN</h4>
+                <p>
+                    <a href="https://maps.app.goo.gl/TSBmSckpeJUx3w1G7" target="_blank" title="Địa chỉ">
+                        <i class="fa-solid fa-location-dot"></i> Số nhà 24/94 ngõ Hàm Rồng, phố Ngọc Lâm, Quận Long Biên, Hà Nội
+                    </a>
+                </p>
+                <h5>{% trans "ĐĂNG KÝ NHẬN TIN" %}</h5>
                 <form class="subscribe-form">
-                    <input type="email" placeholder="Nhập email của bạn" required>
+                    <input type="email" placeholder="{% trans 'Nhập email của bạn' %}" required>
                     <button type="submit">
                         <i class="fa-solid fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
             <div class="part2-item">
-                <h4>HƯỚNG DẪN</h4>
-                <p>Về chúng tôi</p>
-                <p>Báo giá và hỗ trợ</p>
-                <p>Câu hỏi thường gặp</p>
-                <p>Góp ý báo lỗi</p>
-                <p>Sitemap</p>
+                <h4>{% trans "HƯỚNG DẪN" %}</h4>
+                <p><a href="#">{% trans "Về chúng tôi" %}</a></p>
+                <p><a href="#">{% trans "Báo giá và hỗ trợ" %}</a></p>
+                <p><a href="#">{% trans "Câu hỏi thường gặp" %}</a></p>
+                <p><a href="#">{% trans "Góp ý báo lỗi" %}</a></p>
+                <p><a href="#">Sitemap</a></p>
             </div>
             <div class="part2-item">
-                <h4>QUY ĐỊNH</h4>
-                <p>Quy định mua hàng</p>
-                <p>Quy chế hoạt động</p>
-                <p>Điều khoản thỏa thuận</p>
-                <p>Chính sách bảo mật</p>
-                <p>Giải quyết khiếu nại</p>
+                <h4>{% trans "QUY ĐỊNH" %}</h4>
+                <p><a href="#">{% trans "Quy định mua hàng" %}</a></p>
+                <p><a href="#">{% trans "Quy chế hoạt động" %}</a></p>
+                <p><a href="#">{% trans "Điều khoản thỏa thuận" %}</a></p>
+                <p><a href="#">{% trans "Chính sách bảo mật" %}</a></p>
+                <p><a href="#">{% trans "Giải quyết khiếu nại" %}</a></p>
             </div>
         </div>
         <hr>
@@ -189,6 +239,8 @@
         const dropdownBtn = document.querySelector('.user');
         const dropdownUser = document.querySelector('.dropdown-user');
         const dropdownIcon = document.getElementById('dropdown-icon');
+        const dropdownBell = document.querySelector('.bell');
+        const notificationBox = document.querySelector('.notification-box');
 
         // Kiểm tra tồn tại trước khi thao tác
         if (dropdownBtn && dropdownUser && dropdownIcon) {
@@ -213,9 +265,37 @@
                 }
             });
         }
+
+        if (dropdownBell) {
+            dropdownBell.addEventListener('click', function () {
+                notificationBox.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!dropdownBell.contains(e.target)) {
+                    notificationBox.classList.remove('show');
+                }
+            }); 
+        }
+
+        if (localStorage.getItem("darkMode") === "enabled") {
+            document.body.classList.toggle("darkMode");
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
             const toggleBtn = document.querySelector(".lang-toggle");
             const selector = document.querySelector(".language-selector");
+            let darkMode = localStorage.getItem("darkMode");
+            const changeColorBtn = document.getElementById("change-color");
+
+            changeColorBtn.addEventListener("click", function () {
+                document.body.classList.toggle("darkMode");
+                if (document.body.classList.contains("darkMode")) {
+                    localStorage.setItem("darkMode", "enabled");
+                } else {
+                    localStorage.setItem("darkMode", "disabled");
+                }
+            });
 
             if (toggleBtn && selector) {
                 toggleBtn.addEventListener("click", function (e) {

@@ -1,6 +1,8 @@
 section {
     padding: 10rem 8% 2rem;
     min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 .heading {
@@ -8,12 +10,14 @@ section {
     font-weight: 550;
     padding: 0rem 0 3rem;
     text-align: center;
+    color: var(--text-color);
 }
 
 .contact {
     display: flex;
     flex-direction: row;
     column-gap: 5rem;
+    color: var(--text-color);
 }
 
 .contact .inf,
@@ -50,7 +54,7 @@ section {
 
 .contact .form input, 
 .contact .form textarea {
-    border: 1px solid #333;
+    border: 1px solid var(--text-color);
     width: 100%;
     padding: 1rem;
     border-radius: .5rem;
@@ -66,7 +70,7 @@ section {
     padding: 1rem;
     border-radius: 1rem;
     transition: .5s ease;
-    border: .1rem solid #ccc;
+    border: .1rem solid var(--border-color);
     border-radius: .5rem;
 }
 

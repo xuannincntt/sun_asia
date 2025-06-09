@@ -63,12 +63,17 @@
                     {% endif %}
                 </div>
                 <div class="detail-product-price align-left">
-                    {% if product.sale_price == 0.0 %}
-                    <div class="detail-product-orgPrice"></div>
-                    <div class="detail-product-salePrice">Liên hệ để báo giá</div>
+                    {% if product.org_price != "0"  %}
+                        {% if product.sale_price == "-1" %}
+                            <div class="detail-product-salePrice align-right">{{product.org_price}}đ</div>
+                        {% else %}
+                            <div class="detail-product-orgPrice align-right">{{product.org_price}}đ</div>
+                            <div class="detail-product-salePrice align-right">{{product.sale_price}}đ</div>
+                        {% endif %}
+                    {% elif product.sale_price != "-1" %}
+                        <div class="detail-product-salePrice align-right">{{product.sale_price}}đ</div>
                     {% else %}
-                    <div class="detail-product-orgPrice">{{product.org_price}}đ</div>
-                    <div class="detail-product-salePrice">{{product.sale_price}}đ</div>
+                    <div class="detail-product-salePrice align-right">Liên hệ để báo giá</div>
                     {% endif %}
                 </div>
                 <div class="detail-product-sold align-left">
@@ -76,7 +81,7 @@
                     {% if product.sold == 0 %}
                     <span class="detail-product-value">--</span>
                     {% else %}
-                    <span class="detail-product-value">product.sold</span>
+                    <span class="detail-product-value">{{product.sold}}</span>
                     {% endif %}
 
                 </div>
@@ -105,15 +110,22 @@
                     
                 </div>
                 <div class="detail-product-action">
-                    <button type="button" class="action-btn cart-btn">Thêm vào giỏ hàng</button>
-                    <button type="button" class="action-btn buy-btn">Mua ngay</button>
+                    {% if product.org_price != "0"  %}
+                        <button type="button" class="action-btn cart-btn">Thêm vào giỏ hàng</button>
+                        <button type="button" class="action-btn buy-btn">Mua ngay</button>
+                    {% else %}
+                        {% if product.sale_price != "-1" %}
+                        <button type="button" class="action-btn cart-btn">Thêm vào giỏ hàng</button>
+                        <button type="button" class="action-btn buy-btn">Mua ngay</button>
+                        {% endif %}
+                    {% endif %}
                     <button type="button" class="action-btn call-btn align-center">
                         <i class='bx bx-message-circle call-icon'></i> 
-                        <span class="action-btn-text">Tư vấn trực tuyến</span>
+                        <span class="action-btn-text">Liên hệ trực tuyến</span>
                     </button>
                     <button type="button" class="action-btn zalo-btn align-center">
                         <img class="zalo-icon" src="{% static 'images/zalo_icon.webp' %}"/>
-                        <span class="action-btn-text">Tư vấn qua Zalo</span>
+                        <span class="action-btn-text">Liên hệ qua Zalo</span>
                     </button>
                 </div>
                 <div class="detail-product-share">
