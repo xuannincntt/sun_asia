@@ -3,7 +3,7 @@ const addressNewLabel = document.getElementById("address-new");
 const paymentCodLabel = document.getElementById("payment-cod");
 const paymentBankLabel = document.getElementById("payment-bank");
 const bankInputSection = document.getElementById("bank-input");
-const bankProofInput = document.getElementById("bankingProof");
+const bankProofInput = document.getElementById("bankProof");
 const bankProofPreview = document.getElementById("bank-proof-previewImg");
 const orderNameInput = document.getElementById("name");
 const orderEmailInput = document.getElementById("email");
@@ -11,6 +11,8 @@ const orderTelInput = document.getElementById("tel");
 const orderAddressInput = document.getElementById("address");
 const orderCityInput = document.getElementById("city");
 const orderDistrictInput = document.getElementById("district");
+const orderForm = document.getElementById("section-order-form");
+const popup = document.querySelector(".order-popup");
 
 let orderName;
 let orderEmail;
@@ -27,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setAddressCardsOnClick();
     setPaymentCardsOnClick();
     setBankProofInputOnChange();
+    setFormOnSubmit();
 });
 
 const setAddressCardsOnHover = () => {
@@ -154,4 +157,86 @@ const clearInput = () => {
     orderCityInput.setAttribute("value","");
     orderDistrictInput.setAttribute("value","");
     bankProofInput.setAttribute("value","");
+};
+
+const setFormOnSubmit = () => {
+    orderForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const bankProofInput = document.getElementById('bankProof');
+
+        // Lấy dữ liệu đơn hàng
+        // Địa chỉ
+        const orderMode = e.target.elements['orderMode'].value;
+        const addressMode = e.target.elements['addressMode'].value;
+        const name = e.target.elements['name'].value;
+        const email = e.target.elements['email'].value;
+        const tel = e.target.elements['tel'].value;
+        const address = e.target.elements['address'].value;
+        const city = e.target.elements['city'].value;
+        const district = e.target.elements['district'].value;
+        const notes = e.target.elements['notes'].value;
+
+        // Thanh toán
+        const paymentMode = e.target.elements['paymentMode'].value;
+        let bankProofFile = null;
+        if (bankProofInput.files){
+            bankProofFile = bankProofInput.files[0]
+        }
+
+        const formData = new FormData();
+
+        formData.append("orderMode", orderMode);
+        formData.append("addressMode", addressMode);
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("tel", tel);
+        formData.append("address", address);
+        formData.append("city", city);
+        formData.append("district", district);
+        formData.append("notes", notes);
+        formData.append("paymentMode", paymentMode);
+        if (bankProofFile){
+            formData.append("bankProof", bankProofFile);
+        }
+
+        fetch('/order/', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+            location.replace("/order/success");
+        })
+        .catch(error => {
+            console.log(error.message);
+            showOrderFailure(error.message);
+        });
+
+        
+    });
+};
+
+const showOrderFailure = (message) => {
+    const popupText = popup.querySelector(".popup-text");
+    const popupAction = popup.querySelector(".popup-action");
+    popupText.innerHTML = message;
+    popupAction.innerHTML=`
+    <a href="/" class="action-btn cancel-btn align-center">
+        Hủy đặt hàng
+    </a>
+    <button type="button" class="action-btn close-btn align-center">
+        Sửa thông tin
+    </button>
+    `;
+    const closeBtn = popupAction.querySelector(".close-btn");
+    closeBtn.addEventListener("click", () => {
+        togglePopup();
+    });
+    togglePopup();
+    
+};
+
+const togglePopup = () => {
+    popup.style.display = (popup.style.display === 'flex') ? 'none' : 'flex';   
 };

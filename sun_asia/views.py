@@ -186,7 +186,7 @@ def checkout(request):
             'timestamp': now().timestamp(), 
             'user': user, 
             'default_address': default_address,
-            'mode': 'buynow',
+            'order_mode': 'buynow',
             'order': {
                 'order_items': order_items,
                 'total_quantity': format(total_quantity,","),
@@ -199,13 +199,14 @@ def checkout(request):
     total_quantity, total_temp = get_total_from_cart(cart)
     total_vat = 0
     total_discount = 0
+    # print(default_address.email)
     
 
     return render(request, 'checkout.html', {
         'timestamp': now().timestamp(), 
         'user': user, 
         'default_address': default_address,
-        'mode': 'cart',
+        'order_mode': 'cart',
         'order': {
             'order_items': cart,
             'total_quantity': format(total_quantity,","),

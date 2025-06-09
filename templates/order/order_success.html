@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/order/order_success.css' %}?v={{ timestamp }}">
+{% endblock %}
+
+{% block title %}Cảm ơn{% endblock %}
+
+{% block content %} 
+<div id="order-success-page">
+    <div class="order-success-header">
+
+    </div>
+    <div class="order-success-message">
+        <p>Đơn hàng đã được xử lý thành công.</p>
+        <p>Cảm ơn bạn đã đặt hàng!</p>
+    </div>
+    <div class="order-success-action">
+        <a href="/products/" class="action-btn shop-btn align-center">
+            Tiếp tục mua sắm
+        </a>
+        <a href="/order/{{order_uuid}}" class="action-btn order-btn align-center">
+            Xem đơn hàng
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock script %}

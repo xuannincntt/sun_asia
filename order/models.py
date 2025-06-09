@@ -10,10 +10,11 @@ class Address(models.Model):
     detailed_address = models.TextField(null=False, blank=True) 
     city = models.TextField(null=True, blank=True) 
     district = models.TextField(null=True, blank=True) 
-    email = models.EmailField(unique=True)
-    tel = models.TextField(null=False, blank=True) 
+    email = models.EmailField(unique=True, null=True, blank=True)
+    tel = models.TextField(null=False, blank=False) 
     is_default = models.BooleanField(null=True, blank=True, default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Address {self.detailed_address} with belongs to email {self.email} and tel {self.tel} created by {self.creator.username}"
@@ -33,20 +34,20 @@ class Order(models.Model):
     ]
 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-    is_address_custom = models.BooleanField(null=False, default=True)
     order_address = models.ForeignKey('Address', on_delete=models.CASCADE)
     order_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=ORDER_STATUS_CHOICES, default='PENDING')
     is_paid = models.BooleanField(null=False, default=False)
     payment = models.CharField(max_length=50, choices=ORDER_PAYMENT_CHOICES, default='COD')
-    total = models.FloatField(default=0.0)
-    shipping = models.FloatField(default=0.0)
-    discount = models.FloatField(default=0.0)
+    total_quantity = models.IntegerField(default=0, null=False, blank=False)
+    total_amount = models.IntegerField(default=0, null=False, blank=False)
+    tax = models.IntegerField(default=0, null=True, blank=True)
+    discount = models.IntegerField(default=0, null=True, blank=True)
     notes = models.TextField(blank=True, null=True)
     bank_proof = models.TextField(blank=True, null=True, default="")
 
     def __str__(self):
-        return f"Order #{self.id} by {self.user.email}"
+        return f"Order #{self.uuid} by {self.order_address.email}-{self.order_address.tel}"
     
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)

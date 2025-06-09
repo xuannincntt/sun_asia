@@ -186,10 +186,13 @@
 
                             .form-input{
                                 box-sizing: border-box;
+                                font-family: sans-serif;
                                 width: 100%;
+                                max-width: 100%;
                                 padding: 0.5rem;
                                 font-size: 1.4rem;
                                 outline: 2px solid rgb(179, 179, 179);
+                                overflow-y: hidden;
 
                                 &:focus-within{
                                     outline: 2px solid black;
@@ -201,7 +204,7 @@
                         
                     }
 
-                    .fullName-field, .address-field{
+                    .fullName-field, .address-field, .notes-field{
                         
                         grid-column: 1 / 3;
                     }
@@ -476,5 +479,135 @@
     }
 
     
+}
+
+.order-popup{
+    box-sizing: border-box;
+    display: none; /* Ẩn mặc định */
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* overlay mờ */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transition: all 0.2s ease-in-out;
+
+    .popup-container{
+        box-sizing: border-box;
+        width: 30%;
+        height: auto;
+        margin: auto;
+        background-color: white;
+        position: relative;
+
+        .popup-header, .popup-content{
+            padding: 1rem 1.5rem;
+        }
+
+
+        .popup-header{
+            box-sizing: border-box;
+            font-size: 1.5rem;
+            font-weight: 550;
+            background-color: #fba905;
+            color: white;
+
+        }
+
+        
+
+        .popup-content{
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            .popup-text{
+                flex-direction: column;
+                font-size: 1.7rem;
+                font-weight: 650;
+                padding: 1rem 0;
+
+            }
+
+            
+
+            .popup-action{
+                box-sizing: border-box;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 1rem 0;
+
+                .action-btn{
+                    box-sizing: border-box;
+                    width: 80%;
+                    margin: auto;
+                    padding: 0.5rem;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+                    color: white;
+                    font-size: 1.55rem;
+
+                }
+
+                .shop-btn{
+                    background-color: #fb9905;
+
+                    &:hover{
+                        background-color: #e48902;
+                    }
+
+                    &:active{
+                        background-color: #d28004;
+                    }
+                }
+
+                .order-btn{
+                    background-color: #417690;
+                    color: #ffffff;
+                    text-decoration: none;
+
+                    &:hover{
+                        background-color: #386a82;
+                    }
+
+                    &:active{
+                        background-color: #305f75;
+                    }
+                }
+
+                .close-btn{
+                    background-color: rgb(0, 134, 0);
+                    color: #94989A;
+
+                    &:hover{
+                        background-color: rgb(1, 119, 1);
+                    }
+
+                    &:active{
+                        background-color: rgb(1, 107, 1);
+                    }
+
+                }
+
+                .cancel-btn{
+                    background-color: #F24747;
+                    text-decoration: none;
+
+                    &:hover{
+                        background-color: #da3b3b;
+                    }
+
+                    &:active{
+                        background-color: rgb(191, 45, 45);
+                    }
+                }
+
+            }
+        }
+    }
 }
 

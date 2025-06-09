@@ -49,12 +49,14 @@ def accounts(request):
                 request.session['user_id'] = new_user.id
 
                 # Tạo địa chỉ nhận hàng đầu tiên ngay khi đăng kí
-                new_address = Address(
-                    creator=new_user,
-                    email=email,
-                    is_default=True
-                )
-                new_address.save()
+                default_address = Address.objects.filter(creator=new_user, is_default=True).first() if new_user else None
+                if not default_address:
+                    new_address = Address(
+                        creator=new_user,
+                        email=email,
+                        is_default=True
+                    )
+                    new_address.save()
                 
                 return redirect('/')
     return render(request, 'accounts/accounts.html', {'user': user})
