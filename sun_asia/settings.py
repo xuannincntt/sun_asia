@@ -162,3 +162,11 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024 
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024
+
+TINYMCE_DEFAULT_CONFIG = {
+    'content_css': '/static/css/sunasia/tinymce_content.css',
+}

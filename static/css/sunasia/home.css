@@ -61,7 +61,7 @@ section {
     font-size: 1.5rem;
     padding: 1rem;
     margin: 2rem 0;
-    color: var(--text-hover);
+    color: #1f1f1f;
     background-color: var(--main-color);
     border-radius: 1rem;
     font-weight: 600;
@@ -257,6 +257,7 @@ section {
     margin-right: auto;
     padding: .5rem 1rem;
     background-color: var(--main-color);
+    color: #1f1f1f;
     border: 1px solid var(--border-color);
     border-radius: .5rem;
     transition: .5s ease;
@@ -292,6 +293,7 @@ section {
     padding: 1rem;
     font-size: 1.5rem;
     background-color: var(--main-color);
+    color: #1f1f1f;
     border: .1rem solid var(--border-color);
     border-radius: .5rem;
     cursor: pointer;

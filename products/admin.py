@@ -24,7 +24,7 @@ class ProductImageInline(admin.TabularInline):
     preview.short_description = "Preview"
 
 class ProductAdmin(admin.ModelAdmin):
-    fields = ['name','description', 'sold', 'stock', 'sale_price', 'org_price']
+    fields = ['name','category','description', 'sold', 'stock', 'sale_price', 'org_price']
     inlines = [ProductImageInline]
     formfield_overrides = {
         models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
