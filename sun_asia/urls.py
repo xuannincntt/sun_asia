@@ -31,6 +31,7 @@ urlpatterns = [
     path('projects/', include('projects.urls')),
     path('contact/', include('contact.urls')),
     path('cart/', views.cart, name='cart'),
+    path('update-cart/', views.update_cart, name='update-cart'),
     path('logout', views.logout_view, name='logout'),
     path('set_language/', set_language, name='set_language'),
     path('tinymce/', include('tinymce.urls')),

@@ -55,83 +55,95 @@
                 </div>
             </div>
             <div class="detail-info">
-                <div class="detail-product-name">
-                    {% if product %}
-                    {{product.name}}
-                    {% else %}
-                    Không tìm thấy sản phẩm
-                    {% endif %}
-                </div>
-                <div class="detail-product-price align-left">
-                    {% if product.org_price != "0"  %}
-                        {% if product.sale_price == "-1" %}
-                            <div class="detail-product-salePrice align-right">{{product.org_price}}đ</div>
-                        {% else %}
-                            <div class="detail-product-orgPrice align-right">{{product.org_price}}đ</div>
-                            <div class="detail-product-salePrice align-right">{{product.sale_price}}đ</div>
-                        {% endif %}
-                    {% elif product.sale_price != "-1" %}
-                        <div class="detail-product-salePrice align-right">{{product.sale_price}}đ</div>
-                    {% else %}
-                    <div class="detail-product-salePrice align-right">Liên hệ để báo giá</div>
-                    {% endif %}
-                </div>
-                <div class="detail-product-sold align-left">
-                    <span class="detail-product-field">Đã bán</span>
-                    {% if product.sold == 0 %}
-                    <span class="detail-product-value">--</span>
-                    {% else %}
-                    <span class="detail-product-value">{{product.sold}}</span>
-                    {% endif %}
+                <form id="detail-form" action="/checkout/" method="POST">
+                    <label for="productId" style="display: none;">
 
-                </div>
-                <div class="detail-product-stock align-left">
-                    <span class="detail-product-field">Còn lại</span>
-                    {% if product.stock == 0 %}
-                    <span class="detail-product-value">--</span>
-                    {% else %}
-                    <span class="detail-product-value">{{product.stock}}</span>
-                    {% endif %}
-
-                </div>
-                <div class="detail-product-quantity align-left">
-                    <span class="detail-product-label">Số lượng: </span>
-                    <div class="detail-product-input align-center">
-                        <i class='bx bx-plus plus-btn'></i> 
                         <input 
-                            type="number"
-                            name="quantity-input"
-                            id="quantity-input"
-                            placeholder="0"
-                            value="1"
+                            type="text"
+                            id="productId"
+                            name="productId"
+                            value="{{product.id}}"
                         />
-                        <i class='bx bx-minus minus-btn'></i> 
-                    </div>
-                    
-                </div>
-                <div class="detail-product-action">
-                    {% if product.org_price != "0"  %}
-                        <button type="button" class="action-btn cart-btn">Thêm vào giỏ hàng</button>
-                        <button type="button" class="action-btn buy-btn">Mua ngay</button>
-                    {% else %}
-                        {% if product.sale_price != "-1" %}
-                        <button type="button" class="action-btn cart-btn">Thêm vào giỏ hàng</button>
-                        <button type="button" class="action-btn buy-btn">Mua ngay</button>
+                    </label>
+                    <div class="detail-product-name">
+                        {% if product %}
+                        {{product.name}}
+                        {% else %}
+                        Không tìm thấy sản phẩm
                         {% endif %}
-                    {% endif %}
-                    <button type="button" class="action-btn call-btn align-center">
-                        <i class='bx bx-message-circle call-icon'></i> 
-                        <span class="action-btn-text">Liên hệ trực tuyến</span>
-                    </button>
-                    <button type="button" class="action-btn zalo-btn align-center">
-                        <img class="zalo-icon" src="{% static 'images/zalo_icon.webp' %}"/>
-                        <span class="action-btn-text">Liên hệ qua Zalo</span>
-                    </button>
-                </div>
-                <div class="detail-product-share">
-                    <span class="detail-product-label">Chia sẻ sản phẩm trên các nền tảng! </span>
-                    <div class="sharethis-inline-share-buttons"></div>
-                </div>
+                    </div>
+                    <div class="detail-product-price align-left">
+                        {% if product.org_price != "0"  %}
+                            {% if product.sale_price == "-1" %}
+                                <div class="detail-product-salePrice align-right">{{product.org_price}}đ</div>
+                            {% else %}
+                                <div class="detail-product-orgPrice align-right">{{product.org_price}}đ</div>
+                                <div class="detail-product-salePrice align-right">{{product.sale_price}}đ</div>
+                            {% endif %}
+                        {% elif product.sale_price != "-1" %}
+                            <div class="detail-product-salePrice align-right">{{product.sale_price}}đ</div>
+                        {% else %}
+                        <div class="detail-product-salePrice align-right">Liên hệ để báo giá</div>
+                        {% endif %}
+                    </div>
+                    <div class="detail-product-sold align-left">
+                        <span class="detail-product-field">Đã bán</span>
+                        {% if product.sold == 0 %}
+                        <span class="detail-product-value">--</span>
+                        {% else %}
+                        <span class="detail-product-value">{{product.sold}}</span>
+                        {% endif %}
+
+                    </div>
+                    <div class="detail-product-stock align-left">
+                        <span class="detail-product-field">Còn lại</span>
+                        {% if product.stock == 0 %}
+                        <span class="detail-product-value">--</span>
+                        {% else %}
+                        <span class="detail-product-value">{{product.stock}}</span>
+                        {% endif %}
+
+                    </div>
+                    <div class="detail-product-quantity align-left">
+                        <span class="detail-product-label">Số lượng: </span>
+                        <div class="detail-product-input align-center">
+                            <i class='bx bx-plus plus-btn'></i> 
+                            <input 
+                                type="number"
+                                name="productQuantity"
+                                id="productQuantity"
+                                placeholder="0"
+                                value="1"
+                            />
+                            <i class='bx bx-minus minus-btn'></i> 
+                        </div>
+                        
+                    </div>
+                    <div class="detail-product-action" data-index="{{product.slug}}_{{product.id}}">
+                        {% if product.org_price != "0"  %}
+                            <button type="button" class="action-btn cart-btn">Thêm vào giỏ hàng</button>
+                            <button type="button" class="action-btn buy-btn">Mua ngay</button>
+                        {% else %}
+                            {% if product.sale_price != "-1" %}
+                            <button type="button" class="action-btn cart-btn">Thêm vào giỏ hàng</button>
+                            <button type="button" class="action-btn buy-btn">Mua ngay</button>
+                            {% endif %}
+                        {% endif %}
+                        <button type="button" class="action-btn call-btn align-center">
+                            <i class='bx bx-message-circle call-icon'></i> 
+                            <span class="action-btn-text">Liên hệ trực tuyến</span>
+                        </button>
+                        <button type="button" class="action-btn zalo-btn align-center">
+                            <img class="zalo-icon" src="{% static 'images/zalo_icon.webp' %}"/>
+                            <span class="action-btn-text">Liên hệ qua Zalo</span>
+                        </button>
+                    </div>
+                    <div class="detail-product-share">
+                        <span class="detail-product-label">Chia sẻ sản phẩm trên các nền tảng! </span>
+                        <div class="sharethis-inline-share-buttons"></div>
+                    </div>
+                </form>
+                
             </div>
         </div>
         <hr />
@@ -452,6 +464,26 @@
                 <div class="nav-buttons">
                     <button id="prev">&#10094;</button>
                     <button id="next">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="detail-popup">
+        <div class="popup-container">
+            <div class="popup-header align-center">
+                Thông báo
+            </div>
+            <div class="popup-content">
+                <div class="popup-text align-center">
+                    Thêm vào giỏ hàng thành công
+                </div>
+                <div class="popup-action">
+                    <button type="button" class="action-btn continue-btn align-center">
+                        Tiếp tục mua sắm
+                    </button>
+                    <a href="/cart" class="action-btn cartNav-btn align-center">
+                        Xem giỏ hàng
+                    </button>
                 </div>
             </div>
         </div>

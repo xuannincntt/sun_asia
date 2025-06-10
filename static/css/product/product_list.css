@@ -443,7 +443,7 @@
         position: relative;
 
         .popup-header, .popup-content{
-            padding: 1rem 1.5rem;
+            padding: 1rem 1rem;
         }
 
         .popup-header{
@@ -470,7 +470,7 @@
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.2rem;
 
             .popup-text{
                 font-size: 1.7rem;

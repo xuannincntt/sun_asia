@@ -31,8 +31,10 @@ def order(request):
 
         if request.POST.get("orderMode") == "buynow":
             order_items = request.session.get("buynow",[])
+            request.session["buynow"] = []
         else:
             order_items = request.session.get("cart",[])
+            request.session["cart"] = []
         message = validate_order_form({
             'name': name,
             'email': email,

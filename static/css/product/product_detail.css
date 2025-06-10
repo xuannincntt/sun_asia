@@ -130,11 +130,14 @@
 
         .detail-info{
             box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        
+            #detail-form{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
 
-            .detail-product-name{
+                .detail-product-name{
                 box-sizing: border-box;
                 font-size: 2.3rem;
                 font-weight: 600;
@@ -217,7 +220,7 @@
                     }
 
 
-                    #quantity-input{
+                    #productQuantity{
                         width: 50px;
                         text-align: center;
                         vertical-align: middle;
@@ -315,6 +318,9 @@
                 }
             }
 
+            
+            }
+
             .detail-product-share{
                 box-sizing: border-box;
                 display: flex;
@@ -322,6 +328,7 @@
                 justify-content: center;
                 align-items: flex-start;
                 gap: 1rem;
+                z-index: 1;
 
 
                 .detail-product-label{
@@ -604,6 +611,273 @@
             background: rgba(0,0,0,0.7);
         }
     }
+}
+
+.detail-popup{
+    box-sizing: border-box;
+    display: none; /* Ẩn mặc định */
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* overlay mờ */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transition: all 0.2s ease-in-out;
+
+    .popup-container{
+        box-sizing: border-box;
+        width: 30%;
+        height: auto;
+        margin: auto;
+        background-color: white;
+        position: relative;
+
+        .popup-header, .popup-content{
+            padding: 1rem 1.5rem;
+        }
+
+        .popup-header{
+            box-sizing: border-box;
+            font-size: 1.5rem;
+            font-weight: 550;
+            background-color: #fba905;
+            color: white;
+        }
+
+        .action-btn{
+            box-sizing: border-box;
+            width: 80%;
+            margin: auto;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            color: white;
+            font-size: 1.55rem;
+
+        }
+
+        .popup-content{
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+
+            .popup-text{
+                font-size: 1.7rem;
+                font-weight: 650;
+                padding: 1rem 0;
+            }
+
+            .popup-action{
+                box-sizing: border-box;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 1rem 0;
+
+
+                
+
+                .continue-btn{
+                    background-color: #F24747;
+
+                    &:hover{
+                        background-color: #da3b3b;
+                    }
+
+                    &:active{
+                        background-color: rgb(191, 45, 45);
+                    }
+                }
+
+                .cartNav-btn{
+                    background-color: #F0F0F0;
+                    color: #94989A;
+                    text-decoration: none;
+
+                    &:hover{
+                        background-color: #dedede;
+                    }
+
+                    &:active{
+                        background-color: #cacaca;
+                    }
+                }
+            }
+        }
+
+        .popup-close{
+            box-sizing: border-box;
+            padding: 1rem;
+
+            .close-icon{
+                color: black;
+                padding: 0.3rem;
+                font-size: 2.5rem;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+
+                &:hover{
+                    background-color: rgb(236, 236, 236);
+                    
+                }
+
+                &:active{
+                    background-color: rgb(212, 212, 212);
+                }
+            }
+        }
+
+        .popup-product{
+            box-sizing: border-box;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            padding: 1rem 3rem 2rem;
+
+            .popup-section-image{
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+
+                .popup-image{
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    border: 1px solid rgb(212, 212, 212);
+                }
+            }
+
+            .popup-section-form{
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+                
+                .popup-name{
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                }
+
+                .popup-price{
+
+                    .popup-orgPrice{
+                        color: grey;
+                        font-size: 1.4rem;
+                        text-decoration: line-through;
+                    }
+
+                    .popup-salePrice{
+                        font-size: 1.45rem;
+                        font-weight: 600;
+                    }
+                }
+
+                .popup-quantity{
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    .popup-quantity-name{
+                        font-size: 1.5rem;
+                    }
+
+                    .popup-quantity-controller{
+                        box-sizing: border-box;
+                        border: 1px solid grey;
+                        border-radius: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        .minus-icon, .plus-icon{
+                            box-sizing: border-box;
+                            padding: 0.5rem;
+                            font-weight: 600;
+                            border-radius: 50%;
+                            cursor: pointer;
+                            transition: all 0.2s ease-in-out;
+
+                            &:hover{
+                                background-color: rgb(217, 217, 217);
+                            }
+
+                            &:active{
+                                background-color: rgb(179, 179, 179);
+                            }
+                        }
+
+
+                        .popup-minus-btn, .popup-add-btn{
+                            box-sizing: border-box;
+                            padding: 0.2rem;
+                        }
+
+                        .popup-minus-btn{
+                            box-sizing: border-box;
+                            border-right: 1px solid grey;
+                        }
+
+                        .popup-quantity-input{
+                            box-sizing: border-box;
+
+                            .quantity-input{
+                                width: 30px;
+                                padding: 0.5rem;
+                                font-size: 1.5rem;
+                                outline: none;
+                                border: none;
+                                text-align: center;
+                            }
+
+                        }
+
+                        .popup-add-btn{
+                            box-sizing: border-box;
+                            border-left: 1px solid grey;
+                        }
+                    }
+
+                    
+                }
+
+                .popup-submit{
+                    padding-top: 1rem;
+                    .proceed-btn{
+                        width: 100%;
+                        background-color: rgb(45, 45, 45);
+                        color: white;
+                        padding: 0.85rem;
+                        cursor: pointer;
+                        transition: all 0.2s ease-in-out;
+
+                        &:hover{
+                            background-color: rgb(31, 31, 31);
+                        }
+
+                        &:active{
+                            background-color: rgb(27, 27, 27);
+                        }
+                    }
+                }
+
+                
+            }
+        }
+    }
+
+
+    .popup-product{
+        display: grid
+    }
+
 }
 
 

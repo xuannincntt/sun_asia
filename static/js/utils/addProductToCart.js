@@ -1,4 +1,4 @@
-const addProductToCart = async (productSlug, productId) => {
+const addProductToCart = async (productSlug, productId, productQuantity) => {
     try {
         const response = await fetch("/cart/", {
             method: "POST",
@@ -7,7 +7,8 @@ const addProductToCart = async (productSlug, productId) => {
             },
             body: JSON.stringify({
                 productId: parseInt(productId),
-                productSlug: productSlug
+                productSlug: productSlug,
+                productQuantity: productQuantity
             })
         });
         const data = await response.json();

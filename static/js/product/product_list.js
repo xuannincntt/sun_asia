@@ -51,7 +51,7 @@ const setCartBtnsOnClick = () => {
             const productInfo = productCard.getAttribute("data-index").split("_");
             const [productSlug, productId] = productInfo;
             console.log(productSlug, productId);
-            addProductToCart(productSlug, productId)
+            addProductToCart(productSlug, productId, 1)
             .then(response => {
                 console.log(response);
                 showAddCartResponse(response);

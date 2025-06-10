@@ -81,23 +81,16 @@ def cart(request):
                 return JsonResponse({'message': 'Không tìm thấy sản phẩm này.'}, status=404)
             
             # Kiểm tra sản phẩm có trong cart chưa
-            product_index_in_cart = None
-            for index in range(0,len(cart)):
+            cart_len = len(cart)
+            product_index_in_cart = cart_len
+            for index in range(0,cart_len):
                 if cart[index]['id'] == selected_product.id or cart[index]['slug'] == selected_product.slug:
                     product_index_in_cart = index
                     break
 
             print(product_index_in_cart)
-            
-            if product_index_in_cart:
-                current_quantity = cart[product_index_in_cart]['quantity']
-                cart[product_index_in_cart]['quantity'] = current_quantity + 1
-                cart[product_index_in_cart]['quantity_text'] = format(current_quantity + 1,",")
-                price = cart[product_index_in_cart]['price']
-                cart[product_index_in_cart]['subtotal'] = (current_quantity + 1)*price
-                
 
-            else:
+            if product_index_in_cart == cart_len:
                 first_image = selected_product.images.all().order_by('created_at').first()
                 sale_price = selected_product.sale_price
                 org_price = selected_product.org_price
@@ -114,7 +107,15 @@ def cart(request):
                     "price_text": format(selected_price,","),
                     "subtotal_text": format(selected_price,",")
                 }
-                cart.append(new_item)
+                cart.append(new_item)        
+
+            else:
+                current_quantity = cart[product_index_in_cart]['quantity']
+                cart[product_index_in_cart]['quantity'] = current_quantity + 1
+                cart[product_index_in_cart]['quantity_text'] = format(current_quantity + 1,",")
+                price = cart[product_index_in_cart]['price']
+                cart[product_index_in_cart]['subtotal'] = (current_quantity + 1)*price
+                
 
             request.session['cart'] = cart
             return JsonResponse({'message': 'Thêm vào giỏ hàng thành công!'}, status=200)
@@ -140,6 +141,50 @@ def cart(request):
 
 @never_cache
 @csrf_exempt
+def update_cart(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            updated_cart_data = data.get('cart')
+            updated_cart = []
+            for item in updated_cart_data:
+                product_id = item['productId']
+                # Lấy sản phẩm trong bảng
+                selected_product = Product.objects.filter(id=product_id).first()
+
+                if not selected_product:
+                    return JsonResponse({'message': 'Không tìm thấy sản phẩm này.'}, status=404)
+                
+                first_image = selected_product.images.all().order_by('created_at').first()
+                sale_price = selected_product.sale_price
+                org_price = selected_product.org_price
+                selected_price = sale_price if sale_price >= 0 and sale_price != org_price else org_price
+
+                product_quantity = item['productQuantity']
+                new_item = {
+                    "id": selected_product.id,
+                    "name": selected_product.name,
+                    "slug": selected_product.slug,
+                    "price": selected_price,
+                    "image_url": first_image.image_url if first_image else "",
+                    "quantity": product_quantity if product_quantity else 1,
+                    "subtotal": selected_price,
+                    "quantity_text": format(product_quantity if product_quantity else 1,","),
+                    "price_text": format(selected_price,","),
+                    "subtotal_text": format(selected_price,",")
+                }
+                updated_cart.append(new_item)
+
+            request.session['cart'] = updated_cart
+            return JsonResponse({
+                'message': 'Cập nhật giỏ hàng thành công!',
+                }, status=200)
+
+        except json.JSONDecodeError:
+            return JsonResponse({'message': 'Có lỗi xảy ra: Không lấy được dữ liệu JSON'}, status=400)
+
+@never_cache
+@csrf_exempt
 def checkout(request):
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
@@ -150,7 +195,7 @@ def checkout(request):
         default_address = None
     if request.method == "POST":
         product_id = request.POST.get('productId')
-        product_quantity = request.POST.get('productQuantity')
+        product_quantity = int(request.POST.get('productQuantity'))
 
         selected_product = Product.objects.filter(id=product_id).first() if product_id else None
         if not selected_product:
