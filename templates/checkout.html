@@ -23,16 +23,18 @@
         </div>
     </div>
     <div class="order-page-content">
-        <form action="/order" method="POST" id="section-order-form">
+        <form action="/order" method="POST" id="section-order-form" enctype="multipart/form-data">
             <div class="section-order-input">
             
                 <div class="section-order-address">
                     <div class="address-title align-left">Thông tin nhận hàng</div>
                     <hr style="width: 100%;" />
-                    <label style="display: none;">
+                    <label style="display: none;" for="orderMode">
                         <input
                             type="text"
-                            value="{{mode}}"
+                            name="orderMode"
+                            id="orderMode"
+                            value="{{order_mode}}"
                             
                         />
                     </label>
@@ -169,6 +171,19 @@
                                 />
                             </label>
                         </div>
+                        <div class="form-field notes-field">
+                            <label for="notes" class="form-label">
+                                <span class="form-name">Ghi chú</span>
+                                <textarea 
+                                    id="notes"
+                                    name="notes"
+                                    placeholder="Nhập ghi chú cho đơn hàng"
+                                    class="form-input"
+                                    cols="100"
+                                    rows="5"
+                                ></textarea>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="section-order-payment">
@@ -261,14 +276,15 @@
                             <img class="bank-account-image" src="{% static 'images/bank_qr_placeholder.png' %}" alt="">
                         </div>
                         <div class="bank-proof">
-                            <label for="bankingProof" class="bank-proof-label">
+                            <label for="bankProof" class="bank-proof-label">
                                 <span class="bank-proof-name">Minh chứng thanh toán</span>
                                 <input
                                     type="file"
                                     accept=".jpg,.jpeg,.png"
-                                    id="bankingProof"
-                                    name="bankingProof"
+                                    id="bankProof"
+                                    name="bankProof"
                                     class="bank-proof-input"
+                                    
                                 />
                             </label>
                             <div class="bank-proof-preview">
@@ -305,9 +321,9 @@
                                         <div class="product-card-name align-left">{{item.name}}</div>
                                     </div>
                                     <div class="card-info-row2">
-                                        <div class="product-card-price align-left">{{item.price}}</div>
-                                        <div class="product-card-quantity align-center">x{{item.quantity}}</div>
-                                        <div class="product-card-subtotal align-right">{{item.subtotal}}đ</div>
+                                        <div class="product-card-price align-left">{{item.price_text}}</div>
+                                        <div class="product-card-quantity align-center">x{{item.quantity_text}}</div>
+                                        <div class="product-card-subtotal align-right">{{item.subtotal_text}}đ</div>
                                     </div>
                                 </div>
                             </div>
@@ -342,6 +358,26 @@
                 </div>
             </div>
         </form>
+    </div>
+    <div class="order-popup">
+        <div class="popup-container">
+            <div class="popup-header align-center">
+                Thông báo
+            </div>
+            <div class="popup-content">
+                <div class="popup-text align-center">
+                    Bạn có chắc chắn muốn xóa mặt hàng này không?
+                </div>
+                <div class="popup-action">
+                    <button type="button" class="action-btn shop-btn">
+                        Tiếp tục mua sắm
+                    </button>
+                    <button type="button" class="action-btn order-btn">
+                        Xem đơn hàng
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setRemoveBtnsOnClick();
     setDeleteCartBtnOnClick();
 
-    updateCartTotal();
+    // updateCartTotal();
 
     cancelRemoveBtn.addEventListener("click", () => {
         togglePopup();

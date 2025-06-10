@@ -39,8 +39,6 @@ section {
     height: 50vh;
     padding-bottom: 3rem;
     color: var(--white-color);
-    align-items: stretch;
-    overflow: hidden;
 }
 
 .news-header-item {
@@ -111,10 +109,9 @@ section {
 .news-content-left {
     width: 70%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     background-color: var(--bg-color);
     color: var(--text-color);
-    align-items: stretch;
     gap: 3rem;
 }
 
@@ -174,7 +171,7 @@ section {
     font-weight: 600;
     border-radius: 0rem .5rem .5rem 0rem;
     font-size: 1.5rem;
-    color: var(--white-color);
+    color: var(--bg-color);
 }
 
 .news-content-date {

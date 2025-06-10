@@ -24,7 +24,7 @@ class Product(models.Model):
     description = tinymce_models.HTMLField(verbose_name="Mô tả", null=True, blank=True)
     sold = models.IntegerField(verbose_name="Số lượng đã bán", null=True, default=0, blank=True)
     stock = models.IntegerField(verbose_name="Số lượng còn lại",null=True, default=0, blank=True)
-    sale_price = models.IntegerField(verbose_name="Giá khuyến mại (Điền không có thì điền giá gốc)", null=True, default=0, blank=True)
+    sale_price = models.IntegerField(verbose_name="Giá khuyến mại (Nếu không có thì để trống)", null=True, default=-1, blank=True)
     org_price = models.IntegerField(verbose_name="Giá niêm yết",null=True, default=0, blank=True)
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
 

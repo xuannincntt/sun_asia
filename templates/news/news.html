@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load i18n %}
 {% block css %}
+    <link rel="stylesheet" href="/static/css/news/news.css">
     <link rel="stylesheet" href="/static/css/news/news.css">
 {% endblock %}
 {% block title %}
+    {% trans "Tin tức" %}
     {% trans "Tin tức" %}
 {% endblock %}
 {% block content %}

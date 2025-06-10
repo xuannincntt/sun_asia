@@ -28,6 +28,8 @@ def product_list(request):
     for product in products:
         first_image = product.images.all().order_by('created_at').first()
         product.image_url = first_image.image_url if first_image else ""
+        product.org_price = format(product.org_price if product.org_price > 0 else 0, ",")
+        product.sale_price = format(product.sale_price if product.sale_price >= 0 else -1, ",")
     
     # print(list(products))
 
@@ -43,6 +45,10 @@ def product_detail(request, slug):
     user = User.objects.get(id=user_id) if user_id else None
 
     product = Product.objects.filter(slug=slug).first() if slug else None
+    product.org_price = format(product.org_price if product.org_price > 0 else 0, ",")
+    print(product.org_price)
+    product.sale_price = format(product.sale_price if product.sale_price >= 0 else -1, ",")
+    print(product.sale_price)
 
     product_images = ProductImage.objects.filter(product=product) if product else None
 

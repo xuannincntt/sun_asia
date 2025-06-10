@@ -39,6 +39,8 @@ def product_by_category(request, cat_slug):
         for product in products:
             first_image = product.images.all().order_by('created_at').first()
             product.image_url = first_image.image_url if first_image else ""
+            product.org_price = format(product.org_price if product.org_price > 0 else 0, ",")
+            product.sale_price = format(product.sale_price if product.sale_price >= 0 else -1, ",")
     else:
         products = None
 
@@ -90,6 +92,7 @@ def cart(request):
             if product_index_in_cart:
                 current_quantity = cart[product_index_in_cart]['quantity']
                 cart[product_index_in_cart]['quantity'] = current_quantity + 1
+                cart[product_index_in_cart]['quantity_text'] = format(current_quantity + 1,",")
                 price = cart[product_index_in_cart]['price']
                 cart[product_index_in_cart]['subtotal'] = (current_quantity + 1)*price
                 
@@ -98,14 +101,18 @@ def cart(request):
                 first_image = selected_product.images.all().order_by('created_at').first()
                 sale_price = selected_product.sale_price
                 org_price = selected_product.org_price
+                selected_price = sale_price if sale_price >= 0 and sale_price != org_price else org_price
                 new_item = {
                     "id": selected_product.id,
                     "name": selected_product.name,
                     "slug": selected_product.slug,
-                    "price": sale_price if sale_price >= 0 and sale_price != org_price else org_price,
+                    "price": selected_price,
                     "image_url": first_image.image_url if first_image else "",
                     "quantity": 1,
-                    "subtotal": selected_product.sale_price if selected_product.sale_price > 0 and selected_product.sale_price != selected_product.org_price else selected_product.org_price
+                    "subtotal": selected_price,
+                    "quantity_text": format(1,","),
+                    "price_text": format(selected_price,","),
+                    "subtotal_text": format(selected_price,",")
                 }
                 cart.append(new_item)
 
@@ -124,11 +131,11 @@ def cart(request):
         'user': user,
         'cart': {
             'cart_items': cart,
-            'total_quantity': total_quantity,
-            'total_temp': total_temp,
-            'total_vat': total_vat,
-            'total_discount': total_discount,
-            'total_final': total_temp + total_vat - total_discount
+            'total_quantity': format(total_quantity,","),
+            'total_temp': format(total_temp,","),
+            'total_vat': format(total_vat,","),
+            'total_discount': format(total_discount,","),
+            'total_final': format(total_temp + total_vat - total_discount,",")
         }})
 
 @never_cache
@@ -162,7 +169,10 @@ def checkout(request):
                 "price": selected_price,
                 "image_url": first_image.image_url if first_image else "",
                 "quantity": product_quantity,
-                "subtotal": product_quantity*selected_price
+                "subtotal": product_quantity*selected_price,
+                "quantity_text": format(product_quantity,","),
+                "price_text": format(selected_price,","),
+                "subtotal_text": format(selected_price,",")
             }
         ]
         total_quantity, total_temp = get_total_from_cart(order_items)
@@ -176,31 +186,32 @@ def checkout(request):
             'timestamp': now().timestamp(), 
             'user': user, 
             'default_address': default_address,
-            'mode': 'buynow',
+            'order_mode': 'buynow',
             'order': {
                 'order_items': order_items,
-                'total_quantity': total_quantity,
-                'total_temp': total_temp,
-                'total_vat': total_vat,
-                'total_discount': total_discount,
-                'total_final': total_temp + total_vat - total_discount
+                'total_quantity': format(total_quantity,","),
+                'total_temp': format(total_temp,","),
+                'total_vat': format(total_vat,","),
+                'total_discount': format(total_discount,","),
+                'total_final': format(total_temp + total_vat - total_discount,",")
             }})
     
     total_quantity, total_temp = get_total_from_cart(cart)
     total_vat = 0
     total_discount = 0
+    # print(default_address.email)
     
 
     return render(request, 'checkout.html', {
         'timestamp': now().timestamp(), 
         'user': user, 
         'default_address': default_address,
-        'mode': 'cart',
+        'order_mode': 'cart',
         'order': {
             'order_items': cart,
-            'total_quantity': total_quantity,
-            'total_temp': total_temp,
-            'total_vat': total_vat,
-            'total_discount': total_discount,
-            'total_final': total_temp + total_vat - total_discount
+            'total_quantity': format(total_quantity,","),
+            'total_temp': format(total_temp,","),
+            'total_vat': format(total_vat,","),
+            'total_discount': format(total_discount,","),
+            'total_final': format(total_temp + total_vat - total_discount,",")
         }})

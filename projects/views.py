@@ -1,9 +1,13 @@
 from django.shortcuts import render
+from django.shortcuts import render
 from django.conf import settings
 from django.utils import translation
 from accounts.models import User
 from .models import Project
+from .models import Project
 from django.utils.timezone import now
+from django.db.models import Q
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.core.paginator import Paginator
 

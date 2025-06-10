@@ -151,11 +151,17 @@
                             </div>
                             <div class="product-card-more">
                                 <div class="product-card-price align-right">
-                                    {% if product.sale_price == product.org_price  %}
-                                    <div class="product-card-salePrice align-right">{{product.sale_price}}đ</div>
+                                    {% if product.org_price != "0"  %}
+                                        {% if product.sale_price == "-1" %}
+                                            <div class="product-card-salePrice align-right">{{product.org_price}}đ</div>
+                                        {% else %}
+                                            <div class="product-card-orgPrice align-right">{{product.org_price}}đ</div>
+                                            <div class="product-card-salePrice align-right">{{product.sale_price}}đ</div>
+                                        {% endif %}
+                                    {% elif product.sale_price != "-1" %}
+                                        <div class="product-card-salePrice align-right">{{product.sale_price}}đ</div>
                                     {% else %}
-                                    <div class="product-card-orgPrice align-right">{{product.org_price}}đ</div>
-                                    <div class="product-card-salePrice align-right">{{product.sale_price}}đ</div>
+                                    <div class="product-card-salePrice align-right">Liên hệ để báo giá</div>
                                     {% endif %}
                                     
                                 </div>
