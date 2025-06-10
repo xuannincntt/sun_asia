@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 
 {% block css %}
@@ -12,7 +13,7 @@
 <main id="product-page">
     <div class="section-title">
         <img class="page-image" src="{% static 'images/products_intro.jpg' %}?v={{ timestamp }}"/>
-        <h2 class="page-title">SẢN PHẨM</h2>
+        <h2 class="page-title">{% trans "SẢN PHẨM" %}</h2>
     </div>
     
 
@@ -31,7 +32,7 @@
                             {% endif %}
                             
                         >
-                            <a class="category-card-link" href="/{{category.slug}}">
+                            <a class="category-card-link" href="/products?category={{category.slug}}">
                                 <span class="category-card-name align-center">{{category.name}}</span>
                             </a>
                             
@@ -206,7 +207,7 @@
                     </button>
                     <a href="/cart" class="action-btn cartNav-btn align-center">
                         Xem giỏ hàng
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

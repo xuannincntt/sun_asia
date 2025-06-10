@@ -17,7 +17,7 @@ class Address(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Address {self.detailed_address} with belongs to email {self.email} and tel {self.tel} created by {self.creator.username}"
+        return f"Address {self.detailed_address} with belongs to email {self.email} and tel {self.tel} created by {self.creator.email}"
 
 class Order(models.Model):
     ORDER_STATUS_CHOICES = [

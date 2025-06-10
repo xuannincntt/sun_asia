@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-28 13:11+0700\n"
+"POT-Creation-Date: 2025-06-05 23:14+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,57 +18,475 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\templates\base.html:25 .\templates\base.html:82
+#: .\templates\base.html:42 .\templates\base.html:147
 msgid "Trang chủ"
 msgstr "Home"
 
-#: .\templates\base.html:26 .\templates\base.html:83
+#: .\templates\base.html:44 .\templates\base.html:148
 msgid "Cửa hàng"
-msgstr "Store"
+msgstr "Shop"
 
-#: .\templates\base.html:27 .\templates\base.html:84
+#: .\templates\base.html:46
+msgid "Nhà màng"
+msgstr "Greenhouse"
+
+#: .\templates\base.html:47
+msgid "Vật tư"
+msgstr "Supplies"
+
+#: .\templates\base.html:48
+msgid "Hệ thống tưới tự động"
+msgstr "Automatic Irrigation System"
+
+#: .\templates\base.html:49
+msgid "Hệ thống cảm biến"
+msgstr "Sensor System"
+
+#: .\templates\base.html:50
+msgid "Hệ thống điều khiển tự động"
+msgstr "Automatic Control System"
+
+#: .\templates\base.html:54 .\templates\base.html:149
+#: .\templates\projects\projects.html:7
 msgid "Dự án"
-msgstr "Projects"
+msgstr "Project"
 
-#: .\templates\base.html:28 .\templates\base.html:85
+#: .\templates\base.html:56
+msgid "Dưới"
+msgstr "Under"
+
+#: .\templates\base.html:59
+msgid "Trên"
+msgstr "Over"
+
+#: .\templates\base.html:62 .\templates\base.html:150
+#: .\templates\news\news.html:7
 msgid "Tin tức"
 msgstr "News"
 
-#: .\templates\base.html:29 .\templates\base.html:86
+#: .\templates\base.html:63 .\templates\base.html:151
+#: .\templates\contact\contact.html:7
 msgid "Liên hệ"
 msgstr "Contact"
 
-#: .\templates\base.html:33
+#: .\templates\base.html:67
 msgid "Tải ứng dụng"
 msgstr "Download App"
 
-#: .\templates\base.html:42
+#: .\templates\base.html:72
+msgid "Tất cả"
+msgstr "All"
+
+#: .\templates\base.html:73
+msgid "Đơn hàng"
+msgstr "Orders"
+
+#: .\templates\base.html:74
+msgid "Khuyến mãi"
+msgstr "Promotions"
+
+#: .\templates\base.html:75
+msgid "Tài khoản"
+msgstr "Account"
+
+#: .\templates\base.html:76
+msgid "Khác"
+msgstr "Others"
+
+#: .\templates\base.html:99
 msgid "Thông tin cá nhân"
-msgstr "My Information"
+msgstr "Personal Information"
 
-#: .\templates\base.html:43
+#: .\templates\base.html:100
 msgid "Quản lý giỏ hàng"
-msgstr "Manage Cart"
+msgstr "Cart Management"
 
-#: .\templates\base.html:44
+#: .\templates\base.html:101
 msgid "Danh mục yêu thích"
-msgstr "Favorites List"
+msgstr "Favorites"
 
-#: .\templates\base.html:46
+#: .\templates\base.html:102
+msgid "Lịch sử mua hàng"
+msgstr "Purchase History"
+
+#: .\templates\base.html:104
 msgid "Đăng xuất"
 msgstr "Log out"
 
-#: .\templates\base.html:65
+#: .\templates\base.html:108
+msgid "Đăng nhập"
+msgstr "Log in"
+
+#: .\templates\base.html:110
+msgid "Đăng ký"
+msgstr "Register"
+
+#: .\templates\base.html:130
 msgid "Việt Nam"
 msgstr "Vietnam"
 
-#: .\templates\base.html:68
+#: .\templates\base.html:133
 msgid "Anh"
 msgstr "English"
 
-#: .\templates\base.html:71
+#: .\templates\base.html:136
 msgid "Nhật Bản"
 msgstr "Japan"
+
+#: .\templates\base.html:178 .\templates\contact\contact.html:50
+msgid "Số điện thoại"
+msgstr "Phone number"
+
+#: .\templates\base.html:187
+msgid "Hỗ trợ khách hàng"
+msgstr "Customer support"
+
+#: .\templates\base.html:195 .\templates\contact\contact.html:14
+#: .\templates\home.html:28
+msgid "CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ PHÁT TRIỂN SUN ASIA"
+msgstr "SUN ASIA INVESTMENT AND DEVELOPMENT JOINT STOCK COMPANY"
+
+#: .\templates\base.html:206
+msgid "ĐĂNG KÝ NHẬN TIN"
+msgstr "SUBSCRIBE TO NEWS"
+
+#: .\templates\base.html:208
+msgid "Nhập email của bạn"
+msgstr "Enter your email"
+
+#: .\templates\base.html:215
+msgid "HƯỚNG DẪN"
+msgstr "GUIDES"
+
+#: .\templates\base.html:216
+msgid "Về chúng tôi"
+msgstr "About us"
+
+#: .\templates\base.html:217
+msgid "Báo giá và hỗ trợ"
+msgstr "Quotation & Support"
+
+#: .\templates\base.html:218
+msgid "Câu hỏi thường gặp"
+msgstr "Frequently Asked Questions"
+
+#: .\templates\base.html:219
+msgid "Góp ý báo lỗi"
+msgstr "Feedback & Bug Report"
+
+#: .\templates\base.html:223
+msgid "QUY ĐỊNH"
+msgstr "REGULATIONS"
+
+#: .\templates\base.html:224
+msgid "Quy định mua hàng"
+msgstr "Purchase Regulations"
+
+#: .\templates\base.html:225
+msgid "Quy chế hoạt động"
+msgstr "Operating Rules"
+
+#: .\templates\base.html:226
+msgid "Điều khoản thỏa thuận"
+msgstr "Terms and Conditions"
+
+#: .\templates\base.html:227
+msgid "Chính sách bảo mật"
+msgstr "Privacy Policy"
+
+#: .\templates\base.html:228
+msgid "Giải quyết khiếu nại"
+msgstr "Complaint Resolution"
+
+#: .\templates\contact\contact.html:11
+msgid "LIÊN HỆ VỚI SUN ASIA"
+msgstr "CONTACT SUN ASIA"
+
+#: .\templates\contact\contact.html:42
+msgid "Họ và tên"
+msgstr "Full Name"
+
+#: .\templates\contact\contact.html:44
+msgid "Họ"
+msgstr "Last Name"
+
+#: .\templates\contact\contact.html:45
+msgid "Tên"
+msgstr "First Name"
+
+#: .\templates\contact\contact.html:49
+msgid "Điện thoại"
+msgstr "Phone"
+
+#: .\templates\contact\contact.html:51 .\templates\contact\contact.html:53
+msgid "Nội dung"
+msgstr "Message"
+
+#: .\templates\contact\contact.html:54
+msgid "Gửi tin nhắn"
+msgstr "Send Message"
+
+#: .\templates\home.html:17
+msgid "GIẢI PHÁP NHÀ KÍNH VƯƠN TẦM QUỐC TẾ"
+msgstr "INTERNATIONAL GREENHOUSE SOLUTIONS"
+
+#: .\templates\home.html:18
+msgid ""
+"Các công trình hạ tầng mà SUN ASIA thực hiện đã góp phần rất quan trọng "
+"trong việc kết nối, tạo nền tảng cho phát triển kinh tế – xã hội và góp phần "
+"nâng cao chất lượng cuộc sống của người dân."
+msgstr ""
+"The infrastructure projects implemented by SUN ASIA have significantly "
+"contributed to connection, laid the foundation for socio-economic "
+"development, and improved the quality of life for the people."
+
+#: .\templates\home.html:21
+msgid "TƯ VẤN MIỄN PHÍ NGAY"
+msgstr "GET FREE CONSULTATION NOW"
+
+#: .\templates\home.html:29
+msgid ""
+"Công ty SUN ASIA được thành lập từ năm 2020.  Trên cơ sở năng lực hiện tại "
+"của Sun Asia, chúng tôi khẳng định có đủ khả năng tham gia và đáp ứng mọi dự "
+"án liên quan đến lĩnh vực dịch vụ nông nghiệp công nghệ cao, xây dựng hạ "
+"tầng và thi công trọn gói nhà dân.."
+msgstr ""
+"SUN ASIA was established in 2020. Based on our current capacity, we are "
+"confident in our ability to participate and meet all projects related to "
+"high-tech agriculture services, infrastructure construction, and turnkey "
+"housing projects."
+
+#: .\templates\home.html:30
+msgid ""
+"Dự án nhà kính đã được SUN ASIA thi công trên khắp cả Việt Nam. SUN ASIA đã "
+"xuất khẩu nhà màng đi Mỹ, Thái Lan. Với năng lực nhân lực, cơ sở vật chất, "
+"kinh nghiệm và năng lực tài chính, Công ty Cổ phần Đầu tư và Phát triển Sun "
+"Asia sẽ nghiêm túc thực hiện mọi cam kết với Quý khách hàng và sẽ luôn hướng "
+"tới sự hoàn thiện đảm bảo tiến độ, chất lượng và an toàn trong quá trình hợp "
+"tác."
+msgstr ""
+"Greenhouse projects by SUN ASIA have been implemented across Vietnam. SUN "
+"ASIA has exported greenhouses to the US and Thailand. With human resources, "
+"facilities, experience, and financial capability, Sun Asia Investment and "
+"Development JSC is committed to fulfilling all obligations to clients, "
+"ensuring progress, quality, and safety throughout the cooperation process."
+
+#: .\templates\home.html:31
+msgid "Dịch vụ hỗ trợ"
+msgstr "Support Services"
+
+#: .\templates\home.html:36
+msgid "Thiết kế trang trại"
+msgstr "Farm Design"
+
+#: .\templates\home.html:42
+msgid "Thi công trọn gói"
+msgstr "Turnkey Construction"
+
+#: .\templates\home.html:48
+msgid "Bán trang thiết bị"
+msgstr "Equipment Sales"
+
+#: .\templates\home.html:54
+msgid "Tư vấn thiết kế"
+msgstr "Design Consulting"
+
+#: .\templates\home.html:66
+msgid "Sản phẩm dành cho bạn"
+msgstr "Products For You"
+
+#: .\templates\home.html:67
+msgid "Sản phẩm mới nhất"
+msgstr "Newest Products"
+
+#: .\templates\home.html:68
+msgid "Sản phẩm bán chạy"
+msgstr "Best-selling Products"
+
+#: .\templates\home.html:164
+msgid "Dự án nổi bật"
+msgstr "Featured Projects"
+
+#: .\templates\home.html:165
+msgid "Xem thêm"
+msgstr "View More"
+
+#: .\templates\news\news.html:12
+msgid "TIN TỨC"
+msgstr "NEWS"
+
+#: .\templates\news\news.html:72
+msgid "Bài viết được xem nhiều nhất"
+msgstr "Most Viewed Articles"
+
+#: .\templates\news\news.html:103
+msgid "Danh mục tin tức"
+msgstr "News Categories"
+
+#: .\templates\projects\projects.html:12
+msgid "DỰ ÁN"
+msgstr "PROJECT"
+
+#: .\templates\projects\projects.html:16
+msgid "Bộ lọc tìm kiếm"
+msgstr "Search Filter"
+
+#: .\templates\projects\projects.html:18
+msgid "Tỉnh thành"
+msgstr "Province"
+
+#: .\templates\projects\projects.html:20
+msgid "Tất cả tỉnh thành"
+msgstr "All Provinces"
+
+#: .\templates\projects\projects.html:27
+msgid "Sản phẩm"
+msgstr "Product"
+
+#: .\templates\projects\projects.html:40
+msgid "Diện tích"
+msgstr "Area"
+
+msgid "Chủ đầu tư"
+msgstr "Investor"
+
+msgid "Thành phố"
+msgstr "City"
+
+msgid "Mật khẩu"
+msgstr "Password"
+
+msgid "Quên mật khẩu?"
+msgstr "Forgot password?"
+
+msgid "Hoặc đăng nhập với các nền tảng xã hội"
+msgstr "Or sign in with social platforms"
+
+msgid "Sun Asia, xin chào!"
+msgstr "Hello, Sun Asia!"
+
+msgid "Bạn không có tài khoản?"
+msgstr "Don't have an account?"
+
+msgid "Tên người dùng"
+msgstr "Username"
+
+msgid "Chào mừng trở lại!"
+msgstr "Welcome back!"
+
+msgid "Bạn đã có tài khoản?"
+msgstr "Already have an account?"
+
+msgid "Hoặc đăng ký với các nền tảng xã hội"
+msgstr "Or sign up with social platforms"
+
+msgid "Thông tin về bạn và các lựa chọn ưu tiên của bạn trên các dịch vụ của Sun Asia"
+msgstr "Information about you and your preferences on Sun Asia services"
+
+msgid "Thông tin cơ bản"
+msgstr "Basic information"
+
+msgid "Những người khác sử dụng các dịch vụ của Sun Asia có thể nhìn thấy một số thông tin."
+msgstr "Other users of Sun Asia services may be able to see some of your information."
+
+msgid "Ảnh hồ sơ"
+msgstr "Profile picture"
+
+msgid "Ảnh hồ sơ sẽ giúp bạn tạo nét riêng"
+msgstr "Your profile picture helps you express your identity"
+
+msgid "Ảnh đại diện"
+msgstr "Avatar"
+
+msgid "Ảnh hồ sơ sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn"
+msgstr "Your profile picture will be shown on your profile, comments, and posts"
+
+msgid "Tải ảnh mới lên"
+msgstr "Upload new image"
+
+msgid "Cập nhập tên của bạn"
+msgstr "Update your name"
+
+msgid "Tên sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn"
+msgstr "Your name will appear on your profile, comments, and posts"
+
+msgid "Nhập họ và tên của bạn"
+msgstr "Enter your full name"
+
+msgid "Xác nhận"
+msgstr "Confirm"
+
+msgid "Thông tin đăng nhập"
+msgstr "Login information"
+
+msgid "Cập nhập email của bạn"
+msgstr "Update your email"
+
+msgid "Email sẽ được sử dụng để đăng nhập vào tài khoản của bạn"
+msgstr "The email will be used to log into your account"
+
+msgid "Xác nhận mật khẩu"
+msgstr "Confirm password"
+
+msgid "Để xác định rằng bạn là chủ sở hữu tài khoản, vui lòng nhập mật khẩu hiện tại của bạn"
+msgstr "To verify you are the account owner, please enter your current password"
+
+msgid "Mật khẩu hiện tại"
+msgstr "Current password"
+
+msgid "Nhập mật khẩu của bạn"
+msgstr "Enter your password"
+
+msgid "Đổi mật khẩu"
+msgstr "Change password"
+
+msgid "Mật khẩu sẽ được sử dụng để đăng nhập vào tài khoản của bạn"
+msgstr "The password will be used to log into your account"
+
+msgid "Mật khẩu mới"
+msgstr "New password"
+
+msgid "Nhập mật khẩu mới của bạn"
+msgstr "Enter your new password"
+
+msgid "Nhập lại mật khẩu mới"
+msgstr "Re-enter your new password"
+
+msgid "Thông tin liên hệ"
+msgstr "Contact information"
+
+msgid "Chưa cập nhật"
+msgstr "Not updated"
+
+msgid "Cập nhập số điện thoại của bạn"
+msgstr "Update your phone number"
+
+msgid "Số điện thoại sẽ được sử dụng để liên hệ đặt hàng"
+msgstr "The phone number will be used for order contact"
+
+msgid "Nhập số điện thoại của bạn"
+msgstr "Enter your phone number"
+
+msgid "Địa chỉ của tôi"
+msgstr "My address"
+
+msgid "Thêm địa chỉ mới"
+msgstr "Add new address"
+
+msgid "Địa chỉ"
+msgstr "Address"
+
+msgid "Tỉnh/ Thành phố, Quận/Huyện, Phường/Xã"
+msgstr "Province/City, District, Ward"
+
+msgid "Thêm vị trí"
+msgstr "Add location"
+
+msgid "Thoát"
+msgstr "Exit"
+
+msgid "Hoàn thành"
+msgstr "Finish"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"

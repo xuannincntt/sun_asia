@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/order/order_history.css' %}?v={{ timestamp }}">
+{% endblock %}
+
+{% block title %}Lịch sử mua hàng{% endblock %}
+
+{% block content %} 
+<main id="order-detail-page">
+    <div class="order-detail-header">
+        
+    </div>
+    <div class="order-detail-content">
+
+    </div>
+</main>
+{% endblock %}
+
+{% block script %}
+{% endblock script %}

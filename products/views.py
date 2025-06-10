@@ -5,6 +5,7 @@ from accounts.models import User
 from django.shortcuts import get_object_or_404
 from django.utils.timezone import now
 from django.db.models import Prefetch
+from django.http import JsonResponse, HttpResponse
 
 
 image_prefetch = Prefetch(
@@ -21,21 +22,39 @@ def product_list(request):
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
 
+    category_slug = request.GET.get('category', 'all')
+    print(category_slug)
+
     categories = Category.objects.all()
+    selected_category = {
+        'slug': "tat-ca-san-pham"
+    }
+    if category_slug == 'all':
+        products = Product.objects.all().prefetch_related(image_prefetch)
 
-    products = Product.objects.all().prefetch_related(image_prefetch)
+        for product in products:
+            first_image = product.images.all().order_by('created_at').first()
+            product.image_url = first_image.image_url if first_image else ""
+            product.org_price = format(product.org_price if product.org_price > 0 else 0, ",")
+            product.sale_price = format(product.sale_price if product.sale_price >= 0 else -1, ",")
+    else:
+        selected_category = Category.objects.filter(slug=category_slug).first()
+        if not selected_category:
+            return HttpResponse({"message: Category not found"}, status=404)
 
-    for product in products:
-        first_image = product.images.all().order_by('created_at').first()
-        product.image_url = first_image.image_url if first_image else ""
-        product.org_price = format(product.org_price if product.org_price > 0 else 0, ",")
-        product.sale_price = format(product.sale_price if product.sale_price >= 0 else -1, ",")
-    
+        products = Product.objects.filter(category=selected_category).prefetch_related(image_prefetch)
+
+        for product in products:
+            first_image = product.images.all().order_by('created_at').first()
+            product.image_url = first_image.image_url if first_image else ""
+            product.org_price = format(product.org_price if product.org_price > 0 else 0, ",")
+            product.sale_price = format(product.sale_price if product.sale_price >= 0 else -1, ",")
     # print(list(products))
 
     return render(request, 'product/product_list.html', {
         'timestamp': now().timestamp(), 
         'user': user,
+        'selected_category': selected_category,
         'products': products,
         'categories': categories})
 

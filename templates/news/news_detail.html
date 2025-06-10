@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/news/news_detail.css">
+{% endblock %}
+{% block title %}
+    {{ news_item.title }}
+{% endblock %}
+{% block content %}
+    <section class="news-detail-container">
+        <h1 class="news-heading">{{ news_item.title }}</h1>
+        <div class="news-content">
+            {{ news_item.content|safe }}
+        </div>
+    </section>
+{% endblock %}
+{% block script %}
+{% endblock %}

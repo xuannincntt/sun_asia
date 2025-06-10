@@ -16,11 +16,15 @@
     --white-color: #fff;
     --bg-color: white;
     --text-color: #333;
+    --text-color-blur: #3b3b3b;
     --text-hover: #1f1f1f;
     --sd-text-color: #ff4081;
-    --main-color: #FFF176;
-    --second-color: #f4e185;
+    --main-color: #24be2c;
+    --second-color: #21b428;
     --shadow-color: rgba(0, 0, 0, .2);
+    --category-card: green; 
+    --filter-input: green;
+    --category-active-border: rgba(184, 255, 184, 0.503);
 }
 
 .darkMode {
@@ -30,11 +34,15 @@
     --white-color: #fff;
     --bg-color: #222;
     --text-color: #f0f0f0;
+    --text-color-blur: #7f7f7f;
     --text-hover: #e0e0e0;
     --sd-text-color: #ff4081;
-    --main-color: #ff9800;
+    --main-color: #24be2c;
     --second-color: #ffc107;
     --shadow-color: rgba(0, 0, 0, .5);
+    --category-card: green; 
+    --filter-input: green;
+    --category-active-border: rgba(184, 255, 184, 0.503);
 }
 
 .actions #change-color .bx:first-child {

@@ -8,127 +8,92 @@
 {% endblock %}
 {% block content %}
     <div class="news-img">
-        <img src="/static/img/house2.jpg" alt="">
+        <img src="/static/img/bg_news.jpg" alt="">
         <h1>{% trans "TIN TỨC" %}</h1>
     </div>
     <section id="news" class="news">
         <div class="news-header">
-            <div class="news-header-item">
-                <img src="/static/img/house3.jpg" alt="">
-                <h3>Công nghệ</h3>
-                <p class="news-header-date">03/06/2025 • Tin tức</p>
-                <p class="news-header-content">Hệ thống thủy canh</p>
-            </div>
-            <div class="news-header-item">
-                <img src="/static/img/house4.jpg" alt="">
-                <h3>Thiết bị</h3>
-                <p class="news-header-date">03/06/2025 • Tin tức</p>
-                <p class="news-header-content">Khớp nối khung nhà màng</p>
-            </div>
-            <div class="news-header-item">
-                <img src="/static/img/house1.jpg" alt="">
-                <h3>Thiết bị</h3>
-                <p class="news-header-date">03/06/2025 • Tin tức</p>
-                <p class="news-header-content">Vật liệu nhà màng</p>
-            </div>
+            {% for news in latest_news %}
+            <a href="{% url 'news_detail' slug=news.slug %}" class="news-content-header-link">
+                <div class="news-header-item">
+                    <img src="{{ news.image_file.url }}" alt="{{ news.title }}">
+                    <h3>{{ news.category.name }}</h3>
+                    <p class="news-header-date">{{ news.published_at|date:"d/m/Y" }} • Tin tức</p>
+                    <p class="news-header-content">{{ news.title }}</p>
+                </div>
+            </a>
+            {% endfor %}
         </div>
         <div class="news-content">
             <div class="news-content-left">
-                <div class="news-content-item">
-                    <img src="/static/img/house3.jpg" alt="">
-                    <h3>Công nghệ</h3>
-                    <h1>Hệ thống thủy canh</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Veritatis dolorem, illum minima iusto ab eius.</p>
-                    <p class="news-content-date">03/06/2025</p>
-                </div>
-                <div class="news-content-item">
-                    <img src="/static/img/house1.jpg" alt="">
-                    <h3>Công nghệ</h3>
-                    <h1>Hệ thống thủy canh</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Quam, explicabo reprehenderit. Reiciendis placeat!</p>
-                    <p class="news-content-date">03/06/2025</p>
-                </div>
-                <div class="news-content-item">
-                    <img src="/static/img/house4.jpg" alt="">
-                    <h3>Công nghệ</h3>
-                    <h1>Hệ thống thủy canh</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Rerum quidem possimus ullam aperiam, dignissimos quae.</p>
-                    <p class="news-content-date">03/06/2025</p>
-                </div>
-                <div class="news-content-item">
-                    <img src="/static/img/house2.jpg" alt="">
-                    <h3>Công nghệ</h3>
-                    <h1>Hệ thống thủy canh</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Perferendis quibusdam delectus nam, dolor iure suscipit!</p>
-                    <p class="news-content-date">03/06/2025</p>
+                {% for news in other_news %}
+                <a href="{% url 'news_detail' slug=news.slug %}" class="news-content-item-link">
+                    <div class="news-content-item">
+                        <img src="{{ news.image_file.url }}" alt="{{ news.title }}">
+                        <h3>{{ news.category.name }}</h3>
+                        <h1>{{ news.title }}</h1>
+                        <p>{{ news.content|striptags|truncatewords:20|safe }}</p>
+                        <p class="news-content-date">{{ news.published_at|date:"d/m/Y" }}</p>
+                    </div>
+                </a>
+                {% empty %}
+                <h3 id="noti">Không có bài viết nào phù hợp.</h3>
+                {% endfor %}
+                <div class="pagination">
+                    <ul class="pagination-list">
+                        {% if other_news.has_previous %}
+                            <li><a href="?{% for c in request.GET.category %}category={{ c }}&{% endfor %}page={{ other_news.previous_page_number }}">‹</a></li>
+                        {% endif %}
+                        {% for num in other_news.paginator.page_range %}
+                            {% if num == other_news.number %}
+                                <li><span class="active">{{ num }}</span></li>
+                            {% elif num >= other_news.number|add:'-2' and num <= other_news.number|add:'2' %}
+                                <li><a href="?{% for c in request.GET.category %}category={{ c }}&{% endfor %}page={{ num }}">{{ num }}</a></li>
+                            {% elif num == 1 %}
+                                <li><a href="?{% for c in request.GET.category %}category={{ c }}&{% endfor %}page=1">1</a></li>
+                                {% if other_news.number > 4 %}
+                                    <li><span class="dots">...</span></li>
+                                {% endif %}
+                            {% elif num == other_news.paginator.num_pages %}
+                                {% if other_news.number < other_news.paginator.num_pages|add:'-3' %}
+                                    <li><span class="dots">...</span></li>
+                                {% endif %}
+                                <li><a href="?{% for c in request.GET.category %}category={{ c }}&{% endfor %}page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if other_news.has_next %}
+                            <li><a href="?{% for c in request.GET.category %}category={{ c }}&{% endfor %}page={{ other_news.next_page_number }}">›</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
             </div>
             <div class="news-content-right">
                 <div class="news-content-right1">
                     <h1>{% trans "Bài viết được xem nhiều nhất" %}</h1>
-                    <div class="news-content-best">
-                        <img src="/static/img/house2.jpg" alt="">
-                        <div class="news-content-bests">
-                            <h3>Khớp nối lắp rap nhà màng</h3>
-                            <p>03/06/2025</p>
+                    {% for news in most_viewed_news %}
+                    <a href="{% url 'news_detail' slug=news.slug %}" class="news-content-best-link">
+                        <div class="news-content-best">
+                            <img src="{{ news.image_file.url }}" alt="{{ news.title }}">
+                            <div class="news-content-bests">
+                                <h3>{{ news.title|striptags|truncatewords:5|safe }}</h3>
+                                <p>{{ news.published_at|date:"d/m/Y" }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="news-content-best">
-                        <img src="/static/img/house2.jpg" alt="">
-                        <div class="news-content-bests">
-                            <h3>Khớp nối lắp rap nhà màng</h3>
-                            <p>03/06/2025</p>
-                        </div>
-                    </div>
-                    <div class="news-content-best">
-                        <img src="/static/img/house2.jpg" alt="">
-                        <div class="news-content-bests">
-                            <h3>Khớp nối lắp rap nhà màng</h3>
-                            <p>03/06/2025</p>
-                        </div>
-                    </div>
-                    <div class="news-content-best">
-                        <img src="/static/img/house2.jpg" alt="">
-                        <div class="news-content-bests">
-                            <h3>Khớp nối lắp rap nhà màng</h3>
-                            <p>03/06/2025</p>
-                        </div>
-                    </div>
+                    </a>
+                    {% endfor %}
                 </div>
                 <div class="news-content-right2">
                     <h1>{% trans "Danh mục tin tức" %}</h1>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="project_type" value="thuycanh">
-                        Công nghệ
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="project_type" value="nhogiot">
-                        Thiết bị
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="project_type" value="congnghe">
-                        Kỹ thuật
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="project_type" value="congnghe">
-                        Kỹ thuật
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="project_type" value="congnghe">
-                        Kỹ thuật
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="project_type" value="congnghe">
-                        Hạt giống
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" name="project_type" value="congnghe">
-                        Chăm sóc
-                    </label>
+                    <form method="GET" id="filter-form">
+                        {% for category in categories %}
+                        <label class="checkbox-item">
+                        <input type="checkbox" name="category" value="{{ category.id }}" 
+                            {% if category.id|stringformat:"s" in selected_categories %}checked{% endif %} 
+                            onchange="document.getElementById('filter-form').submit();">
+                        {{ category.name }}
+                        </label>
+                        {% endfor %}
+                    </form>
                 </div>
             </div>
         </div>

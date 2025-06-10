@@ -1,0 +1,104 @@
+/* Định nghĩa chung cho vùng content */
+body {
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    padding: 16px;
+}
+
+/* Tiêu đề */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    color: #222;
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 28px; }
+h3 { font-size: 24px; }
+h4 { font-size: 20px; }
+h5 { font-size: 18px; }
+h6 { font-size: 16px; }
+
+/* Đoạn văn bản */
+p {
+    margin-bottom: 16px;
+}
+
+/* Danh sách */
+ul, ol {
+    margin-bottom: 16px;
+    padding-left: 40px;
+}
+
+ul li {
+    list-style-type: disc;
+}
+
+ol li {
+    list-style-type: decimal;
+}
+
+/* Liên kết */
+a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Ảnh */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 16px auto;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Quote */
+blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 16px;
+    color: #666;
+    font-style: italic;
+    margin: 16px 0;
+}
+
+/* Bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f8f8f8;
+}
+
+/* Video iframe */
+iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 16px auto;
+}
+
+/* Custom code block (nếu soạn thảo có code) */
+pre {
+    background-color: #f4f4f4;
+    padding: 12px;
+    overflow-x: auto;
+    border-radius: 4px;
+}

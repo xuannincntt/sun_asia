@@ -2,6 +2,7 @@
     box-sizing: border-box;
     font-family: sans-serif;
     padding-top: 7rem;
+    background-color: var(--bg-color);
 }
 
 .hide{
@@ -27,7 +28,7 @@
         text-align: center;
         margin: 0;
         padding: 0;
-        color: white;
+        color: var(--white-color);
         font-weight: 700;
         font-size: 3rem;
         background-color: rgba(0, 0, 0, 0.559);
@@ -41,16 +42,18 @@
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 3fr;
+    
 
     
 
     .section-options{
         box-sizing: border-box;
         
+        
 
         .section-categories, .section-filter{
             box-sizing: border-box;
-            border: 2px solid #dedede;
+            border: 2px solid var(--border-color);
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
         
@@ -86,7 +89,7 @@
                     box-sizing: border-box;
                     width: 100%;
                     transition: all 0.2s ease-in-out;
-                    color: rgb(89, 89, 89);
+                    color: var(--text-color);
 
                     .category-card-link{
                         text-decoration: none;
@@ -107,13 +110,13 @@
 
 
                 .category-card-active{
-                    color: black;
-                    background-color: #FFDB58;
-                    border: 1px solid #f9da6d;
+                    color: var(--text-color);
+                    background-color: var(--hover-color);
+                    border: 1px solid var(--category-active-border);
                 }
 
                 .category-card-hover{
-                    background-color: #fef7c6;
+                    background-color: var(--hover-color);
                 }
             }
         }
@@ -125,7 +128,7 @@
                 box-sizing: border-box;
                 padding: 0.8rem;
                 background-color: black;
-                color: rgb(243, 243, 243);
+                color: var(--text-color);
                 font-size: 1.8rem;
                 font-weight: 600;
             }
@@ -151,11 +154,13 @@
                     gap: 0.7rem;
 
                     .filter-input{
-                        accent-color: #F8AD06;
+                        accent-color: var(--filter-input);
+
                     }
 
                     .filter-value{
                         font-size: 1.5rem;
+                        color: var(--text-color);
                     }
                 }
 
@@ -191,7 +196,7 @@
                         width: 100%;
                         margin: 1rem 0;
                         padding: 0.85rem;
-                        background-color: rgb(53, 53, 53);
+                        background-color: rgb(18, 18, 18);
                         color: white;
                         font-size: 1.5rem;
                         font-weight: 550;
@@ -218,6 +223,7 @@
             .category-label{
                 font-size: 1.8rem;
                 font-weight: 550;
+                color: var(--text-color);
                 
                 h4{
                     margin: 0;
@@ -284,16 +290,17 @@
                     flex-direction: column;
                     cursor: pointer;
                     transition: all 0.2s ease-in-out;
-                    border: 2px solid rgb(244, 244, 244);
+                    border: 2px solid var(--border-color);
                     border-radius: 10px;
 
                     .product-card-thumbnail{
                         box-sizing: border-box;
                         position: relative;
                         width: 100%;
+                        border-radius: 10px;
                         height: 200px;
                         overflow: hidden;
-                        border-bottom: 2px solid rgb(231, 231, 231);
+                        border-bottom: 2px solid var(--border-color);
                         .product-card-image{
                             width: 100%;
                             height: 100%;
@@ -332,10 +339,13 @@
                         flex-direction: column;
                         padding: 0.8rem;
                         gap: 0.5rem;
+                        background-color: var(--bg-color);
+                        color: var(--text-color);
 
                         .product-card-name{
                             font-size: 1.6rem;
                             font-weight: 600;
+                            
                         }
 
                         .product-card-more{
@@ -351,7 +361,7 @@
                                 .product-card-orgPrice{
                                     font-size: 1.5rem;
                                     text-decoration: line-through;
-                                    color: grey;
+                                    color: var(--text-color-blur);
                                 }
 
                                 .product-card-salePrice{

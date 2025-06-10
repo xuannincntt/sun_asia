@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/order/order_detail.css' %}?v={{ timestamp }}">
+{% endblock %}
+
+{% block title %}Chi tiết đơn hàng{% endblock %}
+
+{% block content %} 
+<main id="order-detail-page">
+    <div class="order-detail-header">
+        <div class="header-return">
+            <a class="return-link align-left" href="/order/history">
+                <i class='bx bx-arrow-left-stroke return-icon'></i> 
+                <span class="return-label">Về Lịch sử mua hàng</span>
+            </a>
+        </div>
+        <div class="header-title">
+            <span class="title-text">ĐƠN HÀNG CỦA BẠN</span>
+        </div>
+    </div>
+    <div class="order-detail-content">
+        <div class="info-addition">
+            <div class="order-identify">
+                <h3 class="order-name">Đơn hàng</h3>
+                <span class="order-id">#0284018441484</span>
+            </div>
+            <div class="section-order-status">
+                <span class="order-isPaid">Chưa thanh toán</span>
+                <span class="order-status">Đang vận chuyển</span>
+            </div>
+            <div class="section-order-status">
+                <i class='bxr bx-calendar-alt calendar-icon'></i> 
+                <span class="order-status">10:00, 10-06-2025</span>
+            </div>
+        </div>
+        <div class="info-main">
+            <div class="info-main-col1">
+                <table class="order-table">
+                    <thead >
+                        <tr class="order-table-head">
+                            <th class="align-center">STT</th>
+                            <th class="align-left table-head-product">Mặt hàng</th>
+                            <th class=""></th>
+                            <th class="align-left">Đơn giá</th>
+                            <th class="align-center">Số lượng</th>
+                            <th class="align-right">Tổng cộng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="order-table-data">
+                            <td class="align-center">1</td>
+                            <td class="align-center">
+                                <img class="order-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
+                            </td>
+                            <td class="align-left">Nhà màng GH.04-8.0</td>
+                            <td class="align-left">15,000,000đ</td>
+                            <td class="align-center">2</td>
+                            <td class="align-right">30,000,000đ</td>
+                        </tr>
+                        <tr class="order-table-data">
+                            <td class="align-center">1</td>
+                            <td class="align-center">
+                                <img class="order-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
+                            </td>
+                            <td class="align-left">Nhà màng GH.04-8.0</td>
+                            <td class="align-left">15,000,000đ</td>
+                            <td class="align-center">2</td>
+                            <td class="align-right">30,000,000đ</td>
+                        </tr>
+                        <tr class="order-table-data">
+                            <td class="align-center">1</td>
+                            <td class="align-center">
+                                <img class="order-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
+                            </td>
+                            <td class="align-left">Nhà màng GH.04-8.0</td>
+                            <td class="align-left">15,000,000đ</td>
+                            <td class="align-center">2</td>
+                            <td class="align-right">30,000,000đ</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="order-table-foot">
+                            <td></td>
+                            <td>Tổng cộng</td>
+                            <td>90,000,000đ</td>
+                        </tr>
+                        <tr class="order-table-foot">
+                            <td></td>
+                            <td>VAT</td>
+                            <td>0đ</td>
+                        </tr>
+                        <tr class="order-table-foot">
+                            <td></td>
+                            <td>Khuyến mãi</td>
+                            <td>3,000,000đ</td>
+                        </tr>
+                        <tr class="order-table-foot">
+                            <td></td>
+                            <td>Tổng tiền</td>
+                            <td>87,000,000đ</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="info-main-col2">
+                <div class="info-customer">
+                    <div class="info-card name-card">
+                        <h4 class="card-title">Họ tên người nhận hàng</h4>
+                        <p class="card-content">Trần Nhân Phát</p>
+                    </div>
+                    <div class="info-card">
+                        <h4 class="card-title">Email</h4>
+                        <p class="card-content">tnf2004@example.com</p>
+                    </div>
+                    <div class="info-card">
+                        <h4 class="card-title">Số điện thoại</h4>
+                        <p class="card-content">0902828508</p>
+                    </div>
+                    
+                </div>
+                <div class="info-address">
+                    <div class="info-card address-card">
+                        <h4 class="card-title">Địa chỉ nhận hàng</h4>
+                        <p class="card-content">123 Phố A, Quận B, Thành Phố Hải Phòng</p>
+                    </div>
+                    <div class="info-card">
+                        <h4 class="card-title">Tỉnh/Thành phố</h4>
+                        <p class="card-content">Hải Phòng</p>
+                    </div>
+                    <div class="info-card">
+                        <h4 class="card-title">Quận/Huyện</h4>
+                        <p class="card-content">Hồng Bàng</p>
+                    </div>
+                </div>
+                <div class="info-payment">
+                    <div class="info-card">
+                        <h4 class="card-title">Phương thức thanh toán</h4>
+                        <p class="card-content">COD</p>
+                    </div>
+                    <div class="info-card">
+                        <h4 class="card-title">Minh chứng thanh toán</h4>
+                        <p class="card-content">
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block script %}
+{% endblock script %}

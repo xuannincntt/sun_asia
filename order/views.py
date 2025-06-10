@@ -176,21 +176,36 @@ def order_success(request):
         'order_uuid': new_order_uuid_str
         })
 
-def order_detail(request, uuid):
+def order_detail(request):
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
 
-    new_order_uuid = uuid.UUID(uuid)
+    # new_order_uuid = uuid.UUID(uuid)
 
-    selected_order = Order.objects.filter(uuid=new_order_uuid).first() if new_order_uuid else None
-    if not selected_order:
-        return HttpResponse("Order not found", status=400)
+    # selected_order = Order.objects.filter(uuid=new_order_uuid).first() if new_order_uuid else None
     
-    selected_items = OrderItem.objects.filter(order=selected_order) if selected_order else None
+    # if not selected_order:
+    #     return HttpResponse("Order not found", status=400)
+    # print(selected_order.uuid)
+    
+    # selected_items = OrderItem.objects.filter(order=selected_order) if selected_order else None
 
 
     return render(request, 'order/order_detail.html', {
         'timestamp': now().timestamp(), 
         'user': user,
-        'order_data': selected_order,
-        'order_items': selected_items})
+        # 'order_data': selected_order,
+        # 'order_items': selected_items
+        })
+
+def order_history(request):
+    user_id = request.session.get('user_id')
+    user = User.objects.get(id=user_id) if user_id else None
+
+    return render(request, 'order/order_detail.html', {
+        'timestamp': now().timestamp(), 
+        'user': user,
+        # 'order_data': selected_order,
+        # 'order_items': selected_items
+    })
+

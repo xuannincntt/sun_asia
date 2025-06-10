@@ -61,7 +61,7 @@ section {
     font-size: 1.5rem;
     padding: 1rem;
     margin: 2rem 0;
-    color: var(--text-hover);
+    color: white;
     background-color: var(--main-color);
     border-radius: 1rem;
     font-weight: 600;
@@ -136,7 +136,11 @@ section {
 }
 
 .about-service button:hover {
-    background-color: var(--second-color);
+    background-color: var(--main-color);
+
+    a, i{
+        color: white;
+    }
 }
 
 .about-service button a {
@@ -257,6 +261,8 @@ section {
     margin-right: auto;
     padding: .5rem 1rem;
     background-color: var(--main-color);
+    color: #ffffff;
+    font-weight: 530;
     border: 1px solid var(--border-color);
     border-radius: .5rem;
     transition: .5s ease;
@@ -292,6 +298,7 @@ section {
     padding: 1rem;
     font-size: 1.5rem;
     background-color: var(--main-color);
+    color: #ffffff;
     border: .1rem solid var(--border-color);
     border-radius: .5rem;
     cursor: pointer;
