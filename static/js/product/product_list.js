@@ -130,7 +130,7 @@ const showBuyNowPopup = (productId, productImage, productName, productOrgPrice, 
                 </label>
                 <div class="popup-submit">  
                     <button type="submit" class="action-btn proceed-btn align-center">
-                        Mua hàng
+                        {% trans "Mua ngay" %}
                     </button>
                 </div>
                 
@@ -167,18 +167,18 @@ const showBuyNowPopup = (productId, productImage, productName, productOrgPrice, 
 const showAddCartResponse = (message) => {
     const notifyContent = `
         <div class="popup-header align-center">
-                Thông báo
+                {% trans "Thông báo" %}
             </div>
         <div class="popup-content">
             <div class="popup-text align-center">
-                Thêm vào giỏ hàng thành công
+                {% trans "Thêm vào giỏ hàng thành công!" %}
             </div>
             <div class="popup-action">
                 <button type="button" class="action-btn continue-btn align-center">
-                    Tiếp tục mua sắm
+                    {% trans "Tiếp tục mua sắm" %}
                 </button>
                 <a href="/cart" class="action-btn cartNav-btn align-center">
-                    Xem giỏ hàng
+                    {% trans "Xem giỏ hàng" %}
                 </button>
             </div>
         </div>`;

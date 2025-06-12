@@ -231,10 +231,10 @@ const showOrderFailure = (message) => {
     popupText.innerHTML = message;
     popupAction.innerHTML=`
     <a href="/" class="action-btn cancel-btn align-center">
-        Hủy đặt hàng
+        {% trans "Hủy đặt hàng" %}
     </a>
     <button type="button" class="action-btn close-btn align-center">
-        Sửa thông tin
+        {% trans "Sửa thông tin" %}
     </button>
     `;
     const closeBtn = popupAction.querySelector(".close-btn");

@@ -14,14 +14,14 @@
 <main id="product-page">
     <div class="section-title">
         <img class="page-image" src="{% static 'images/products_intro.jpg' %}?v={{ timestamp }}"/>
-        <h2 class="page-title">{% trans "SẢN PHẨM" %}</h2>
+        <h2 class="page-title">{% trans "SẢN PHẨM & GIẢI PHÁP" %}</h2>
     </div>
     
 
     <div class="section-content">
         <div class="section-options">
             <div class="section-categories">
-                <div class="categories-title align-center">DANH MỤC SẢN PHẨM</div>
+                <div class="categories-title align-center">{% trans "DANH MỤC SẢN PHẨM" %}</div>
                 <ul class="categories-container">
                     {% if categories %}
                         {% for category in categories %}
@@ -43,10 +43,10 @@
                 </ul>
             </div>
             <div class="section-filter">
-                <div class="filter-title align-center">LỌC SẢN PHẨM</div>
+                <div class="filter-title align-center">{% trans "LỌC SẢN PHẨM" %}</div>
                 <form action="/products/filter" method="POST" id="filter-form">
                     <div class="filter-price">
-                        <h4 class="filter-field">Khoảng giá</h4>
+                        <h4 class="filter-field">{% trans "Khoảng giá" %}</h4>
                         <hr style="width: 100%;"/>
                         <label for="priceLevel_1" class="filter-label align-left">
                             <input
@@ -56,7 +56,7 @@
                                 value="priceLevel_1"
                                 class="filter-input"
                             />
-                            <span class="filter-value">Dưới 250,000đ</span>
+                            <span class="filter-value">{% trans "Dưới 250,000VND" %}</span>
                         </label>
                         <label for="priceLevel_2" class="filter-label align-left">
                             <input
@@ -66,7 +66,7 @@
                                 value="priceLevel_2"
                                 class="filter-input"
                             />
-                            <span class="filter-value">Từ 250,000đ đến 1,000,000đ</span>
+                            <span class="filter-value">{% trans "Từ 250,000VND đến 1,000,000VND" %}</span>
                         </label>
                         <label for="priceLevel_3" class="filter-label align-left">
                             <input
@@ -76,7 +76,7 @@
                                 value="priceLevel_3"
                                 class="filter-input"
                             />
-                            <span class="filter-value">Từ 1,000,000đ đến 2,500,000đ</span>
+                            <span class="filter-value">{% trans "Từ 1,000,000VND đến 2,500,000VND" %}</span>
                         </label>
                         <label for="priceLevel_4" class="filter-label align-left">
                             <input
@@ -86,11 +86,11 @@
                                 value="priceLevel_4"
                                 class="filter-input"
                             />
-                            <span class="filter-value">Trên 2,500,000đ</span>
+                            <span class="filter-value">{% trans "Trên 2,500,000VND" %}</span>
                         </label>
                     </div>
                     <div class="filter-stock">
-                        <h4 class="filter-field">Tình trạng hàng</h4>
+                        <h4 class="filter-field">{% trans "Tình trạng hàng" %}</h4>
                         <hr style="width: 100%;" />
                         <label for="inStock" class="filter-label align-left">
                             <input 
@@ -100,13 +100,13 @@
                                 id="inStock"
                                 class="filter-input"
                             />
-                            <span class="filter-value">Còn hàng</span>
+                            <span class="filter-value">{% trans "Còn hàng" %}</span>
                         </label>
                     </div>
                     <div class="filter-submit">
                         <hr style="width: 100%;" />
                         <button type="submit" class="filter-submit-btn">
-                            Lọc sản phẩm
+                            {% trans "Lọc sản phẩm" %}
                         </button>
                     </div>
                 </form>
@@ -123,7 +123,7 @@
             <hr />
             <div class="products-container">
                 {% if not products%}
-                <div class="align-left">Không tìm thấy sản phẩm nào</div>
+                <div class="align-left">{% trans "Không tìm thấy sản phẩm nào" %}</div>
                 {% else %}
                 {% for product in products  %}
                 <a class="product-link" href="/products/{{product.slug}}">
@@ -152,7 +152,7 @@
                                     {% elif product.sale_price != "-1" %}
                                         <div class="product-card-salePrice align-right">{{product.sale_price}}đ</div>
                                     {% else %}
-                                    <div class="product-card-salePrice align-right">Liên hệ để báo giá</div>
+                                    <div class="product-card-salePrice align-right">{% trans "Liên hệ để báo giá" %}</div>
                                     {% endif %}
                                     
                                 </div>
@@ -164,13 +164,13 @@
                                     type="button"
                                     class="action-btn cart-btn"
                                 >
-                                    Thêm vào giỏ
+                                    {% trans "Thêm vào giỏ" %}
                                 </button>
                                 <button 
                                     type="button"
                                     class="action-btn buy-btn"
                                 >
-                                    Mua ngay
+                                    {% trans "Mua ngay" %}
                                 </button>
                             </div>
                         </div>
@@ -185,18 +185,18 @@
     <div class="section-popup">
         <div class="popup-container">
             <div class="popup-header align-center">
-                Thông báo
+                {% trans "Thông báo" %}
             </div>
             <div class="popup-content">
                 <div class="popup-text align-center">
-                    Thêm vào giỏ hàng thành công
+                    {% trans "Thêm vào giỏ hàng thành công!" %}
                 </div>
                 <div class="popup-action">
                     <button type="button" class="action-btn continue-btn align-center">
-                        Tiếp tục mua sắm
+                        {% trans "Tiếp tục mua sắm" %}
                     </button>
                     <a href="/cart" class="action-btn cartNav-btn align-center">
-                        Xem giỏ hàng
+                        {% trans "Xem giỏ hàng" %}
                     </a>
                 </div>
             </div>

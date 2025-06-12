@@ -99,7 +99,7 @@ const setRemoveBtnsOnClick = () => {
 
 const setDeleteCartBtnOnClick = () => {
     deleteCartBtn.addEventListener("click",() => {
-        deleteCfText.textContent = "Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng này không?";
+        deleteCfText.innerHTML = `{% trans "Bạn có chắc chắn muốn xóa giỏ hàng này không?" %}`;
         currentDeleteMode = "cart";
         togglePopup();
     });
