@@ -27,6 +27,7 @@ def product_list(request):
 
     categories = Category.objects.all()
     selected_category = {
+        'name': "Tất cả sản phẩm",
         'slug': "tat-ca-san-pham"
     }
     if category_slug == 'all':

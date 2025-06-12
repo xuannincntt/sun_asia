@@ -5,6 +5,7 @@
 <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}?v={{ timestamp }}">
 <link rel="stylesheet" href="{% static 'css/checkout.css' %}?v={{ timestamp }}">
 {% endblock %}
 
@@ -28,7 +29,7 @@
             
                 <div class="section-order-address">
                     <div class="address-title align-left">Thông tin nhận hàng</div>
-                    <hr style="width: 100%;" />
+                    <hr class="section-order-divider"/>
                     <label style="display: none;" for="orderMode">
                         <input
                             type="text"
@@ -188,6 +189,7 @@
                 </div>
                 <div class="section-order-payment">
                     <div class="payment-title">Thông tin thanh toán</div>
+                    <hr class="section-order-divider"/>
                     <div class="payment-selection">
 
                         <div class="payment-card card-active">
@@ -296,7 +298,7 @@
             </div>
             <div class="section-order-total">
                 <div class="total-title align-lelft">Tóm tắt đơn hàng</div>
-                <hr style="width: 100%;" />
+                <hr class="section-order-divider"/>
                 <div class="total-info">
                     <div class="total-info-products">
                         {% if order %}
@@ -332,6 +334,7 @@
                         <div class="align-left" style="font-size: 2rem;">Không có sản phẩm nào.</div>
                         {% endif %}
                     </div>
+                    <hr class="section-order-divider"/>
                     <div class="total-info-process">
                         <div class="total-row">
                             <div class="total-row-label align-left">Tổng cộng</div>
@@ -346,6 +349,7 @@
                             <div class="total-row-value align-right">{{order.total_discount}}đ</div>
                         </div>
                     </div>
+                    <hr class="section-order-divider"/>
                     <div class="total-info-final">
                         <div class="total-row">
                             <div class="total-row-label align-left">Tổng tiền</div>
@@ -378,6 +382,7 @@
                 </div>
             </div>
         </div>
+        <div class="spinner hide"></div>
     </div>
 </div>
 {% endblock %}

@@ -6,6 +6,7 @@
 <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}?v={{ timestamp }}">
 <link rel="stylesheet" href="{% static 'css/product/product_list.css' %}?v={{ timestamp }}">
 {% endblock %}
 {% block title %}Sản Phẩm{% endblock %}
@@ -114,18 +115,7 @@
         <div class="section-products">
             <div class="section-search">
                 <div class="category-label align-left">
-                    <h4>Tất Cả Sản Phẩm</h4>
-                </div>
-                <div class="search-bar align-right">
-                    <label for="searchTerm" class="search-label align-left">
-                        <input 
-                            type="text"
-                            id="search-input"
-                            placeholder="Nhập tên sản phẩm"
-                            name="search-input"
-                        />
-                        <i class='bx bx-search search-icon align-center'></i> 
-                    </label>
+                    <h4>{{selected_category.name}}</h4>
                 </div>
                 
                 

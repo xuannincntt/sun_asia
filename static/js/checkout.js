@@ -162,6 +162,11 @@ const clearInput = () => {
 const setFormOnSubmit = () => {
     orderForm.addEventListener("submit", (e) => {
         e.preventDefault();
+        const popupContainer = popup.querySelector(".popup-container");
+        const popupSpinner = popup.querySelector(".spinner");
+        popupContainer.style.display = "none";
+        popupSpinner.classList.remove("hide");
+        togglePopup();
         const bankProofInput = document.getElementById('bankProof');
 
         // Lấy dữ liệu đơn hàng
@@ -206,6 +211,9 @@ const setFormOnSubmit = () => {
         .then(response => response.json())
         .then(data => {
             console.log(data.message);
+            togglePopup();
+            popupContainer.style.display = "block";
+            popupSpinner.classList.add("hide");
             location.replace("/order/success");
         })
         .catch(error => {

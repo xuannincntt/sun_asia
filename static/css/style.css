@@ -16,15 +16,26 @@
     --white-color: #fff;
     --bg-color: white;
     --text-color: #333;
+    --text-color-opp: white;
     --text-color-blur: #3b3b3b;
     --text-hover: #1f1f1f;
+    --bg-color-opp: rgb(93, 93, 93);
     --sd-text-color: #ff4081;
     --main-color: #24be2c;
     --second-color: #21b428;
     --shadow-color: rgba(0, 0, 0, .2);
-    --category-card: green; 
+    --category-card-active: green; 
     --filter-input: green;
-    --category-active-border: rgba(184, 255, 184, 0.503);
+    --cart-btn-border: green;
+    --cart-btn-text: green;
+    --buy-btn-bg-hover: black;
+    --buy-btn-text-hover: white;
+    --return-bg-hover: rgb(201, 247, 201);
+    --checkout-radio-field-bg: rgb(146, 244, 146);
+    --clear-cart-bg-hover: rgb(252, 197, 197);
+    --cart-row-bg: #fbfbfba2;
+    --cart-row-border: #E2E2E2;
+    --cart-total-label: rgb(88, 88, 88);
 }
 
 .darkMode {
@@ -33,16 +44,27 @@
     --hover-color: #555;
     --white-color: #fff;
     --bg-color: #222;
+    --bg-color-opp: white;
     --text-color: #f0f0f0;
     --text-color-blur: #7f7f7f;
     --text-hover: #e0e0e0;
     --sd-text-color: #ff4081;
+    --text-color-opp: black;
     --main-color: #24be2c;
-    --second-color: #ffc107;
+    --second-color: #21b428;
     --shadow-color: rgba(0, 0, 0, .5);
     --category-card: green; 
     --filter-input: green;
-    --category-active-border: rgba(184, 255, 184, 0.503);
+    --category-card-active: green;
+    --cart-btn-border: rgb(225, 255, 225); 
+    --cart-btn-text: green;
+    --buy-btn-bg-hover: rgb(53, 52, 52);
+    --buy-btn-text-hover: white;
+    --return-bg-hover: rgba(0, 139, 0, 0.407);
+    --clear-cart-bg-hover: rgba(251, 90, 90, 0.24);
+    --cart-row-bg: rgb(59, 59, 59);
+    --cart-row-border: #E2E2E2;
+    --cart-total-label: rgb(229, 229, 229);
 }
 
 .actions #change-color .bx:first-child {
