@@ -270,6 +270,51 @@ msgstr "この注文をキャンセルする"
 msgid "Sửa thông tin"
 msgstr "情報を編集する"
 
+msgid "Chi tiết đơn hàng"
+msgstr "注文の詳細"
+
+msgid "Về Lịch sử mua hàng"
+msgstr "購入履歴について"
+
+msgid "ĐƠN HÀNG CỦA BẠN"
+msgstr "注文内容"
+
+msgid "Đã thanh toán"
+msgstr "有料"
+
+msgid "Chưa thanh toán"
+msgstr "未払い"
+
+msgid "STT"
+msgstr "順番"
+
+msgid "Mặt hàng"
+msgstr "製品"
+
+msgid "Phương thức thanh toán"
+msgstr "支払方法"
+
+msgid "Processing"
+msgstr "処理中"
+
+msgid "Preparing"
+msgstr "準備中"
+
+msgid "Shipped"
+msgstr "発送済み"
+
+msgid "Delivered"
+msgstr "配達済み"
+
+msgid "Cancelled"
+msgstr "キャンセルされた"
+
+msgid "Cash on Delivery"
+msgstr "代金引換"
+
+msgid "Bank Transfer"
+msgstr "銀行振込"
+
 #: .\templates\base.html:56
 msgid "Dưới"
 msgstr "未満"

@@ -13,6 +13,8 @@ const orderCityInput = document.getElementById("city");
 const orderDistrictInput = document.getElementById("district");
 const orderForm = document.getElementById("section-order-form");
 const popup = document.querySelector(".order-popup");
+const popupContainer = popup.querySelector(".popup-container");
+const popupSpinner = popup.querySelector(".spinner");
 
 let orderName;
 let orderEmail;
@@ -162,10 +164,8 @@ const clearInput = () => {
 const setFormOnSubmit = () => {
     orderForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const popupContainer = popup.querySelector(".popup-container");
-        const popupSpinner = popup.querySelector(".spinner");
-        popupContainer.style.display = "none";
-        popupSpinner.classList.remove("hide");
+        
+        showSpinner();
         togglePopup();
         const bankProofInput = document.getElementById('bankProof');
 
@@ -208,17 +208,26 @@ const setFormOnSubmit = () => {
             method: 'POST',
             body: formData,
         })
-        .then(response => response.json())
+        .then(async response => {
+            if (!response.ok) {
+                const err = await response.json();
+                throw err;
+            }
+            return response.json();
+        })
         .then(data => {
             console.log(data.message);
+            if (data.status)
             togglePopup();
             popupContainer.style.display = "block";
             popupSpinner.classList.add("hide");
             location.replace("/order/success");
         })
         .catch(error => {
-            console.log(error.message);
-            showOrderFailure(error.message);
+            togglePopup();
+            hideSpinner();
+            console.log(error.message || error);
+            showOrderFailure(error.message || error);
         });
 
         
@@ -229,14 +238,7 @@ const showOrderFailure = (message) => {
     const popupText = popup.querySelector(".popup-text");
     const popupAction = popup.querySelector(".popup-action");
     popupText.innerHTML = message;
-    popupAction.innerHTML=`
-    <a href="/" class="action-btn cancel-btn align-center">
-        {% trans "Hủy đặt hàng" %}
-    </a>
-    <button type="button" class="action-btn close-btn align-center">
-        {% trans "Sửa thông tin" %}
-    </button>
-    `;
+    popupAction.innerHTML= window.MyAppData.failureMessageHtml;
     const closeBtn = popupAction.querySelector(".close-btn");
     closeBtn.addEventListener("click", () => {
         togglePopup();
@@ -247,4 +249,14 @@ const showOrderFailure = (message) => {
 
 const togglePopup = () => {
     popup.style.display = (popup.style.display === 'flex') ? 'none' : 'flex';   
+};
+
+const showSpinner = () => {
+    popupContainer.style.display = "none";
+    popupSpinner.classList.remove("hide");
+};
+
+const hideSpinner = () => {
+    popupContainer.style.display = "block";
+    popupSpinner.classList.add("hide");
 };

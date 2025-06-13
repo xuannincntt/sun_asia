@@ -425,7 +425,7 @@
             box-sizing: border-box;
             font-size: 1.5rem;
             font-weight: 550;
-            background-color: #fba905;
+            background-color: green;
             color: white;
         }
 
@@ -463,14 +463,14 @@
                 
 
                 .continue-btn{
-                    background-color: #F24747;
+                    background-color: green;
 
                     &:hover{
-                        background-color: #da3b3b;
+                        background-color: rgb(1, 114, 1);
                     }
 
                     &:active{
-                        background-color: rgb(191, 45, 45);
+                        background-color: rgb(1, 100, 1);
                     }
                 }
 

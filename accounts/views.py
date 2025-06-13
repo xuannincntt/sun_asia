@@ -14,8 +14,10 @@ def accounts(request):
         if 'login' in request.POST:
             email = request.POST.get('login_email')
             password = request.POST.get('login_password')
+            print(password)
             try:
                 user = User.objects.get(email=email)
+                
                 if user.check_password(password):
                     request.session['user_id'] = user.id
                     return redirect('/')

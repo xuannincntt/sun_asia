@@ -1,7 +1,7 @@
 #order-page{
     box-sizing: border-box;
     font-family: sans-serif;
-    padding-top: 7rem;
+    padding: 7.5rem 0 3rem;
     background-color: var(--bg-color);
 }
 
@@ -533,7 +533,7 @@
             box-sizing: border-box;
             font-size: 1.5rem;
             font-weight: 550;
-            background-color: #fba905;
+            background-color: #008000;
             color: white;
 
         }
@@ -564,7 +564,7 @@
 
                 .action-btn{
                     box-sizing: border-box;
-                    width: 80%;
+                    width: max-content;
                     margin: auto;
                     padding: 0.5rem;
                     cursor: pointer;
@@ -601,15 +601,15 @@
                 }
 
                 .close-btn{
-                    background-color: rgb(0, 134, 0);
-                    color: #94989A;
+                    background-color: rgb(219, 219, 219);
+                    color: grey;
 
                     &:hover{
-                        background-color: rgb(1, 119, 1);
+                        background-color: rgb(200, 200, 200);
                     }
 
                     &:active{
-                        background-color: rgb(1, 107, 1);
+                        background-color: rgb(188, 187, 187);
                     }
 
                 }

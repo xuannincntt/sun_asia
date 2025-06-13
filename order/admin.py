@@ -7,4 +7,7 @@ class AddressAdmin(admin.ModelAdmin):
 admin.site.register(Address, AddressAdmin)
 
 admin.site.register(Order)
-admin.site.register(OrderItem)
+
+class OrderItemAdmin(admin.ModelAdmin):
+    fields = ['order', 'product','quantity','city','price','subtotal']
+admin.site.register(OrderItem, OrderItemAdmin)

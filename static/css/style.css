@@ -17,7 +17,7 @@
     --bg-color: white;
     --text-color: #333;
     --text-color-opp: white;
-    --text-color-blur: #3b3b3b;
+    --text-color-blur: #545454;
     --text-hover: #1f1f1f;
     --bg-color-opp: rgb(93, 93, 93);
     --sd-text-color: #ff4081;
@@ -30,12 +30,20 @@
     --cart-btn-text: green;
     --buy-btn-bg-hover: black;
     --buy-btn-text-hover: white;
-    --return-bg-hover: rgb(201, 247, 201);
+    --return-bg-hover: rgba(194, 250, 194, 0.778);
     --checkout-radio-field-bg: rgb(146, 244, 146);
     --clear-cart-bg-hover: rgb(252, 197, 197);
     --cart-row-bg: #fbfbfba2;
     --cart-row-border: #E2E2E2;
     --cart-total-label: rgb(88, 88, 88);
+    --order-notPaid-bg: rgba(252, 236, 173, 0.792);
+    --order-notPaid-text: rgb(255, 166, 0);
+    --order-status-bg: rgba(176, 176, 176, 0.651);
+    --order-status-text: rgb(78, 78, 78);
+    --order-detail-bg: rgb(243, 244, 243);
+    --order-table-border: #06540a48;
+    --order-cancelled-bg: rgba(255, 203, 203, 0.663);
+    --order-cancelled-text: red;
 }
 
 .darkMode {
@@ -46,7 +54,7 @@
     --bg-color: #222;
     --bg-color-opp: white;
     --text-color: #f0f0f0;
-    --text-color-blur: #7f7f7f;
+    --text-color-blur: #a5a5a5;
     --text-hover: #e0e0e0;
     --sd-text-color: #ff4081;
     --text-color-opp: black;
@@ -65,6 +73,14 @@
     --cart-row-bg: rgb(59, 59, 59);
     --cart-row-border: #E2E2E2;
     --cart-total-label: rgb(229, 229, 229);
+    --order-notPaid-bg: rgba(255, 204, 0, 0.289);
+    --order-notPaid-text: rgb(255, 187, 61);
+    --order-status-bg: rgba(104, 104, 104, 0.375);
+    --order-status-text: rgb(150, 150, 150);
+    --order-detail-bg: #2f2f2f;
+    --order-table-border: rgba(255, 255, 255, 0.1);
+    --order-cancelled-bg: rgba(149, 32, 32, 0.459);
+    --order-cancelled-text: rgb(205, 31, 31);
 }
 
 .actions #change-color .bx:first-child {

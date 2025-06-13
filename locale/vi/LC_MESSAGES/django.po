@@ -270,6 +270,51 @@ msgstr "Hủy đặt hàng"
 msgid "Sửa thông tin"
 msgstr "Sửa thông tin"
 
+msgid "Chi tiết đơn hàng"
+msgstr "Chi tiết đơn hàng"
+
+msgid "Về Lịch sử mua hàng"
+msgstr "Về Lịch sử mua hàng"
+
+msgid "ĐƠN HÀNG CỦA BẠN"
+msgstr "ĐƠN HÀNG CỦA BẠN"
+
+msgid "Đã thanh toán"
+msgstr "Đã thanh toán"
+
+msgid "Chưa thanh toán"
+msgstr "Chưa thanh toán"
+
+msgid "STT"
+msgstr "STT"
+
+msgid "Mặt hàng"
+msgstr "Mặt hàng"
+
+msgid "Phương thức thanh toán"
+msgstr "Phương thức thanh toán"
+
+msgid "Processing"
+msgstr "Đang xử lý"
+
+msgid "Preparing"
+msgstr "Đang chuẩn bị"
+
+msgid "Shipped"
+msgstr "Đang vận chuyển"
+
+msgid "Delivered"
+msgstr "Đã giao hàng"
+
+msgid "Cancelled"
+msgstr "Đã hủy bỏ"
+
+msgid "Cash on Delivery"
+msgstr "Thanh toán khi nhận hàng"
+
+msgid "Bank Transfer"
+msgstr "Chuyển khoản ngân hàng"
+
 #: .\templates\base.html:56
 msgid "Dưới"
 msgstr "Dưới"

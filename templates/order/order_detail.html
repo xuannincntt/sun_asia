@@ -1,14 +1,18 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 
 {% block css %}
 <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
-<link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
-<link rel="stylesheet" href="{% static 'css/order/order_detail.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}?v={{ timestamp }}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}"/>
+<link rel="stylesheet" href="{% static 'css/order/order_detail.css' %}?v={{ timestamp }}"/>
 {% endblock %}
 
-{% block title %}Chi tiết đơn hàng{% endblock %}
+{% block title %}
+{% trans "Chi tiết đơn hàng" %}
+{% endblock %}
 
 {% block content %} 
 <main id="order-detail-page">
@@ -16,136 +20,157 @@
         <div class="header-return">
             <a class="return-link align-left" href="/order/history">
                 <i class='bx bx-arrow-left-stroke return-icon'></i> 
-                <span class="return-label">Về Lịch sử mua hàng</span>
+                <span class="return-label">{% trans "Về Lịch sử mua hàng" %}</span>
             </a>
         </div>
         <div class="header-title">
-            <span class="title-text">ĐƠN HÀNG CỦA BẠN</span>
+            <span class="title-text">{% trans "ĐƠN HÀNG CỦA BẠN" %}</span>
         </div>
     </div>
     <div class="order-detail-content">
         <div class="info-addition">
-            <div class="order-identify">
-                <h3 class="order-name">Đơn hàng</h3>
-                <span class="order-id">#0284018441484</span>
+            <div class="section-order-identify align-left">
+                <h3 class="order-name">{% trans "Đơn hàng" %}</h3>
+                <span class="order-id">#{{order_data.uuid_str}}</span>
             </div>
-            <div class="section-order-status">
-                <span class="order-isPaid">Chưa thanh toán</span>
-                <span class="order-status">Đang vận chuyển</span>
+            <div class="section-order-status align-left">
+                {% if order_data.is_paid %}
+                <span class="order-isPaid">
+                    {% trans "Đã thanh toán" %}
+                </span>
+                {% else %}
+                <span class="order-isNotPaid">
+                    {% trans "Chưa thanh toán" %}
+                </span>
+                {% endif %}
+                {% if order_data.get_status_display == "Delivered" %}
+                <span class="order-delivered">
+                    {{ order_data.get_status_display }}
+                </span>
+                {% elif order_data.get_status_display == "Cancelled" %}
+                <span class="order-cancelled">
+                    {{ order_data.get_status_display }}
+                </span>
+                {% else %}
+                <span class="order-notDelivered">
+                    {{ order_data.get_status_display }}
+                </span>
+                {% endif %}
             </div>
-            <div class="section-order-status">
+            <div class="section-order-date">
                 <i class='bxr bx-calendar-alt calendar-icon'></i> 
-                <span class="order-status">10:00, 10-06-2025</span>
+                <span class="order-date">{{order_date}}</span>
             </div>
         </div>
         <div class="info-main">
             <div class="info-main-col1">
                 <table class="order-table">
                     <thead >
-                        <tr class="order-table-head">
-                            <th class="align-center">STT</th>
-                            <th class="align-left table-head-product">Mặt hàng</th>
-                            <th class=""></th>
-                            <th class="align-left">Đơn giá</th>
-                            <th class="align-center">Số lượng</th>
-                            <th class="align-right">Tổng cộng</th>
+                        <tr class="order-table-head" style="display: none;">
+                            <th class="align-center">{% trans "STT" %}</th>
+                            <th class="align-left table-head-product">{% trans "Mặt hàng" %}</th>
+                            <th class="align-left">{% trans "Đơn giá" %}</th>
+                            <th class="align-center">{% trans "Số lượng" %}</th>
+                            <th class="align-right">{% trans "Tổng cộng" %}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="order-table-data">
-                            <td class="align-center">1</td>
-                            <td class="align-center">
-                                <img class="order-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
-                            </td>
-                            <td class="align-left">Nhà màng GH.04-8.0</td>
-                            <td class="align-left">15,000,000đ</td>
-                            <td class="align-center">2</td>
-                            <td class="align-right">30,000,000đ</td>
-                        </tr>
-                        <tr class="order-table-data">
-                            <td class="align-center">1</td>
-                            <td class="align-center">
-                                <img class="order-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
-                            </td>
-                            <td class="align-left">Nhà màng GH.04-8.0</td>
-                            <td class="align-left">15,000,000đ</td>
-                            <td class="align-center">2</td>
-                            <td class="align-right">30,000,000đ</td>
-                        </tr>
-                        <tr class="order-table-data">
-                            <td class="align-center">1</td>
-                            <td class="align-center">
-                                <img class="order-item-image" src="{% static 'images/product_placeholder.png' %}" alt=""/>
-                            </td>
-                            <td class="align-left">Nhà màng GH.04-8.0</td>
-                            <td class="align-left">15,000,000đ</td>
-                            <td class="align-center">2</td>
-                            <td class="align-right">30,000,000đ</td>
-                        </tr>
+                        {% if order_items %}
+                            {% for item in order_items %}
+                            <tr class="order-table-data">
+                                <td class="align-center">{{forloop.counter}}</td>
+                                <td class="align-center">
+                                    {% if item.product.image_url != ""%}
+                                    <img class="order-item-image" src="{{item.product.image_url}}" alt=""/>
+                                    {% else %}
+                                    <img class="order-item-image" src="{% static 'images/product_placeholder.jpg' %}" alt=""/>
+                                    {% endif %}
+                                    
+                                </td>
+                                <td class="align-left">{{item.product.name}}</td>
+                                <td class="align-left">{{item.price}}đ</td>
+                                <td class="align-center">x{{item.quantity}}</td>
+                                <td class="align-right">{{item.subtotal}}đ</td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
                     </tbody>
                     <tfoot>
                         <tr class="order-table-foot">
                             <td></td>
-                            <td>Tổng cộng</td>
-                            <td>90,000,000đ</td>
+                            <td class="align-left total-label">{% trans "Tổng cộng" %}</td>
+                            <td class="align-right total-value">{{order_data.total_amount_str}}VND</td>
                         </tr>
                         <tr class="order-table-foot">
                             <td></td>
-                            <td>VAT</td>
-                            <td>0đ</td>
+                            <td class="align-left total-label">VAT</td>
+                            <td class="align-right total-value">
+                                {% if order_data.total_tax_str > 0 %}
+                                {{order_data.total_tax_str}}VND
+                                {% else %}
+                                0VND
+                                {% endif %}
+                                
+                            </td>
                         </tr>
                         <tr class="order-table-foot">
                             <td></td>
-                            <td>Khuyến mãi</td>
-                            <td>3,000,000đ</td>
+                            <td class="align-left total-label">{% trans "Giảm giá" %}</td>
+                            <td class="align-right total-value">
+                                {% if order_data.total_discount > 0 %}
+                                -{{order_data.total_discount_str}}VND
+                                {% else %}
+                                0VND
+                                {% endif %}
+                            </td>
                         </tr>
                         <tr class="order-table-foot">
                             <td></td>
-                            <td>Tổng tiền</td>
-                            <td>87,000,000đ</td>
+                            <td class="align-left total-label">{% trans "Tổng tiền" %}</td>
+                            <td class="align-right total-value">{{order_data.total_final_str}}VND</td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
             <div class="info-main-col2">
-                <div class="info-customer">
+                <div class="info-container info-customer">
                     <div class="info-card name-card">
-                        <h4 class="card-title">Họ tên người nhận hàng</h4>
-                        <p class="card-content">Trần Nhân Phát</p>
+                        <h4 class="card-title">{% trans "Tên người nhận hàng" %}</h4>
+                        <p class="card-content">{{order_data.order_address.name}}</p>
                     </div>
                     <div class="info-card">
-                        <h4 class="card-title">Email</h4>
-                        <p class="card-content">tnf2004@example.com</p>
+                        <h4 class="card-title">{% trans "Email" %}</h4>
+                        <p class="card-content">{{order_data.order_address.email}}</p>
                     </div>
                     <div class="info-card">
-                        <h4 class="card-title">Số điện thoại</h4>
-                        <p class="card-content">0902828508</p>
+                        <h4 class="card-title">{% trans "Số điện thoại" %}</h4>
+                        <p class="card-content">{{order_data.order_address.tel}}</p>
                     </div>
                     
                 </div>
-                <div class="info-address">
+                <div class="info-container info-address">
                     <div class="info-card address-card">
-                        <h4 class="card-title">Địa chỉ nhận hàng</h4>
-                        <p class="card-content">123 Phố A, Quận B, Thành Phố Hải Phòng</p>
+                        <h4 class="card-title">{% trans "Địa chỉ nhận hàng" %}</h4>
+                        <p class="card-content">{{order_data.order_address.detailed_address}}</p>
                     </div>
                     <div class="info-card">
-                        <h4 class="card-title">Tỉnh/Thành phố</h4>
-                        <p class="card-content">Hải Phòng</p>
+                        <h4 class="card-title">{% trans "Tỉnh/Thành phố" %}</h4>
+                        <p class="card-content">{{order_data.order_address.city}}</p>
                     </div>
                     <div class="info-card">
-                        <h4 class="card-title">Quận/Huyện</h4>
-                        <p class="card-content">Hồng Bàng</p>
+                        <h4 class="card-title">{% trans "Quận/Huyện" %}</h4>
+                        <p class="card-content">{{order_data.order_address.district}}</p>
                     </div>
                 </div>
-                <div class="info-payment">
+                <div class="info-container info-payment">
                     <div class="info-card">
-                        <h4 class="card-title">Phương thức thanh toán</h4>
-                        <p class="card-content">COD</p>
+                        <h4 class="card-title">{% trans "Phương thức thanh toán" %}</h4>
+                        <p class="card-content">{{order_data.get_payment_display }}</p>
                     </div>
                     <div class="info-card">
-                        <h4 class="card-title">Minh chứng thanh toán</h4>
+                        <h4 class="card-title">{% trans "Minh chứng thanh toán" %}</h4>
                         <p class="card-content">
-
+                            <img src="{{order_data.bank_proof }}" alt=""/>
                         </p>
                     </div>
                 </div>

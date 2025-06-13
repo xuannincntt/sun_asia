@@ -390,5 +390,17 @@
 </div>
 {% endblock %}
 {% block script %}
+<script>
+    window.MyAppData = {
+        failureMessageHtml: `
+        <a href="/" class="action-btn cancel-btn align-center">
+            {% trans "Hủy đặt hàng" %}
+        </a>
+        <button type="button" class="action-btn close-btn align-center">
+            {% trans "Sửa thông tin" %}
+        </button>
+        `
+    };
+</script>
 <script src="{% static 'js/checkout.js' %}?v={{ timestamp }}" type="module"></script>
 {% endblock script %}

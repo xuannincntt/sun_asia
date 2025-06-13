@@ -7,10 +7,6 @@ const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 const tabs = document.querySelectorAll('.detail-tab');
 const contents = document.querySelectorAll('.tab-content');
-const slides = document.querySelector('.slides');
-const cards = document.querySelectorAll('.recommend-card');
-const nextRecBtn = document.getElementById('next');
-const prevRecBtn = document.getElementById('prev');
 
 const popup = document.getElementsByClassName("detail-popup")[0];
 const popupContainer = document.getElementsByClassName("popup-container")[0];
@@ -21,28 +17,11 @@ let cartBtn;
 let buyBtn;
 
 let currentIndex = 0;
-const cardsToShow = 5;
-const cardWidth = cards[0].offsetWidth + 20; // include gap
-let currentRecIndex = cardsToShow; // Start after prepended clones
 
 document.addEventListener("DOMContentLoaded", () => {
     cartBtn = document.querySelector('.cart-btn');
     buyBtn = document.querySelector('.buy-btn');
-    const firstClones = Array.from(cards).slice(0, cardsToShow).map(card => card.cloneNode(true));
-    const lastClones = Array.from(cards).slice(-cardsToShow).map(card => card.cloneNode(true));
-
-    firstClones.forEach(clone => slides.appendChild(clone));
-    lastClones.forEach(clone => slides.insertBefore(clone, slides.firstChild));
-
     // Update total cards after cloning
-    const totalCards = slides.querySelectorAll('.recommend-card').length;
-
-    // Set initial position to the "first real slide"
-    slides.style.transform = `translateX(-${cardWidth * currentRecIndex}px)`;
-
-    // Add transition for smooth slide
-    slides.style.transition = "transform 0.5s ease-in-out";
-
     console.log(images);
 
     updateSlide(0);
@@ -54,35 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setCartBtnOnClick();
     // setBuyBtnOnClick();
 
-    nextRecBtn.addEventListener('click', () => {
-        currentRecIndex++;
-        slides.style.transform = `translateX(-${cardWidth * currentRecIndex}px)`;
-        slides.style.transition = "transform 0.5s ease-in-out";
-
-        // Loop logic
-        if (currentRecIndex === totalCards - cardsToShow) {
-            setTimeout(() => {
-            slides.style.transition = "none";
-            currentRecIndex = cardsToShow;
-            slides.style.transform = `translateX(-${cardWidth * currentRecIndex}px)`;
-            }, 500); // match transition duration
-        }
-    });
-
-    prevRecBtn.addEventListener('click', () => {
-        currentRecIndex--;
-        slides.style.transform = `translateX(-${cardWidth * currentRecIndex}px)`;
-        slides.style.transition = "transform 0.5s ease-in-out";
-
-        // Loop logic
-        if (currentRecIndex === 0) {
-            setTimeout(() => {
-            slides.style.transition = "none";
-            currentRecIndex = totalCards - 2 * cardsToShow;
-            slides.style.transform = `translateX(-${cardWidth * currentRecIndex}px)`;
-            }, 500);
-        }
-    });
 });
 
 const updateSlide = (index) => {

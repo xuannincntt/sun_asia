@@ -24,37 +24,6 @@ def home(request):
     user = User.objects.get(id=user_id) if user_id else None
     return render(request, 'home.html', {'user': user})
 
-@never_cache
-def product_by_category(request, cat_slug):
-    user_id = request.session.get('user_id')
-    user = User.objects.get(id=user_id) if user_id else None
-
-    category = Category.objects.filter(slug=cat_slug).first() if cat_slug else None
-    
-    categories = Category.objects.all()
-
-    if category:
-        products = Product.objects.filter(category=category).prefetch_related(image_prefetch)
-
-        for product in products:
-            first_image = product.images.all().order_by('created_at').first()
-            product.image_url = first_image.image_url if first_image else ""
-            product.org_price = format(product.org_price if product.org_price > 0 else 0, ",")
-            product.sale_price = format(product.sale_price if product.sale_price >= 0 else -1, ",")
-    else:
-        products = None
-
-    
-    # print(list(products))
-
-    return render(request, 'product/product_list.html', {
-        'timestamp': now().timestamp(), 
-        'user': user,
-        'products': products,
-        'selected_category': category if category else {
-            'slug': "tat-ca-san-pham"
-        },
-        'categories': categories})
 
 def logout_view(request):
     del request.session['user_id']
@@ -245,6 +214,7 @@ def checkout(request):
     total_vat = 0
     total_discount = 0
     # print(default_address.email)
+    print(cart)
     
 
     return render(request, 'checkout.html', {
