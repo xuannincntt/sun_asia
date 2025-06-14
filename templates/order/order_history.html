@@ -1,25 +1,135 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 
 {% block css %}
 <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/style.css' %}?v={{ timestamp }}">
 <link rel="stylesheet" href="{% static 'css/index.css' %}?v={{ timestamp }}">
 <link rel="stylesheet" href="{% static 'css/order/order_history.css' %}?v={{ timestamp }}">
 {% endblock %}
 
-{% block title %}Lịch sử mua hàng{% endblock %}
+{% block title %}
+{% trans "Lịch sử mua hàng" %}
+{% endblock %}
 
 {% block content %} 
-<main id="order-detail-page">
-    <div class="order-detail-header">
-        
+<main id="order-history-page">
+    <div class="order-history-header">
+        <div class="section-header-title align-center">
+            <img class="header-image" src="{% static 'images/products_intro.jpg' %}?v={{ timestamp }}"/>
+            <h2 class="header-title">{% trans "LỊCH SỬ MUA HÀNG" %}</h2>
+        </div>
     </div>
-    <div class="order-detail-content">
+    <div class="order-history-content">
+        <div class="order-history-container">
+            {% if not orders %}
+            <div style="width: 100%; font-size: 3rem; font-weight: 600">{% trans "Bạn chưa có đơn hàng nào." %}</div>
+            {% else %}
+                {% for order in orders %}
+                <div class="order-card">
+                    <div class="order-card-info">
+                        <div class="order-card-additional">
 
+                            
+                            <div class="card-field">
+                                <h3 class="card-label">{% trans "Mã đơn hàng" %}</h3>
+                                <p class="card-value">#{{order.uuid_str}}</p>
+                            </div>
+                            <div class="card-field">
+                                <h3 class="card-label">{% trans "Tổng tiền" %}</h3>
+                                <p class="card-value">{{order.total_amount_str}}VND</p>
+                            </div>
+                            <div class="card-field">
+                                <h3 class="card-label">{% trans "Trạng thái đơn hàng" %}</h3>
+                                {% if order.get_status_display == "Delivered" %}
+                                <p class="card-value card-notDelivered">{{ order.get_status_display }}</p>
+                                {% elif order_data.get_status_display == "Cancelled" %}
+                                <p class="card-value card-notDelivered">{{ order.get_status_display }}</p>
+                                {% else %}
+                                <p class="card-value card-notDelivered">{{ order.get_status_display }}</p>
+                                {% endif %}
+                            </div>
+                            
+
+
+                            <div class="card-field">
+                                <h3 class="card-label">{% trans "Ngày mua" %}</h3>
+                                <p class="card-value">{{order.formatted_order_date}}</p>
+                            </div>
+
+                        </div>
+                        <div class="order-card-main">
+                            <div class="order-card-main-col1">
+                                <div class="card-field">
+                                    <h3 class="card-label">{% trans "Tên người nhận hàng" %}</h3>
+                                    <p class="card-value">{{order.order_address.name}}</p>
+                                </div>
+                                <div class="card-field">
+                                    <h3 class="card-label">{% trans "Phương thức thanh toán" %}</h3>
+                                    <p class="card-value">{{order.get_payment_display}}</p>
+                                </div>
+                                <div class="card-field">
+                                    <h3 class="card-label">{% trans "Trạng thái thanh toán" %}</h3>
+                                    {% if order.is_paid %}
+                                    <p class="card-value card-notPaid">{% trans "Đã thanh toán" %}</p>
+                                    {% else %}
+                                    <p class="card-value card-notPaid">{% trans "Chưa thanh toán" %}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="card-field card-address">
+                                    <h3 class="card-label">{% trans "Địa chỉ nhận hàng" %}</h3>
+                                    <p class="card-value">{{order.order_address.detailed_address}}</p>
+                                </div>
+                            </div>
+                            <div class="order-card-main-col2">
+                                <a
+                                    href="/order/{{order.uuid}}"
+                                    class="action-btn detail-btn"
+                                >
+                                    {% trans "Xem chi tiết" %}
+                                </a>
+                                <button
+                                    type="button"
+                                    class="action-btn expand-btn align-center"
+                                >
+                                    <i class='bxr bx-chevron-down expand-icon'></i> 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-card-items">
+                        {% for item in order.order_items %}
+                        <div class="order-card-item">
+                            <div class="item-section-image">
+                                {% if item.product.image_url != "" %}                                
+                                <img class="item-image" src="{{item.product.image_url}}" alt="">
+                                {% else %}
+                                <img class="item-image" src="{% static 'images/product_placeholder.jpg' %}" alt="">
+                                {% endif %}
+                            </div>
+                            <div class="item-section-info">
+                                <div class="item-info-row1">
+                                    <h3 class="item-name">{{item.product.name}}</h3>
+                                </div>
+                                <div class="item-info-row2">
+                                    <div class="item-price">{{item.price}}VND</div>
+                                    <div class="item-quantity">x{{item.quantity}}</div>
+                                    <div class="item-subtotal">{{item.subtotal}}VND</div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
 </main>
 {% endblock %}
 
 {% block script %}
+<script src="{% static 'js/order/order_history.js' %}?v={{ timestamp }}" type="module"></script>
 {% endblock script %}

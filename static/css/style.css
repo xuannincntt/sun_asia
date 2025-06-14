@@ -17,7 +17,7 @@
     --bg-color: white;
     --text-color: #333;
     --text-color-opp: white;
-    --text-color-blur: #545454;
+    --text-color-blur: #949494;
     --text-hover: #1f1f1f;
     --bg-color-opp: rgb(93, 93, 93);
     --sd-text-color: #ff4081;
@@ -26,8 +26,8 @@
     --shadow-color: rgba(0, 0, 0, .2);
     --category-card-active: green; 
     --filter-input: green;
-    --cart-btn-border: green;
-    --cart-btn-text: green;
+    --cart-btn-border: rgb(11, 162, 11);
+    --cart-btn-text: rgb(14, 165, 14);
     --buy-btn-bg-hover: black;
     --buy-btn-text-hover: white;
     --return-bg-hover: rgba(194, 250, 194, 0.778);
@@ -37,13 +37,15 @@
     --cart-row-border: #E2E2E2;
     --cart-total-label: rgb(88, 88, 88);
     --order-notPaid-bg: rgba(252, 236, 173, 0.792);
-    --order-notPaid-text: rgb(255, 166, 0);
+    --order-notPaid-text: rgb(255, 153, 0);
     --order-status-bg: rgba(176, 176, 176, 0.651);
-    --order-status-text: rgb(78, 78, 78);
+    --order-status-text: rgb(107, 107, 107);
     --order-detail-bg: rgb(243, 244, 243);
     --order-table-border: #06540a48;
     --order-cancelled-bg: rgba(255, 203, 203, 0.663);
     --order-cancelled-text: red;
+    --order-additional-bg: #FAFAFA;
+    --order-info-shadow: rgba(50, 50, 93, 0.25);
 }
 
 .darkMode {
@@ -64,23 +66,25 @@
     --category-card: green; 
     --filter-input: green;
     --category-card-active: green;
-    --cart-btn-border: rgb(225, 255, 225); 
-    --cart-btn-text: green;
+    --cart-btn-border: rgb(53, 116, 53); 
+    --cart-btn-text: rgb(43, 182, 43);
     --buy-btn-bg-hover: rgb(53, 52, 52);
     --buy-btn-text-hover: white;
     --return-bg-hover: rgba(0, 139, 0, 0.407);
     --clear-cart-bg-hover: rgba(251, 90, 90, 0.24);
     --cart-row-bg: rgb(59, 59, 59);
-    --cart-row-border: #E2E2E2;
+    --cart-row-border: #aaaaaa;
     --cart-total-label: rgb(229, 229, 229);
     --order-notPaid-bg: rgba(255, 204, 0, 0.289);
-    --order-notPaid-text: rgb(255, 187, 61);
+    --order-notPaid-text: rgb(252, 197, 94);
     --order-status-bg: rgba(104, 104, 104, 0.375);
     --order-status-text: rgb(150, 150, 150);
     --order-detail-bg: #2f2f2f;
     --order-table-border: rgba(255, 255, 255, 0.1);
     --order-cancelled-bg: rgba(149, 32, 32, 0.459);
     --order-cancelled-text: rgb(205, 31, 31);
+    --order-additional-bg: #454545;
+    --order-info-shadow: rgba(139, 202, 139, 0.237);
 }
 
 .actions #change-color .bx:first-child {

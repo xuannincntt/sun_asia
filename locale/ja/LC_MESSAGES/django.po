@@ -315,6 +315,30 @@ msgstr "代金引換"
 msgid "Bank Transfer"
 msgstr "銀行振込"
 
+msgid "Lịch sử mua hàng"
+msgstr "購入履歴"
+
+msgid "LỊCH SỬ MUA HÀNG"
+msgstr "購入履歴"
+
+msgid "Bạn chưa có đơn hàng nào."
+msgstr "まだ注文はありません。"
+
+msgid "Mã đơn hàng"
+msgstr "注文コード"
+
+msgid "Trạng thái đơn hàng"
+msgstr "注文状況"
+
+msgid "Ngày mua"
+msgstr "購入日"
+
+msgid "Trạng thái thanh toán"
+msgstr "支払い状況"
+
+msgid "Xem chi tiết"
+msgstr "詳細を見る"
+
 #: .\templates\base.html:56
 msgid "Dưới"
 msgstr "未満"
@@ -374,10 +398,6 @@ msgstr "カート管理"
 #: .\templates\base.html:101
 msgid "Danh mục yêu thích"
 msgstr "お気に入り"
-
-#: .\templates\base.html:102
-msgid "Lịch sử mua hàng"
-msgstr "購入履歴"
 
 #: .\templates\base.html:104
 msgid "Đăng xuất"

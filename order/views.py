@@ -62,6 +62,8 @@ def order(request):
                 password = generate_random_password(8)
                 user.set_password(password)
                 user.save()
+            else:
+                user = user_from_email
 
         if address_mode == "DEFAULT":
             selected_address = Address.objects.filter(creator=user, is_default=True).first()
@@ -156,6 +158,8 @@ def order(request):
         else:
             request.session["cart"] = []
 
+        request.session['user_id'] = user.id
+
         return JsonResponse({
             "message":"Đặt hàng thành công",
             "order_uuid": new_order.uuid
@@ -195,11 +199,27 @@ def order_history(request):
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
 
-    return render(request, 'order/order_detail.html', {
+    lang_code = request.LANGUAGE_CODE
+
+    selected_orders = Order.objects.filter(order_address__creator=user).order_by('-order_date','status')
+
+    for selected_order in selected_orders:
+        selected_items = OrderItem.objects.filter(order=selected_order)
+        selected_order.order_items = selected_items
+        selected_order.uuid_str = str(selected_order.uuid).replace("-","")
+        selected_order.formatted_order_date = format_date_time(selected_order.order_date, lang_code)
+        selected_order.total_amount_str = format(selected_order.total_amount,",")
+
+        for item in selected_items:
+            first_image = item.product.images.all().order_by('created_at').first()
+            item.product.image_url = first_image.image_url if first_image else ""
+    
+
+
+    return render(request, 'order/order_history.html', {
         'timestamp': now().timestamp(), 
         'user': user,
-        # 'order_data': selected_order,
-        # 'order_items': selected_items
+        'orders': selected_orders
     })
 
 

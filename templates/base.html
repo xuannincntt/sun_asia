@@ -99,7 +99,7 @@
                         <a href="{% url 'user-profile' slug=user.slug %}"><p><i class="fa-regular fa-user"></i> {% trans "Thông tin cá nhân" %}</p></a>
                         <a href="{% url 'cart' %}"><p><i class="fa-solid fa-cart-shopping"></i> {% trans "Quản lý giỏ hàng" %}</p></a>
                         <a href="#"><p><i class="fa-regular fa-heart"></i> {% trans "Danh mục yêu thích" %}</p></a>
-                        <a href="#"><p><i class="fa-regular fa-clock"></i> {% trans "Lịch sử mua hàng" %}</p></a>
+                        <a href="{% url 'order-history' %}"><p><i class="fa-regular fa-clock"></i> {% trans "Lịch sử mua hàng" %}</p></a>
                         <hr>
                         <a href="/logout"><p><i class="fa-solid fa-arrow-right-from-bracket"></i> {% trans "Đăng xuất" %}</p></a>
                     </div>

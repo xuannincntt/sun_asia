@@ -315,6 +315,30 @@ msgstr "Cash on Delivery"
 msgid "Bank Transfer"
 msgstr "Bank Transfer"
 
+msgid "Lịch sử mua hàng"
+msgstr "Order History"
+
+msgid "LỊCH SỬ MUA HÀNG"
+msgstr "ORDER HISTORY"
+
+msgid "Bạn chưa có đơn hàng nào."
+msgstr "No orders found."
+
+msgid "Mã đơn hàng"
+msgstr "Order ID"
+
+msgid "Trạng thái đơn hàng"
+msgstr "Status"
+
+msgid "Ngày mua"
+msgstr "Date Created"
+
+msgid "Trạng thái thanh toán"
+msgstr "Payment Status"
+
+msgid "Xem chi tiết"
+msgstr "See details"
+
 #: .\templates\base.html:56
 msgid "Dưới"
 msgstr "Under"
@@ -368,10 +392,6 @@ msgstr "Cart Management"
 #: .\templates\base.html:101
 msgid "Danh mục yêu thích"
 msgstr "Favorites"
-
-#: .\templates\base.html:102
-msgid "Lịch sử mua hàng"
-msgstr "Purchase History"
 
 #: .\templates\base.html:104
 msgid "Đăng xuất"

@@ -315,6 +315,30 @@ msgstr "Thanh toán khi nhận hàng"
 msgid "Bank Transfer"
 msgstr "Chuyển khoản ngân hàng"
 
+msgid "Lịch sử mua hàng"
+msgstr "Lịch sử mua hàng"
+
+msgid "LỊCH SỬ MUA HÀNG"
+msgstr "LỊCH SỬ MUA HÀNG"
+
+msgid "Bạn chưa có đơn hàng nào."
+msgstr "Bạn chưa có đơn hàng nào."
+
+msgid "Mã đơn hàng"
+msgstr "Mã đơn hàng"
+
+msgid "Trạng thái đơn hàng"
+msgstr "Trạng thái đơn hàng"
+
+msgid "Ngày mua"
+msgstr "Ngày mua"
+
+msgid "Trạng thái thanh toán"
+msgstr "Trạng thái thanh toán"
+
+msgid "Xem chi tiết"
+msgstr "Xem chi tiết"
+
 #: .\templates\base.html:56
 msgid "Dưới"
 msgstr "Dưới"
@@ -368,10 +392,6 @@ msgstr "Quản lý giỏ hàng"
 #: .\templates\base.html:101
 msgid "Danh mục yêu thích"
 msgstr "Danh mục yêu thích"
-
-#: .\templates\base.html:102
-msgid "Lịch sử mua hàng"
-msgstr "Lịch sử mua hàng"
 
 #: .\templates\base.html:104
 msgid "Đăng xuất"
