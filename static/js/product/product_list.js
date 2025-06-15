@@ -51,7 +51,7 @@ const setCartBtnsOnClick = () => {
             const productInfo = productCard.getAttribute("data-index").split("_");
             const [productSlug, productId] = productInfo;
             console.log(productSlug, productId);
-            addProductToCart(productSlug, productId)
+            addProductToCart(productSlug, productId, 1)
             .then(response => {
                 console.log(response);
                 showAddCartResponse(response);
@@ -107,33 +107,7 @@ const showBuyNowPopup = (productId, productImage, productName, productOrgPrice, 
                         <div class="popup-salePrice align-left">${productSalePrice}</div>
                         `
                     }
-                <label class="popup-quantity" for="productQuantity">
-                    <span class="popup-quantity-name">Số lượng</span>
-                    <div class="popup-quantity-controller">
-                        <div class="popup-minus-btn align-center">
-                            <i class='bx bx-minus minus-icon'></i> 
-                        </div>
-                        <div class="popup-quantity-input align-center">
-                            <input
-                                type="number"
-                                id="productQuantity"
-                                name="productQuantity"
-                                placeholder="0"
-                                value="1"
-                                class="quantity-input"
-                            />
-                        </div>
-                        <div class="popup-add-btn align-center">
-                            <i class='bx bx-plus plus-icon'></i> 
-                        </div>
-                    </div>
-                </label>
-                <div class="popup-submit">  
-                    <button type="submit" class="action-btn proceed-btn align-center">
-                        Mua hàng
-                    </button>
                 </div>
-                
             </form>
         </div>`;
     popupContainer.innerHTML = buyNowContent;
@@ -142,6 +116,8 @@ const showBuyNowPopup = (productId, productImage, productName, productOrgPrice, 
     const increaseBtn = popupContainer.querySelector(".plus-icon");
     const decreaseBtn = popupContainer.querySelector(".minus-icon");
     const quantityInput = popupContainer.querySelector("#productQuantity");
+    const popupForm = popupContainer.querySelector(".popup-section-form");
+    popupForm.insertAdjacentHTML("beforeend", window.MyAppData.popupSubmitBtn);
     togglePopup();
     closeBtn.addEventListener("click", () => {
         togglePopup();
@@ -165,23 +141,7 @@ const showBuyNowPopup = (productId, productImage, productName, productOrgPrice, 
 
 
 const showAddCartResponse = (message) => {
-    const notifyContent = `
-        <div class="popup-header align-center">
-                Thông báo
-            </div>
-        <div class="popup-content">
-            <div class="popup-text align-center">
-                Thêm vào giỏ hàng thành công
-            </div>
-            <div class="popup-action">
-                <button type="button" class="action-btn continue-btn align-center">
-                    Tiếp tục mua sắm
-                </button>
-                <a href="/cart" class="action-btn cartNav-btn align-center">
-                    Xem giỏ hàng
-                </button>
-            </div>
-        </div>`;
+    const notifyContent = window.MyAppData.popupCartNotify;
     popupContainer.innerHTML = notifyContent;
     // popupContainer.style.width = "35%";
     const continueBtn = popupContainer.querySelector(".continue-btn");

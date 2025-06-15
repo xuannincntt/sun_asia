@@ -61,7 +61,7 @@ section {
     font-size: 1.5rem;
     padding: 1rem;
     margin: 2rem 0;
-    color: #1f1f1f;
+    color: white;
     background-color: var(--main-color);
     border-radius: 1rem;
     font-weight: 600;
@@ -136,7 +136,11 @@ section {
 }
 
 .about-service button:hover {
-    background-color: var(--second-color);
+    background-color: var(--main-color);
+
+    a, i{
+        color: white;
+    }
 }
 
 .about-service button a {
@@ -206,6 +210,7 @@ section {
     cursor: pointer;
     transition: .5s ease;
     color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .product .product-item:hover,
@@ -216,7 +221,7 @@ section {
 .product .product-item img,
 .project .project-item img {
     width: 100%;
-    height: 158px;
+    height: 175px;
     object-fit: cover; 
     object-position: center; 
     display: block;
@@ -237,12 +242,15 @@ section {
 }
 
 .product .product-item .price {
-    padding-top: 1rem;
+    font-size: 1.5rem;
 }
 
-.product-item .price span {
+.product-item .price .product-orgPrice {
     text-decoration: line-through;
     margin-right: 1rem;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--text-color-blur);
 }
 
 .product .product-item .product-item-end {
@@ -257,7 +265,8 @@ section {
     margin-right: auto;
     padding: .5rem 1rem;
     background-color: var(--main-color);
-    color: #1f1f1f;
+    color: #ffffff;
+    font-weight: 530;
     border: 1px solid var(--border-color);
     border-radius: .5rem;
     transition: .5s ease;
@@ -269,14 +278,15 @@ section {
 
 .product-item .product-item-end p {
     padding: .5rem 1rem;
-    border: .1rem solid var(--border-color);
+    border: .1rem solid var(--main-color);
+    margin-left: .5rem;
     border-radius: .5rem;
     cursor: pointer;
     transition: .5s ease;
 }
 
 .product-item .product-item-end p:hover {
-    background-color: var(--hover-color);
+    background-color: var(--main-color);
 }
 
 .project .project-content {
@@ -289,11 +299,11 @@ section {
     font-size: 2.5rem;
 }
 
-.project .project-content p {
+.project .project-content a {
     padding: 1rem;
     font-size: 1.5rem;
     background-color: var(--main-color);
-    color: #1f1f1f;
+    color: #ffffff;
     border: .1rem solid var(--border-color);
     border-radius: .5rem;
     cursor: pointer;
@@ -306,8 +316,15 @@ section {
 
 .project-show .project-item .area {
     padding: 0rem 1.5rem;
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
 }
 
 .project-show .project-item .address {
-    padding: 1rem 1.5rem 2rem;
+    margin: 1.5rem 1.5rem 2rem;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    background-color: var(--hover-color);
+    width: fit-content;
 }

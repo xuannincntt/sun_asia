@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 
 {% block css %}
@@ -9,7 +10,9 @@
 <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6839dc6784860b001ace80c6&product=inline-share-buttons&source=platform" async="async"></script>
 {% endblock %}
 
-{% block title %}Giỏ hàng của tôi{% endblock %}
+{% block title %}
+{% trans "Giỏ hàng của tôi" %}
+{% endblock %}
 
 {% block content %} 
 
@@ -18,13 +21,13 @@
     <div class="section-header">
         <div class="section-header-title align-center">
             <img class="page-image" src="{% static 'images/products_intro.jpg' %}?v={{ timestamp }}"/>
-            <h2 class="page-title">GIỎ HÀNG CỦA TÔI</h2>
+            <h2 class="page-title">{% trans "GIỎ HÀNG CỦA TÔI" %}</h2>
         </div>
         <div class="section-header-control align-left">
             <div class="section-header-return align-left">
                 <a class="return-link align-left" href="/products/">
                     <i class='bx bx-arrow-left-stroke return-icon'></i> 
-                    <span class="return-label">Tiếp tục mua sắm</span>
+                    <span class="return-label">{% trans "Tiếp tục mua sắm" %}</span>
                 </a>
             </div>
             
@@ -33,7 +36,7 @@
                     type="button"
                     class="clear-btn"
                 >
-                    Xóa giỏ hàng
+                    {% trans "Xóa giỏ hàng" %}
                 </button>
             </div>
         </div>
@@ -44,16 +47,16 @@
                 <thead>
                     <tr class="cart-table-head">
                         <th></th>
-                        <th class="align-left table-head-product" >Sản phẩm</th>
-                        <th class="align-right">Đơn giá</th>
-                        <th class="align-center">Số lượng</th>
-                        <th class="align-right">Thành tiền</th>
+                        <th class="align-left table-head-product" >{% trans "Sản phẩm" %}</th>
+                        <th class="align-right">{% trans "Đơn giá" %}</th>
+                        <th class="align-center">{% trans "Số lượng" %}</th>
+                        <th class="align-right">{% trans "Thành tiền" %}</th>
                     </tr>
                 </thead>
                 {% if cart %}
                 <tbody>
                     {% for item in cart.cart_items %}
-                    <tr class="cart-table-data">
+                    <tr class="cart-table-data" data-index="{{item.id}}">
                         <td class="remove-item-container align-center">
                             <i class='bx bx-x remove-icon'></i> 
                         </td>
@@ -66,7 +69,7 @@
                             
                         </td>
                         <td class="cart-item-name">{{item.name}}</td>
-                        <td class="cart-item-price align-right">{{item.price_text}}đ</td>
+                        <td class="cart-item-price align-right">{{item.price_text}}VND</td>
                         <td class="cart-item-quantity align-center">
                             <div class="item-quantity-controller">
                                 <div class="item-minus-btn align-center">
@@ -75,8 +78,8 @@
                                 <div class="item-quantity-input align-center">
                                     <input
                                         type="number"
-                                        id="cartItemQtn_1"
-                                        name="cartItemQtn_1"
+                                        id="itemQuantity_{{item.id}}"
+                                        name="itemQuantity_{{item.id}}"
                                         placeholder="0"
                                         value="{{item.quantity_text}}"
                                         class="quantity-input"
@@ -88,7 +91,7 @@
                             </div>
                             
                         </td>
-                        <td class="cart-item-subtotal align-right">{{item.subtotal_text}}<span>đ</span></td>
+                        <td class="cart-item-subtotal align-right">{{item.subtotal_text}}<span>VND</span></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -98,24 +101,24 @@
         </div>
         <div class="section-content-total">
             <div class="section-total-title align-center">
-                Tóm tắt đơn hàng
+                {% trans "Tóm tắt đơn hàng" %}
             </div>
             <div class="section-total-process">
                 <div class="total-row">
-                    <div class="total-row-label align-left">Số lượng</div>
+                    <div class="total-row-label align-left">{% trans "Số lượng" %}</div>
                     <div class="total-row-value align-right" id="total-quantity">{{cart.total_quantity}}</div>
                 </div>
                 <div class="total-row">
-                    <div class="total-row-label align-left">Tổng cộng</div>
-                    <div class="total-row-value align-right" id="total-temp">{{cart.total_temp}}<span>đ</span></div>
+                    <div class="total-row-label align-left">{% trans "Tổng cộng" %}</div>
+                    <div class="total-row-value align-right" id="total-temp">{{cart.total_temp}}<span>VND</span></div>
                 </div>
                 <div class="total-row">
                     <div class="total-row-label align-left">VAT</div>
-                    <div class="total-row-value align-right" id="total-vat">{{cart.total_vat}}<span>đ</span></div>
+                    <div class="total-row-value align-right" id="total-vat">{{cart.total_vat}}<span>VND</span></div>
                 </div>
                 <div class="total-row">
-                    <div class="total-row-label align-left">Giảm giá</div>
-                    <div class="total-row-value align-right" id="total-discount">{{cart.total_discount}}<span>đ</span></div>
+                    <div class="total-row-label align-left">{% trans "Giảm giá" %}</div>
+                    <div class="total-row-value align-right" id="total-discount">{{cart.total_discount}}<span>VND</span></div>
                 </div>
             </div>
             <div class="section-total-coupon">
@@ -125,13 +128,13 @@
                             type="text"
                             id="coupon-input"
                             name="coupon-input"
-                            placeholder="Mã giảm giá"
+                            placeholder="{% trans "Mã giảm giá" %}"
                         />
                         <button
                             type="submit"
                             class="coupon-submit"
                         >   
-                            Áp dụng mã
+                            {% trans "Áp dụng mã" %}
                         </button>
                     </label>
                 </form>
@@ -139,15 +142,15 @@
             </div>
             <div class="section-total-final">
                 <div class="total-row">
-                    <div class="total-row-label align-left">Tổng tiền</div>
-                    <div class="total-row-value align-right" id="total-final">{{cart.total_final}}<span>đ</span></div>
+                    <div class="total-row-label align-left">{% trans "Tổng tiền" %}</div>
+                    <div class="total-row-value align-right" id="total-final">{{cart.total_final}}<span>VND</span></div>
                 </div>
             </div>
         </div>
         <div></div>
         <div class="section-content-checkout align-right">
             <a class="forward-link align-right" href="/checkout/">
-                <span class="forward-label">Tiếp tục thanh toán</span>
+                <span class="forward-label">{% trans "Tiến hành thanh toán" %}</span>
                 <i class='bx bx-arrow-right-stroke forward-icon'></i> 
             </a>
         </div>
@@ -155,18 +158,18 @@
     <div class="delete-popup">
         <div class="delete-confirm">
             <div class="delete-confirm-header align-center">
-                Xác nhận xóa mặt hàng
+                {% trans "Thông báo" %}
             </div>
             <div class="delete-confirm-content">
                 <div class="delete-confirm-text align-center">
-                    Bạn có chắc chắn muốn xóa mặt hàng này không?
+                    {% trans "Bạn có chắc chắn muốn xóa mặt hàng này không?" %}
                 </div>
                 <div class="delete-confirm-action">
                     <button type="button" class="action-btn confirm-btn">
-                        Xác nhận
+                        {% trans "Xác nhận" %}
                     </button>
                     <button type="button" class="action-btn cancel-btn">
-                        Hủy bỏ
+                        {% trans "Hủy bỏ" %}
                     </button>
                 </div>
             </div>
@@ -175,6 +178,12 @@
 </main>
 {% endblock %}
 {% block script %}
+<script>
+    window.MyAppData = {
+        deleteCartCfText: `{% trans "Bạn có chắc chắn muốn xóa giỏ hàng này không?" %}`,
+        deleteItemCfText: `{% trans "Bạn có chắc chắn muốn xóa mặt hàng này không?" %}`
+    };
+</script>
 <script src="{% static 'js/cart.js' %}?v={{ timestamp }}" type="module"></script>
 {% endblock script %}
 

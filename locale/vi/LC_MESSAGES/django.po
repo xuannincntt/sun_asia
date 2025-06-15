@@ -51,6 +51,294 @@ msgstr "Hệ thống điều khiển tự động"
 msgid "Dự án"
 msgstr "Dự án"
 
+msgid "SẢN PHẨM & GIẢI PHÁP"
+msgstr "SẢN PHẨM & GIẢI PHÁP"
+
+msgid "DANH MỤC SẢN PHẨM"
+msgstr "DANH MỤC SẢN PHẨM"
+
+msgid "LỌC SẢN PHẨM"
+msgstr "LỌC SẢN PHẨM"
+
+msgid "Khoảng giá"
+msgstr "Khoảng giá"
+
+msgid "Dưới 250,000VND"
+msgstr "Dưới 250,000VND"
+
+msgid "Từ 250,000VND đến 1,000,000VND"
+msgstr "Từ 250,000VND đến 1,000,000VND"
+
+msgid "Từ 1,000,000VND đến 2,500,000VND"
+msgstr "Từ 1,000,000VND đến 2,500,000VND"
+
+msgid "Trên 2,500,000VND"
+msgstr "Trên 2,500,000VND"
+
+msgid "Tình trạng hàng"
+msgstr "Tình trạng hàng"
+
+msgid "Còn hàng"
+msgstr "Còn hàng"
+
+msgid "Lọc sản phẩm"
+msgstr "Lọc sản phẩm"
+
+msgid "Không tìm thấy sản phẩm nào"
+msgstr "Không tìm thấy sản phẩm nào."
+
+msgid "Liên hệ để báo giá"
+msgstr "Liên hệ để báo giá"
+
+msgid "Thêm vào giỏ"
+msgstr "Thêm vào giỏ"
+
+msgid "Mua ngay"
+msgstr "Mua ngay"
+
+msgid "Không tìm thấy sản phẩm này."
+msgstr "Không tìm thấy sản phẩm này."
+
+msgid "Đã bán"
+msgstr "Đã bán"
+
+msgid "Còn lại"
+msgstr "Còn lại"
+
+msgid "Số lượng"
+msgstr "Số lượng"
+
+msgid "Thêm vào giỏ hàng"
+msgstr "Thêm vào giỏ hàng"
+
+msgid "Liên hệ trực tuyến"
+msgstr "Liên hệ trực tuyến"
+
+msgid "Liên hệ qua Zalo"
+msgstr "Liên hệ qua Zalo"
+
+msgid "Chia sẻ sản phẩm trên các nền tảng!"
+msgstr "Chia sẻ sản phẩm trên các nền tảng!"
+
+msgid "Mô tả"
+msgstr "Mô tả"
+
+msgid "Chính sách đổi trả"
+msgstr "Chính sách đổi trả"
+
+msgid "Chính sách vận chuyển"
+msgstr "Chính sách vận chuyển"
+
+msgid "Thông báo"
+msgstr "Thông báo"
+
+msgid "Thêm vào giỏ hàng thành công!"
+msgstr "Thêm vào giỏ hàng thành công!"
+
+msgid "Tiếp tục mua sắm"
+msgstr "Tiếp tục mua sắm"
+
+msgid "Xem giỏ hàng"
+msgstr "Xem giỏ hàng"
+
+msgid "Giỏ hàng của tôi"
+msgstr "Giỏ hàng của tôi"
+
+msgid "GIỎ HÀNG CỦA TÔI"
+msgstr "GIỎ HÀNG CỦA TÔI"
+
+msgid "Bạn có chắc chắn muốn xóa mặt hàng này không?"
+msgstr "Bạn có chắc chắn muốn xóa mặt hàng này không?"
+
+msgid "Bạn có chắc chắn muốn xóa giỏ hàng này không?"
+msgstr "Bạn có chắc chắn muốn xóa giỏ hàng này không?"
+
+msgid "Hủy bỏ"
+msgstr "Hủy bỏ"
+
+msgid "Xóa giỏ hàng"
+msgstr "Xóa giỏ hàng"
+
+msgid "Đơn giá"
+msgstr "Đơn giá"
+
+msgid "Thành tiền"
+msgstr "Thành tiền"
+
+msgid "Tóm tắt đơn hàng"
+msgstr "Tóm tắt đơn hàng"
+
+msgid "Tổng cộng"
+msgstr "Tổng cộng"
+
+msgid "Giảm giá"
+msgstr "Giảm giá"
+
+msgid "Mã giảm giá"
+msgstr "Mã giảm giá"
+
+msgid "Áp dụng mã"
+msgstr "Áp dụng mã"
+
+msgid "Tổng tiền"
+msgstr "Tổng tiền"
+
+msgid "Tiến hành thanh toán"
+msgstr "Tiến hành thanh toán"
+
+msgid "ĐẶT HÀNG"
+msgstr "ĐẶT HÀNG"
+
+msgid "Đặt hàng"
+msgstr "Đặt hàng"
+
+msgid "Về trang Giỏ hàng"
+msgstr "Về trang Giỏ hàng"
+
+msgid "Thông tin nhận hàng"
+msgstr "Thông tin nhận hàng"
+
+msgid "Thông tin thanh toán"
+msgstr "Thông tin thanh toán"
+
+msgid "Địa chỉ mặc định"
+msgstr "Địa chỉ mặc định"
+
+msgid "Địa chỉ tùy chọn"
+msgstr "Địa chỉ tùy chọn"
+
+msgid "Tên người nhận hàng"
+msgstr "Tên người nhận hàng"
+
+msgid "Nhập họ và tên của bạn"
+msgstr "Nhập họ và tên của bạn"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Nhập email đặt hàng"
+msgstr "Nhập email đặt hàng"
+
+msgid "Nhập số điện thoại nhận hàng"
+msgstr "Nhập số điện thoại nhận hàng"
+
+msgid "Địa chỉ nhận hàng"
+msgstr "Địa chỉ nhận hàng"
+
+msgid "Nhập địa chỉ nhận hàng"
+msgstr "Nhập địa chỉ nhận hàng"
+
+msgid "Tỉnh/Thành phố"
+msgstr "Tỉnh/Thành phố"
+
+msgid "Nhập tên Tỉnh/Thành phố"
+msgstr "Nhập tên Tỉnh/Thành phố"
+
+msgid "Quận/Huyện"
+msgstr "Quận/Huyện"
+
+msgid "Nhập tên Quận/Huyện"
+msgstr "Nhập tên Quận/Huyện"
+
+msgid "Ghi chú"
+msgstr "Ghi chú"
+
+msgid "Nhập ghi chú cho đơn hàng"
+msgstr "Nhập ghi chú cho đơn hàng"
+
+msgid "Thanh toán khi nhận hàng"
+msgstr "Thanh toán khi nhận hàng"
+
+msgid "Chuyển khoản ngân hàng"
+msgstr "Chuyển khoản ngân hàng"
+
+msgid "Thông tin tài khoản"
+msgstr "Thông tin tài khoản"
+
+msgid "Ngân hàng"
+msgstr "Ngân hàng"
+
+msgid "Minh chứng thanh toán"
+msgstr "Minh chứng thanh toán"
+
+msgid "Xác nhận đặt hàng"
+msgstr "Xác nhận đặt hàng"
+
+msgid "Hủy đặt hàng"
+msgstr "Hủy đặt hàng"
+
+msgid "Sửa thông tin"
+msgstr "Sửa thông tin"
+
+msgid "Chi tiết đơn hàng"
+msgstr "Chi tiết đơn hàng"
+
+msgid "Về Lịch sử mua hàng"
+msgstr "Về Lịch sử mua hàng"
+
+msgid "ĐƠN HÀNG CỦA BẠN"
+msgstr "ĐƠN HÀNG CỦA BẠN"
+
+msgid "Đã thanh toán"
+msgstr "Đã thanh toán"
+
+msgid "Chưa thanh toán"
+msgstr "Chưa thanh toán"
+
+msgid "STT"
+msgstr "STT"
+
+msgid "Mặt hàng"
+msgstr "Mặt hàng"
+
+msgid "Phương thức thanh toán"
+msgstr "Phương thức thanh toán"
+
+msgid "Processing"
+msgstr "Đang xử lý"
+
+msgid "Preparing"
+msgstr "Đang chuẩn bị"
+
+msgid "Shipped"
+msgstr "Đang vận chuyển"
+
+msgid "Delivered"
+msgstr "Đã giao hàng"
+
+msgid "Cancelled"
+msgstr "Đã hủy bỏ"
+
+msgid "Cash on Delivery"
+msgstr "Thanh toán khi nhận hàng"
+
+msgid "Bank Transfer"
+msgstr "Chuyển khoản ngân hàng"
+
+msgid "Lịch sử mua hàng"
+msgstr "Lịch sử mua hàng"
+
+msgid "LỊCH SỬ MUA HÀNG"
+msgstr "LỊCH SỬ MUA HÀNG"
+
+msgid "Bạn chưa có đơn hàng nào."
+msgstr "Bạn chưa có đơn hàng nào."
+
+msgid "Mã đơn hàng"
+msgstr "Mã đơn hàng"
+
+msgid "Trạng thái đơn hàng"
+msgstr "Trạng thái đơn hàng"
+
+msgid "Ngày mua"
+msgstr "Ngày mua"
+
+msgid "Trạng thái thanh toán"
+msgstr "Trạng thái thanh toán"
+
+msgid "Xem chi tiết"
+msgstr "Xem chi tiết"
+
 #: .\templates\base.html:56
 msgid "Dưới"
 msgstr "Dưới"
@@ -104,10 +392,6 @@ msgstr "Quản lý giỏ hàng"
 #: .\templates\base.html:101
 msgid "Danh mục yêu thích"
 msgstr "Danh mục yêu thích"
-
-#: .\templates\base.html:102
-msgid "Lịch sử mua hàng"
-msgstr "Lịch sử mua hàng"
 
 #: .\templates\base.html:104
 msgid "Đăng xuất"
@@ -411,9 +695,6 @@ msgstr "Cập nhập tên của bạn"
 
 msgid "Tên sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn"
 msgstr "Tên sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn"
-
-msgid "Nhập họ và tên của bạn"
-msgstr "Nhập họ và tên của bạn"
 
 msgid "Xác nhận"
 msgstr "Xác nhận"

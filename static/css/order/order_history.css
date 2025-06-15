@@ -1,0 +1,273 @@
+#order-history-page{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    padding: 7.5rem 0 3rem;
+    background-color: var(--bg-color);
+}
+
+.order-history-header{
+    box-sizing: border-box;
+    position: relative;
+    font-size: 2.5rem;
+    margin: 0;
+    padding: 0;
+
+    .header-image{
+        width: 100%;
+        height: auto;
+    }
+
+    .header-title{
+        position: absolute;
+        bottom: 45%;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        color: var(--white-color);
+        font-weight: 700;
+        font-size: 3rem;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+
+.order-history-content{
+    box-sizing: border-box;
+    width: 70%;
+    margin: auto;
+    padding: 3rem;
+    
+
+    .order-history-container{
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+
+        .order-card{
+            box-sizing: border-box;
+            padding: 1rem;
+            
+            
+
+            .order-card-info{
+                box-sizing: border-box;
+                border: 1px solid var(--border-color);
+                border-radius: 5px;
+                box-shadow: var(--order-info-shadow) 0px 3px 6px -2px, rgba(0, 0, 0, 0.3) 0px 3px 3px -3px;
+
+                .card-field{
+                    box-sizing: border-box;
+                    padding: 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.85rem;
+                    align-items: flex-start;
+                    justify-content: center;
+
+                    .card-label{
+                        font-size: 1.4rem;
+                        color: var(--text-color-blur);
+                    }
+
+                    .card-value{
+                        font-size: 1.5rem;
+                        color: var(--text-color);
+                        font-weight: 550;
+                    }
+
+                    .card-notDelivered{
+                        color: var(--order-status-text);
+                    }
+
+                    .card-delivered{
+                        color: var(--second-color);
+                    }
+
+                    .card-cancelled{
+                        color: var(--order-cancelled-text);
+                    }
+
+                    .card-notPaid{
+                        color: var(--order-notPaid-text);
+                    }
+
+                    .card-isPaid{
+                        color: var(--second-color);
+                    }
+                }
+
+                .order-card-additional{
+                    box-sizing: border-box;
+                    padding: 1rem 2rem;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
+                    column-gap: 1rem;
+                    background-color: var(--order-additional-bg);
+                    border-bottom: 1px solid var(--cart-row-border);
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                
+                    
+                }
+
+                .order-card-main{
+                    box-sizing: border-box;
+                    display: grid;
+                    grid-template-columns: 3fr 1fr;
+                    padding: 1rem 2rem;
+                    background-color: var(--bg-color);
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+
+                    
+
+                    .order-card-main-col1{
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+
+                        .card-address{
+                            grid-column: 1 / 5;
+                        }
+                    }
+
+                    .order-card-main-col2{
+                        box-sizing: border-box;
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        gap: 1rem;
+
+                        .action-btn{
+                            box-sizing: border-box;
+                            transition: all 0.2s ease-in-out;
+                            cursor: pointer;
+                            font-size: 1.4rem;
+                            font-weight: 550;
+                        }
+
+                        .detail-btn{
+                            background-color: var(--bg-color);
+                            padding: 0.85rem 1rem;
+                            color: var(--cart-btn-text);
+                            text-decoration: none;
+
+                            border: none;
+                            border: 2px solid var(--cart-btn-border);
+
+                            &:hover{
+                                border-color: green;
+                                background-color: green;
+                                color: white;
+                            }
+                        }
+
+                        .expand-btn{
+                            border-radius: 50%;
+                            padding: 0.3rem;
+                            .expand-icon{
+                                
+                                font-size: 1.8rem;
+                                color: var(--text-color);
+                            }
+
+                            &:hover{
+                                background-color: var(--shadow-color);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .order-card-items{
+                box-sizing: border-box;
+                width: 97%;
+                margin: auto;
+                max-height: 0;
+                overflow: hidden;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border: 1px solid var(--border-color);
+                border-top: none;
+                box-shadow: var(--order-info-shadow) 0px 3px 6px -2px, rgba(0, 0, 0, 0.3) 0px 3px 3px -3px;
+                transition: max-height 0.4s ease;
+
+                .order-card-item{
+                    box-sizing: border-box;
+                    max-height: 200px;
+                    display: grid;
+                    padding: 2rem 4rem;
+                    grid-template-columns: 1fr 3fr;
+                    gap: 2rem;
+                    
+
+                    .item-section-image{
+                        box-sizing: border-box;
+                        height: 100%;
+                        border: 1px solid grey;
+
+                        .item-image{
+                            width: 100%;
+                            height: auto;
+                            object-fit: cover;
+                            
+                        }
+                    }
+
+                    .item-section-info{
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: column;
+
+                        .item-info-row1{
+                            box-sizing: border-box;
+                            flex: 1;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+
+                            .item-name{
+                                font-size: 1.6rem;
+                                font-weight: 600;
+                                color: var(--text-color);
+                            }
+                        }
+
+                        .item-info-row2{
+                            box-sizing: border-box;
+                            flex: 1;
+                            display: grid;
+                            grid-template-columns: 1fr 1fr 1fr;
+
+                            .item-price, .item-quantity, .item-subtotal{
+                                display: flex;
+                                font-size: 1.5rem;
+                                align-items: center;
+                                color: var(--text-color);
+                            }
+
+                            .item-price{
+                                justify-content: flex-start;
+                                font-weight: 550;
+                            }
+
+                            .item-quantity{
+                                justify-content: center;
+                            }
+
+                            .item-subtotal{
+                                justify-content: flex-end;
+                                font-weight: 550;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.order-items-visible {
+    display: flex;
+}

@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/contact/contact.css">
+    <link rel="stylesheet" href="{% static 'css/contact/contact.css' %}?v={{ timestamp }}">
 {% endblock %}
 {% block title %}
     {% trans "Liên hệ" %}

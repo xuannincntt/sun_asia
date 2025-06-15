@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/account/information.css">
+    <link rel="stylesheet" href="{% static 'css/account/information.css' %}?v={{ timestamp }}">
 {% endblock %}
 {% block title %}
     {% trans "Thông tin cá nhân" %}
@@ -39,16 +40,40 @@
                     <h1>{% trans "Ảnh đại diện" %}</h1>
                     <p>{% trans "Ảnh hồ sơ sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn" %}</p>
                     <div class="avatar">
-                        {% if user.avatar_url %}
-                            <img src="{{ avatar }}" alt="">
-                        {% else %}
+                        <img src="{{ user.avatar_url|default:'' }}" alt="" id="avatarImg" data-initial-src="{{ user.avatar_url|default:'' }}">
+                        {% if not user.avatar_url %}
                             {% load user_filters %}
-                            <div id="avatar">{{ user.username|last_name_initial }}</div>
+                            <div id="avatarInitial">
+                                {{ user.username|last_name_initial }}
+                            </div>
                         {% endif %}
                     </div>
                     <div class="upload" id="uploadDiv">
                         <p><i class='bx bx-upload'></i> {% trans "Tải ảnh mới lên" %}</p>
-                        <input type="file" accept=".jpg,.jpeg,.png" name="avatar" id="avatar" style="display: none;">
+                        <input type="file" accept=".jpg,.jpeg,.png" name="avatar" id="avatarInput" style="display: none;">
+                    </div>
+                    <div class="action-buttons"
+                        style="display: flex; flex-direction: row; margin-top: 4rem; gap: 1.5rem;">
+                        <button id="cancelUpload"
+                        style="padding: .5rem 1rem;
+                        background: var(--text-color);
+                        color: var(--bg-color);
+                        border-radius: .5rem;
+                        font-weight: 500;
+                        cursor: pointer;
+                        width: 100%;
+                        transition: .5s ease;
+                        display: none;">Hủy</button>
+                        <button id="confirmUpload"
+                        style="padding: .5rem 1rem;
+                        background: var(--sd-text-color);
+                        color: var(--white-color);
+                        border-radius: .5rem;
+                        font-weight: 500;
+                        width: 100%;
+                        cursor: pointer;
+                        transition: .5s ease;
+                        display: none;">Xác nhận</button>
                     </div>
                 </div>
             </div>
@@ -71,7 +96,7 @@
                     <label for="name">{% trans "Họ và tên" %}</label><br>
                     <input type="text" name="name" id="name" placeholder="{% trans 'Nhập họ và tên của bạn' %}">
                     <p id="update_name"></p>
-                    <a href="/update_name" class="saveName">{% trans "Xác nhận" %}</a>
+                    <a href="/accounts/update_name/" class="saveName">{% trans "Xác nhận" %}</a>
                 </div>
             </div>
         </div>
@@ -96,7 +121,7 @@
                     <label for="inf-email">Email</label><br>
                     <input type="email" name="email" id="inf-email" placeholder="{% trans 'Nhập email của bạn' %}">
                     <p id="update_email"></p>
-                    <a href="/update_email" class="saveEmail">{% trans "Xác nhận" %}</a>
+                    <a href="#" class="saveEmail">{% trans "Xác nhận" %}</a>
                 </div>
             </div>
             <div class="pass-contain" id="openPassPopup">
@@ -176,27 +201,60 @@
                     <p class="text-box">{% trans "Địa chỉ của tôi" %}</p>
                 </div>
                 <div class="address-box end">
-                    <p><i class="fa-solid fa-plus"></i> {% trans "Thêm địa chỉ mới" %}</p>
+                    <p><i class="fa-solid fa-plus"></i> {% trans "Thêm địa chỉ" %}</p>
                 </div>
             </div>
             <div class="address-popup" id="address-popup">
                 <div class="address-popup-content">
                     <h1>{% trans "Địa chỉ" %}</h1>
+                    <!-- Tỉnh/Thành phố -->
                     <div class="form-group-full">
-                        <select name="region">
-                            <option value="">{% trans "Tỉnh/ Thành phố, Quận/Huyện, Phường/Xã" %}</option>
-                            <!-- Thêm option động ở đây -->
+                        <select name="province" id="province">
+                            <option value="">{% trans "Tỉnh/Thành phố" %}</option>
                         </select>
                     </div>
+                    <!-- Quận/Huyện -->
                     <div class="form-group-full">
-                        <input type="text" placeholder="{% trans 'Địa chỉ cụ thể' %}" name="detail_address">
+                        <select name="district" id="district" disabled>
+                            <option value="">{% trans "Quận/Huyện" %}</option>
+                        </select>
                     </div>
-                    <div class="map-box">
-                        + {% trans "Thêm vị trí" %}
+                    <!-- Phường/Xã -->
+                    <div class="form-group-full">
+                        <select name="ward" id="ward" disabled>
+                            <option value="">{% trans "Phường/Xã" %}</option>
+                        </select>
+                    </div>
+                    <!-- Nhập địa chỉ cụ thể -->
+                    <div class="form-group-full">
+                        <input type="text" placeholder="{% trans 'Địa chỉ cụ thể (Số nhà, tên đường)' %}" name="detail_address" id="detail_address">
                     </div>
                     <div class="form-actions">
                         <button class="btn-back" type="button" id="closeAddressPopup">{% trans "Thoát" %}</button>
-                        <button class="btn-submit" type="submit">{% trans "Hoàn thành" %}</button>
+                        <button class="btn-submit saveAddress" type="submit">{% trans "Hoàn thành" %}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="address-list">
+                <div class="address-box">
+                    <div class="address-box-left">
+                        <p>Chung cư VP6</p>
+                        <p>Phường Hoàng Liệt, Quận Hoàng Mai, Hà Nội</p>
+                        <p id="default">Mặc định</p>
+                    </div>
+                    <div class="address-box-right">
+                        <span><button><i class="fa-solid fa-pen-to-square"></i></button><button><i class="fa-solid fa-xmark"></i></button></span>
+                        <button class="btn-default">Thiết lập mặc định</button>
+                    </div>
+                </div>
+                <div class="address-box end">
+                    <div class="address-box-left">
+                        <p>Đại học Kinh tế Quốc dân</p>
+                        <p>Phường Đồng Tâm, Quận Hai Bà Trưng, Hà Nội</p>
+                    </div>
+                    <div class="address-box-right">
+                        <span><button><i class="fa-solid fa-pen-to-square"></i></button><button><i class="fa-solid fa-xmark"></i></button></span>
+                        <button class="btn-default">Thiết lập mặc định</button>
                     </div>
                 </div>
             </div>
@@ -204,5 +262,123 @@
     </section>
 {% endblock %}
 {% block script %}
-    <script src="/static/js/information.js"></script>
+    <script src="{% static 'js/information.js' %}?v={{ timestamp }}" type="module"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjZUDn4LvTw4X-MUe4c-xNvqh20nVdBU"></script>
+    <!-- <script>
+        const avatarImg = document.getElementById('avatarImg');
+        const avatarInitial = document.getElementById('avatarInitial');
+        const confirmButton = document.getElementById('confirmUpload');
+        const cancelButton = document.getElementById('cancelUpload');
+        const uploadDiv = document.getElementById('uploadDiv');
+        const avatarInput = document.getElementById('avatarInput');
+        let selectedFile = null;
+        // Lưu trạng thái ban đầu
+        const oldAvatarSrc = avatarImg.src;
+        const initialSrc = avatarImg.getAttribute('data-initial-src');
+        const hadAvatarInitially = initialSrc && initialSrc.trim() !== '';
+        // Khi click vào vùng upload thì trigger input file
+        uploadDiv.addEventListener('click', () => {
+            avatarInput.click();
+        });
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let cookie of cookies) {
+                    const trimmed = cookie.trim();
+                    if (trimmed.startsWith(name + '=')) {
+                        cookieValue = decodeURIComponent(trimmed.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrfToken = getCookie('csrftoken');
+        avatarInput.addEventListener('change', (event) => {
+            if (event.target.files && event.target.files[0]) {
+                selectedFile = event.target.files[0];
+                uploadDiv.style.display = 'none'; // Ẩn vùng upload
+                // Hiển thị ảnh preview
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    avatarImg.src = e.target.result;
+                    avatarImg.style.display = 'block';
+                    if (avatarInitial) {
+                        avatarInitial.style.display = 'none';
+                    }
+                };
+                reader.readAsDataURL(selectedFile);
+                // Hiển thị nút xác nhận / hủy
+                confirmButton.style.display = 'inline-block';
+                cancelButton.style.display = 'inline-block';
+            }
+        });
+        // Khi nhấn Hủy
+        cancelButton.addEventListener('click', () => {
+            // Hiển thị lại vùng upload
+            uploadDiv.style.display = 'flex';
+            // Nếu ban đầu có avatar, khôi phục lại avatar cũ
+            if (hadAvatarInitially) {
+                avatarImg.src = oldAvatarSrc;
+                avatarImg.style.display = 'block';
+                if (avatarInitial) {
+                    avatarInitial.style.display = 'none';
+                }
+            } else { 
+                // Nếu ban đầu không có avatar, khôi phục lại chữ cái
+                avatarImg.src = '';
+                avatarImg.style.display = 'none';
+                if (avatarInitial) {
+                    avatarInitial.style.display = 'flex';
+                }
+            }
+            // Ẩn nút
+            confirmButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+            // Reset input file
+            avatarInput.value = '';
+            selectedFile = null;
+        });
+        // Khi nhấn Xác nhận
+        confirmButton.addEventListener('click', () => {
+            if (selectedFile) {
+                // Check
+                console.log("Đã vào vòng lặp if else");
+                const formData = new FormData();
+                formData.append('avatar', selectedFile);
+                fetch("/accounts/update-avatar/", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken
+                    },
+                    body: formData
+                })
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("response" + data);
+                    if (data.success) {
+                        alert('Cập nhật avatar thành công! ' + data.avatar_url);
+                        avatarImg.style.display = 'block';
+                        if (avatarInitial) {
+                            avatarInitial.style.display = 'none';
+                        }
+                        uploadDiv.style.display = 'flex';
+                        confirmButton.style.display = 'none';
+                        cancelButton.style.display = 'none';
+                        avatarInput.value = '';
+                        selectedFile = null;
+                        location.reload();
+                    } else {
+                        alert('Đã có lỗi xảy ra: ' + (data.error || 'Không rõ'));
+                    }
+                })
+                .catch(error => {
+                    alert('Đã có lỗi xảy ra khi gửi request!');
+                });
+            }
+        });
+    </script> -->
 {% endblock %}

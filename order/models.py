@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.utils.translation import gettext_lazy as _
 
 
 
@@ -10,6 +11,7 @@ class Address(models.Model):
     detailed_address = models.TextField(null=False, blank=True) 
     city = models.TextField(null=True, blank=True) 
     district = models.TextField(null=True, blank=True) 
+    ward = models.TextField(null=True, blank=True)
     email = models.EmailField(unique=True, null=True, blank=True)
     tel = models.TextField(null=False, blank=False) 
     is_default = models.BooleanField(null=True, blank=True, default=False)
@@ -17,26 +19,26 @@ class Address(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Address {self.detailed_address} with belongs to email {self.email} and tel {self.tel} created by {self.creator.username}"
+        return f"Address {self.detailed_address} with belongs to email {self.email} and tel {self.tel} created by {self.creator.email}"
 
 class Order(models.Model):
     ORDER_STATUS_CHOICES = [
-        ('PENDING', 'Pending'),
-        ('PROCESSING', 'Processing'),
-        ('SHIPPED', 'Shipped'),
-        ('DELIVERED', 'Delivered'),
-        ('CANCELLED', 'Cancelled'),
+        ('PROCESSING', _('Processing')),
+        ('PREPARING', _('Preparing')),
+        ('SHIPPED', _('Shipped')),
+        ('DELIVERED', _('Delivered')),
+        ('CANCELLED', _('Cancelled')),
     ]
 
     ORDER_PAYMENT_CHOICES = [
-        ('COD', 'Cash On Delivery'),
-        ('BANK', 'Bank Transfer')
+        ('COD', _('Cash on Delivery')),
+        ('BANK', _('Bank Transfer'))
     ]
 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     order_address = models.ForeignKey('Address', on_delete=models.CASCADE)
     order_date = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=20, choices=ORDER_STATUS_CHOICES, default='PENDING')
+    status = models.CharField(max_length=20, choices=ORDER_STATUS_CHOICES, default='PROCESSING')
     is_paid = models.BooleanField(null=False, default=False)
     payment = models.CharField(max_length=50, choices=ORDER_PAYMENT_CHOICES, default='COD')
     total_quantity = models.IntegerField(default=0, null=False, blank=False)
@@ -53,11 +55,16 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
-    unit_price = models.FloatField()
+    price = models.IntegerField(default=0, null=False, blank=False)
+    subtotal = models.IntegerField(default=0, null=False, blank=False)
 
+    def save(self, *args, **kwargs):
+        self.subtotal = self.quantity * self.price
+        super().save(*args, **kwargs)
+        
     def __str__(self):
         return f"{self.quantity} x {self.product.name}"
 
     def get_total_price(self):
-        return self.quantity * self.unit_price
+        return self.quantity * self.price
     

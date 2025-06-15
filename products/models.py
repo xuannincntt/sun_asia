@@ -27,6 +27,7 @@ class Product(models.Model):
     sale_price = models.IntegerField(verbose_name="Giá khuyến mại (Nếu không có thì để trống)", null=True, default=-1, blank=True)
     org_price = models.IntegerField(verbose_name="Giá niêm yết",null=True, default=0, blank=True)
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
+    created_at = models.DateTimeField(verbose_name="Ngày tạo", auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.slug or self.slug.strip() == "":

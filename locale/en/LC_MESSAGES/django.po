@@ -51,6 +51,294 @@ msgstr "Automatic Control System"
 msgid "Dự án"
 msgstr "Project"
 
+msgid "SẢN PHẨM & GIẢI PHÁP"
+msgstr "PRODUCTS & SOLUTIONS"
+
+msgid "DANH MỤC SẢN PHẨM"
+msgstr "PRODUCT LIST"
+
+msgid "LỌC SẢN PHẨM"
+msgstr "FILTER PRODUCTS"
+
+msgid "Khoảng giá"
+msgstr "Price range"
+
+msgid "Dưới 250,000VND"
+msgstr "Under 250,000VND"
+
+msgid "Từ 250,000VND đến 1,000,000VND"
+msgstr "From 250,000VND to 1,000,000VND"
+
+msgid "Từ 1,000,000VND đến 2,500,000VND"
+msgstr "From 1,000,000VND to 2,500,000VND"
+
+msgid "Trên 2,500,000VND"
+msgstr "Over 2,500,000VND"
+
+msgid "Tình trạng hàng"
+msgstr "Stock status"
+
+msgid "Còn hàng"
+msgstr "In stock"
+
+msgid "Lọc sản phẩm"
+msgstr "Filter products"
+
+msgid "Không tìm thấy sản phẩm nào."
+msgstr "No products found."
+
+msgid "Liên hệ để báo giá"
+msgstr "Contact for price"
+
+msgid "Thêm vào giỏ"
+msgstr "Add to cart"
+
+msgid "Mua ngay"
+msgstr "Buy now"
+
+msgid "Không tìm thấy sản phẩm này."
+msgstr "Product not found."
+
+msgid "Đã bán"
+msgstr "Sold"
+
+msgid "Còn lại"
+msgstr "In stock"
+
+msgid "Số lượng"
+msgstr "Quantity"
+
+msgid "Thêm vào giỏ hàng"
+msgstr "Add to cart"
+
+msgid "Liên hệ trực tuyến"
+msgstr "Contact online"
+
+msgid "Liên hệ qua Zalo"
+msgstr "Contact via Zalo"
+
+msgid "Chia sẻ sản phẩm trên các nền tảng!"
+msgstr "Share our product across platforms!"
+
+msgid "Mô tả"
+msgstr "Description"
+
+msgid "Chính sách đổi trả"
+msgstr "Return policy"
+
+msgid "Chính sách vận chuyển"
+msgstr "Shipping policy"
+
+msgid "Thông báo"
+msgstr "Notification"
+
+msgid "Thêm vào giỏ hàng thành công!"
+msgstr "Added to cart successfully!"
+
+msgid "Tiếp tục mua sắm"
+msgstr "Continue shopping"
+
+msgid "Xem giỏ hàng"
+msgstr "Go to cart"
+
+msgid "Giỏ hàng của tôi"
+msgstr "My cart"
+
+msgid "GIỎ HÀNG CỦA TÔI"
+msgstr "MY CART"
+
+msgid "Bạn có chắc chắn muốn xóa mặt hàng này không?"
+msgstr "Are you sure you want to delete this item?"
+
+msgid "Bạn có chắc chắn muốn xóa giỏ hàng này không?"
+msgstr "Are you sure you want to clear this cart?"
+
+msgid "Hủy bỏ"
+msgstr "Cancel"
+
+msgid "Xóa giỏ hàng"
+msgstr "Clear cart"
+
+msgid "Đơn giá"
+msgstr "Unit price"
+
+msgid "Thành tiền"
+msgstr "Subtotal"
+
+msgid "Tóm tắt đơn hàng"
+msgstr "Order summary"
+
+msgid "Tổng cộng"
+msgstr "Subtotal"
+
+msgid "Giảm giá"
+msgstr "Discount"
+
+msgid "Mã giảm giá"
+msgstr "Discount code"
+
+msgid "Áp dụng mã"
+msgstr "Apply code"
+
+msgid "Tổng tiền"
+msgstr "Total"
+
+msgid "Tiến hành thanh toán"
+msgstr "Proceed to checkout"
+
+msgid "ĐẶT HÀNG"
+msgstr "ORDER"
+
+msgid "Đặt hàng"
+msgstr "Order"
+
+msgid "Về trang Giỏ hàng"
+msgstr "Return to cart"
+
+msgid "Thông tin nhận hàng"
+msgstr "Delivery information"
+
+msgid "Thông tin thanh toán"
+msgstr "Payment information"
+
+msgid "Địa chỉ mặc định"
+msgstr "Default address"
+
+msgid "Địa chỉ tùy chọn"
+msgstr "Custom address"
+
+msgid "Tên người nhận hàng"
+msgstr "Consignee name"
+
+msgid "Nhập họ và tên của bạn"
+msgstr "Enter your full name"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Nhập email đặt hàng"
+msgstr "Enter order email"
+
+msgid "Nhập số điện thoại nhận hàng"
+msgstr "Enter consignee's phone number"
+
+msgid "Địa chỉ nhận hàng"
+msgstr "Delivery address"
+
+msgid "Nhập địa chỉ nhận hàng"
+msgstr "Enter shipping address"
+
+msgid "Tỉnh/Thành phố"
+msgstr "Province/City"
+
+msgid "Nhập tên Tỉnh/Thành phố"
+msgstr "Enter Province/City name"
+
+msgid "Quận/Huyện"
+msgstr "District"
+
+msgid "Nhập tên Quận/Huyện"
+msgstr "Enter District name"
+
+msgid "Ghi chú"
+msgstr "Notes"
+
+msgid "Nhập ghi chú cho đơn hàng"
+msgstr "Enter notes for this order"
+
+msgid "Thanh toán khi nhận hàng"
+msgstr "Cash on Delivery"
+
+msgid "Chuyển khoản ngân hàng"
+msgstr "Bank Transfer"
+
+msgid "Thông tin tài khoản"
+msgstr "Account information"
+
+msgid "Ngân hàng"
+msgstr "Bank"
+
+msgid "Minh chứng thanh toán"
+msgstr "Proof of payment"
+
+msgid "Xác nhận đặt hàng"
+msgstr "Confirm order"
+
+msgid "Hủy đặt hàng"
+msgstr "Cancel order"
+
+msgid "Sửa thông tin"
+msgstr "Edit information"
+
+msgid "Chi tiết đơn hàng"
+msgstr "Order details"
+
+msgid "Về Lịch sử mua hàng"
+msgstr "Return to Order history"
+
+msgid "ĐƠN HÀNG CỦA BẠN"
+msgstr "Your Order"
+
+msgid "Đã thanh toán"
+msgstr "Paid"
+
+msgid "Chưa thanh toán"
+msgstr "Not Paid"
+
+msgid "STT"
+msgstr "No."
+
+msgid "Mặt hàng"
+msgstr "Item"
+
+msgid "Phương thức thanh toán"
+msgstr "Payment method"
+
+msgid "Processing"
+msgstr "Processing"
+
+msgid "Preparing"
+msgstr "Preparing"
+
+msgid "Shipped"
+msgstr "Shipped"
+
+msgid "Delivered"
+msgstr "Delivered"
+
+msgid "Cancelled"
+msgstr "Cancelled"
+
+msgid "Cash on Delivery"
+msgstr "Cash on Delivery"
+
+msgid "Bank Transfer"
+msgstr "Bank Transfer"
+
+msgid "Lịch sử mua hàng"
+msgstr "Order History"
+
+msgid "LỊCH SỬ MUA HÀNG"
+msgstr "ORDER HISTORY"
+
+msgid "Bạn chưa có đơn hàng nào."
+msgstr "No orders found."
+
+msgid "Mã đơn hàng"
+msgstr "Order ID"
+
+msgid "Trạng thái đơn hàng"
+msgstr "Status"
+
+msgid "Ngày mua"
+msgstr "Date Created"
+
+msgid "Trạng thái thanh toán"
+msgstr "Payment Status"
+
+msgid "Xem chi tiết"
+msgstr "See details"
+
 #: .\templates\base.html:56
 msgid "Dưới"
 msgstr "Under"
@@ -104,10 +392,6 @@ msgstr "Cart Management"
 #: .\templates\base.html:101
 msgid "Danh mục yêu thích"
 msgstr "Favorites"
-
-#: .\templates\base.html:102
-msgid "Lịch sử mua hàng"
-msgstr "Purchase History"
 
 #: .\templates\base.html:104
 msgid "Đăng xuất"
@@ -409,9 +693,6 @@ msgstr "Update your name"
 
 msgid "Tên sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn"
 msgstr "Your name will appear on your profile, comments, and posts"
-
-msgid "Nhập họ và tên của bạn"
-msgstr "Enter your full name"
 
 msgid "Xác nhận"
 msgstr "Confirm"

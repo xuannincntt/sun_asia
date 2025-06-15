@@ -1,17 +1,8 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
-from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Project(models.Model):
-    name = models.CharField(max_length=255, verbose_name="Tên dự án")
-    image_file = CloudinaryField(verbose_name="Ảnh dự án (Tải lên từ máy tính)", null=True, blank=True)
-    image_url = models.URLField(blank=True, null=True, verbose_name="Ảnh dự án (URL từ Internet)")
-    area = models.IntegerField(null=True, blank=True, verbose_name="Diện tích (m²)")
-    investor = models.TextField(null=True, blank=True, verbose_name="Chủ đầu tư")
-    product = models.TextField(null=True, blank=True, verbose_name="Sản phẩm")
-    city = models.CharField(max_length=100, null=True, blank=True, verbose_name="Thành phố")
-    created_at = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=255, verbose_name="Tên dự án")
     image_file = CloudinaryField(verbose_name="Ảnh dự án (Tải lên từ máy tính)", null=True, blank=True)
     image_url = models.URLField(blank=True, null=True, verbose_name="Ảnh dự án (URL từ Internet)")

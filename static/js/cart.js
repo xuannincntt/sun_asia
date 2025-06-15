@@ -7,6 +7,8 @@ const confirmRemoveBtn = document.getElementsByClassName('confirm-btn')[0];
 const deleteCartBtn = document.querySelector('.clear-btn');
 const popup = document.getElementsByClassName('delete-popup')[0];
 
+let cartItems;
+
 let currentDeleteMode = "item";
 let selectedContainer;
 
@@ -16,6 +18,7 @@ let totalVat = 0;
 let totalDiscount = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
+    cartItems = document.querySelectorAll(".cart-table-data");
     console.log(increaseContainers);
     setQuantityBtnOnClick();
     setRemoveBtnsOnClick();
@@ -31,15 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentDeleteMode == "item"){
             const selectedItem = selectedContainer.closest('.cart-table-data');
             selectedItem.remove();
+            cartItems = document.querySelectorAll(".cart-table-data");
             updateCart();
         }
         else if (currentDeleteMode == "cart"){
-            const cartItems = document.querySelectorAll('.cart-table-data');
             cartItems.forEach(item => item.remove());
             totalQuantity = 0;
             totalTemp = 0;
             totalVat = 0;
             totalDiscount = 0;
+            cartItems = document.querySelectorAll(".cart-table-data");
             updateCart();
         }
         
@@ -88,6 +92,7 @@ const setRemoveBtnsOnClick = () => {
         btn.addEventListener("click", () => {
             currentDeleteMode = "item";
             selectedContainer = container;
+            deleteCfText.innerHTML = window.MyAppData.deleteItemCfText;
             togglePopup();
         });
     });
@@ -95,7 +100,7 @@ const setRemoveBtnsOnClick = () => {
 
 const setDeleteCartBtnOnClick = () => {
     deleteCartBtn.addEventListener("click",() => {
-        deleteCfText.textContent = "Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng này không?";
+        deleteCfText.innerHTML = window.MyAppData.deleteCartCfText;
         currentDeleteMode = "cart";
         togglePopup();
     });
@@ -108,13 +113,13 @@ const togglePopup = () => {
 const updateCart = () => {
     totalQuantity = 0;
     totalTemp = 0;
-    const itemRows = document.querySelectorAll('.cart-table-data');
-    itemRows.forEach(row => {
+    cartItems.forEach(row => {
         const result = updateCartItemSubtotal(row);
         totalQuantity += result.itemQuantity;
         totalTemp += result.itemSubtotal
     });
     updateCartTotal();
+    saveCart();
 };
 
 const updateCartItemSubtotal = (itemRow) => {
@@ -146,4 +151,36 @@ const updateCartTotal = () => {
     totalDiscountContainer.innerHTML = totalDiscount.toLocaleString() + "<span>đ</span>";
     const totalFinal = totalTemp + totalVat - totalDiscount;
     totalFinalContainer.innerHTML = totalFinal.toLocaleString() + "<span>đ</span>";
+};
+
+const saveCart = () => {
+
+    // Lấy giỏ hàng
+
+    const cartData = [];
+    cartItems.forEach((item, index) => {
+        const productId = item.getAttribute("data-index");
+        const productQuantityInput = item.querySelector(".quantity-input");
+        const productQuantity = parseInt(productQuantityInput.getAttribute("value")) || 1;
+        const cartItem = {
+            "productId": productId,
+            "productQuantity": productQuantity
+        };
+        cartData.push(cartItem);
+    });
+
+    // Cập nhật phía backend
+    fetch("/update-cart/", {
+        method: "POST",
+        body: JSON.stringify({
+            cart: cartData
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+    })
+    .catch(error => {
+        console.error(error.message);
+    });
 };

@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
 {% block css %}
-    <link rel="stylesheet" href="/static/css/sunasia/home.css">
+    <link rel="stylesheet" href="{% static 'css/sunasia/home.css' %}?v={{ timestamp }}">
 {% endblock %}
 {% block title %}
     Sun Asia
@@ -64,135 +65,120 @@
     <section id="product" class="product">
         <div class="product-content">
             <h3>{% trans "Sản phẩm dành cho bạn" %}</h3>
-            <p><a href="#" class="active">{% trans "Sản phẩm mới nhất" %}</a> | 
-                <span><a href="#">{% trans "Sản phẩm bán chạy" %}</a></span></p>
+            <p>
+                <a href="?sort=newest" class="{% if sort == 'newest' %}active{% endif %}">{% trans "Sản phẩm mới nhất" %}</a> | 
+                <span><a href="?sort=bestseller" class="{% if sort == 'bestseller' %}active{% endif %}">{% trans "Sản phẩm bán chạy" %}</a></span>
+            </p>
         </div>
         <div class="product-show">
-            <div class="product-item">
-                <img src="/static/img/hoaanhdao.jpg" alt="hoa anh dao">
-                <h3>Hạt giống hoa anh đào</h3>
-                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
-                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
-                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
-                <div class="product-item-end">
-                    <button>Mua ngay</button>
-                    <p><i class="fa-regular fa-heart"></i></p>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="/static/img/cam.jpg" alt="cam">
-                <h3>Hạt giống cam</h3>
-                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
-                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
-                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
-                <div class="product-item-end">
-                    <button>Mua ngay</button>
-                    <p><i class="fa-regular fa-heart"></i></p>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="/static/img/dautay.jpg" alt="dau tay">
-                <h3>Hạt giống dâu tây</h3>
-                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
-                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
-                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
-                <div class="product-item-end">
-                    <button>Mua ngay</button>
-                    <p><i class="fa-regular fa-heart"></i></p>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="/static/img/duahau.jpg" alt="dua hau">
-                <h3>Hạt giống dưa hấu</h3>
-                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
-                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
-                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
-                <div class="product-item-end">
-                    <button>Mua ngay</button>
-                    <p><i class="fa-regular fa-heart"></i></p>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="/static/img/duavang.jpg" alt="dua vang">
-                <h3>Hạt giống dưa vàng</h3>
-                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
-                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
-                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
-                <div class="product-item-end">
-                    <button>Mua ngay</button>
-                    <p><i class="fa-regular fa-heart"></i></p>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="/static/img/hoahong.jpg" alt="hoa hong">
-                <h3>Hạt giống hoa hồng</h3>
-                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
-                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
-                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
-                <div class="product-item-end">
-                    <button>Mua ngay</button>
-                    <p><i class="fa-regular fa-heart"></i></p>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="/static/img/hoalan.jpg" alt="hoa lan">
-                <h3>Hạt giống hoa lan</h3>
-                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
-                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
-                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
-                <div class="product-item-end">
-                    <button>Mua ngay</button>
-                    <p><i class="fa-regular fa-heart"></i></p>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="/static/img/tao.jpg" alt="tao">
-                <h3>Hạt giống táo</h3>
-                <!-- <p>Hoa anh đào có 3 màu là màu trắng, hồng và đỏ. 
-                    Thời gian tồn tại của một bông hoa anh đào thường kéo dài từ 7 đến 15 ngày, trung bình là khoảng 1 tuần.</p> -->
-                <p class="price"><span>25.000 VND</span> 17.000 VND</p>
-                <div class="product-item-end">
-                    <button>Mua ngay</button>
-                    <p><i class="fa-regular fa-heart"></i></p>
-                </div>
-            </div>
+            {% for product in products %}
+                <a class="product-link" href="/products/{{product.slug}}">
+                    <div class="product-item">
+                        {% if product.image_url %}
+                            <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="/static/img/default.jpg" alt="default image">
+                        {% endif %}
+                        <h3>{{ product.name }}</h3>
+                        <p class="price">
+                            {% if product.org_price != "0"  %}
+                                {% if product.sale_price == "-1" %}
+                                    <p class="product-salePrice">{{product.org_price}}đ</p>
+                                {% else %}
+                                    <span class="product-orgPrice">{{product.org_price}}đ</span>
+                                    <span class="product-salePrice">{{product.sale_price}}đ</span>
+                                {% endif %}
+                            {% elif product.sale_price != "-1" %}
+                                <p class="product-salePrice">{{product.sale_price}}đ</p>
+                            {% else %}
+                                <p class="product-salePrice">{% trans "Liên hệ để báo giá" %}</p>
+                            {% endif %}
+                        </p>
+                        <div class="product-item-end">
+                            <button type="button" class="action-btn buy-btn">{% trans "Mua ngay" %}</button>
+                            <p><i class="fa-solid fa-cart-plus"></i></p>
+                            <p><i class="fa-regular fa-heart"></i></p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
         </div>
     </section>
     <!-- design project -->
     <section id="project" class="project">
         <div class="project-content">
             <h3>{% trans "Dự án nổi bật" %}</h3>
-            <p>{% trans "Xem thêm" %} <i class="fa-solid fa-arrow-right"></i></p>
+            <a href="/projects/">{% trans "Xem thêm" %} <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="project-show">
-            <div class="project-item">
-                <img src="/static/img/house1.jpg" alt="">
-                <h3>Nhà màng trồng cà chua trái vụ</h3>
-                <!-- <p>Sun Asia đã thực hiện thành công dự án nhà màng trồng cà chua trái vụ Tân Lập Mộc Châu</p> -->
-                <p class="area">1500 m² - 15 ha</p>
-                <p class="address">Mộc Châu, Sơn La</p>
-            </div>
-            <div class="project-item">
-                <img src="/static/img/house2.jpg" alt="">
-                <h3>Nhà màng trồng nhân sâm hữu cơ</h3>
-                <!-- <p>Sun Asia đã thực hiện thành công dự án nhà màng trồng cà chua trái vụ Tân Lập Mộc Châu</p> -->
-                <p class="area">1500 m² - 15 ha</p>
-                <p class="address">Tây Hồ, Hà Nội</p>
-            </div>
-            <div class="project-item">
-                <img src="/static/img/house3.jpg" alt="">
-                <h3>Nhà màng trồng rau thủy canh</h3>
-                <!-- <p>Sun Asia đã thực hiện thành công dự án nhà màng trồng cà chua trái vụ Tân Lập Mộc Châu</p> -->
-                <p class="area">1500 m² - 15 ha</p>
-                <p class="address">Thủy Nguyên, Hải Phòng</p>
-            </div>
-            <div class="project-item">
-                <img src="/static/img/house4.jpg" alt="">
-                <h3>Nhà màng mái vòm trồng rau ăn lá</h3>
-                <!-- <p>Sun Asia đã thực hiện thành công dự án nhà màng trồng cà chua trái vụ Tân Lập Mộc Châu</p> -->
-                <p class="area">1500 m² - 15 ha</p>
-                <p class="address">Quận 9, Hồ Chí Minh</p>
-            </div>
+            {% for project in top_projects %}
+                <div class="project-item">
+                    {% if project.image_url %}
+                        <img src="{{ project.image_url }}" alt="{{ project.name }}">
+                    {% elif project.image_file %}
+                        <img src="{{ project.image_file.url }}" alt="{{ project.name }}">
+                    {% else %}
+                        <img src="/static/img/default.jpg" alt="No Image">
+                    {% endif %}
+                    <h3>{{ project.name|striptags|truncatewords:6|safe }}</h3>
+                    <p class="area">{{ project.area }} m²</p>
+                    <p class="address">{{ project.city }}</p>
+                </div>
+            {% endfor %}
         </div>
     </section>
 {% endblock %}
+{% block script %}
+<script>
+    window.MyAppData = {
+        popupSubmitBtn: `
+        <label class="popup-quantity" for="productQuantity">
+            <span class="popup-quantity-name">
+                {% trans "Số lượng" %}
+            </span>
+            <div class="popup-quantity-controller">
+                <div class="popup-minus-btn align-center">
+                    <i class='bx bx-minus minus-icon'></i> 
+                </div>
+                <div class="popup-quantity-input align-center">
+                    <input
+                        type="number"
+                        id="productQuantity"
+                        name="productQuantity"
+                        placeholder="0"
+                        value="1"
+                        class="quantity-input"
+                    />
+                </div>
+                <div class="popup-add-btn align-center">
+                    <i class='bx bx-plus plus-icon'></i> 
+                </div>
+            </div>
+        </label>
+        <div class="popup-submit">  
+            <button type="submit" class="action-btn proceed-btn align-center">
+                {% trans "Mua ngay" %}
+            </button>
+        </div>
+        `,
+        popupCartNotify: `
+        <div class="popup-header align-center">
+                {% trans "Thông báo" %}
+            </div>
+        <div class="popup-content">
+            <div class="popup-text align-center">
+                {% trans "Thêm vào giỏ hàng thành công!" %}
+            </div>
+            <div class="popup-action">
+                <button type="button" class="action-btn continue-btn align-center">
+                    {% trans "Tiếp tục mua sắm" %}
+                </button>
+                <a href="/cart" class="action-btn cartNav-btn align-center">
+                    {% trans "Xem giỏ hàng" %}
+                </button>
+            </div>
+        </div>`
+    };
+</script>
+<script src="{% static 'js/product/product_list.js' %}?v={{ timestamp }}" type="module"></script>
+{% endblock script %}

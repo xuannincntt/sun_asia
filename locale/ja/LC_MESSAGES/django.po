@@ -51,6 +51,294 @@ msgstr "自動制御システム"
 msgid "Dự án"
 msgstr "プロジェクト"
 
+msgid "SẢN PHẨM & GIẢI PHÁP"
+msgstr "製品とソリューション"
+
+msgid "DANH MỤC SẢN PHẨM"
+msgstr "製品リスト"
+
+msgid "LỌC SẢN PHẨM"
+msgstr "フィルター製品"
+
+msgid "Khoảng giá"
+msgstr "価格帯"
+
+msgid "Dưới 250,000VND"
+msgstr "25万ドン以下"
+
+msgid "Từ 250,000VND đến 1,000,000VND"
+msgstr "25万ドンから100万ドン"
+
+msgid "Từ 1,000,000VND đến 2,500,000VND"
+msgstr "100万ドンから250万ドンまで"
+
+msgid "Trên 2,500,000VND"
+msgstr "250万ドン以上"
+
+msgid "Tình trạng hàng"
+msgstr "在庫状況"
+
+msgid "Còn hàng"
+msgstr "在庫あり"
+
+msgid "Lọc sản phẩm"
+msgstr "フィルター製品"
+
+msgid "Không tìm thấy sản phẩm nào."
+msgstr "商品が見つかりません。"
+
+msgid "Liên hệ để báo giá"
+msgstr "価格についてはお問い合わせください"
+
+msgid "Thêm vào giỏ"
+msgstr "カートに追加"
+
+msgid "Mua ngay"
+msgstr "今すぐ購入"
+
+msgid "Không tìm thấy sản phẩm này."
+msgstr "この商品は見つかりませんでした。"
+
+msgid "Đã bán"
+msgstr "販売済み"
+
+msgid "Còn lại"
+msgstr "在庫あり"
+
+msgid "Số lượng"
+msgstr "量"
+
+msgid "Thêm vào giỏ hàng"
+msgstr "カートに追加"
+
+msgid "Liên hệ trực tuyến"
+msgstr "オンラインでお問い合わせ"
+
+msgid "Liên hệ qua Zalo"
+msgstr "Zalo経由で連絡"
+
+msgid "Chia sẻ sản phẩm trên các nền tảng!"
+msgstr "当社の製品をプラットフォーム間で共有しましょう!"
+
+msgid "Mô tả"
+msgstr "説明"
+
+msgid "Chính sách đổi trả"
+msgstr "返品規則"
+
+msgid "Chính sách vận chuyển"
+msgstr "配送ポリシー"
+
+msgid "Thông báo"
+msgstr "通知"
+
+msgid "Thêm vào giỏ hàng thành công!"
+msgstr "カートに追加されました!"
+
+msgid "Tiếp tục mua sắm"
+msgstr "買い物を続ける"
+
+msgid "Xem giỏ hàng"
+msgstr "カートを見る"
+
+msgid "Giỏ hàng của tôi"
+msgstr "私のカート"
+
+msgid "GIỎ HÀNG CỦA TÔI"
+msgstr "私のカート"
+
+msgid "Bạn có chắc chắn muốn xóa mặt hàng này không?"
+msgstr "このアイテムを削除してもよろしいですか?"
+
+msgid "Bạn có chắc chắn muốn xóa giỏ hàng này không?"
+msgstr "このカートを削除してもよろしいですか?"
+
+msgid "Hủy bỏ"
+msgstr "キャンセル"
+
+msgid "Xóa giỏ hàng"
+msgstr "カートをクリア"
+
+msgid "Đơn giá"
+msgstr "単価"
+
+msgid "Thành tiền"
+msgstr "小計"
+
+msgid "Tóm tắt đơn hàng"
+msgstr "注文の概要"
+
+msgid "Tổng cộng"
+msgstr "小計"
+
+msgid "Giảm giá"
+msgstr "割引"
+
+msgid "Mã giảm giá"
+msgstr "割引コード"
+
+msgid "Áp dụng mã"
+msgstr "コードを適用する"
+
+msgid "Tổng tiền"
+msgstr "合計"
+
+msgid "Tiến hành thanh toán"
+msgstr "チェックアウトに進む"
+
+msgid "ĐẶT HÀNG"
+msgstr "注文"
+
+msgid "Đặt hàng"
+msgstr "注文"
+
+msgid "Về trang Giỏ hàng"
+msgstr "カートに戻る"
+
+msgid "Thông tin nhận hàng"
+msgstr "配送情報"
+
+msgid "Thông tin thanh toán"
+msgstr "支払い情報"
+
+msgid "Địa chỉ mặc định"
+msgstr "デフォルトアドレス"
+
+msgid "Địa chỉ tùy chọn"
+msgstr "カスタムアドレス"
+
+msgid "Tên người nhận hàng"
+msgstr "受取人名"
+
+msgid "Nhập họ và tên của bạn"
+msgstr "氏名を入力してください"
+
+msgid "Email"
+msgstr "メール"
+
+msgid "Nhập email đặt hàng"
+msgstr "ご注文メール"
+
+msgid "Nhập số điện thoại nhận hàng"
+msgstr "受取人の電話番号"
+
+msgid "Địa chỉ nhận hàng"
+msgstr "配送先住所"
+
+msgid "Nhập địa chỉ nhận hàng"
+msgstr "お届け先の住所"
+
+msgid "Tỉnh/Thành phố"
+msgstr "都道府県/市"
+
+msgid "Nhập tên Tỉnh/Thành phố"
+msgstr "都道府県/市町村名"
+
+msgid "Quận/Huyện"
+msgstr "地区"
+
+msgid "Nhập tên Quận/Huyện"
+msgstr "地区名"
+
+msgid "Ghi chú"
+msgstr "注記"
+
+msgid "Nhập ghi chú cho đơn hàng"
+msgstr "この注文に関する注意事項"
+
+msgid "Thanh toán khi nhận hàng"
+msgstr "代金引換"
+
+msgid "Chuyển khoản ngân hàng"
+msgstr "銀行振込"
+
+msgid "Thông tin tài khoản"
+msgstr "アカウント情報"
+
+msgid "Ngân hàng"
+msgstr "銀行"
+
+msgid "Minh chứng thanh toán"
+msgstr "支払い証明"
+
+msgid "Xác nhận đặt hàng"
+msgstr "注文確認"
+
+msgid "Hủy đặt hàng"
+msgstr "この注文をキャンセルする"
+
+msgid "Sửa thông tin"
+msgstr "情報を編集する"
+
+msgid "Chi tiết đơn hàng"
+msgstr "注文の詳細"
+
+msgid "Về Lịch sử mua hàng"
+msgstr "購入履歴について"
+
+msgid "ĐƠN HÀNG CỦA BẠN"
+msgstr "注文内容"
+
+msgid "Đã thanh toán"
+msgstr "有料"
+
+msgid "Chưa thanh toán"
+msgstr "未払い"
+
+msgid "STT"
+msgstr "順番"
+
+msgid "Mặt hàng"
+msgstr "製品"
+
+msgid "Phương thức thanh toán"
+msgstr "支払方法"
+
+msgid "Processing"
+msgstr "処理中"
+
+msgid "Preparing"
+msgstr "準備中"
+
+msgid "Shipped"
+msgstr "発送済み"
+
+msgid "Delivered"
+msgstr "配達済み"
+
+msgid "Cancelled"
+msgstr "キャンセルされた"
+
+msgid "Cash on Delivery"
+msgstr "代金引換"
+
+msgid "Bank Transfer"
+msgstr "銀行振込"
+
+msgid "Lịch sử mua hàng"
+msgstr "購入履歴"
+
+msgid "LỊCH SỬ MUA HÀNG"
+msgstr "購入履歴"
+
+msgid "Bạn chưa có đơn hàng nào."
+msgstr "まだ注文はありません。"
+
+msgid "Mã đơn hàng"
+msgstr "注文コード"
+
+msgid "Trạng thái đơn hàng"
+msgstr "注文状況"
+
+msgid "Ngày mua"
+msgstr "購入日"
+
+msgid "Trạng thái thanh toán"
+msgstr "支払い状況"
+
+msgid "Xem chi tiết"
+msgstr "詳細を見る"
+
 #: .\templates\base.html:56
 msgid "Dưới"
 msgstr "未満"
@@ -110,10 +398,6 @@ msgstr "カート管理"
 #: .\templates\base.html:101
 msgid "Danh mục yêu thích"
 msgstr "お気に入り"
-
-#: .\templates\base.html:102
-msgid "Lịch sử mua hàng"
-msgstr "購入履歴"
 
 #: .\templates\base.html:104
 msgid "Đăng xuất"
@@ -405,9 +689,6 @@ msgstr "名前を更新"
 
 msgid "Tên sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn"
 msgstr "名前はプロフィール、コメント、投稿に表示されます"
-
-msgid "Nhập họ và tên của bạn"
-msgstr "氏名を入力してください"
 
 msgid "Xác nhận"
 msgstr "確認"

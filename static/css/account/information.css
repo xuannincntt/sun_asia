@@ -79,6 +79,7 @@ section {
 .newpass-popup */{
     display: none;
     position: fixed;
+    font-size: 1.5rem;
     top: 0;
     left: 0;
     width: 100%;
@@ -125,6 +126,7 @@ section {
 .newpass-popup-content p,
 .phone-popup-content p {
     padding-bottom: 2rem;
+    font-size: 1.5rem;
     line-height: 1.5;
 }
 
@@ -149,7 +151,18 @@ section {
     width: 100%;
     padding: 1.2rem 2rem;
     margin-top: 1.5rem;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
+    color: #1f1f1f;
+}
+
+.name-popup-content #update_name,
+.email-popup-content #update_email,
+.pass-popup-content #update_pass,
+.newpass-popup-content #update_newpass,
+.phone-popup-content #update_phone  {
+    font-size: 1.5rem;
+    color: var(--sd-text-color);
+    padding-top: .5rem;
 }
 
 .name-popup-content .saveName,
@@ -205,28 +218,39 @@ section {
 
 .img-popup .img-popup-content .avatar {
     text-align: center;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin: auto;
+    background-color: #fdecec;
+    position: relative;
 }
 
 .img-popup-content img {
-    width: 15rem;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
+    object-fit: cover;
     box-shadow: 0 .1rem .5rem var(--shadow-color);
 }
 
-.img-popup .img-popup-content .avatar #avatar {
-    background-color: #fdecec;
+.img-popup .img-popup-content .avatar #avatarInitial {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     color: var(--sd-text-color);
     justify-content: center;
+    display: flex;
     align-items: center;
     font-weight: bold;
     font-size: 5.5rem;
+    background-color: #fdecec;
 }
 
 .img-popup-content .upload {
-    border: .5px solid var(--main-color);
+    border: .5px solid var(--text-color);
     position: relative;
     width: 100%;
     padding: 1.2rem 2rem;
@@ -243,6 +267,25 @@ section {
 
 .img-popup-content .upload p {
     padding: 0;
+}
+
+.img-popup-content .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.img-popup-content .action-buttons #confirmUpload,
+.img-popup-content .action-buttons #cancelUpload {
+    padding: 1.2rem 2rem;
+    background: var(--text-color);
+    color: var(--bg-color);
+    border-radius: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .5s ease;
+    display: none;
 }
 
 .popup-overlay-pass {
@@ -398,6 +441,7 @@ section {
 
 .inf-basic .img-contain .img-box img {
     width: 3vw;
+    height: 3vw;
     border-radius: 50%;
     border: .5px solid var(--border-color);
     text-align: right;
@@ -477,7 +521,7 @@ section {
 }
 
 .address-contain .address-box.end p {
-    padding: 1rem;
+    padding: .5rem 1rem;
     background-color: var(--sd-text-color);
     color: var(--white-color);
     transition: .5s ease;
@@ -486,7 +530,7 @@ section {
 }
 
 .address-contain .address-box.end p:hover {
-    box-shadow: 0 0 1rem var(--sd-text-color);
+    box-shadow: 0 0 .5rem var(--sd-text-color);
 }
 
 .address-popup-content {
@@ -504,6 +548,7 @@ section {
 
 .form-group-full {
     margin-bottom: 15px;
+    color: #1f1f1f1f;
 }
 
 .form-group-full select,
@@ -512,6 +557,7 @@ section {
     padding: 12px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
+    color: #1f1f1f;
     font-size: 14px;
 }
 
@@ -557,4 +603,66 @@ section {
 .btn-submit {
     background: var(--sd-text-color);
     color: var(--white-color);
+}
+
+.address-list {
+    padding: 23px 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-hover);
+    font-size: 1.5rem;
+}
+
+.address-list .address-box {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.address-list .address-box .address-box-right {
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+}
+
+.address-list .address-box .address-box-left  p {
+    padding-bottom: .5rem;
+}
+
+.address-list .address-box .address-box-left #default {
+    padding: .5rem 1rem;
+    border: 1px solid var(--sd-text-color);
+    color: var(--sd-text-color);
+    border-radius: .5rem;
+    margin-top: .5rem;
+    width: fit-content;
+} 
+
+.address-box .address-box-right button {
+    padding: .5rem 1rem;
+    margin: .2rem;
+    border-radius: .5rem;
+    color: var(--text-color);
+}
+
+.address-box .address-box-right button:hover {
+    background: var(--hover-color);
+}
+
+.address-box .address-box-right .btn-default {
+    border: 1px solid var(--sd-text-color);
+    color: var(--sd-text-color);
+    width: fit-content;
+    margin-left: auto;
+}
+
+.address-list .end {
+    border-bottom: none;
+    padding-bottom: 0;
+    padding-top: 2rem;
 }

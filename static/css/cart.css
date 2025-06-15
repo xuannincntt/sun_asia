@@ -2,7 +2,7 @@
     box-sizing: border-box;
     font-family: sans-serif;
     padding-top: 7rem;
-    
+    background-color: var(--bg-color);
 }
 
 .section-header{
@@ -51,11 +51,11 @@
             .return-link{
                 box-sizing: border-box;
                 text-decoration: none;
-                color: black;
+                color: var(--text-color);
                 padding: 1rem 0.5rem;
                 gap: 0.5rem;
                 border-radius: 10px;
-                color: #d97b00;
+                
                 cursor: pointer;
                 transition: all 0.1s ease-in-out;
 
@@ -72,11 +72,8 @@
                 }
 
                 &:hover{
-                    background-color: #fae5b7;
-                }
-
-                &:active{
-                    background-color: #fbe3ae;
+                    color: var(--main-color);
+                    background-color: var(--return-bg-hover);
                 }
                 
             }
@@ -96,17 +93,14 @@
                 border: none;
                 border-radius: 10px;
                 background-color: transparent;
-                color: rgb(219, 12, 12);
+                color: rgb(231, 62, 62);
                 cursor: pointer;
                 transition: all 0.2s ease-in-out;
 
                 &:hover{
-                    background-color: rgb(252, 197, 197);
+                    background-color: var(--clear-cart-bg-hover);
                 }
 
-                &:active{
-                    background-color: rgb(255, 190, 190);
-                }
             }
 
         }
@@ -159,7 +153,8 @@
 
         .cart-table-head{
             box-sizing: border-box;
-            background-color: #face30;
+            background-color: var(--main-color);
+            color: white;
 
             th{
                 font-size: 1.5rem;
@@ -173,8 +168,11 @@
 
         .cart-table-data{
             box-sizing: border-box;
-            border-bottom: 1px solid rgb(220, 220, 220);
-            background-color: #fbfbfba2;
+            border-bottom: 2px solid var(--cart-row-border);
+            border-left: 1px solid var(--cart-row-border);
+            border-right: 1px solid var(--cart-row-border);
+            background-color: var(--cart-row-bg);
+            color: var(--text-color);
 
             td{
                 height: 100px;
@@ -267,6 +265,7 @@
                             outline: none;
                             border: none;
                             text-align: center;
+                            background-color: var(--cart-row-bg);
                         }
 
                     }
@@ -290,17 +289,23 @@
         height: max-content;
         padding: 0;
         margin: 2rem 0;
-        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        background-color: var(--cart-row-bg);
+        color: var(--text-color);
+        
 
 
-        .section-total-process, .section-total-coupon{
-            border-bottom: 1px solid rgb(220, 220, 220);
+
+        .section-total-process, .section-total-coupon, .section-total-final{
+            border-bottom: 2px solid var(--cart-row-border);
+            border-left: 1px solid var(--cart-row-border);
+            border-right: 1px solid var(--cart-row-border);
         }
 
         .section-total-title{
             box-sizing: border-box;
             padding: 1rem 0;
-            background-color: #FACE30;
+            background-color: var(--main-color);
+            color: white;
             font-size: 1.8rem;
             font-weight: 600;
             
@@ -312,17 +317,18 @@
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            
 
             .total-row-label, .total-row-value{
                 font-size: 1.5rem;
             }
 
             .total-row-label{
-                color: grey;
+                color: var(--cart-total-label);
             }
 
             .total-row-value{
-                color: black;
+                color: var(--text-color);
                 font-weight: 600;
             }
         }
@@ -333,7 +339,6 @@
         }
 
         .section-total-process{
-
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -362,10 +367,11 @@
                         padding: 0.5rem;
                         font-size: 1.5rem;
                         outline: none;
-                        outline: 2px solid rgb(179, 179, 179);
+                        outline: 1px solid var(--cart-row-border);
+                        background-color: var(--cart-row-bg);
 
-                        &:focus-within{
-                            outline: 2px solid black;
+                        &:focus{
+                            outline: 1px solid var(--filter-input);
                         }
                     }
 
@@ -373,7 +379,7 @@
                         box-sizing: border-box;
                         width: 100%;
                         height: 100%;
-                        background-color: green;
+                        background-color: var(--main-color);
                         color: white;
                         height: max-content;
                         font-size: 1.5rem;
@@ -382,11 +388,11 @@
                         transition: all 0.2s ease-in-out;
 
                         &:hover{
-                            background-color: rgb(4, 106, 4);
+                            background-color: rgb(14, 171, 14);
                         }
 
                         &:active{
-                            background-color: rgb(13, 87, 13);
+                            background-color: rgb(9, 157, 9);
                         }
                     }
                 }
@@ -403,16 +409,19 @@
         .forward-link{
             box-sizing: border-box;
             text-decoration: none;
-            color: black;
-            gap: 0.5rem;
+            color: var(--text-color);
+            padding: 1rem 0.5rem;
             cursor: pointer;
             transition: all 0.1s ease-in-out;
 
             .forward-icon, .forward-label{
+                
                 font-weight: 550;
             }
 
             .forward-icon{
+                height: 100%;
+                margin: 0;
                 font-size: 2rem;
             }
 
@@ -421,12 +430,7 @@
             }
 
             &:hover{
-                color: #FDAD01;
-                border-bottom: 2px solid #FDAD01;
-            }
-
-            &:active{
-                color: #dd9700;
+                color: var(--second-color);
             }
         }
 
@@ -464,7 +468,7 @@
             box-sizing: border-box;
             font-size: 1.5rem;
             font-weight: 550;
-            background-color: #fba905;
+            background-color: green;
             color: white;
         }
 

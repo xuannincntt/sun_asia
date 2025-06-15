@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/404.css' %}?v={{ timestamp }}">
+{% endblock %}
+{% block title %}
+    {% trans "404" %}
+{% endblock %}
+{% block content %}
+    <!-- content section design -->
+    <section class="content" id="content">
+        <h1></h1>
+        <h2>Không tìm thấy nội dung 😓</h2>
+        <p>URL của nội dung này đã bị thay đổi hoặc không còn tồn tại</p>
+        <p>Nếu bạn đang lưu URL này hãy truy cập lại từ trang chủ thay vì dùng URL đã lưu</p>
+        <a href="/">VỀ TRANG CHỦ</a>
+    </section>
+{% endblock %}
+{% block script %}
+{% endblock %}
