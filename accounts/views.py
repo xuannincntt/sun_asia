@@ -75,9 +75,11 @@ def user_profile_view(request, slug):
     # Lấy thông tin user đang đăng nhập từ session
     user_id = request.session.get('user_id')
     user = User.objects.get(id=user_id) if user_id else None
+    addresses = Address.objects.filter(creator=user).order_by('-is_default', '-created_at')
     if not user or user.slug != slug:
         return render(request, '404.html', {'user': user})
     return render(request, 'accounts/information.html', {
+        'addresses': addresses,
         'timestamp': now().timestamp(),
         'user': user})
 
@@ -214,9 +216,8 @@ def update_phone(request):
     user.save()
     return JsonResponse({'success': True, 'phone': new_phone})
 
-
 @never_cache
-def update_address(request):
+def create_address(request):
     if request.method != 'POST':
         return JsonResponse({'success': False, 'error': 'Phương thức không hợp lệ!'})
     try:
@@ -231,9 +232,13 @@ def update_address(request):
         district = body.get('district')
         ward = body.get('ward')
         detail = body.get('detail')
-        # Validate đơn giản
+        # Validate dữ liệu
         if not all([province, district, ward, detail]):
             return JsonResponse({'success': False, 'error': 'Vui lòng điền đầy đủ thông tin!'})
+        # Kiểm tra user đã có địa chỉ chưa
+        existing_addresses = Address.objects.filter(creator=user)
+        is_default = False if existing_addresses.exists() else True
+        # Tạo địa chỉ mới
         Address.objects.create(
             creator=user,
             name=user.username,
@@ -241,10 +246,88 @@ def update_address(request):
             city=province,
             district=district,
             ward=ward,
-            tel=user.tel, 
-            email=user.email, 
-            is_default=True 
+            tel=user.tel,
+            email=user.email,
+            is_default=is_default
         )
+        return JsonResponse({'success': True})
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)})
+
+@never_cache
+def set_default_address(request):
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'error': 'Phương thức không hợp lệ!'})
+    try:
+        user_id = request.session.get('user_id')
+        if not user_id:
+            return JsonResponse({'success': False, 'error': 'Người dùng chưa đăng nhập!'})
+        user = User.objects.get(id=user_id)
+        data = json.loads(request.body)
+        address_id = data.get('address_id')
+        if not address_id:
+            return JsonResponse({'success': False, 'error': 'Không có địa chỉ được chọn!'})
+        # Kiểm tra địa chỉ có thuộc về user không
+        address = Address.objects.filter(id=address_id, creator=user).first()
+        if not address:
+            return JsonResponse({'success': False, 'error': 'Địa chỉ không tồn tại hoặc không thuộc người dùng!'})
+        # Đặt tất cả địa chỉ của user thành không mặc định
+        Address.objects.filter(creator=user).update(is_default=False)
+        # Đặt địa chỉ được chọn thành mặc định
+        address.is_default = True
+        address.save()
+        return JsonResponse({'success': True})
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)})
+    
+@never_cache
+def update_address(request):
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'error': 'Phương thức không hợp lệ!'})
+    try:
+        user_id = request.session.get('user_id')
+        if not user_id:
+            return JsonResponse({'success': False, 'error': 'Người dùng chưa đăng nhập!'})
+        user = User.objects.get(id=user_id)
+        body = json.loads(request.body)
+        address_id = body.get('address_id')
+        province = body.get('province')
+        district = body.get('district')
+        ward = body.get('ward')
+        detail = body.get('detail')
+        if not all([province, district, ward, detail]):
+            return JsonResponse({'success': False, 'error': 'Vui lòng điền đầy đủ thông tin!'})
+        # Tìm và cập nhật địa chỉ
+        address = Address.objects.filter(id=address_id, creator=user).first()
+        if not address:
+            return JsonResponse({'success': False, 'error': 'Địa chỉ không tồn tại hoặc không thuộc người dùng!'})
+        address.city = province
+        address.district = district
+        address.ward = ward
+        address.detailed_address = detail
+        address.save()
+        return JsonResponse({'success': True})
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)})
+    
+@never_cache
+def delete_address(request):
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'error': 'Phương thức không hợp lệ!'})
+    try:
+        user_id = request.session.get('user_id')
+        if not user_id:
+            return JsonResponse({'success': False, 'error': 'Người dùng chưa đăng nhập!'})
+        user = User.objects.get(id=user_id)
+        body = json.loads(request.body)
+        address_id = body.get('address_id')
+        # Tìm và cập nhật địa chỉ
+        print(user)
+        print(address_id)
+        address = Address.objects.filter(id=address_id, creator=user).first()
+        if not address:
+            return JsonResponse({'success': False, 'error': 'Địa chỉ không tồn tại hoặc không thuộc người dùng!'})
+        address.delete()
         return JsonResponse({'success': True})
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)})

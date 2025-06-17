@@ -12,7 +12,7 @@ class Address(models.Model):
     city = models.TextField(null=True, blank=True) 
     district = models.TextField(null=True, blank=True) 
     ward = models.TextField(null=True, blank=True)
-    email = models.EmailField(unique=True, null=True, blank=True)
+    email = models.EmailField(unique=False, null=True, blank=True)
     tel = models.TextField(null=False, blank=False) 
     is_default = models.BooleanField(null=True, blank=True, default=False)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -77,6 +77,8 @@ section {
     column-gap: 6rem;
     align-items: center;
     background-color: var(--bg-color);
+    min-height: 100vh;
+    padding-top: 4rem;
 }
 
 .about .about-content {

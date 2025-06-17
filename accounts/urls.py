@@ -9,6 +9,9 @@ urlpatterns = [
     path('check-password/', views.check_password, name='check-password'),
     path('update-password/', views.update_password, name='update-password'),
     path('update-phone/', views.update_phone, name='update-phone'),
+    path('create-address/', views.create_address, name='create-address'),
     path('update-address/', views.update_address, name='update-address'),
+    path('delete-address/', views.delete_address, name='delete-address'),
+    path('set-default-address/', views.set_default_address, name='set_default_address'),
     path('<slug:slug>/', views.user_profile_view, name='user-profile'),
 ]

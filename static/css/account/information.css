@@ -74,7 +74,9 @@ section {
 .name-popup,
 .email-popup,
 .phone-popup,
-.address-popup
+.address-popup,
+.update-address-popup,
+.delete-address-popup
 /* .pass-popup,
 .newpass-popup */{
     display: none;
@@ -96,7 +98,9 @@ section {
 .pass-popup-content,
 .newpass-popup-content,
 .phone-popup-content,
-.address-popup-content {
+.address-popup-content,
+.update-address-popup-content,
+.delete-address-popup-content {
     background: var(--bg-color);
     padding: 4rem 3.5rem;
     border-radius: 1rem;
@@ -110,7 +114,9 @@ section {
 .pass-popup-content h1,
 .newpass-popup-content h1,
 .phone-popup-content h1,
-.address-popup-content h1 {
+.address-popup-content h1,
+.update-address-popup-content h1,
+.delete-address-popup-content h1 {
     text-align: left;
     color: var(--text-up-color);
     font-size: 2.5rem;
@@ -526,6 +532,7 @@ section {
     color: var(--white-color);
     transition: .5s ease;
     cursor: pointer;
+    font-size: 1.5rem;
     border-radius: .5rem;
 }
 
@@ -533,21 +540,25 @@ section {
     box-shadow: 0 0 .5rem var(--sd-text-color);
 }
 
-.address-popup-content {
+.address-popup-content,
+.update-address-popup-content,
+.delete-address-popup-content {
     background: var(--bg-color);
-    padding: 3rem 3.5rem;
+    padding: 3.5rem 4rem;
     border-radius: 1rem;
-    width: 28%;
+    width: 27%;
     position: relative;
 }
 
-.address-popup-content h1 {
+.address-popup-content h1,
+.update-address-popup-content h1,
+.delete-address-popup-content h1 {
     padding-top: 0rem;
     margin-top: 0rem;
 }
 
 .form-group-full {
-    margin-bottom: 15px;
+    margin-bottom: 2.5rem;
     color: #1f1f1f1f;
 }
 
@@ -561,32 +572,19 @@ section {
     font-size: 14px;
 }
 
-.map-box {
-    background: var(--hover-color);
-    height: 100px;
-    border-radius: 4px;
-    color: var(--text-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-    font-size: 14px;
-    border: 1px dashed var(--border-color);
-    cursor: pointer;
-}
-
 .form-actions {
     display: flex;
     justify-content: end;
     align-items: center;
     column-gap: 1.5rem;
+    margin-top: 1rem;
 }
 
 .btn-back,
 .btn-submit {
-    padding: 10px 20px;
+    padding: .8rem 1.5rem;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 1.5rem;  
     cursor: pointer;
 }
 
@@ -606,7 +604,7 @@ section {
 }
 
 .address-list {
-    padding: 23px 30px;
+    padding: 0px 30px 23px;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -620,6 +618,7 @@ section {
     display: flex;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 2rem;
+    padding-top: 23px;
     align-items: center;
     justify-content: space-between;
 }
@@ -634,7 +633,7 @@ section {
     padding-bottom: .5rem;
 }
 
-.address-list .address-box .address-box-left #default {
+.address-list .address-box .address-box-left .default {
     padding: .5rem 1rem;
     border: 1px solid var(--sd-text-color);
     color: var(--sd-text-color);

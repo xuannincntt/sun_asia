@@ -15,15 +15,15 @@
         </div>
     </section>
     <section class="related-news">
-        <h1>Bài viết liên quan</h1>
+        <h1>{% trans "Bài viết liên quan" %}</h1>
         <div class="related-news-container">
             {% for news in most_viewed_news %}
             <a href="{% url 'news_detail' slug=news.slug %}" class="news-content-item-link">
                 <div class="related-news-item">
                     <img src="{{ news.image_file.url }}" alt="{{ news.title }}">
                     <h3>{{ news.category.name }}</h3>
-                    <h1>{{ news.title|striptags|truncatewords:8|safe }}</h1>
-                    <p>{{ news.content|striptags|truncatewords:13|safe }}</p>
+                    <h1>{{ news.title|striptags|truncatewords:4|safe }}</h1>
+                    <p>{{ news.content|striptags|truncatewords:12|safe }}</p>
                     <p class="news-content-date">{{ news.published_at|date:"d/m/Y" }}</p>
                 </div>
             </a>

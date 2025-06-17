@@ -36,7 +36,7 @@
             </div>
             <div class="img-popup" id="img-popup">
                 <div class="img-popup-content">
-                    <span id="closeImgPopup"><i class="fa-solid fa-x"></i></span>
+                    <span id="closeImgPopup"><i class="fa-solid fa-xmark"></i></span>
                     <h1>{% trans "Ảnh đại diện" %}</h1>
                     <p>{% trans "Ảnh hồ sơ sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn" %}</p>
                     <div class="avatar">
@@ -90,7 +90,7 @@
             </div>
             <div class="name-popup" id="name-popup">
                 <div class="name-popup-content">
-                    <span id="closeNamePopup"><i class="fa-solid fa-x"></i></span>
+                    <span id="closeNamePopup"><i class="fa-solid fa-xmark"></i></span>
                     <h1>{% trans "Cập nhập tên của bạn" %}</h1>
                     <p>{% trans "Tên sẽ được hiển thị trên trang cá nhân, trong các bình luận và bài viết của bạn" %}</p>
                     <label for="name">{% trans "Họ và tên" %}</label><br>
@@ -115,7 +115,7 @@
             </div>
             <div class="email-popup" id="email-popup">
                 <div class="email-popup-content">
-                    <span id="closeEmailPopup"><i class="fa-solid fa-x"></i></span>
+                    <span id="closeEmailPopup"><i class="fa-solid fa-xmark"></i></span>
                     <h1>{% trans "Cập nhập email của bạn" %}</h1>
                     <p>{% trans "Email sẽ được sử dụng để đăng nhập vào tài khoản của bạn" %}</p>
                     <label for="inf-email">Email</label><br>
@@ -139,7 +139,7 @@
                 <div class="wrapperPass" id="wrapperPass" onclick="event.stopPropagation()">
                     <div class="pass-popup" id="pass-popup">
                         <div class="pass-popup-content">
-                            <span id="closePassPopup"><i class="fa-solid fa-x"></i></span>
+                            <span id="closePassPopup"><i class="fa-solid fa-xmark"></i></span>
                             <h1>{% trans "Xác nhận mật khẩu" %}</h1>
                             <p>{% trans "Để xác định rằng bạn là chủ sở hữu tài khoản, vui lòng nhập mật khẩu hiện tại của bạn" %}</p>
                             <label for="inf-pass">{% trans "Mật khẩu hiện tại" %}</label><br>
@@ -150,8 +150,7 @@
                     </div>
                     <div class="newpass-popup" id="newpass-popup">
                         <div class="newpass-popup-content">
-                            <span id="backToPassPopup"><i class='bx bx-left-arrow-alt'></i></span>
-                            <span id="closeNewPassPopup"><i class="fa-solid fa-x"></i></span>
+                            <span id="closeNewPassPopup"><i class="fa-solid fa-xmark"></i></span>
                             <h1>{% trans "Đổi mật khẩu" %}</h1>
                             <p>{% trans "Mật khẩu sẽ được sử dụng để đăng nhập vào tài khoản của bạn" %}</p>
                             <label for="inf-newpass">{% trans "Mật khẩu mới" %}</label><br>
@@ -187,7 +186,7 @@
             </div>
             <div class="phone-popup" id="phone-popup">
                 <div class="phone-popup-content">
-                    <span id="closePhonePopup"><i class="fa-solid fa-x"></i></span>
+                    <span id="closePhonePopup"><i class="fa-solid fa-xmark"></i></span>
                     <h1>{% trans "Cập nhập số điện thoại của bạn" %}</h1>
                     <p>{% trans "Số điện thoại sẽ được sử dụng để liên hệ đặt hàng" %}</p>
                     <label for="inf-phone">{% trans "Số điện thoại" %}</label><br>
@@ -236,25 +235,75 @@
                 </div>
             </div>
             <div class="address-list">
-                <div class="address-box">
-                    <div class="address-box-left">
-                        <p>Chung cư VP6</p>
-                        <p>Phường Hoàng Liệt, Quận Hoàng Mai, Hà Nội</p>
-                        <p id="default">Mặc định</p>
+                {% for address in addresses %}
+                    <div class="address-box {% if forloop.last %}end{% endif %}">
+                        <div class="address-box-left">
+                            <p>{{ address.detailed_address }}</p>
+                            <p>{{ address.ward }}, {{ address.district }}, {{ address.city }}</p>
+                            {% if address.is_default %}
+                                <p class="default">{% trans "Mặc định" %}</p>
+                            {% endif %}
+                        </div>
+                        <div class="address-box-right">
+                            <span>
+                                <button class="openUpdateAddress"
+                                    data-address-id="{{ address.id }}"
+                                    data-province="{{ address.city }}"
+                                    data-district="{{ address.district }}"
+                                    data-ward="{{ address.ward }}"
+                                    data-detail="{{ address.detailed_address }}">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                {% if not address.is_default %}
+                                <button class="openDeleteAddress" data-address-id="{{ address.id }}"><i class="fa-solid fa-xmark"></i></button>
+                                {% endif %}
+                            </span>
+                            {% if not address.is_default %}
+                                <button class="btn-default" data-address-id="{{ address.id }}">{% trans "Thiết lập mặc định" %}</button>
+                            {% endif %}
+                        </div>
                     </div>
-                    <div class="address-box-right">
-                        <span><button><i class="fa-solid fa-pen-to-square"></i></button><button><i class="fa-solid fa-xmark"></i></button></span>
-                        <button class="btn-default">Thiết lập mặc định</button>
+                {% empty %}
+                    <p>{% trans "Chưa có địa chỉ nào." %}</p>
+                {% endfor %}
+            </div>
+            <div class="update-address-popup" id="update-address-popup">
+                <div class="update-address-popup-content">
+                    <h1>{% trans "Địa chỉ" %}</h1>
+                    <!-- Tỉnh/Thành phố -->
+                    <div class="form-group-full">
+                        <select name="province" id="update-province">
+                            <option value="">{% trans "Tỉnh/Thành phố" %}</option>
+                        </select>
                     </div>
+                    <!-- Quận/Huyện -->
+                    <div class="form-group-full">
+                        <select name="district" id="update-district">
+                            <option value="">{% trans "Quận/Huyện" %}</option>
+                        </select>
+                    </div>
+                    <!-- Phường/Xã -->
+                    <div class="form-group-full">
+                        <select name="ward" id="update-ward">
+                            <option value="">{% trans "Phường/Xã" %}</option>
+                        </select>
+                    </div>
+                    <!-- Nhập địa chỉ cụ thể -->
+                    <div class="form-group-full">
+                        <input type="text" placeholder="{% trans 'Địa chỉ cụ thể (Số nhà, tên đường)' %}" name="detail_address" id="update-detail_address">
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-back" type="button" id="closeUpdateAddress">{% trans "Thoát" %}</button>
+                        <button class="btn-submit updateAddress" type="submit">{% trans "Cập nhật" %}</button>
+                    </div>  
                 </div>
-                <div class="address-box end">
-                    <div class="address-box-left">
-                        <p>Đại học Kinh tế Quốc dân</p>
-                        <p>Phường Đồng Tâm, Quận Hai Bà Trưng, Hà Nội</p>
-                    </div>
-                    <div class="address-box-right">
-                        <span><button><i class="fa-solid fa-pen-to-square"></i></button><button><i class="fa-solid fa-xmark"></i></button></span>
-                        <button class="btn-default">Thiết lập mặc định</button>
+            </div>
+            <div class="delete-address-popup" id="delete-address-popup">
+                <div class="delete-address-popup-content">
+                    <h1>{% trans "Bạn có muốn xóa địa chỉ này không?" %}</h1>
+                    <div class="form-actions">
+                        <button class="btn-back" type="button" id="closeDeleteAddress">{% trans "Thoát" %}</button>
+                        <button class="btn-submit deleteAddress" type="submit">{% trans "Xác nhận" %}</button>
                     </div>
                 </div>
             </div>

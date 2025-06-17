@@ -747,8 +747,23 @@ msgstr "電話番号を入力してください"
 msgid "Địa chỉ của tôi"
 msgstr "私の住所"
 
-msgid "Thêm địa chỉ mới"
-msgstr "新しい住所を追加"
+msgid "Thêm địa chỉ"
+msgstr "住所を追加"
+
+msgid "Thiết lập mặc định"
+msgstr "デフォルトに設定"
+
+msgid "Phường/Xã"
+msgstr "区/町村"
+
+msgid "Địa chỉ cụ thể (Số nhà, tên đường)"
+msgstr "詳細住所（番地、通りの名前）"
+
+msgid "Giỏ hàng"
+msgstr "ショッピングカート"
+
+msgid "Văn phòng đại diện"
+msgstr "代表事務所"
 
 msgid "Địa chỉ"
 msgstr "住所"
@@ -764,6 +779,12 @@ msgstr "終了"
 
 msgid "Hoàn thành"
 msgstr "完了"
+
+msgid "Mặc định"
+msgstr "デフォルト"
+
+msgid "Bài viết liên quan"
+msgstr "関連記事"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"

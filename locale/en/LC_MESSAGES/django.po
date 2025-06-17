@@ -751,8 +751,23 @@ msgstr "Enter your phone number"
 msgid "Địa chỉ của tôi"
 msgstr "My address"
 
-msgid "Thêm địa chỉ mới"
-msgstr "Add new address"
+msgid "Thêm địa chỉ"
+msgstr "Add Address"
+
+msgid "Thiết lập mặc định"
+msgstr "Set as Default"
+
+msgid "Phường/Xã"
+msgstr "Ward/Commune"
+
+msgid "Địa chỉ cụ thể (Số nhà, tên đường)"
+msgstr "Detailed Address (House number, street name)"
+
+msgid "Giỏ hàng"
+msgstr "Shopping Cart"
+
+msgid "Văn phòng đại diện"
+msgstr "Representative office"
 
 msgid "Địa chỉ"
 msgstr "Address"
@@ -768,6 +783,12 @@ msgstr "Exit"
 
 msgid "Hoàn thành"
 msgstr "Finish"
+
+msgid "Mặc định"
+msgstr "Default"
+
+msgid "Bài viết liên quan"
+msgstr "Related Articles"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"
