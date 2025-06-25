@@ -36,8 +36,8 @@ def product_list(request):
         for product in products:
             first_image = product.images.all().order_by('created_at').first()
             product.image_url = first_image.image_url if first_image else ""
-            product.org_price = format(product.org_price if product.org_price > 0 else 0, ",")
-            product.sale_price = format(product.sale_price if product.sale_price >= 0 else -1, ",")
+            product.org_price_text = format(product.org_price, ",")  if product.org_price >= 0 else ""
+            product.sale_price_text = format(product.sale_price, ",")  if product.sale_price >= 0 else ""
     else:
         selected_category = Category.objects.filter(slug=category_slug).first()
         if not selected_category:
@@ -48,8 +48,8 @@ def product_list(request):
         for product in products:
             first_image = product.images.all().order_by('created_at').first()
             product.image_url = first_image.image_url if first_image else ""
-            product.org_price = format(product.org_price if product.org_price > 0 else 0, ",")
-            product.sale_price = format(product.sale_price if product.sale_price >= 0 else -1, ",")
+            product.org_price_text = format(product.org_price, ",")  if product.org_price >= 0 else ""
+            product.sale_price_text = format(product.sale_price, ",")  if product.sale_price >= 0 else ""
     # print(list(products))
 
     return render(request, 'product/product_list.html', {

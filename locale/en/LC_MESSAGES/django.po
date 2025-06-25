@@ -66,6 +66,9 @@ msgstr "Price range"
 msgid "Dưới 250,000VND"
 msgstr "Under 250,000VND"
 
+msgid "Tất cả sản phẩm"
+msgstr "All products"
+
 msgid "Từ 250,000VND đến 1,000,000VND"
 msgstr "From 250,000VND to 1,000,000VND"
 

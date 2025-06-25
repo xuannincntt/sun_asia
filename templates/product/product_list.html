@@ -115,7 +115,11 @@
         <div class="section-products">
             <div class="section-search">
                 <div class="category-label align-left">
+                    {% if selected_category.name != "Tất cả sản phẩm" %}
                     <h4>{{selected_category.name}}</h4>
+                    {% else %}
+                    <h4>{% trans "Tất cả sản phẩm" %}</h4>
+                    {% endif %}
                 </div>
                 
                 
@@ -142,15 +146,15 @@
                             </div>
                             <div class="product-card-more">
                                 <div class="product-card-price align-right">
-                                    {% if product.org_price != "0"  %}
-                                        {% if product.sale_price == "-1" %}
-                                            <div class="product-card-salePrice align-right">{{product.org_price}}đ</div>
+                                    {% if product.org_price_text != ""  %}
+                                        {% if product.sale_price_text == "" %}
+                                            <div class="product-card-salePrice align-right">{{product.org_price_text}}đ</div>
                                         {% else %}
-                                            <div class="product-card-orgPrice align-right">{{product.org_price}}đ</div>
-                                            <div class="product-card-salePrice align-right">{{product.sale_price}}đ</div>
+                                            <div class="product-card-orgPrice align-right">{{product.org_price_text}}đ</div>
+                                            <div class="product-card-salePrice align-right">{{product.sale_price_text}}đ</div>
                                         {% endif %}
-                                    {% elif product.sale_price != "-1" %}
-                                        <div class="product-card-salePrice align-right">{{product.sale_price}}đ</div>
+                                    {% elif product.sale_price_text != "" %}
+                                        <div class="product-card-salePrice align-right">{{product.sale_price_text}}đ</div>
                                     {% else %}
                                     <div class="product-card-salePrice align-right">{% trans "Liên hệ để báo giá" %}</div>
                                     {% endif %}

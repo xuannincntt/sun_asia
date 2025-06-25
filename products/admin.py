@@ -5,15 +5,17 @@ from django.utils.safestring import mark_safe
 from tinymce.widgets import TinyMCE
 from django.db import models
 import os
+from modeltranslation.admin import TranslationAdmin
 
 # Register your models here.
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     fields = ['name', 'slug','description']  # Cho phép nhập slug thủ công
 admin.site.register(Category, CategoryAdmin)
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
-    extra = 4
+    extra = 0  # Mặc định không thêm dòng trống
+    max_num = 4  # Hạn chế tổng số ảnh được hiển thị là 4
     fields = ('image_file', 'image_url', 'preview')
     readonly_fields = ('image_url', 'preview')
 
@@ -23,11 +25,22 @@ class ProductImageInline(admin.TabularInline):
         return "Chưa có ảnh"
     preview.short_description = "Preview"
 
-class ProductAdmin(admin.ModelAdmin):
-    fields = ['name','description', 'sold', 'stock', 'sale_price', 'org_price']
+    def has_add_permission(self, request, obj):
+        if obj and obj.images.count() >= self.max_num:
+            return False
+        return super().has_add_permission(request, obj)
+
+    def get_extra(self, request, obj=None, **kwargs):
+        if obj:
+            remaining_slots = self.max_num - obj.images.count()
+            return max(remaining_slots, 0)
+        return self.max_num  # Nếu đang tạo mới, cho phép tối đa 4
+
+class ProductAdmin(TranslationAdmin):
+    fields = ['name','category','unit','description', 'sold', 'stock', 'sale_price', 'org_price']
     inlines = [ProductImageInline]
     formfield_overrides = {
-        models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
+        models.TextField: {'widget': TinyMCE(attrs={'cols': 100, 'rows': 30})},
     }
 
     def save_related(self, request, form, formsets, change):

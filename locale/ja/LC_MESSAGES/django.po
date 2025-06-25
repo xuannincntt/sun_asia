@@ -66,6 +66,9 @@ msgstr "価格帯"
 msgid "Dưới 250,000VND"
 msgstr "25万ドン以下"
 
+msgid "Tất cả sản phẩm"
+msgstr "すべての製品"
+
 msgid "Từ 250,000VND đến 1,000,000VND"
 msgstr "25万ドンから100万ドン"
 

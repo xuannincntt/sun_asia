@@ -32,6 +32,25 @@ document.addEventListener("DOMContentLoaded", () => {
     setPaymentCardsOnClick();
     setBankProofInputOnChange();
     setFormOnSubmit();
+
+    popupContainer.innerHTML = `
+    <div class="popup-header align-center">
+        Thông báo
+    </div>
+    <div class="popup-content">
+        <div class="popup-text align-center">
+            Bạn có chắc chắn muốn xóa mặt hàng này không?
+        </div>
+        <div class="popup-action">
+            <button type="button" class="action-btn shop-btn">
+                Tiếp tục mua sắm
+            </button>
+            <button type="button" class="action-btn order-btn">
+                Xem đơn hàng
+            </button>
+        </div>
+    </div> 
+    `;
 });
 
 const setAddressCardsOnHover = () => {
@@ -219,7 +238,7 @@ const setFormOnSubmit = () => {
             console.log(data.message);
             if (data.status)
             togglePopup();
-            popupContainer.style.display = "block";
+            hideSpinner();
             popupSpinner.classList.add("hide");
             location.replace("/order/success");
         })
@@ -257,6 +276,6 @@ const showSpinner = () => {
 };
 
 const hideSpinner = () => {
-    popupContainer.style.display = "block";
     popupSpinner.classList.add("hide");
+    popupContainer.style.display = "block";
 };
