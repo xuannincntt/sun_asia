@@ -556,6 +556,9 @@ msgstr ""
 "tới sự hoàn thiện đảm bảo tiến độ, chất lượng và an toàn trong quá trình hợp "
 "tác."
 
+msgid "Tất cả sản phẩm"
+msgstr "Tất cả sản phẩm"
+
 #: .\templates\home.html:31
 msgid "Dịch vụ hỗ trợ"
 msgstr "Dịch vụ hỗ trợ"
@@ -791,6 +794,33 @@ msgstr "Mặc định"
 
 msgid "Bài viết liên quan"
 msgstr "Bài viết liên quan"
+
+msgid "Bạn có muốn xóa địa chỉ này không?"
+msgstr "Bạn có muốn xóa địa chỉ này không?"
+
+msgid "Cập nhật"
+msgstr "Cập nhật"
+
+msgid "Cảm ơn"
+msgstr "Cảm ơn"
+
+msgid "Đơn hàng đã được xử lý thành công"
+msgstr "Đơn hàng đã được xử lý thành công"
+
+msgid "Cảm ơn bạn đã đặt hàng"
+msgstr "Cảm ơn bạn đã đặt hàng"
+
+msgid "Chúng tôi sẽ xem xét đơn hàng của bạn và phản hồi lại bạn. Vào các ngày làm việc, thường là trong vòng 24 giờ. Vào thời điểm đó, bạn sẽ được thông báo qua email"
+msgstr "Chúng tôi sẽ xem xét đơn hàng của bạn và phản hồi lại bạn. Vào các ngày làm việc, thường là trong vòng 24 giờ. Vào thời điểm đó, bạn sẽ được thông báo qua email"
+
+msgid "Liên hệ với chúng tôi"
+msgstr "Liên hệ với chúng tôi"
+
+msgid "nếu có thắc mắc"
+msgstr "nếu có thắc mắc"
+
+msgid "Xem đơn hàng"
+msgstr "Xem đơn hàng"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"

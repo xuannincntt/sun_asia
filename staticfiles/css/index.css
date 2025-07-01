@@ -1,0 +1,40 @@
+html{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
+.align-left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.align-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.align-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide{
+    display: none !important;
+}
+
+
+

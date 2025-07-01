@@ -1,4 +1,5 @@
 venv
+.env
 
 accounts/__pycache__
 contact/__pycache__

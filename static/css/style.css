@@ -125,7 +125,7 @@ section {
 .floating-cart a {
     width: fit-content;
     font-size: 2rem;
-    background-color: var(--main-color);
+    background: var(--main-color);
     border-radius: .5rem;
     overflow: hidden;
     box-shadow: 0 0 5px var(--cart-btn-border);
@@ -326,7 +326,7 @@ section {
     display: flex;
     align-items: center;
     font-size: 1.5rem;
-    gap: .5rem;
+    gap: .3rem;
     position: relative;
 }
 
@@ -341,11 +341,13 @@ section {
     background-color: var(--hover-color);
 }
 
-.icon {
+.actions .icon {
     font-size: 2rem;
     cursor: pointer;
     border-radius: .5rem;
-    padding: .7rem 1.2rem;
+    padding: 1.1rem 1.2rem;
+    transition: .5s ease;
+    margin-top: 0px !important;
 }
 
 .icon:hover {
@@ -462,6 +464,7 @@ section {
 .actions .login-register a {
     padding: 1rem;
     transition: .5s ease;
+    border-radius: .5rem;
 }
 
 .actions .login-register a:hover {
@@ -482,6 +485,7 @@ section {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .user:hover {
@@ -635,18 +639,19 @@ section {
 
 .menu {
     display: none;
+    padding-left: .5rem;
 }
 
 .menu-nav {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 5.8rem;
+    top: 5rem;
     right: 0;
     position: absolute;
     width: 30%;
     padding: .5rem 0;
-    border-radius: 1rem;
+    border-radius: .5rem;
     border: 1px solid var(--border-color);
     background: var(--bg-color);
 }
@@ -840,7 +845,24 @@ hr {
 
 
 /* --- Responsive --- */
-@media (max-width: 1040px) {
+@media (max-width: 1366px) {
+    section {
+        padding: 10rem 3rem 2rem;
+    }
+
+    footer {
+        padding: 0rem 3rem 2rem;
+    }
+}
+
+
+@media (max-width: 1110px) {
+
+    html {
+        font-size: 52.5%;
+        overflow-x: hidden;
+    }
+
     .dropdown-user.show {
         right: 19rem;
         width: 40%;
@@ -857,19 +879,45 @@ hr {
     .actions {
         margin-left: auto;
     }
+
 }
 
-@media (max-width: 768px) {
-    .download, .username, .dropdown-user, .icon {
+@media (max-width: 430px) {
+    section {
+        padding: 10rem 2rem 2rem;
+    }
+
+    .icon.bell {
+        display: none;
+    }
+
+    footer {
+        padding: 0rem 2rem 2rem;
+    }
+
+    .actions .login-register {
+        display: none;
+    }
+
+    .download, .username, .dropdown-user {
         display: none;
     }
 
     .header {
         position: relative;
+        padding: 12px 10px;
     }
 
-    .header {
-        position: relative;
+    .logo img {
+        height: 4vh;
+    }
+
+    .logo .slogan h3 {
+        font-size: 2rem;
+    }
+
+    .logo .slogan p {
+        font-size: 1.5rem;
     }
 
     .actions {
@@ -878,15 +926,36 @@ hr {
 
     .dropdown-user.show {
         position: absolute;
-        top: 7.3rem;
+        top: 8rem;
         width: 100%;
         right: 0rem;
     }
 
     .menu-nav.show {
         position: absolute;
-        top: 7.3rem;
-        width: 100%;
+        top: 8rem;
+        width: 40%;
         right: 0rem;
+    }
+
+    .menu-nav a {
+        padding: 1rem 2rem;
+    }
+
+    .part1 .part1-item .slogan h3 {
+        font-weight: 600;
+        font-size: 2rem;
+    }
+
+    .part1 .part1-item .slogan p {
+        font-size: 1.5rem;
+    }
+
+    .part1 .part1-item img {
+        height: 4vh;
+    }
+
+    .part1 .part1-item .footer-inf {
+        display: none;
     }
 }

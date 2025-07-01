@@ -1,0 +1,667 @@
+section {
+    min-height: 100vh;
+    font-size: 1.5rem;
+    background: var(--sd-bg-color);
+}
+
+.inf {
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    font-size: 1.7rem;
+    color: var(--text-color);
+    background: var(--sd-bg-color);
+}
+
+.inf h1 {
+    color: var(--text-hover);
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.inf .title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.inf-basic {
+    font-size: 1.7rem;
+    width: 55%;
+    margin: 0 auto 1rem;
+    border: .5px solid var(--border-color);
+    border-bottom: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: var(--bg-color);
+}
+
+.inf-basic h5 {
+    padding: 3rem 3rem 1.5rem;
+    color: var(--text-hover);
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.inf-basic .textHeader {
+    padding: 0 3rem 1rem;
+}
+
+.inf-login, .inf-contact {
+    background-color: var(--bg-color);
+}
+
+.inf-basic .img-contain,
+.name-contain,
+.date-contain,
+.sex-contain,
+.inf-contact .phone-contain,
+.inf-login .email-contain,
+.inf-login .pass-contain {
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+    grid-template-rows: 1fr;
+    align-items: center;
+    border-bottom: .5px solid var(--border-color);
+    justify-content: center;
+    padding: 2.3rem 3rem;
+    cursor: pointer;
+}
+
+.img-popup,
+.name-popup,
+.email-popup,
+.phone-popup,
+.address-popup,
+.update-address-popup,
+.delete-address-popup
+/* .pass-popup,
+.newpass-popup */{
+    display: none;
+    position: fixed;
+    font-size: 1.5rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--shadow-color);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.img-popup-content,
+.name-popup-content,
+.email-popup-content,
+.pass-popup-content,
+.newpass-popup-content,
+.phone-popup-content,
+.address-popup-content,
+.update-address-popup-content,
+.delete-address-popup-content {
+    background: var(--bg-color);
+    padding: 4rem 3.5rem;
+    border-radius: 1rem;
+    width: 23%;
+    position: relative;
+}
+
+.img-popup-content h1,
+.name-popup-content h1,
+.email-popup-content h1,
+.pass-popup-content h1,
+.newpass-popup-content h1,
+.phone-popup-content h1,
+.address-popup-content h1,
+.update-address-popup-content h1,
+.delete-address-popup-content h1 {
+    text-align: left;
+    color: var(--text-up-color);
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.img-popup-content p,
+.name-popup-content p,
+.email-popup-content p,
+.pass-popup-content p,
+.newpass-popup-content p,
+.phone-popup-content p {
+    padding-bottom: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.img-popup-content label,
+.name-popup-content label,
+.email-popup-content label,
+.pass-popup-content label,
+.newpass-popup-content label,
+.phone-popup-content label {
+    color: var(--text-up-color);
+    font-weight: 600;
+}
+
+.img-popup-content input,
+.name-popup-content input,
+.email-popup-content input,
+.pass-popup-content input,
+.newpass-popup-content input,
+.phone-popup-content input {
+    border-radius: 1rem;
+    border: .5px solid var(--text-color);
+    width: 100%;
+    padding: 1.2rem 2rem;
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    color: #1f1f1f;
+}
+
+.name-popup-content #update_name,
+.email-popup-content #update_email,
+.pass-popup-content #update_pass,
+.newpass-popup-content #update_newpass,
+.phone-popup-content #update_phone  {
+    font-size: 1.5rem;
+    color: var(--sd-text-color);
+    padding-top: .5rem;
+}
+
+.name-popup-content .saveName,
+.email-popup-content .saveEmail,
+.pass-popup-content .savePass,
+.newpass-popup-content .saveNewPass,
+.phone-popup-content .savePhone {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1.3rem;
+    color: var(--bg-color);
+    font-weight: 600;
+    background-color: var(--text-color);
+    border-radius: 1rem;
+    margin-bottom: .5rem;
+    transition: .5s ease;
+}
+
+.name-popup-content .saveName:hover,
+.email-popup-content .saveEmail:hover,
+.pass-popup-content .savePass:hover,
+.newpass-popup-content .saveNewPass:hover,
+.phone-popup-content .savePhone:hover {
+    background-color: var(--text-hover);
+}
+
+.img-popup-content #closeImgPopup,
+.name-popup-content #closeNamePopup,
+.email-popup-content #closeEmailPopup,
+.pass-popup-content #closePassPopup,
+.newpass-popup-content #closeNewPassPopup,
+.phone-popup-content #closePhonePopup {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: .5s ease;
+}
+
+.img-popup-content #closeImgPopup:hover,
+.name-popup-content #closeNamePopup:hover,
+.email-popup-content #closeEmailPopup:hover,
+.pass-popup-content #closePassPopup:hover,
+.newpass-popup-content #closeNewPassPopup:hover,
+.phone-popup-content #closePhonePopup:hover {
+    background: var(--hover-color);
+}
+
+.img-popup .img-popup-content .avatar {
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    background-color: #fdecec;
+    position: relative;
+}
+
+.img-popup-content img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 .1rem .5rem var(--shadow-color);
+}
+
+.img-popup .img-popup-content .avatar #avatarInitial {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    color: var(--sd-text-color);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 5.5rem;
+    background-color: #fdecec;
+}
+
+.img-popup-content .upload {
+    border: .5px solid var(--text-color);
+    position: relative;
+    width: 100%;
+    padding: 1.2rem 2rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+.img-popup-content .upload:hover {
+    background: var(--hover-color);
+}
+
+.img-popup-content .upload p {
+    padding: 0;
+}
+
+.img-popup-content .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.img-popup-content .action-buttons #confirmUpload,
+.img-popup-content .action-buttons #cancelUpload {
+    padding: 1.2rem 2rem;
+    background: var(--text-color);
+    color: var(--bg-color);
+    border-radius: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .5s ease;
+    display: none;
+}
+
+.popup-overlay-pass {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--shadow-color);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.wrapperPass {
+    padding: 0rem 1rem;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    width: 400px;
+    margin: auto;
+    height: 430px;
+    background: var(--sd-text-color);
+    background-color: var(--bg-color);
+    border-radius: 2rem;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease, opacity 0.5s ease, height .2s ease;
+
+}
+
+.wrapperPass.active-popup {
+    display: flex;
+    opacity: 1;
+}
+
+.wrapperPass.active {
+    height: 490px;
+}
+
+.wrapperPass .pass-popup {
+    transition: transform .2s ease;
+    transform: translateX(0);
+}
+
+.wrapperPass.active .pass-popup {
+    transition: none;
+    transform: translateX(-500px);
+}
+
+.wrapperPass .newpass-popup {
+    position: absolute;
+    transition: none;
+    transform: translateX(500px);
+}
+
+.wrapperPass.active .newpass-popup {
+    transition: transform .2s ease;
+    transform: translateX(0);
+}
+
+.wrapper .pass-popup,
+.wrapper .newpass-popup {
+    width: 100%;
+    display: flex;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.pass-popup-content,
+.newpass-popup-content {
+    padding: 3rem;
+    border-radius: 2rem;
+    width: 100%;
+}
+
+.pass-popup-content #closePassPopup {
+    right: 2rem;
+}
+
+.newpass-popup-content #backToPassPopup {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    font-size: 2.8rem;
+    cursor: pointer;
+}
+
+.newpass-popup-content #backToPassPopup:hover {
+    background: var(--hover-color);
+    padding: 0 .5rem;
+    left: 2.5rem;
+    border-radius: 50%;
+}
+
+.inf-basic .img-contain:hover,
+.name-contain:hover,
+.date-contain:hover,
+.sex-contain:hover,
+.inf-contact .phone-contain:hover,
+.inf-login .email-contain:hover,
+.inf-login .pass-contain:hover {
+    background: var(--hover-color);
+}
+
+.inf-basic .img-contain .img-box,
+.name-contain .name-box,
+.date-contain .date-box,
+.sex-contain .sex-box,
+.inf-contact .phone-contain .phone-box,
+.inf-login .email-contain .email-box,
+.inf-login .pass-contain .pass-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.inf-basic .img-contain .img-box.end,
+.name-contain .name-box.end,
+.date-contain .date-box.end,
+.sex-contain .sex-box.end,
+.inf-contact .phone-contain .phone-box.end,
+.inf-login .email-contain .email-box.end,
+.inf-login .pass-contain .pass-box.end {
+    justify-content: end;
+}
+
+.name-contain .name-box.end i,
+.date-contain .date-box.end i,
+.sex-contain .sex-box.end i,
+.inf-contact .phone-contain .phone-box i,
+.inf-login .email-contain .email-box i,
+.inf-login .pass-contain .pass-box i {
+    font-size: 3.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.inf-basic .img-contain .text-box,
+.inf-basic .name-contain .text-box,
+.inf-basic .date-contain .text-box,
+.inf-basic .sex-contain .text-box,
+.inf-contact .phone-contain .text-box,
+.inf-login .email-contain .text-box,
+.inf-login .pass-contain .text-box {
+    text-align: left;
+}
+
+.text-inf {
+    color: var(--text-color);
+}
+
+.inf-basic .img-contain .img-box img {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    border: .5px solid var(--border-color);
+    text-align: right;
+}
+
+.img {
+    position: relative;
+    width: 3vw;
+    height: 3vw;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.img .avatar {
+    background-color: #fdecec;
+    color: var(--sd-text-color);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.edit-img {
+    right: 0vw;
+    position: absolute;
+    top: 1.6vw;
+    color: var(--border-color);
+    background-color: var(--shadow-color);
+    width: 3.1vw;
+    font-size: 2rem;
+    text-align: center;
+    height: 2.8vw;
+}
+
+.inf-contact {
+    font-size: 1.7rem;
+    width: 60%;
+    margin: 0 auto;
+    border: .5px solid var(--border-color);
+    border-bottom: none;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.inf-contact h5 {
+    padding: 2rem 3rem 1rem;
+    color: var(--text-hover);
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.inf-login, .inf-contact {
+    font-size: 1.7rem;
+    width: 55%;
+    margin: 0 auto 1rem;
+    border: .5px solid var(--border-color);
+    border-bottom: none;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.inf-login h5,
+.inf-contact h5 {
+    padding: 2rem 3rem 1rem;
+    color: var(--text-hover);
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.address-contain {
+    padding: 23px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.address-contain .address-box.end p {
+    padding: .5rem 1rem;
+    background-color: var(--sd-text-color);
+    color: var(--white-color);
+    transition: .5s ease;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: .5rem;
+}
+
+.address-contain .address-box.end p:hover {
+    box-shadow: 0 0 .5rem var(--sd-text-color);
+}
+
+.address-popup-content,
+.update-address-popup-content,
+.delete-address-popup-content {
+    background: var(--bg-color);
+    padding: 3.5rem 4rem;
+    border-radius: 1rem;
+    width: 27%;
+    position: relative;
+}
+
+.address-popup-content h1,
+.update-address-popup-content h1,
+.delete-address-popup-content h1 {
+    padding-top: 0rem;
+    margin-top: 0rem;
+}
+
+.form-group-full {
+    margin-bottom: 2.5rem;
+    color: #1f1f1f1f;
+}
+
+.form-group-full select,
+.form-group-full input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: #1f1f1f;
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    column-gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.btn-back,
+.btn-submit {
+    padding: .8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1.5rem;  
+    cursor: pointer;
+}
+
+.btn-back {
+    background: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.btn-back:hover {
+    background-color: var(--hover-color);
+}
+
+.btn-submit {
+    background: var(--sd-text-color);
+    color: var(--white-color);
+}
+
+.address-list {
+    padding: 0px 30px 23px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-hover);
+    font-size: 1.5rem;
+}
+
+.address-list .address-box {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+    padding-top: 23px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.address-list .address-box .address-box-right {
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+}
+
+.address-list .address-box .address-box-left  p {
+    padding-bottom: .5rem;
+}
+
+.address-list .address-box .address-box-left .default {
+    padding: .5rem 1rem;
+    border: 1px solid var(--sd-text-color);
+    color: var(--sd-text-color);
+    border-radius: .5rem;
+    margin-top: .5rem;
+    width: fit-content;
+} 
+
+.address-box .address-box-right button {
+    padding: .5rem 1rem;
+    margin: .2rem;
+    border-radius: .5rem;
+    color: var(--text-color);
+}
+
+.address-box .address-box-right button:hover {
+    background: var(--hover-color);
+}
+
+.address-box .address-box-right .btn-default {
+    border: 1px solid var(--sd-text-color);
+    color: var(--sd-text-color);
+    width: fit-content;
+    margin-left: auto;
+}
+
+.address-list .end {
+    border-bottom: none;
+    padding-bottom: 0;
+    padding-top: 2rem;
+}

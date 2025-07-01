@@ -34,6 +34,7 @@ urlpatterns = [
     path('update-cart/', views.update_cart, name='update-cart'),
     path('logout', views.logout_view, name='logout'),
     path('set_language/', set_language, name='set_language'),
+    path('favorite/', views.favorite, name='favorite'),
     path('tinymce/', include('tinymce.urls')),
     path('<slug:cat_slug>/', views.product_by_category, name='product_by_category'),
 ]

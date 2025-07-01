@@ -339,6 +339,9 @@ msgstr "Payment Status"
 msgid "Xem chi tiết"
 msgstr "See details"
 
+msgid "Tất cả sản phẩm"
+msgstr "All products"
+
 #: .\templates\base.html:56
 msgid "Dưới"
 msgstr "Under"
@@ -789,6 +792,33 @@ msgstr "Default"
 
 msgid "Bài viết liên quan"
 msgstr "Related Articles"
+
+msgid "Bạn có muốn xóa địa chỉ này không?"
+msgstr "Do you want to delete this address?"
+
+msgid "Cập nhật"
+msgstr "Update"
+
+msgid "Cảm ơn"
+msgstr "Thank you"
+
+msgid "Đơn hàng đã được xử lý thành công"
+msgstr "Your order has been successfully processed"
+
+msgid "Cảm ơn bạn đã đặt hàng"
+msgstr "Thank you for your order"
+
+msgid "Chúng tôi sẽ xem xét đơn hàng của bạn và phản hồi lại bạn. Vào các ngày làm việc, thường là trong vòng 24 giờ. Vào thời điểm đó, bạn sẽ được thông báo qua email"
+msgstr "We will review your order and get back to you. On workdays, it usually happens within 24 hours. You will be notified by email at that time."
+
+msgid "Liên hệ với chúng tôi"
+msgstr "Contact us"
+
+msgid "nếu có thắc mắc"
+msgstr "if you have any questions"
+
+msgid "Xem đơn hàng"
+msgstr "View order"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"

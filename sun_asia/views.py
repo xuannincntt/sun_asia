@@ -278,3 +278,9 @@ def checkout(request):
             'total_discount': format(total_discount,","),
             'total_final': format(total_temp + total_vat - total_discount,",")
         }})
+
+@never_cache
+def favorite(request):
+    user_id = request.session.get('user_id')
+    user = User.objects.get(id=user_id) if user_id else None
+    return render(request, 'favorite.html', {'user': user})

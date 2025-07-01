@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.hashers import make_password, check_password
 from django.utils.text import slugify
+from products.models import Product
 
 class User(models.Model):
     email = models.EmailField(unique=True)
@@ -32,3 +33,11 @@ class User(models.Model):
     def __str__(self):
         return self.email
 
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        unique_together = ('user', 'product')
+    def __str__(self):
+        return f"{self.user.username} - {self.product.name}"

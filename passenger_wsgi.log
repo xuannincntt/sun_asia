@@ -1,0 +1,49 @@
+2025-06-28 21:59:51,563 DEBUG get 'CLOUDINARY_API_KEY' casted as 'None' with default '<NoValue>'
+2025-06-28 21:59:51,563 DEBUG get 'CLOUDINARY_API_SECRET' casted as 'None' with default '<NoValue>'
+2025-06-29 02:59:51,576 ERROR WSGI failed
+Traceback (most recent call last):
+  File "/home/ozuxzmth/sun_asia/passenger_wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/django/apps/registry.py", line 91, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/django/apps/config.py", line 193, in create
+    import_module(entry)
+  File "/opt/alt/python38/lib64/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/modeltranslation/__init__.py", line 1, in <module>
+    from modeltranslation._typing import monkeypatch
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/modeltranslation/_typing.py", line 19, in <module>
+    _ListOrTuple: TypeAlias = Union[list[_K], tuple[_K, ...]]
+TypeError: 'type' object is not subscriptable
+2025-06-29 02:59:51,584 ERROR WSGI failed
+Traceback (most recent call last):
+  File "/home/ozuxzmth/sun_asia/passenger_wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/django/apps/registry.py", line 83, in populate
+    raise RuntimeError("populate() isn't reentrant")
+RuntimeError: populate() isn't reentrant
+2025-06-29 02:59:51,735 ERROR WSGI failed
+Traceback (most recent call last):
+  File "/home/ozuxzmth/sun_asia/passenger_wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/ozuxzmth/virtualenv/sun_asia/3.8/lib/python3.8/site-packages/django/apps/registry.py", line 83, in populate
+    raise RuntimeError("populate() isn't reentrant")
+RuntimeError: populate() isn't reentrant

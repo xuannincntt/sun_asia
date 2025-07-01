@@ -786,6 +786,36 @@ msgstr "デフォルト"
 msgid "Bài viết liên quan"
 msgstr "関連記事"
 
+msgid "Bạn có muốn xóa địa chỉ này không?"
+msgstr "この住所を削除しますか？"
+
+msgid "Cập nhật"
+msgstr "更新"
+
+msgid "Cảm ơn"
+msgstr "ありがとうございます"
+
+msgid "Đơn hàng đã được xử lý thành công"
+msgstr "ご注文は正常に処理されました"
+
+msgid "Cảm ơn bạn đã đặt hàng"
+msgstr "ご注文いただきありがとうございます"
+
+msgid "Chúng tôi sẽ xem xét đơn hàng của bạn và phản hồi lại bạn. Vào các ngày làm việc, thường là trong vòng 24 giờ. Vào thời điểm đó, bạn sẽ được thông báo qua email"
+msgstr "ご注文を確認し、折り返しご連絡いたします。営業日であれば通常24時間以内に処理されます。その際、メールでお知らせいたします。"
+
+msgid "Liên hệ với chúng tôi"
+msgstr "お問い合わせ"
+
+msgid "nếu có thắc mắc"
+msgstr "ご不明な点がございましたら"
+
+msgid "Xem đơn hàng"
+msgstr "注文を確認する"
+
+msgid "Tất cả sản phẩm"
+msgstr "すべての製品"
+
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"
 msgstr ""

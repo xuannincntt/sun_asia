@@ -449,6 +449,7 @@ section {
     width: 3vw;
     height: 3vw;
     border-radius: 50%;
+    object-fit: cover;
     border: .5px solid var(--border-color);
     text-align: right;
 }
@@ -458,6 +459,7 @@ section {
     width: 3vw;
     height: 3vw;
     overflow: hidden;
+    object-fit: cover;
     border-radius: 50%;
 }
 

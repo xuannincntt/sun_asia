@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/sunasia/favorite.css' %}?v={{ timestamp }}">
+{% endblock %}
+{% block title %}
+    {% trans "Danh sách yêu thích" %}
+{% endblock %}
+{% block content %}
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/favorite.js' %}?v={{ timestamp }}" type="module"></script>
+{% endblock script %}

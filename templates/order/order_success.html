@@ -8,26 +8,31 @@
 <link rel="stylesheet" href="{% static 'css/order/order_success.css' %}?v={{ timestamp }}">
 {% endblock %}
 
-{% block title %}Cảm ơn{% endblock %}
+{% block title %}{% trans "Cảm ơn" %}{% endblock %}
 
-{% block content %} 
-<div id="order-success-page">
+{% block content %}
+<section id="order-success-page">
     <div class="order-success-header">
-
     </div>
     <div class="order-success-message">
-        <p>Đơn hàng đã được xử lý thành công.</p>
-        <p>Cảm ơn bạn đã đặt hàng!</p>
+        <p>{% trans "Đơn hàng đã được xử lý thành công" %}.</p>
+        <p>{% trans "Cảm ơn bạn đã đặt hàng" %}!</p>
+    </div>
+    <div class="description">
+        {% trans "Chúng tôi sẽ xem xét đơn hàng của bạn và phản hồi lại bạn. Vào các ngày làm việc, thường là trong vòng 24 giờ. Vào thời điểm đó, bạn sẽ được thông báo qua email" %}.
+    </div>
+    <div class="description">
+        <a href="#" class="contact">{% trans "Liên hệ với chúng tôi" %}</a> {% trans "nếu có thắc mắc" %}.
     </div>
     <div class="order-success-action">
         <a href="/products/" class="action-btn shop-btn align-center">
-            Tiếp tục mua sắm
+            {% trans "Tiếp tục mua sắm" %}
         </a>
         <a href="/order/{{order_uuid}}" class="action-btn order-btn align-center">
-            Xem đơn hàng
+            {% trans "Xem đơn hàng" %}
         </a>
     </div>
-</div>
+</section>
 {% endblock %}
 
 {% block script %}

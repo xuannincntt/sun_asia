@@ -73,13 +73,13 @@
         <div class="product-show">
             {% for product in products %}
                 <a class="product-link" href="/products/{{product.slug}}">
-                    <div class="product-item">
+                    <div class="product-item" data-index="{{product.slug}}_{{product.id}}">
                         {% if product.image_url %}
-                            <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                            <img class="product-item-image" src="{{ product.image_url }}" alt="{{ product.name }}">
                         {% else %}
-                            <img src="/static/img/default.jpg" alt="default image">
+                            <img class="product-item-image" src="/static/img/default.jpg" alt="default image">
                         {% endif %}
-                        <h3>{{ product.name }}</h3>
+                        <h3 class="product-item-name">{{ product.name }}</h3>
                         <p class="price">
                             {% if product.org_price != "0"  %}
                                 {% if product.sale_price == "-1" %}
@@ -96,14 +96,33 @@
                         </p>
                         <div class="product-item-end">
                             <button type="button" class="action-btn buy-btn">{% trans "Mua ngay" %}</button>
-                            <p><i class="fa-solid fa-cart-plus"></i></p>
-                            <p><i class="fa-regular fa-heart"></i></p>
+                            <p><i class="fa-solid fa-cart-plus cart-btn"></i></p>
                         </div>
                     </div>
                 </a>
             {% endfor %}
         </div>
     </section>
+    <div class="section-popup">
+        <div class="popup-container">
+            <div class="popup-header align-center">
+                {% trans "Thông báo" %}
+            </div>
+            <div class="popup-content">
+                <div class="popup-text align-center">
+                    {% trans "Thêm vào giỏ hàng thành công!" %}
+                </div>
+                <div class="popup-action">
+                    <button type="button" class="action-btn continue-btn align-center">
+                        {% trans "Tiếp tục mua sắm" %}
+                    </button>
+                    <a href="/cart" class="action-btn cartNav-btn align-center">
+                        {% trans "Xem giỏ hàng" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- design project -->
     <section id="project" class="project">
         <div class="project-content">
@@ -129,7 +148,8 @@
     </section>
 {% endblock %}
 {% block script %}
-<script>
+<script type="module">
+    import addProductToCart from "../static/js/utils/addProductToCart.js";
     window.MyAppData = {
         popupSubmitBtn: `
         <label class="popup-quantity" for="productQuantity">
@@ -179,6 +199,134 @@
             </div>
         </div>`
     };
+    const popup = document.getElementsByClassName("section-popup")[0];
+    const popupContainer = document.getElementsByClassName("popup-container")[0];
+    const popupHeader = document.getElementsByClassName("popup-header")[0];
+    const popupContent = document.getElementsByClassName("popup-content")[0];
+    const popupText = document.getElementsByClassName("popup-text")[0];
+    let buyBtns = document.querySelectorAll('.buy-btn');
+    let cartBtns = document.querySelectorAll('.cart-btn');
+    document.addEventListener('DOMContentLoaded', () => {
+        setCartBtnsOnClick();
+        setBuyBtnsOnClick();
+    });
+    const setCartBtnsOnClick = () => {
+        console.log(cartBtns);
+        cartBtns.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const productCard = btn.closest(".product-item");
+                console.log(productCard);
+                console.log(btn);
+                const productInfo = productCard.getAttribute("data-index").split("_");
+                const [productSlug, productId] = productInfo;
+                console.log(productSlug, productId);
+                addProductToCart(productSlug, productId, 1)
+                .then(response => {
+                    console.log(response);
+                    showAddCartResponse(response);
+                })  
+                .catch(error => {
+                    console.log(error);
+                    showAddCartResponse(error);
+                });
+            });
+        });
+    };
+
+    const setBuyBtnsOnClick = () => {
+        console.log(buyBtns);
+        buyBtns.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const productCard = btn.closest(".product-item");
+                const productInfo = productCard.getAttribute("data-index").split("_");
+                const [productSlug, productId] = productInfo;
+                // buyProduct(productSlug, productId)
+                const productImageTag = productCard.querySelector(".product-item-image");
+                const productNameTag = productCard.querySelector(".product-item-name");
+                const orgPriceTag = productCard.querySelector(".product-orgPrice");
+                const orgPrice = orgPriceTag? orgPriceTag.textContent: "0đ";
+                const salePriceTag = productCard.querySelector(".product-salePrice");
+                console.log(salePriceTag.textContent);
+                showBuyNowPopup(productId, productImageTag.src, productNameTag.textContent, orgPrice, salePriceTag.textContent);
+            });
+        });
+    };
+
+    const showAddCartResponse = (message) => {
+        const notifyContent = window.MyAppData.popupCartNotify;
+        popupContainer.innerHTML = notifyContent;
+        // popupContainer.style.width = "35%";
+        const continueBtn = popupContainer.querySelector(".continue-btn");
+        const cartNavBtn = popupContainer.querySelector("cartNav-btn");
+        popupText.textContent = message;
+        togglePopup();
+        continueBtn.addEventListener('click', () => {
+            togglePopup();
+        });
+
+    };
+
+    const togglePopup = () => {
+        popup.style.display = (popup.style.display === 'flex') ? 'none' : 'flex';   
+    };
+
+    const showBuyNowPopup = (productId, productImage, productName, productOrgPrice, productSalePrice) => {
+        const buyNowContent = `
+            <div class="popup-close align-right">
+                <i class='bx bx-x close-icon'></i> 
+            </div>
+            <div class="popup-product">
+                <div class="popup-section-image align-center" >
+                    <img class="popup-image" src=${productImage} alt="" />
+                </div>
+                <form class="popup-section-form" action="/checkout/" method="POST">
+                    <label for="productId" style="display: none;">
+                        <input type="text" id="productId" name="productId" value=${productId} />
+                    </label>
+                    <div class="popup-name">${productName}</div>
+                    <div class="popup-price">
+                        ${productOrgPrice == productSalePrice?
+                            `
+                            <div class="popup-salePrice align-left">${productSalePrice}</div>`:
+                            `
+                            <div class="popup-orgPrice align-left">${productOrgPrice}</div>
+                            <div class="popup-salePrice align-left">${productSalePrice}</div>
+                            `
+                        }
+                    </div>
+                </form>
+            </div>`;
+        popupContainer.innerHTML = buyNowContent;
+        // popupContainer.style.width = "40%";
+        const closeBtn = popupContainer.querySelector(".close-icon");
+        const increaseBtn = popupContainer.querySelector(".plus-icon");
+        const decreaseBtn = popupContainer.querySelector(".minus-icon");
+        const quantityInput = popupContainer.querySelector("#productQuantity");
+        const popupForm = popupContainer.querySelector(".popup-section-form");
+        popupForm.insertAdjacentHTML("beforeend", window.MyAppData.popupSubmitBtn);
+        togglePopup();
+        closeBtn.addEventListener("click", () => {
+            togglePopup();
+        });
+        
+        increaseBtn.addEventListener("click", () => {
+            const currentQuantity = parseInt(quantityInput.getAttribute("value")) || 1;
+            quantityInput.setAttribute("value", currentQuantity + 1);
+
+        });
+
+        decreaseBtn.addEventListener("click", () => {
+            const currentQuantity = parseInt(quantityInput.getAttribute("value")) || 1;
+            if (currentQuantity <= 1){
+                return;
+            }
+            quantityInput.setAttribute("value", currentQuantity - 1);
+        });
+        
+    };
 </script>
-<script src="{% static 'js/product/product_list.js' %}?v={{ timestamp }}" type="module"></script>
 {% endblock script %}

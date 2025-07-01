@@ -154,6 +154,7 @@
                 <a href="/projects"><i class="fa-solid fa-city"></i> {% trans "Dự án" %}</a>
                 <a href="/news"><i class="fa-solid fa-newspaper"></i> {% trans "Tin tức" %}</a>
                 <a href="/contact"><i class="fa-solid fa-paper-plane"></i> {% trans "Liên hệ" %}</a>
+                <a href="/accounts/"><i class="fa-solid fa-right-to-bracket"></i> {% trans "Đăng nhập" %}</a>
             </div>
         </div>
     </header>
@@ -274,6 +275,36 @@
                 }
             });
         }
+
+        // Gán đúng phần tử
+        const dropdownMenuBtn = document.getElementById('menu-icon');
+        const dropdownMenu = document.querySelector('.menu-nav');
+        const dropdownMenuIcon = document.getElementById('menu-icon');
+
+        if (dropdownMenuBtn) {
+            dropdownMenuBtn.addEventListener('click', function (e) {
+                e.preventDefault(); // Chặn sự kiện mặc định của thẻ <a>
+                console.log("Hi");
+                dropdownMenu.classList.toggle('show');
+                if (dropdownMenu.classList.contains('show')) {
+                    dropdownMenuIcon.classList.remove('fa-bars');
+                    dropdownMenuIcon.classList.add('fa-xmark');
+                } else {
+                    dropdownMenuIcon.classList.remove('fa-xmark');
+                    dropdownMenuIcon.classList.add('fa-bars');
+                }
+            });
+
+            // Click ra ngoài thì đóng dropdown-menu
+            document.addEventListener('click', function (e) {
+                if (!dropdownMenuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                    dropdownMenuIcon.classList.remove('fa-xmark');
+                    dropdownMenuIcon.classList.add('fa-bars');
+                }
+            });
+        }
+
 
         if (dropdownBell) {
             dropdownBell.addEventListener('click', function () {

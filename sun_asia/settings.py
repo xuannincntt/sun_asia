@@ -14,6 +14,9 @@ from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 import os
 import cloudinary
+import environ
+
+env=environ.Env(DEBUG=(bool, False))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,7 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sun_asia.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
@@ -92,12 +94,14 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+cloudinary_api_key=env('CLOUDINARY_API_KEY')
+cloudinary_api_secret=env('CLOUDINARY_API_SECRET')
 # Configuration       
 cloudinary.config( 
     cloud_name = "dx73jb4d8", 
-    api_key = "873196195445183", 
-    api_secret = "6SOtgJKWlMoE-tpWimNXeSpWoa4", # Click 'View API Keys' above to copy your API secret
+    api_key = cloudinary_api_key, 
+    api_secret = cloudinary_api_secret, # Click 'View API Keys' above to copy your API secret
     secure=True
 )
 
@@ -152,7 +156,7 @@ LOCALE_PATHS = [
 
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
 # Nếu dùng khi phát triển
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
